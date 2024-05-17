@@ -1,18 +1,5 @@
 ﻿var coursesData = [];
-
-function ajaxCall(method, api, data, successCB, errorCB) {
-    $.ajax({
-        type: method,
-        url: api,
-        data: data,
-        cache: false,
-        contentType: "application/json",
-        dataType: "json",
-        success: successCB,
-        error: errorCB
-    });
-}
-
+const udemy = "https://www.udemy.com";
 
 $(document).ready(function () {
     // Load courses from JSON file
@@ -22,7 +9,6 @@ $(document).ready(function () {
     });
 
 
-    const udemy = "https://www.udemy.com";
     // Render courses
     function renderCourses(courses) {
         var coursesContainer = $('#courses-container');
@@ -42,6 +28,12 @@ $(document).ready(function () {
 
 });
 
+const myCoursesBtn = document.getElementById("myCourses");
+//myCoursesBtn.onclick = window.open("../Pages/MyCourses.html", "_blank");
+
+myCoursesBtn.addEventListener("click", function () {
+    window.open("../Pages/MyCourses.html", "_blank");
+});
 
 function sendSomething() { // strictly for testing POST
     const courseDataToSend = {
@@ -61,13 +53,15 @@ function sendSomething() { // strictly for testing POST
 
 }
 
-console.log(coursesData);
+//console.log(coursesData);
 
 function postSCBF(result) {
+    if (!result) alert("Course is already in database");
     console.log(result);
 }
 
 function postECBF(err) {
+
     console.log(err);
 }
 
@@ -92,9 +86,9 @@ function addCourse(buttonId) {
             courseDataToSend = {
                 id: courseData.id,
                 title: courseData.title,
-                url: courseData.url,
+                url: udemy + courseData.url,
                 rating: courseData.rating,
-                numberOfReviews: courseData.num_reviews,
+                abc: courseData.num_reviews,
                 instructorsId: courseData.instructors_id,
                 imageReference: courseData.image,
                 duration: courseData.duration,
