@@ -9,14 +9,14 @@
         private int numberOfReviews;
         private int instructorsId;
         private string imageReference;
-        private int duration;
-        private DateTime lastUpdate;
+        private string duration;
+        private string lastUpdate;
 
         private static List<Course> coursesList = new List<Course>();
 
         public Course() { }
 
-        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, int duration, DateTime lastUpdate)
+        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate)
         {
             Id = id;
             Title = title;
@@ -36,10 +36,11 @@
         public int NumberOfReviews { get => numberOfReviews; set => numberOfReviews = value; }
         public int InstructorsId { get => instructorsId; set => instructorsId = value; }
         public string ImageReference { get => imageReference; set => imageReference = value; }
-        public int Duration { get => duration; set => duration = value; }
-        public DateTime LastUpdate { get => lastUpdate; set => lastUpdate = value; }
+        public string Duration { get => duration; set => duration = value; }
+        public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
+
         public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
-        
+
 
         public List<Course> Read()
         {
@@ -61,7 +62,9 @@
             List<Course> selectedCourses = new List<Course>();
             foreach (Course course in coursesList)
             {
-                if (course.Duration >= fromDuration && course.Duration <= toDuration)
+                string[] duration = course.Duration.Split(" ");
+                string bit = duration[0];
+                if (int.Parse(bit) >= fromDuration && int.Parse(bit) <= toDuration)
                     selectedCourses.Add(course);
             }
             return selectedCourses;
