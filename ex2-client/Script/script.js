@@ -35,6 +35,15 @@ myCoursesBtn.addEventListener("click", function () {
     window.open("../Pages/MyCourses.html", "_blank");
 });
 
+
+const instructorsBtn = document.getElementById("instructorsBtn");
+//myCoursesBtn.onclick = window.open("../Pages/MyCourses.html", "_blank");
+
+instructorsBtn.addEventListener("click", function () {
+    window.open("../Pages/instructorsPage.html", "_blank");
+});
+
+
 function sendSomething() { // strictly for testing POST
     const courseDataToSend = {
         id: 1234,
