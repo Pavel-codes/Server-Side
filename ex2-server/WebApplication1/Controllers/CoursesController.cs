@@ -38,19 +38,19 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("search")]
-        public IEnumerable<Course> GetByDurationRange(int fromDuration, int toDuration)
+        public IEnumerable<Course> GetByDurationRange(double fromDuration, double toDuration)
         {
-            Course course = new Course();
+            Course courseByDuration = new Course();
 
-            return course.GetByDurationRange(fromDuration, toDuration);
+            return courseByDuration.GetByDurationRange(fromDuration, toDuration);
         }
 
         [HttpGet("searchByRouting/fromRating/{fromRating}/toRating/{toRating}")]
-        public IEnumerable<Course> GetByRatingRange(int fromRating, int toRating)
+        public IEnumerable<Course> GetByRatingRange(double fromRating, double toRating)
         {
-            Course course = new Course();
+            Course courseByRating = new Course();
 
-            return course.GetByRatingRange(fromRating, toRating);
+            return courseByRating.GetByRatingRange(fromRating, toRating);
         }
 
         // DELETE api/<CoursesController>/5

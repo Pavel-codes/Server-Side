@@ -28,31 +28,19 @@
         public string JobTitle { get => jobTitle; set => jobTitle = value; }
         public static List<Instructor> InstructorList { get => instructorList; set => instructorList = value; }
 
-        public bool Insert() // need to check it
+        public bool Insert() // fixed
         {
-            try
+            bool isPresent = instructorList.Contains(this);
+            if (isPresent)
             {
-                if (instructorList.Count > 0)
-                {
-                    foreach (Instructor instructor in instructorList)
-                    {
-                        if (instructor.Id == Id && instructor.Title.Equals(Title))
-                        {
-                            return false;
-                        }
-                    }
-                    instructorList.Add(this);
-                    return true;
-                }
-                else
-                {
-                    instructorList.Add(this);
-                    return true;
-                }
-            } 
-            catch { 
                 return false;
             }
+            else
+            {
+                instructorList.Add(this);
+            }
+            return true;
+
         }
 
         public List<Instructor> Read()

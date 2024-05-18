@@ -52,25 +52,26 @@
             foreach (Course course in coursesList)
             {
                 if (course.Id == Id || course.Title.Equals(Title)) return false;
+                //if (course.Equals(this)) return false;
             }
             coursesList.Add(this);
             return true;
         }
 
-        public List<Course> GetByDurationRange(int fromDuration, int toDuration)
+        public List<Course> GetByDurationRange(double fromDuration, double toDuration)
         {
             List<Course> selectedCourses = new List<Course>();
             foreach (Course course in coursesList)
             {
                 string[] duration = course.Duration.Split(" ");
                 string bit = duration[0];
-                if (int.Parse(bit) >= fromDuration && int.Parse(bit) <= toDuration)
+                if (double.Parse(bit) >= fromDuration && double.Parse(bit) <= toDuration)
                     selectedCourses.Add(course);
             }
             return selectedCourses;
 
         }
-        public List<Course> GetByRatingRange(int fromRating, int toRating)
+        public List<Course> GetByRatingRange(double fromRating, double toRating)
         {
             List<Course> selectedCourses = new List<Course>();
             foreach (Course course in coursesList)

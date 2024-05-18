@@ -2,7 +2,6 @@
 const udemy = "https://www.udemy.com";
 
 $(document).ready(function () {
-    // Load courses from JSON file
 
     $.getJSON("../Data/Course.json", function (data) {
         renderCourses(data);
@@ -20,12 +19,18 @@ $(document).ready(function () {
             courseElement.append('<p>Instructors ID: ' + course.instructors_id + '</p>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
+            courseElement.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
             courseElement.append('<button id="' + course.id + '">Add Course</button>');
             coursesContainer.append(courseElement);
         });
     }
 
+    $('*').not('script, style').css({
+        'padding': '5px',
+        'margin-top': '5px',
+        'margin-bottom': '5px'
+    });
 });
 
 const myCoursesBtn = document.getElementById("myCourses");
@@ -42,27 +47,6 @@ const instructorsBtn = document.getElementById("instructorsBtn");
 instructorsBtn.addEventListener("click", function () {
     window.open("../Pages/instructorsPage.html", "_blank");
 });
-
-
-function sendSomething() { // strictly for testing POST
-    const courseDataToSend = {
-        id: 1234,
-        title: "title",
-        url: "url",
-        rating: 3.33333333,
-        numberOfReviews: 1234678,
-        instructorsId: 111,
-        imageReference: 'https://img-c.udemycdn.com/course/750x422/567828_67d0.jpg',
-        duration: '11 hours',
-        lastUpdate: '11/11/11'
-    };
-
-    api = "https://localhost:7076/api/Courses";
-    ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
-
-}
-
-//console.log(coursesData);
 
 function postSCBF(result) {
     if (!result) alert("Course is already in database");
@@ -85,8 +69,6 @@ document.addEventListener('click', function (event) {
 
 
 function addCourse(buttonId) {
-    // Assuming allData is an array of objects representing courses
-    //console.log("works!"); - done
     console.log(buttonId);
     var courseDataToSend;
     coursesData.forEach(courseData => {
@@ -97,7 +79,7 @@ function addCourse(buttonId) {
                 title: courseData.title,
                 url: udemy + courseData.url,
                 rating: courseData.rating,
-                abc: courseData.num_reviews,
+                numberOfReviews: courseData.num_reviews,
                 instructorsId: courseData.instructors_id,
                 imageReference: courseData.image,
                 duration: courseData.duration,
