@@ -28,17 +28,31 @@
         public string JobTitle { get => jobTitle; set => jobTitle = value; }
         public static List<Instructor> InstructorList { get => instructorList; set => instructorList = value; }
 
-        public bool Insert()
+        public bool Insert() // need to check it
         {
-            foreach (Instructor instructor in instructorList)
+            try
             {
-                if (instructor.Id == Id)
+                if (instructorList.Count > 0)
                 {
-                    return false;
+                    foreach (Instructor instructor in instructorList)
+                    {
+                        if (instructor.Id == Id && instructor.Title.Equals(Title))
+                        {
+                            return false;
+                        }
+                    }
+                    instructorList.Add(this);
+                    return true;
                 }
+                else
+                {
+                    instructorList.Add(this);
+                    return true;
+                }
+            } 
+            catch { 
+                return false;
             }
-            instructorList.Add(this);
-            return true;
         }
 
         public List<Instructor> Read()
