@@ -6,9 +6,9 @@
         private string name;
         private string email;
         private string password;
-        private bool isAdmin = false;
-        private bool isActive = true;
-        
+        private bool isAdmin = false; // not working need to fix
+        private bool isActive = true; // not working need to fix
+
         static List<Course> myCourses = new List<Course>();
         static List<User> usersList = new List<User>();
         
@@ -32,8 +32,8 @@
             this.name = name;
             this.email = email;
             this.password = password;
-            this.isAdmin = false; 
-            this.isActive = true; 
+            this.isAdmin = false; // not working need to fix
+            this.isActive = true; // not working need to fix
         }
 
         public User(int id, string name, string email, string password, bool isAdmin, bool isActive)
