@@ -1,12 +1,14 @@
 ﻿
-let instructorsData = [];
+let instructorsData = []; 
 
 $(document).ready(function () {
-    $.getJSON("../Data/Instructor .json", function (data) {
-        instructorsData.push(data);
+    $.getJSON("../Data/Instructor .json", function (data) { 
+        instructorsData.push(data); 
     });
     console.log(instructorsData);
 });
+
+
 $("#insertIntsructorsBtn").on("click", function () {
 
     alert("Handler INSERT for `click` called.");
@@ -18,7 +20,7 @@ $("#getInstructorsBtn").on("click", function () {
     getAllInstructors();
 });
 
-// We can change it to array of objects to use one iteration 
+
 function insertInstructors(instructorsData) {
     api = "https://localhost:7076/api/Instructors";
     var instructorDataToSend;

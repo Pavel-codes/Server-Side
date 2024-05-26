@@ -41,23 +41,24 @@
 
         public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
 
-
+        
         public List<Course> Read()
         {
             return coursesList;
         }
 
+       
         public bool Insert()
         {
             foreach (Course course in coursesList)
             {
                 if (course.Id == Id || course.Title.Equals(Title)) return false;
-                //if (course.Equals(this)) return false;
+                
             }
             coursesList.Add(this);
             return true;
         }
-
+        
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
         {
             List<Course> selectedCourses = new List<Course>();
@@ -71,6 +72,8 @@
             return selectedCourses;
 
         }
+
+        
         public List<Course> GetByRatingRange(double fromRating, double toRating)
         {
             List<Course> selectedCourses = new List<Course>();
@@ -82,6 +85,7 @@
             return selectedCourses;
         }
 
+        
         public void DeleteById(int id)
         {
             bool found = false;

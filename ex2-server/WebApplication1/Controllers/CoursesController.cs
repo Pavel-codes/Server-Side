@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
         Course course = new Course();
         // GET: api/<CoursesController>
         [HttpGet]
-        public IEnumerable<Course> Get()
+        public IEnumerable<Course> Get() 
         {
             return course.Read();
         }
@@ -26,15 +26,44 @@ namespace WebApplication1.Controllers
 
         // POST api/<CoursesController>
         [HttpPost]
-        public bool Post([FromBody] Course value)
+        public bool Post([FromBody] Course value) 
         {
             return value.Insert();
         }
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Course updatedCourse)
         {
+            try
+            {
+                // Find the course with the given id
+                Course courseToUpdate = course.Read().FirstOrDefault(c => c.Id == id);
+
+                // If the course is not found, return NotFound
+                if (courseToUpdate == null)
+                {
+                    return NotFound("Course not found");
+                }
+
+                // Update the course properties with the new data
+                courseToUpdate.Title = updatedCourse.Title;
+                courseToUpdate.Url = updatedCourse.Url;
+                courseToUpdate.Rating = updatedCourse.Rating;
+                courseToUpdate.NumberOfReviews = updatedCourse.NumberOfReviews;
+                courseToUpdate.InstructorsId = updatedCourse.InstructorsId;
+                courseToUpdate.ImageReference = updatedCourse.ImageReference;
+                courseToUpdate.Duration = updatedCourse.Duration;
+                courseToUpdate.LastUpdate = updatedCourse.LastUpdate;
+
+                // Return Ok with a success message
+                return Ok("Course updated successfully");
+            }
+            catch (Exception ex)
+            {
+                // Return 500 Internal Server Error with the exception message
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("search")]
