@@ -6,22 +6,23 @@
         private string name;
         private string email;
         private string password;
-        private bool isAdmin = false; // not working need to fix
-        private bool isActive = true; // not working need to fix
+        private bool isAdmin = false;
+        private bool isActive = true;
 
         static List<Course> myCourses = new List<Course>();
         static List<User> usersList = new List<User>();
-        
+
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
-        public bool IsAdmin { get => isAdmin; set => isAdmin = value; } 
+        public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
         public bool IsActive { get => isActive; set => isActive = value; }
         public static List<Course> MyCourses { get => myCourses; set => myCourses = value; }
         public static List<User> UsersList { get => usersList; set => usersList = value; }
 
-        public User() {
+        public User()
+        {
             if (usersList.Count == 0)
                 usersList.Add(new User(Id = 1, Name = "admin", Email = "admin@admin.com", Password = "admin", IsAdmin = true, IsActive = true));
         }
@@ -32,8 +33,8 @@
             this.name = name;
             this.email = email;
             this.password = password;
-            this.isAdmin = false; // not working need to fix
-            this.isActive = true; // not working need to fix
+            this.isAdmin = false;
+            this.isActive = true;
         }
 
         public User(int id, string name, string email, string password, bool isAdmin, bool isActive)
@@ -53,29 +54,29 @@
         }
         public bool registration()
         {
-                foreach (User user in usersList)
-                {
-                    if (user.Id == this.Id || user.Password.Equals(this.Password)) 
-                            return false;
+            foreach (User user in usersList)
+            {
+                if (user.Email == this.Email )
+                    return false;
 
-                }
-               
-                usersList.Add(this);
-                return true;
-                   
+            }
+
+            usersList.Add(this);
+            return true;
+
         }
 
         public bool login()
         {
             foreach (User user in usersList)
             {
-                if (user.Id == this.Id && user.Password.Equals(this.Password))
+                if (user.Email == this.Email && user.Password.Equals(this.Password))
                 {
                     return true;
                 }
             }
             return false;
-        }   
+        }
 
     }
 }

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.BL;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
@@ -14,7 +12,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-             return user.getUsers();
+            return user.getUsers();
         }
 
         // GET api/<UsersController>/5

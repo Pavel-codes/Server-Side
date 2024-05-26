@@ -1,28 +1,32 @@
 ﻿var myCourses = [];
+
 const apiBaseUrl = "https://localhost:7076/api/Courses";
 
 $(document).ready(function () {
-    loadCourses(apiBaseUrl);
+    loadCourses(apiBaseUrl); 
 
     $('*').not('script, style').css({
         'padding': '5px'
     });
 });
 
-function loadCourses(api) {
+
+function loadCourses(api) { function loadCourses(api) { 
     $.ajax({
-        url: api,
+        url: api, //.https://localhost:7076/api/Courses
         type: 'GET',
-        success: function (data) {
+        success: function (data) { 
             renderCourses(data);
         },
         error: function () {
             alert("Error loading courses.");
         }
     });
+    
 }
 
-function renderCourses(coursesList) {
+
+function renderCourses(coursesList) { 
     var coursesContainer = $('#courses-container');
     coursesContainer.empty();
     myCourses = coursesList;
@@ -39,6 +43,7 @@ function renderCourses(coursesList) {
         coursesContainer.append(courseElement);
     });
 }
+
 
 document.addEventListener('click', function (event) {
     if (event.target.tagName.toLowerCase() === 'button' && event.target.id != "apply-rating-filter" && event.target.id != "apply-duration-filter") {
@@ -65,6 +70,8 @@ applyDurationFilterButton.addEventListener("click", function () {
 });
 
 
+ 
+ 
 function removeCourse(buttonId) {
     myCourses = myCourses.filter(courseData => courseData.id !== buttonId);
     const api = `${apiBaseUrl}/${buttonId}`;
@@ -79,7 +86,7 @@ function removeCourse(buttonId) {
 function deleteSCBF(result) {
     alert("Course removed");
     console.log(result);
-    loadCourses(apiBaseUrl);
+    loadCourses(apiBaseUrl); 
 }
 
 function deleteECBF(err) {
@@ -87,6 +94,8 @@ function deleteECBF(err) {
     console.log(err);
     loadCourses(apiBaseUrl);
 }
+
+
 
 function filterByDuration() {
     const fromDuration = parseFloat($('#duration-from').val());
@@ -103,6 +112,7 @@ function filterByDuration() {
         }
     });
 }
+
 
 function filterByRating() {
     const fromRating = parseFloat($('#rating-from').val());
