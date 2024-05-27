@@ -8,7 +8,7 @@
         private string image;
         private string jobTitle;
 
-        private static List<Instructor> instructorList = new List<Instructor>();
+        static List<Instructor> instructorList = new List<Instructor>();
 
         public Instructor() { }
 

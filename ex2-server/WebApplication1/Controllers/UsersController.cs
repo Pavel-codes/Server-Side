@@ -15,12 +15,12 @@ namespace WebApplication1.Controllers
             return user.getUsers();
         }
 
-        // GET api/<UsersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET api/<UsersController>/5
+        //[HttpGet("{id}")]
+        //public bool GetInstructorId(User user)
+        //{
+        //    return user.getInstructorId;
+        //}
 
         // POST api/<UsersController>
         [HttpPost]
