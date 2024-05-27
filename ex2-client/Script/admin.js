@@ -11,7 +11,7 @@ $(document).ready(function () {
 $("#coursesBtn").on("click", function () {
 
     alert("Handler INSERT for `click` called.");
-    insertCourses(CourseData);
+    window.open("../Pages/createEditForm.html", "_blank");
 });
 
 
