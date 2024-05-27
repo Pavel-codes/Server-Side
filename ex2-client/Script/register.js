@@ -7,11 +7,6 @@ $(document).ready(function () {
         const email = $('#email').val();
         const password = $('#password').val();
 
-        if (name === '' || email === '' || password === '') {
-            alert("All fields are mandatory.");
-            return;
-        }
-
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             alert("Invalid email format.");
