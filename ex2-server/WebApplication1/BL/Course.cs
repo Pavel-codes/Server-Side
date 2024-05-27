@@ -40,20 +40,23 @@
         public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
         public DateTime LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
+      
         public List<Course> Read()
         {
             return coursesList;
         }
 
-       
+
         public bool Insert()
         {
             bool courseFlag=true;
             bool instructorFlag = true;
             foreach (Course course in coursesList)
             {
+                if (course.Id == Id || course.Title.Equals(Title)) return false;
+
                 if (course.Id == Id || course.Title.Equals(Title)) {
-                    courseFlag=false;
+                    courseFlag = false;
                     break;
                 }
             }
@@ -73,7 +76,7 @@
             }
             return courseFlag;
         }
-        
+
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
         {
             List<Course> selectedCourses = new List<Course>();
@@ -88,7 +91,7 @@
 
         }
 
-        
+
         public List<Course> GetByRatingRange(double fromRating, double toRating)
         {
             List<Course> selectedCourses = new List<Course>();
@@ -100,7 +103,7 @@
             return selectedCourses;
         }
 
-        
+
         public void DeleteById(int id)
         {
             bool found = false;
@@ -117,7 +120,5 @@
                 throw new Exception("Course Not Found");
             }
         }
-
-       
     }
 }

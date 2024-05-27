@@ -1,12 +1,28 @@
 ﻿
-let CoursesData = [];
+let CourseData = [];
 $(document).ready(function () {
-    $.getJSON("../Data/Course .json", function (data) { 
-        CourseData.push(data); 
-    });
-    console.log(CourseData);
-});
+    const struser = localStorage.getItem('user');
+    let user = undefined;
+    if (struser) {
+        user = JSON.parse(localStorage.getItem('user'));
+    }
+    
+    if (user && user.isAdmin) {
+        $('#loadCoursesBtn').show();
+    } else {
+        $('#loadCoursesBtn').hide();
+        alert("You are not authorized to access this page.");
+        window.location.href = "login.html";
+    }
 
+    $('#loadCoursesBtn').on('click', function () {
+        alert("Handler INSERT for `click` called.");
+        $.getJSON("../Data/Course.json", function (Data) {
+            CourseData.push(Data);
+            insertCourses(CourseData[0]);
+        });
+    });
+});
 
 $("#coursesBtn").on("click", function () {
 
@@ -14,27 +30,23 @@ $("#coursesBtn").on("click", function () {
     window.open("../Pages/createEditForm.html", "_blank");
 });
 
-
-
 function insertCourses(CourseData) {
     api = "https://localhost:7076/api/Courses";
-    var coursestorDataToSend;
-    CourseData[0].forEach(Course => {
-        CourseDataToSend = {
-            id: courseData.id,
-            title: courseData.title,
-            url: udemy + courseData.url,
-            rating: courseData.rating,
-            numberOfReviews: courseData.num_reviews,
-            instructorsId: courseData.instructors_id,
-            imageReference: courseData.image,
-            duration: courseData.duration,
-            lastUpdate: courseData.last_update_date
+    var courseDataToSend;
+    CourseData.forEach(course => {
+        courseDataToSend = {
+            id: course.id,
+            title: course.title,
+            url: course.url,
+            rating: course.rating,
+            numberOfReviews: course.num_reviews,
+            instructorsId: course.instructors_id,
+            imageReference: course.image,
+            duration: course.duration,
+            lastUpdate: course.last_update_date
         };
-        ajaxCall("POST", api, JSON.stringify(CourseDataToSend), postSCBF, postECBF);
-
-    })
-
+        ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF);
+    });
 }
 
 function postSCBF(result) {
@@ -42,6 +54,5 @@ function postSCBF(result) {
 }
 
 function postECBF(err) {
-
     console.log(err);
 }
