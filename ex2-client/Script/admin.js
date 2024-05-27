@@ -24,12 +24,6 @@ $(document).ready(function () {
     });
 });
 
-$("#coursesBtn").on("click", function () {
-
-    alert("Handler INSERT for `click` called.");
-    window.open("../Pages/createEditForm.html", "_blank");
-});
-
 function insertCourses(CourseData) {
     api = "https://localhost:7076/api/Courses";
     var courseDataToSend;

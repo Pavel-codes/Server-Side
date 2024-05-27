@@ -7,6 +7,7 @@ $(document).ready(function () {
         const email = $('#email').val();
         const password = $('#password').val();
 
+
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             alert("Invalid email format.");
