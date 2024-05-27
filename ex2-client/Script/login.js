@@ -1,31 +1,37 @@
-﻿$(document).ready(function () {
+﻿const apiBaseUrl = "https://localhost:7076/api/Users";
+$(document).ready(function () {
     $('#loginForm').submit(function (event) {
         event.preventDefault();
 
         const email = $('#email').val();
         const password = $('#password').val();
 
-        if (email === '' || password === '') {
-            alert("All fields are mandatory.");
-            return;
-        }
 
         const loginData = {
             Email: email,
             Password: password
         };
 
-        const api = 'https://localhost:7076/api/Users'; 
-        ajaxCall('POST', api, JSON.stringify(loginData), loginSuccess, loginError);
+        submitToServer(loginData);
+        function submitToServer(loginData) {
 
-
-        function loginSuccess(response) {
-            localStorage.setItem('user', JSON.stringify(response));
-            alert("Login successful.");
-            window.location.href = "index.html";
+            let api = apiBaseUrl + '/login';
+            ajaxCall('POST', api, JSON.stringify(loginData), postSCBF, postECBF);
         }
 
-        function loginError() {
+        function postSCBF(response) {
+            if (response) {
+                localStorage.setItem('user', JSON.stringify(response));
+                alert("Login successful.");
+                window.location.href = "index.html";
+            }
+            else {
+                postECBF();
+            }
+            
+        }
+
+        function postECBF() {
             alert("Invalid email or password.");
         }
     });

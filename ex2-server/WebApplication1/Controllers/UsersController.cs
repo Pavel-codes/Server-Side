@@ -29,6 +29,13 @@ namespace WebApplication1.Controllers
             return value.registration();
         }
 
+        // POST api/<UsersController>/login
+        [HttpPost("login")]
+        public User Login([FromBody] Login value)
+        {
+            return WebApplication1.BL.User.login(value);
+        }
+
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)

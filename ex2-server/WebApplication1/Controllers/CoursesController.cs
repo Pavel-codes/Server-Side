@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
         Course course = new Course();
         // GET: api/<CoursesController>
         [HttpGet]
-        public IEnumerable<Course> Get() 
+        public IEnumerable<Course> Get()
         {
             return course.Read();
         }
@@ -26,7 +26,7 @@ namespace WebApplication1.Controllers
 
         // POST api/<CoursesController>
         [HttpPost]
-        public bool Post([FromBody] Course value) 
+        public bool Post([FromBody] Course value)
         {
             return value.Insert();
         }

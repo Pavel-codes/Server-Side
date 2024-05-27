@@ -64,19 +64,28 @@ Registerbtn.addEventListener("click", function () {
     window.open("../Pages/register.html", "_blank"); 
 });
 
+const Adminbtn = document.getElementById("Adminbtn");
+
+
+Adminbtn.addEventListener("click", function () {
+    window.open("../Pages/admin.html", "_blank");
+
+
+});
+
 
 function postSCBF(result) {
     if (!result) alert("Course is already in database"); // 
     console.log(result);
 }
 
-// קריאת אגאקס שניכשלה
+
 function postECBF(err) {
 
     console.log(err);
 }
 
-// פונקצייה שבודקת האם המשתמש מחובר
+
 function isLoggedIn() {
     return localStorage.getItem('user') !== null;
 }
@@ -90,6 +99,7 @@ function addCoursClick(element) {
 
             if (isLoggedIn()) {
                 addCourse(buttonId);
+                alert("Course was added");
                 console.log("User is logged in. Adding course.");
             } else {
                 console.log("User not logged in. Redirecting to login.");

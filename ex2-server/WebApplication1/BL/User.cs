@@ -66,17 +66,18 @@
 
         }
 
-        public bool login()
+        public static User login(Login login)
         {
             foreach (User user in usersList)
             {
-                if (user.Email == this.Email && user.Password.Equals(this.Password))
+                if (user.Email == login.Email && user.Password.Equals(login.Password, StringComparison.OrdinalIgnoreCase))
                 {
-                    return true;
+                    return user;
                 }
             }
-            return false;
+            return null;
         }
+
 
     }
 }
