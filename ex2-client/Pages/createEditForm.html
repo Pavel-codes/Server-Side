@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Create New Course</title>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <h1>Edit Course/Create Course</h1> <!--//גלעד אמר בהרצאה שנשתמש באותו טופס עבור שתי הדפים אז נעשה את הכותרת דינמית-->
+    <h1>Create Course</h1>
     <form id="createCourseForm">
 
         <label for="id">Course Id:</label>
@@ -24,16 +24,19 @@
         <label for="url">Url Adress:</label>
         <input type="text" id="url" name="url" required>
         <br>
-        <label for="instructor-id">Instrutor Id:</label>
-        <input type="number" id="instructor-id" name="instructor-id" required>
+        <label for="instructorsId">Instrutor Id:</label>
+        <input type="number" id="instructorsId" name="instructorsId" required>
         <br>
         <label for="image">Image Reference:</label>
         <input type="text" id="image" name="image" required>
         <br>
         <label for="duration">Duration:</label>
-        <input type="number" id="duration" name="duration" required>
+        <input type="text" id="duration" name="duration" required>
         <br>
-        <button type="submit">Create Course</button>
+        <input type="submit" value="Create Course" />
     </form>
+
+    <script src="../Script/createCourse.js"></script>
+
 </body>
 </html>

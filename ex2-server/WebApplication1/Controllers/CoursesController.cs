@@ -19,17 +19,24 @@ namespace WebApplication1.Controllers
 
         // GET api/<CoursesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string GetInstructorId(int id)
         {
             return "value";
         }
 
         // POST api/<CoursesController>
         [HttpPost]
-        public bool Post([FromBody] Course value) 
+        public IActionResult Post([FromBody] Course value) 
         {
-            return value.Insert();
+            bool result = value.Insert();
+            if (!result)
+            {
+                return NotFound("Course could not be inserted.");
+            }
+            return Ok("Course inserted successfully.");
+
         }
+
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]

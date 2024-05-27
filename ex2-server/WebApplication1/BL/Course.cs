@@ -10,13 +10,13 @@
         private int instructorsId;
         private string imageReference;
         private string duration;
-        private string lastUpdate;
+        private DateTime lastUpdate;
 
         private static List<Course> coursesList = new List<Course>();
 
         public Course() { }
 
-        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate)
+        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, DateTime lastUpdate)
         {
             Id = id;
             Title = title;
@@ -37,11 +37,9 @@
         public int InstructorsId { get => instructorsId; set => instructorsId = value; }
         public string ImageReference { get => imageReference; set => imageReference = value; }
         public string Duration { get => duration; set => duration = value; }
-        public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
-
         public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
+        public DateTime LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
-        
         public List<Course> Read()
         {
             return coursesList;
@@ -50,13 +48,30 @@
        
         public bool Insert()
         {
+            bool courseFlag=true;
+            bool instructorFlag = true;
             foreach (Course course in coursesList)
             {
-                if (course.Id == Id || course.Title.Equals(Title)) return false;
-                
+                if (course.Id == Id || course.Title.Equals(Title)) {
+                    courseFlag=false;
+                    break;
+                }
             }
-            coursesList.Add(this);
-            return true;
+            foreach(Instructor instructor in Instructor.InstructorList)
+            {
+                if (instructor.Id == InstructorsId)
+                {
+                    instructorFlag = true;
+                    break;
+                }
+            }
+
+            if (courseFlag && instructorFlag)
+            {
+                coursesList.Add(this);
+                return courseFlag;
+            }
+            return courseFlag;
         }
         
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
@@ -102,5 +117,7 @@
                 throw new Exception("Course Not Found");
             }
         }
+
+       
     }
 }
