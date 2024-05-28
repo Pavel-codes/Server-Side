@@ -34,7 +34,7 @@ $(document).ready(function () {
         }
 
         function postSCBF(user) {
-            alert(user);
+            //alert(user); // returns true
             alert("Registration successful.");
             window.location.href = "login.html";
             
