@@ -8,10 +8,13 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
     <script src="../Script/ajaxCalls.js"></script>
-    <script src="../Script/admin.js?v=2"></script>
+    <!--<script src="../Script/admin.js?v=2"></script>-->
 </head>
 <body>
     <h1>Admin Panel</h1>
     <button id="loadCoursesBtn">Load Courses to Server</button>
+    <datalist id="courseDataList"></datalist>
+    <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
+    <script src="../Script/admin.js?v=2"></script>
 </body>
 </html>

@@ -40,7 +40,6 @@
                 instructorList.Add(this);
             }
             return true;
-
         }
 
         public List<Instructor> Read()

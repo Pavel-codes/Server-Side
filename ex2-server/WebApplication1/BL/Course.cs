@@ -50,12 +50,33 @@
 
         public bool Insert()
         {
-            foreach (Course course in coursesList) //bug when loading all courses to server
+
+            bool isPresent = coursesList.Contains(this);
+            if (isPresent)
             {
-                if (course.Id == Id && course.Title.Equals(Title)) return false;
+                return false;
             }
-            coursesList.Add(this);
+            else
+            {
+                coursesList.Add(this);
+            }
             return true;
+
+            //foreach (Course course in coursesList) //bug when loading all courses to server
+            //{
+            //    if (course.Id == Id && course.Title.Equals(Title)) return false;
+            //}
+            //coursesList.Add(this);
+            //return true;
+        }
+
+        public Course getCourseByTitle(string courseName)
+        {
+            foreach(Course course in coursesList)
+            {
+                if (course.Title == courseName) return course;
+            }
+            return null; //
         }
 
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
