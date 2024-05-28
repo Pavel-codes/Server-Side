@@ -2,7 +2,7 @@
 {
     public class User
     {
-        private int id;
+        private int id = UsersList.Count+1;
         private string name;
         private string email;
         private string password;
@@ -27,15 +27,15 @@
                 usersList.Add(new User(Id = 1, Name = "admin", Email = "admin@admin.com", Password = "admin", IsAdmin = true, IsActive = true));
         }
 
-        public User(int id, string name, string email, string password)
+        public User(string name, string email, string password)
         {
-            this.id = id;
             this.name = name;
             this.email = email;
             this.password = password;
             this.isAdmin = false;
             this.isActive = true;
         }
+
 
         public User(int id, string name, string email, string password, bool isAdmin, bool isActive)
         {

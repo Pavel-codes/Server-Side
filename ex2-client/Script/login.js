@@ -24,8 +24,10 @@ $(document).ready(function () {
             console.log(response);
             if (response) {
                 localStorage.setItem('user', JSON.stringify(response));
+                console.log(response);
                 alert("Login successful.");
-                window.location.href = "index.html";
+                if (response.id == "1") window.location.href = "admin.html";
+                else window.location.href = "index.html";
             }
             else {
                 postECBF();
@@ -33,7 +35,7 @@ $(document).ready(function () {
             
         }
 
-        function postECBF() {
+        function postECBF() { // add more distinct messages for each case email\password\etc....!!!
             alert("Invalid email or password.");
         }
     });

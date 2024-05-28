@@ -1,5 +1,5 @@
-﻿
-let CourseData = [];
+﻿let CourseData = [];
+
 $(document).ready(function () {
     const struser = localStorage.getItem('user');
     let user = undefined;

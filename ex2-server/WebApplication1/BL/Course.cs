@@ -50,7 +50,7 @@
 
         public bool Insert()
         {
-            foreach (Course course in coursesList)
+            foreach (Course course in coursesList) //bug when loading all courses to server
             {
                 if (course.Id == Id && course.Title.Equals(Title)) return false;
             }
