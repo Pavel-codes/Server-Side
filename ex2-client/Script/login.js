@@ -1,4 +1,5 @@
 ﻿const apiBaseUrl = "https://localhost:7076/api/Users";
+
 $(document).ready(function () {
     $('#loginForm').submit(function (event) {
         event.preventDefault();
@@ -20,6 +21,7 @@ $(document).ready(function () {
         }
 
         function postSCBF(response) {
+            console.log(response);
             if (response) {
                 localStorage.setItem('user', JSON.stringify(response));
                 alert("Login successful.");
@@ -37,4 +39,10 @@ $(document).ready(function () {
     });
 });
 
+// will become redundant - to be removed later!
+const registerPageBtn = document.getElementById("registerPageBtn"); 
+
+registerPageBtn.addEventListener("click", function () {
+    window.location.href = "../Pages/register.html";
+});
 
