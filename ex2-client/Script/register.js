@@ -47,5 +47,12 @@ $(document).ready(function () {
     });
 });
 
+// will become redundant - to be removed later!
+const loginPageBtn = document.getElementById("loginPageBtn");
+
+loginPageBtn.addEventListener("click", function () {
+    window.location.href = "../Pages/login.html";
+});
+
 
 

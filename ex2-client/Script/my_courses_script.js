@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 
 function loadCourses(api) {
-    function loadCourses(api) {
+    function loadCourses(api) { // same function twice? need to check
         $.ajax({
             url: api, //.https://localhost:7076/api/Courses
             type: 'GET',

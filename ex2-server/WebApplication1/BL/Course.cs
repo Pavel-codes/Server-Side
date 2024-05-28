@@ -52,8 +52,7 @@
         {
             foreach (Course course in coursesList)
             {
-                if (course.Id == Id || course.Title.Equals(Title)) return false;
-
+                if (course.Id == Id && course.Title.Equals(Title)) return false;
             }
             coursesList.Add(this);
             return true;

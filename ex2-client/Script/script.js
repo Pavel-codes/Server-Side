@@ -24,7 +24,7 @@ $(document).ready(function () {
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
             courseElement.append('<button id="' + course.id + '">Add Course</button>'); 
             coursesContainer.append(courseElement); 
-            addCoursClick(courseElement);
+            addCourseClick(courseElement);
         });
     }
 
@@ -44,17 +44,23 @@ myCoursesBtn.addEventListener("click", function () {
 
 const instructorsBtn = document.getElementById("instructorsBtn");
 
-
 instructorsBtn.addEventListener("click", function () {
     window.open("../Pages/instructorsPage.html", "_blank");
 
 
 });
 
-const loginbtn = document.getElementById("loginbtn"); 
+const loginBtn = document.getElementById("loginBtn"); 
 
-loginbtn.addEventListener("click", function () { 
+loginBtn.addEventListener("click", function () { 
     window.open("../Pages/login.html", "_blank"); 
+});
+
+const logoutbtn = document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", function () {
+    localStorage.clear();
+    window.location.reload();
 });
 
 
@@ -76,6 +82,9 @@ Adminbtn.addEventListener("click", function () {
 
 function postSCBF(result) {
     if (!result) alert("Course is already in database"); // 
+    else {
+        alert("Course was added");
+    }
     console.log(result);
 }
 
@@ -90,7 +99,7 @@ function isLoggedIn() {
     return localStorage.getItem('user') !== null;
 }
 
-function addCoursClick(element) {
+function addCourseClick(element) {
     element.click(function (event) {
 
         if (event.target.tagName.toLowerCase() === 'button') {
@@ -99,7 +108,6 @@ function addCoursClick(element) {
 
             if (isLoggedIn()) {
                 addCourse(buttonId);
-                alert("Course was added");
                 console.log("User is logged in. Adding course.");
             } else {
                 console.log("User not logged in. Redirecting to login.");
@@ -129,7 +137,6 @@ function addCourse(buttonId) {
                 duration: courseData.duration,
                 lastUpdate: courseData.last_update_date
             };
-            console.log(courseDataToSend) // test
             
             api = "https://localhost:7076/api/Courses"; 
             
@@ -141,3 +148,4 @@ function addCourse(buttonId) {
         }
     });
 }
+
