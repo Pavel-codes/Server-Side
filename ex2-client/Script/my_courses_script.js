@@ -23,7 +23,6 @@ function loadCourses(api) {
                 alert("Error loading courses.");
             }
         });
-
     }
 
 

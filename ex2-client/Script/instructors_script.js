@@ -61,7 +61,6 @@ function getAllInstructors() {
             alert("Error loading courses.");
         }
     });
-
 }
 
 

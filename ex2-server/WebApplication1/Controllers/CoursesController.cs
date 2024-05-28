@@ -18,10 +18,10 @@ namespace WebApplication1.Controllers
         }
 
         // GET api/<CoursesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{title}")]
+        public Course Get(string title)
         {
-            return "value";
+            return course.getCourseByTitle(title);
         }
 
         // POST api/<CoursesController>

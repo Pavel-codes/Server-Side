@@ -1,4 +1,5 @@
 ﻿let CourseData = [];
+const udemy = "https://www.udemy.com"; 
 
 $(document).ready(function () {
     const struser = localStorage.getItem('user');
@@ -15,14 +16,17 @@ $(document).ready(function () {
         window.location.href = "login.html";
     }
 
-    $('#loadCoursesBtn').on('click', function () {
-        alert("Handler INSERT for `click` called.");
-        $.getJSON("../Data/Course.json", function (Data) {
-            CourseData.push(Data);
-            insertCourses(CourseData[0]);
-        });
+});
+
+$('#loadCoursesBtn').on('click', function () { // need to add control so the button cannot be pressed multiple times
+    alert("Handler INSERT for `click` called.");
+    $.getJSON("../Data/Course.json", function (Data) {
+        CourseData.push(Data);
+        insertCourses(CourseData[0]);
+        addCoursesToDataList();
     });
 });
+
 
 function insertCourses(CourseData) {
     api = "https://localhost:7076/api/Courses";
@@ -31,7 +35,7 @@ function insertCourses(CourseData) {
         courseDataToSend = {
             id: course.id,
             title: course.title,
-            url: course.url,
+            url: udemy + course.url,
             rating: course.rating,
             numberOfReviews: course.num_reviews,
             instructorsId: course.instructors_id,
@@ -50,3 +54,36 @@ function postSCBF(result) {
 function postECBF(err) {
     console.log(err);
 }
+
+function addCoursesToDataList() {
+    api = "https://localhost:7076/api/Courses";
+    $.ajax({
+        url: api,
+        type: 'GET',
+        success: function (data) {
+            addToDataList(data);
+            CourseData.push(data);
+        },
+        error: function () {
+            alert("Error loading courses.");
+        }
+    });
+}
+
+const courseDataList = document.getElementById("courseDataList");
+
+function addToDataList(data) {
+    courseDataList.innerHTML = ""; // Clear existing options
+    for (const course of data) {
+        const option = document.createElement('option');
+        option.value = course.title; // Set the value attribute
+        option.textContent = course.title; // Set the displayed text
+        console.log(option);
+        courseDataList.appendChild(option);
+    }
+}
+
+
+$("#courseNamesList").on('change', function () {
+    alert('hi');
+});
