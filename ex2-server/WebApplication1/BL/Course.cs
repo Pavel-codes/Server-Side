@@ -47,8 +47,39 @@
             return coursesList;
         }
 
+        public bool InsertNewCourse()
+        {
+            bool courseFlag = true;
+            bool instructorFlag = true;
+            foreach (Course c in coursesList)
+            {
+                if (c.Id == Id || c.Title.Equals(Title))
+                {
+                    courseFlag = false;
+                    break;
+                }
+            }
+            foreach (Instructor instructor in Instructor.InstructorList)
+            {
+                if (instructor.Id == Id)
+                {
+                    instructorFlag = true;
+                    break;
+                }
+            }
 
-        public bool Insert()
+            if (courseFlag && instructorFlag)
+            {
+                coursesList.Add(this);
+                return courseFlag;
+            }
+            return courseFlag;
+        
+    }
+
+
+
+             public bool Insert()
         {
 
             bool isPresent = coursesList.Contains(this);

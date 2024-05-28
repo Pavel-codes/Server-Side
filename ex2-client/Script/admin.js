@@ -62,7 +62,7 @@ function addCoursesToDataList() {
         type: 'GET',
         success: function (data) {
             addToDataList(data);
-            CourseData.push(data);
+        //    CourseData.push(data);
         },
         error: function () {
             alert("Error loading courses.");
@@ -85,5 +85,14 @@ function addToDataList(data) {
 
 
 $("#courseNamesList").on('change', function () {
-    alert('hi');
+    console.log(CourseData);
+});
+
+
+
+$("#coursesBtn").on("click", function () {
+
+    alert("Handler INSERT for `click` called.");
+    insertCourses(CourseData);
+    window.open("../Pages/createEditForm.html", "_blank");
 });

@@ -22,7 +22,7 @@ $("#getInstructorsBtn").on("click", function () {
 
 
 function insertInstructors(instructorsData) {
-    api = "https://localhost:7076/api/Instructors";
+    api = `https://localhost:7076/api/Instructors`;
     var instructorDataToSend;
     instructorsData[0].forEach(instructor => {
         instructorDataToSend = {
@@ -49,7 +49,7 @@ function postECBF(err) {
 
 // Get all instructors function
 function getAllInstructors() {
-    api = "https://localhost:7076/api/Instructors";
+    api = `https://localhost:7076/api/Instructors`;
     //ajaxCall("GET", api, postSCBF, postECBF)
     $.ajax({
         url: api,
@@ -58,7 +58,7 @@ function getAllInstructors() {
             renderInstructors(data);
         },
         error: function () {
-            alert("Error loading courses.");
+            alert("Error loading instructors.");
         }
     });
 }

@@ -25,11 +25,25 @@ namespace WebApplication1.Controllers
         }
 
         // POST api/<CoursesController>
+        [HttpPost("NewCourse")]
+        public IActionResult PostNewCourse([FromBody] Course value)
+        {
+            bool result = value.InsertNewCourse();
+            if (!result)
+            {
+                return NotFound("Course could not be inserted.");
+            }
+            return Ok("Course inserted successfully.");
+
+        }
+
+        //POST api/<CoursesController>
         [HttpPost]
         public bool Post([FromBody] Course value)
         {
             return value.Insert();
         }
+
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
