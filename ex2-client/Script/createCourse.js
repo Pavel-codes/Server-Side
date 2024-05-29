@@ -21,9 +21,11 @@ $("#createCourseForm").submit(function () {
 
 
 function getSCBF(result) {
+    alert("Course created successfully");
     console.log(result);
 }
 
 function getECBF(err) {
+    alert("The course already exists or Intructor not exists. Please try again.");
     console.log(err);
 }

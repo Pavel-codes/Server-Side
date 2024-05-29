@@ -51,12 +51,19 @@
         {
             bool courseFlag = true;
             bool instructorFlag = true;
-            foreach (Course c in coursesList)
+            if (coursesList.Count == 0)
             {
-                if (c.Id == Id || c.Title.Equals(Title))
+                courseFlag = true;
+            }
+            else
+            {
+                foreach (Course c in coursesList)
                 {
-                    courseFlag = false;
-                    break;
+                    if (c.Id == Id || c.Title.Equals(Title))
+                    {
+                        courseFlag = false;
+                        break;
+                    }
                 }
             }
             foreach (Instructor instructor in Instructor.InstructorList)
@@ -67,6 +74,7 @@
                     break;
                 }
             }
+        
 
             if (courseFlag && instructorFlag)
             {
