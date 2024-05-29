@@ -1,4 +1,3 @@
-/* General styles (can be shared with other forms) */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -10,9 +9,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Specific styles for createCourseForm (optional) */
 #createCourseForm {
-    width: 400px; /* Adjust width as needed */
+    width: 400px; 
     margin: 0 auto;
 }
 
@@ -31,7 +29,7 @@ input[type="number"] {
 }
 
 input[type="submit"] {
-    background-color: #3498db; /* Blue button color */
+    background-color: #3498db; 
     color: white;
     padding: 10px 20px;
     border: none;

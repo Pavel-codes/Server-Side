@@ -3,6 +3,7 @@
     "",
     "\\ex2-client",
     "\\ex2-client\\Css",
+    "\\ex2-client\\Data",
     "\\ex2-client\\Pages",
     "\\ex2-client\\Script",
     "\\ex2-server",
@@ -10,6 +11,5 @@
     "\\ex2-server\\WebApplication1\\BL",
     "\\ex2-server\\WebApplication1\\Controllers"
   ],
-  "SelectedNode": "\\ex2-client\\Css\\index.css",
   "PreviewInSolutionExplorer": false
 }
