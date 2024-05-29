@@ -2,7 +2,7 @@
 {
     public class User
     {
-        private int id;
+        private int id = UsersList.Count + 1;
         private string name;
         private string email;
         private string password;
@@ -11,7 +11,7 @@
 
         public List<Course> myCourses; //
         static List<User> usersList = new List<User>();
-        private static int nextId = 2; // מתחיל ב-2 כי 1 שמור ל-admin
+        
 
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
@@ -36,7 +36,7 @@
 
         public User(int id, string name, string email, string password)
         {
-            this.id = id;
+            
             this.name = name;
             this.email = email;
             this.password = password;
@@ -46,7 +46,7 @@
 
         public User(string name, string email, string password)
         {
-            this.id = nextId++;
+            this.id = id;
             this.name = name;
             this.email = email;
             this.password = password;

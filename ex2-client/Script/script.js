@@ -1,7 +1,5 @@
 ﻿var coursesData = [];
 const udemy = "https://www.udemy.com";
-
-
 $(document).ready(function () {
 
     $.getJSON("../Data/Course.json", function (data) {
@@ -139,7 +137,7 @@ function addCourse(buttonId,userId) {
                 lastUpdate: courseData.last_update_date
             };
 
-            api = "https://localhost:7076/api/Courses/addCourseToUser" + userId;
+            const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
 
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 

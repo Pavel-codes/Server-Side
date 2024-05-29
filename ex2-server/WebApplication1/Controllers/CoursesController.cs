@@ -19,9 +19,14 @@ namespace WebApplication1.Controllers
 
         // GET api/<CoursesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
+            if (course == null)
+            {
+                return NotFound("Course not found");
+            }
+            return Ok(course);
         }
 
         // POST api/<CoursesController>
