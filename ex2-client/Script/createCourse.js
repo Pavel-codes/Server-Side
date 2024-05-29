@@ -16,7 +16,6 @@ $("#createCourseForm").submit(function () {
     }
 
     ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), getSCBF, getECBF);
-    return false;
 });
 
 
