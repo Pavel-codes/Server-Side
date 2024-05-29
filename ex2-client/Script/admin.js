@@ -30,9 +30,9 @@ $('#loadCoursesBtn').on('click', function () {
     $.getJSON("../Data/Course.json", function (Data) {
         CourseData.push(Data);
         insertCourses(CourseData[0]);
-        addCoursesToDataList();
     });
     insertInstructors();
+    setTimeout(addCoursesToDataList, 1000);
     $('#loadCoursesBtn').prop('disabled', true);
 });
 
@@ -108,7 +108,7 @@ function addCoursesToDataList() {
 const courseDataList = document.getElementById("courseDataList");
 
 function addToDataList(data) {
-    courseDataList.innerHTML = ""; // Clear existing options
+    //courseDataList.innerHTML = ""; // Clear existing options
     for (const course of data) {
         const option = document.createElement('option');
         option.value = course.title; // Set the value attribute
@@ -123,9 +123,12 @@ const displayCourses = $("#displayCourses");
 $("#courseNamesList").on('change', function () {
     //addCoursesToDataList();
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
-    const editForm = $("#editForm");
-    editForm.innerHTML = "";
-    editForm.innerHTML = "";
+    // clear the display area on change
+    displayCourses.empty();
+    //create new form 
+    const editForm = $('<form id="editForm"></form>');
+    displayCourses.append(editForm);
+
     console.log(CourseData);
     if (CourseData && CourseData.length > 0) {
         CourseData[0].forEach(function (course) {
@@ -137,25 +140,24 @@ $("#courseNamesList").on('change', function () {
 
             if (course.title == courseTitle) {
                 displayCourses.append('<img src=' + course.image + '>');
-                
-                editForm.append('<label for="title">Title: </label>');
-                editForm.append('<input type="text" id="selectedTitle" required><br>');
-               
                 displayCourses.append('<p>Course ID: ' + course.id + '</p>');
                 displayCourses.append('<p>Instructors ID: ' + course.instructors_id + '</p>'); //
-                editForm.append('<label for="duration">Duration: </label>');
-                editForm.append('<input type="text" id="selectedDuration" required><br>');
-                const selectedDuration = document.getElementById("selectedDuration");
-                selectedDuration.required = true;
                 displayCourses.append('<p>Rating: ' + course.rating + '</p>'); //
                 displayCourses.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>'); //
+
+                editForm.append('<label for="title">Title: </label>');
+                editForm.append('<input type="text" id="selectedTitle" required><br>');
+                editForm.append('<label for="duration">Duration: </label>');
+                editForm.append('<input type="text" id="selectedDuration" required><br>');
                 editForm.append('<label for="title">Url: </label>');
                 editForm.append('<input type="text" id="selectedUrl" required><br>');
-                editForm.append('<button id="selectedSubmission">Submit changes</button>'); 
+                editForm.append('<button type="submit" id="selectedSubmission">Submit changes</button>');
                 displayCourses.append(editForm);
 
+                // Use the submit event of the form
+                editForm.on("submit", function (event) {
+                    event.preventDefault(); // Prevent the form from submitting the default way
 
-                $("#selectedSubmission").on("click", function () {
                     const newTitle = $('#selectedTitle').val();
                     const newDuration = $('#selectedDuration').val();
                     const newUrl = $('#selectedUrl').val();
@@ -171,8 +173,6 @@ $("#courseNamesList").on('change', function () {
                         duration: newDuration,
                         lastUpdate: newDate
                     };
-                    //console.log(updatedCourseData);
-                    //updateCourse(courseId, updatedCourseData);
                     console.log(updatedCourseData);
                     let id = courseId;
                     const api = `https://localhost:7076/api/Courses/${id}`;
@@ -186,6 +186,7 @@ $("#courseNamesList").on('change', function () {
         console.error("CourseData is empty or not an array");
     }
 });
+
 
 function getSCBF(result) {
     console.log("changed successfully");
