@@ -24,6 +24,17 @@ namespace WebApplication1.Controllers
             return course.getCourseByTitle(title);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
+            if (course == null)
+            {
+                return NotFound("Course not found");
+            }
+            return Ok(course);
+        }
+
         // POST api/<CoursesController>
         [HttpPost("NewCourse")]
         public IActionResult PostNewCourse([FromBody] Course value)
@@ -110,6 +121,28 @@ namespace WebApplication1.Controllers
             {
                 return StatusCode(500, ex.Message); // Return 500 Internal Server Error with the exception message
             }
+        }
+
+        [HttpPost("addCourseToUser/{userId}")]
+        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
+        {
+            if (Course.AddCourseToUser(userId, course))
+            {
+                return Ok("Course added to user successfully");
+            }
+            return BadRequest("Failed to add course to user");
+        }
+
+        [HttpGet("user/{userId}")] //
+        public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
+        {
+            var user = WebApplication1.BL.User.GetUser(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var courses = user.GetCourses();
+            return Ok(courses);
         }
     }
 }

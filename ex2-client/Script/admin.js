@@ -140,7 +140,6 @@ $("#courseNamesList").on('change', function () {
                     const api = `https://localhost:7076/api/Courses/${id}`;
                     console.log(api);
                     console.log(courseId);
-                    //const api = https://localhost:7076/api/Courses/${userId};
                     ajaxCall("PUT", api, JSON.stringify(updatedCourseData), getSCBF, getECBF);
                 });
             }

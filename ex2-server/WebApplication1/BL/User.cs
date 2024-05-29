@@ -9,7 +9,7 @@
         private bool isAdmin = false;
         private bool isActive = true;
 
-        static List<Course> myCourses = new List<Course>();
+        private List<Course> myCourses = new List<Course>();
         static List<User> usersList = new List<User>();
 
         public int Id { get => id; set => id = value; }
@@ -18,7 +18,7 @@
         public string Password { get => password; set => password = value; }
         public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
         public bool IsActive { get => isActive; set => isActive = value; }
-        public static List<Course> MyCourses { get => myCourses; set => myCourses = value; }
+        public List<Course> MyCourses { get => myCourses; set => myCourses = value; }
         public static List<User> UsersList { get => usersList; set => usersList = value; }
 
         public User()
@@ -48,22 +48,31 @@
         }
 
 
-        public List<User> getUsers()
+        public List<User> GetUsers() //
         {
             return usersList;
         }
+
+        public static User GetUser(int userId)
+        {
+            return usersList.FirstOrDefault(u => u.Id == userId);
+        }
+
+        public List<Course> GetCourses() //
+        {
+            return myCourses;
+        }
+
         public bool registration()
         {
             foreach (User user in usersList)
             {
-                if (user.Email == this.Email )
+                if (user.Email == this.Email)
                     return false;
-
             }
 
             usersList.Add(this);
             return true;
-
         }
 
         public static User login(Login login)
@@ -76,6 +85,17 @@
                 }
             }
             return null;
+        }
+
+        public bool AddCourse(Course course) //
+        {
+            if (myCourses.Contains(course))
+            {
+                return false;
+            }
+
+            myCourses.Add(course);
+            return true;
         }
     }
 }

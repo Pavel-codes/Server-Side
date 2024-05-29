@@ -107,9 +107,10 @@ function addCourseClick(element) {
             console.log("Button clicked with ID:", buttonId);
 
             if (isLoggedIn()) {
-                addCourse(buttonId);
-                console.log("User is logged in. Adding course.");
-            } else {
+                const user = JSON.parse(localStorage.getItem('user')); //
+                addCourse(buttonId, user.id);
+            }
+            else {
                 console.log("User not logged in. Redirecting to login.");
                 alert("Please login or register to add courses.");
                 window.location.href = "login.html";
@@ -118,13 +119,12 @@ function addCourseClick(element) {
     });
 }
 
-
-
-function addCourse(buttonId) {
+function addCourse(buttonId, userId) {
     console.log(buttonId);
     var courseDataToSend;
     coursesData.forEach(courseData => {
         if (buttonId == courseData.id) {
+            console.log("inside if statement"); // done
             courseDataToSend = {
                 id: courseData.id,
                 title: courseData.title,
@@ -136,9 +136,9 @@ function addCourse(buttonId) {
                 duration: courseData.duration,
                 lastUpdate: courseData.last_update_date
             };
-            
-            api = "https://localhost:7076/api/Courses"; 
-            
+
+            const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
+
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 
         }
@@ -147,4 +147,3 @@ function addCourse(buttonId) {
         }
     });
 }
-
