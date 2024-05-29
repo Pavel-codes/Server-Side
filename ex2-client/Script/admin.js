@@ -83,8 +83,12 @@ function addToDataList(data) {
     }
 }
 
+const courseSelected = document.getElementById("courseSelected")
+
+
 
 $("#courseNamesList").on('change', function () {
+
     console.log(CourseData);
 });
 

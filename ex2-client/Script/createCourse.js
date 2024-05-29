@@ -21,6 +21,7 @@ $("#createCourseForm").submit(function () {
 
 
 function getSCBF(result) {
+    console.log("added successfully");
     alert("Course created successfully");
     console.log(result);
 }

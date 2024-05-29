@@ -74,7 +74,7 @@
                     break;
                 }
             }
-        
+
 
             if (courseFlag && instructorFlag)
             {
@@ -82,15 +82,13 @@
                 return courseFlag;
             }
             return courseFlag;
-        
-    }
+
+        }
 
 
-
-             public bool Insert()
+        public bool Insert()
         {
-
-            bool isPresent = coursesList.Contains(this);
+            bool isPresent = CoursesList.Contains(this);
             if (isPresent)
             {
                 return false;
@@ -100,14 +98,50 @@
                 coursesList.Add(this);
             }
             return true;
-
-            //foreach (Course course in coursesList) //bug when loading all courses to server
-            //{
-            //    if (course.Id == Id && course.Title.Equals(Title)) return false;
-            //}
-            //coursesList.Add(this);
-            //return true;
         }
+
+
+        //if (coursesList.Count == 0)
+        //{
+        //    coursesList.Add(this);
+        //    return true;
+        //}
+        //else
+        //{
+        //    for(int i = 0; i < coursesList.Count; i++)
+        //    {
+        //        if (coursesList[i].Id == Id && coursesList[i].Title.Equals(Title))
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    coursesList.Add(this);
+        //}
+        //return true;
+
+        //bool isPresent = Contains(coursesList,this);
+        //if (isPresent)
+        //{
+        //    return false;
+        //}
+        //else
+        //{
+        //    coursesList.Add(this);
+        //}
+        //return true;
+        //}
+
+        //public bool Contains(List<Course> coursesList, Course course) // to be fixed \ deleted
+        //{
+        //    for(int i = 0; i < coursesList.Count; i++)
+        //    {
+        //        if (coursesList[i].Id == course.Id && coursesList[i].InstructorsId == course.InstructorsId)
+        //        {
+        //            return true; 
+        //        }
+        //    }
+        //    return false; // Course not found
+        //}
 
         public Course getCourseByTitle(string courseName)
         {

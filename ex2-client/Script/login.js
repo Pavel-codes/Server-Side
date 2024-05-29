@@ -6,6 +6,17 @@ $(document).ready(function () {
 
         const email = $('#email').val();
         const password = $('#password').val();
+        /////
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Invalid email format.");
+            return;
+        }
+
+        if (password.length < 4) {
+            alert("Password must be at least 4 characters long.");
+            return;
+        }
 
 
         const loginData = {
@@ -36,7 +47,7 @@ $(document).ready(function () {
         }
 
         function postECBF() { // add more distinct messages for each case email\password\etc....!!!
-            alert("Invalid email or password.");
+            alert("User not found, Please register!");
         }
     });
 });

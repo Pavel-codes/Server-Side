@@ -12,10 +12,13 @@
 </head>
 <body>
     <h1>Admin Panel</h1>
-    <button id="loadCoursesBtn">Load Courses to Server</button>
-    <datalist id="courseDataList"></datalist>
-    <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
-    <button id="coursesBtn">Insert New Course</button>
+    <div id="pageTop">
+        <button id="loadCoursesBtn">Load Courses to Server</button>
+        <datalist id="courseDataList"></datalist>
+        <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
+        <button id="coursesBtn">Insert New Course</button>
+    </div>
+    <div id="displayCourses"></div>
     <script src="../Script/admin.js?v=2"></script>
 </body>
 </html>
