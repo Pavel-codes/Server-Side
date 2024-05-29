@@ -1,7 +1,10 @@
 ﻿var CourseData = [];
 const udemy = "https://www.udemy.com"; 
+const instructorsAPI = `https://localhost:7076/api/Instructors`;
+var instructorsData = [];
 
-$(document).ready(function () {
+
+$('document').ready(function () {
     const struser = localStorage.getItem('user');
     let user = undefined;
     if (struser) {
@@ -16,17 +19,39 @@ $(document).ready(function () {
         window.location.href = "login.html";
     }
 
+    $.getJSON("../Data/Instructor .json", function (data) {
+        instructorsData.push(data);
+    });
+    
 });
 
-$('#loadCoursesBtn').on('click', function () { // need to add control so the button cannot be pressed multiple times
+$('#loadCoursesBtn').on('click', function () { 
     alert("Handler INSERT for `click` called.");
     $.getJSON("../Data/Course.json", function (Data) {
         CourseData.push(Data);
         insertCourses(CourseData[0]);
         addCoursesToDataList();
     });
+    insertInstructors();
     $('#loadCoursesBtn').prop('disabled', true);
 });
+
+
+function insertInstructors() {
+    const instructorsAPI = `https://localhost:7076/api/Instructors`;
+    var instructorDataToSend;
+    console.log(instructorsData);
+    instructorsData[0].forEach(instructor => {
+        instructorDataToSend = {
+            id: instructor.id,
+            title: instructor.title,
+            name: instructor.display_name,
+            image: instructor.image_100x100,
+            jobTitle: instructor.job_title
+        };
+        ajaxCall("POST", instructorsAPI, JSON.stringify(instructorDataToSend), postInstructorsSCBF, postInstructorsECBF);
+    })
+}
 
 
 function insertCourses(CourseData) {
@@ -47,6 +72,16 @@ function insertCourses(CourseData) {
         ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF);
     });
 }
+
+function postInstructorsSCBF(result) {
+    console.log(result);
+}
+
+function postInstructorsECBF(err) {
+    console.log(err);
+}
+
+
 
 function postSCBF(result) {
     console.log(result);
@@ -88,8 +123,9 @@ const displayCourses = $("#displayCourses");
 $("#courseNamesList").on('change', function () {
     //addCoursesToDataList();
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
-    displayCourses.innerHTML = "";
     const editForm = $("#editForm");
+    editForm.innerHTML = "";
+    editForm.innerHTML = "";
     console.log(CourseData);
     if (CourseData && CourseData.length > 0) {
         CourseData[0].forEach(function (course) {
@@ -109,6 +145,8 @@ $("#courseNamesList").on('change', function () {
                 displayCourses.append('<p>Instructors ID: ' + course.instructors_id + '</p>'); //
                 editForm.append('<label for="duration">Duration: </label>');
                 editForm.append('<input type="text" id="selectedDuration" required><br>');
+                const selectedDuration = document.getElementById("selectedDuration");
+                selectedDuration.required = true;
                 displayCourses.append('<p>Rating: ' + course.rating + '</p>'); //
                 displayCourses.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>'); //
                 editForm.append('<label for="title">Url: </label>');

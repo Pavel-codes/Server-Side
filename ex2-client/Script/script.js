@@ -1,6 +1,7 @@
 ﻿var coursesData = [];
 const udemy = "https://www.udemy.com"; 
-                                       
+                    
+localStorage.clear();
 
 $(document).ready(function () { 
 
@@ -27,6 +28,7 @@ $(document).ready(function () {
             addCourseClick(courseElement);
         });
     }
+    
 
     $('*').not('script, style').css({ 
         'padding': '5px',

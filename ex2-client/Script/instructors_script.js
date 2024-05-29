@@ -1,11 +1,11 @@
-﻿
+﻿const api = `https://localhost:7076/api/Instructors`;
 let instructorsData = []; 
 
 $(document).ready(function () {
     $.getJSON("../Data/Instructor .json", function (data) { 
         instructorsData.push(data); 
     });
-    console.log(instructorsData);
+    //console.log(instructorsData);
 });
 
 
@@ -22,7 +22,7 @@ $("#getInstructorsBtn").on("click", function () {
 
 
 function insertInstructors(instructorsData) {
-    api = `https://localhost:7076/api/Instructors`;
+    //api = `https://localhost:7076/api/Instructors`;
     var instructorDataToSend;
     instructorsData[0].forEach(instructor => {
         instructorDataToSend = {
@@ -35,7 +35,6 @@ function insertInstructors(instructorsData) {
         ajaxCall("POST", api, JSON.stringify(instructorDataToSend), postSCBF, postECBF);
 
     })
- 
 }
 
 function postSCBF(result) {
