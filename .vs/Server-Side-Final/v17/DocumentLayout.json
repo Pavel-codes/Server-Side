@@ -1,12 +1,173 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\createEditForm.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Pages\\createEditForm.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Pages\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Css\\createCourse.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Script\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\register.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Pages\\register.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.css",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\index.css",
+              "RelativeDocumentMoniker": "ex2-client\\Css\\index.css",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\index.css",
+              "RelativeToolTip": "ex2-client\\Css\\index.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-29T10:38:30.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
+              "RelativeDocumentMoniker": "ex2-client\\Pages\\index.html",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
+              "RelativeToolTip": "ex2-client\\Pages\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-29T10:37:15.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "createEditForm.html",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\createEditForm.html",
+              "RelativeDocumentMoniker": "ex2-client\\Pages\\createEditForm.html",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\createEditForm.html",
+              "RelativeToolTip": "ex2-client\\Pages\\createEditForm.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-29T10:33:58.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "createCourse.css",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
+              "RelativeDocumentMoniker": "ex2-client\\Css\\createCourse.css",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
+              "RelativeToolTip": "ex2-client\\Css\\createCourse.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-29T10:33:15.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "login.html",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\login.html",
+              "RelativeDocumentMoniker": "ex2-client\\Pages\\login.html",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\login.html",
+              "RelativeToolTip": "ex2-client\\Pages\\login.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-29T10:31:18.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "register.js",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\register.js",
+              "RelativeDocumentMoniker": "ex2-client\\Script\\register.js",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\register.js",
+              "RelativeToolTip": "ex2-client\\Script\\register.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-29T10:26:58.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "login.css",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\login.css",
+              "RelativeDocumentMoniker": "ex2-client\\Css\\login.css",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\login.css",
+              "RelativeToolTip": "ex2-client\\Css\\login.css",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACsAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-29T10:26:15.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "register.css",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\register.css",
+              "RelativeDocumentMoniker": "ex2-client\\Css\\register.css",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\register.css",
+              "RelativeToolTip": "ex2-client\\Css\\register.css",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAC4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-29T10:25:54.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "register.html",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\register.html",
+              "RelativeDocumentMoniker": "ex2-client\\Pages\\register.html",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\register.html",
+              "RelativeToolTip": "ex2-client\\Pages\\register.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-29T10:24:07.91Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
