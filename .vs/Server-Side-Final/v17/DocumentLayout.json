@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Script\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Pages\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ex2-client\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "admin.html",
-              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html",
-              "RelativeDocumentMoniker": "ex2-client\\Pages\\admin.html",
-              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html",
-              "RelativeToolTip": "ex2-client\\Pages\\admin.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-29T21:11:34.02Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "admin.js",
-              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\admin.js",
-              "RelativeDocumentMoniker": "ex2-client\\Script\\admin.js",
-              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\admin.js",
-              "RelativeToolTip": "ex2-client\\Script\\admin.js",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAkwH8AAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-05-29T21:10:07.159Z",
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
+              "RelativeDocumentMoniker": "ex2-client\\Pages\\index.html",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
+              "RelativeToolTip": "ex2-client\\Pages\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-29T22:50:02.234Z",
               "EditorCaption": ""
             }
           ]
