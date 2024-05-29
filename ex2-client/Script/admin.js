@@ -1,12 +1,13 @@
 ﻿
 let CourseData = [];
+
 $(document).ready(function () {
     const struser = localStorage.getItem('user');
     let user = undefined;
     if (struser) {
         user = JSON.parse(localStorage.getItem('user'));
     }
-    
+
     if (user && user.isAdmin) {
         $('#loadCoursesBtn').show();
     } else {

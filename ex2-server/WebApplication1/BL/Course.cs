@@ -102,5 +102,22 @@
                 throw new Exception("Course Not Found");
             }
         }
+
+        public static bool AddCourseToUser(int userId, Course courseToAdd) //
+        {
+            User user = User.GetUser(userId);
+            if (user == null)
+            {
+                Console.WriteLine($"User with ID {userId} not found.");
+                return false;
+            }
+            if (!user.AddCourse(courseToAdd))
+            {
+                Console.WriteLine($"Course {courseToAdd.title} is already added for user {userId}.");
+                return false; 
+            }
+            Console.WriteLine($"Course {courseToAdd.title} added for user {userId}.");
+            return true;
+        }
     }
 }

@@ -12,17 +12,21 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return user.getUsers();
+            return user.GetUsers();
         }
-
-        // GET api/<UsersController>/5
+        //GET api/Users/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<User> Get(int id)
         {
-            return "value";
+            var user = WebApplication1.BL.User.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return user;
         }
 
-        // POST api/<UsersController>
+        //POST api/<UsersController>
         [HttpPost]
         public bool Post([FromBody] User value)
         {

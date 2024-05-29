@@ -97,5 +97,30 @@ namespace WebApplication1.Controllers
                 return StatusCode(500, ex.Message); // Return 500 Internal Server Error with the exception message
             }
         }
+
+        // POST api/<CoursesController>/addCourseToUser  //
+        [HttpPost("addCourseToUser/{userId}")]
+        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
+        {
+            if (Course.AddCourseToUser(userId, course))
+            {
+                return Ok("Course added to user successfully");
+            }
+            return BadRequest("Failed to add course to user");
+        }
+
+        [HttpGet("user/{userId}")] //
+        public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
+        {
+            var user = WebApplication1.BL.User.GetUser(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var courses = user.GetCourses();
+            return Ok(courses);
+        }
+
+
     }
 }
