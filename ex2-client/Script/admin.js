@@ -99,8 +99,6 @@ $("#courseNamesList").on('change', function () {
             const courseInstructorID = course.instructors_id;
             const courseImgRef = course.image;
 
-            console.log(courseId);
-
             if (course.title == courseTitle) {
                 displayCourses.append('<img src=' + course.image + '>');
                 
@@ -119,7 +117,7 @@ $("#courseNamesList").on('change', function () {
                 displayCourses.append(editForm);
 
 
-                $("#selectedSubmission").on("click", function (course) {
+                $("#selectedSubmission").on("click", function () {
                     const newTitle = $('#selectedTitle').val();
                     const newDuration = $('#selectedDuration').val();
                     const newUrl = $('#selectedUrl').val();
@@ -135,15 +133,20 @@ $("#courseNamesList").on('change', function () {
                         duration: newDuration,
                         lastUpdate: newDate
                     };
-                    console.log(updatedCourseData);
+                    //console.log(updatedCourseData);
                     //updateCourse(courseId, updatedCourseData);
-                    let api = `https://localhost:7076/api/Courses/${courseId}`;
-                    ajaxCall("PUT", `${api}/`, JSON.stringify(updatedCourseData), getSCBF, getECBF);
+                    console.log(updatedCourseData);
+                    let id = courseId;
+                    const api = `https://localhost:7076/api/Courses/${id}`;
+                    console.log(api);
+                    console.log(courseId);
+                    //const api = https://localhost:7076/api/Courses/${userId};
+                    ajaxCall("PUT", api, JSON.stringify(updatedCourseData), getSCBF, getECBF);
                 });
             }
         });
     } else {
-        console.error("CourseData is empty or not an array"); // Handle empty or invalid CourseData
+        console.error("CourseData is empty or not an array");
     }
 });
 
