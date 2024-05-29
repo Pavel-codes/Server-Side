@@ -125,7 +125,6 @@ function addCourse(buttonId) {
     var courseDataToSend;
     coursesData.forEach(courseData => {
         if (buttonId == courseData.id) {
-            console.log("inside if statement"); // done
             courseDataToSend = {
                 id: courseData.id,
                 title: courseData.title,

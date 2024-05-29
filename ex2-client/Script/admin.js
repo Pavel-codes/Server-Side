@@ -93,41 +93,52 @@ $("#courseNamesList").on('change', function () {
     console.log(CourseData);
     if (CourseData && CourseData.length > 0) {
         CourseData[0].forEach(function (course) {
+            const courseId = course.id;
+            const courseRating = course.rating;
+            const courseReviews = course.num_reviews;
+            const courseInstructorID = course.instructors_id;
+            const courseImgRef = course.image;
+
+            console.log(courseId);
+
             if (course.title == courseTitle) {
-                displayCourses.append('<img src=' + course.image + '>')
+                displayCourses.append('<img src=' + course.image + '>');
                 
                 editForm.append('<label for="title">Title: </label>');
-                editForm.append('<input type="text" id=selectedTitle required><br>');
+                editForm.append('<input type="text" id="selectedTitle" required><br>');
                
                 displayCourses.append('<p>Course ID: ' + course.id + '</p>');
                 displayCourses.append('<p>Instructors ID: ' + course.instructors_id + '</p>'); //
                 editForm.append('<label for="duration">Duration: </label>');
-                editForm.append('<input type="text" id=selectedDuration required><br>');
+                editForm.append('<input type="text" id="selectedDuration" required><br>');
                 displayCourses.append('<p>Rating: ' + course.rating + '</p>'); //
                 displayCourses.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>'); //
                 editForm.append('<label for="title">Url: </label>');
-                editForm.append('<input type="text" id=selectedUrl required><br>');
+                editForm.append('<input type="text" id="selectedUrl" required><br>');
                 editForm.append('<button id="selectedSubmission">Submit changes</button>'); 
                 displayCourses.append(editForm);
 
-                const title = $('#selectedTitle').val();
-                const duration = $('#selectedDuration').val();
-                const url = $('#selectedUrl').val();
-                const date = new Date().toISOString();
 
-                const updatedCourseData = {
-                    id: course.id,
-                    title: title,
-                    url: url,
-                    rating: course.rating,
-                    numberOfReviews: course.num_reviews,
-                    instructorsId: course.instructors_id,
-                    imageReference: course.image,
-                    duration: duration,
-                    lastUpdate: date
-                };
                 $("#selectedSubmission").on("click", function (course) {
-                    updateCourse(course.id, updatedCourseData);
+                    const newTitle = $('#selectedTitle').val();
+                    const newDuration = $('#selectedDuration').val();
+                    const newUrl = $('#selectedUrl').val();
+                    const newDate = new Date().toISOString();
+                    const updatedCourseData = {
+                        id: courseId,
+                        title: newTitle,
+                        url: newUrl,
+                        rating: courseRating,
+                        numberOfReviews: courseReviews,
+                        instructorsId: courseInstructorID,
+                        imageReference: courseImgRef,
+                        duration: newDuration,
+                        lastUpdate: newDate
+                    };
+                    console.log(updatedCourseData);
+                    //updateCourse(courseId, updatedCourseData);
+                    let api = `https://localhost:7076/api/Courses/${courseId}`;
+                    ajaxCall("PUT", `${api}/`, JSON.stringify(updatedCourseData), getSCBF, getECBF);
                 });
             }
         });
@@ -136,23 +147,32 @@ $("#courseNamesList").on('change', function () {
     }
 });
 
-function updateCourse(courseId, updatedData) {
-    $.ajax({
-        url: `https://localhost:7076/api/Courses/5` + courseId, // Replace with your API endpoint for updating courses
-        type: 'PUT',
-        contentType: 'application/json', // Send data as JSON
-        dataType: 'json', // Expect JSON response from server
-        data: JSON.stringify(updatedData), // Convert updated data to JSON string
-        success: function (response) {
-            console.log("Course updated successfully:", response);
-            // Handle successful update (e.g., update displayed information, display confirmation message)
-        },
-        error: function (error) {
-            console.error("Error updating course:", error);
-            // Handle errors (e.g., display error message)
-        }
-    });
+function getSCBF(result) {
+    console.log("changed successfully");
+    alert("Course changed successfully");
+    console.log(result);
 }
+
+function getECBF(err) {
+    alert("Unable to change");
+    console.log(err);
+}
+
+//function updateCourse(courseId, updatedData) {
+
+//    $.ajax({
+//        url: `https://localhost:7076/api/Courses/${courseId}`,
+//        type: 'PUT',
+//        dataType: 'json', // Expect JSON response from server
+//        data: JSON.stringify(updatedData), // Convert updated data to JSON string
+//        success: function (response) {
+//            console.log("Course updated successfully:", response);
+//        },
+//        error: function (error) {
+//            console.error("Error updating course:", error);
+//        }
+//    });
+//}
 
 
 $("#coursesBtn").on("click", function () {

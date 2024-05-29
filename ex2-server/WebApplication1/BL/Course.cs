@@ -50,7 +50,7 @@
         public bool InsertNewCourse()
         {
             bool courseFlag = true;
-            bool instructorFlag = true;
+            bool instructorFlag = false;
             if (coursesList.Count == 0)
             {
                 courseFlag = true;
@@ -68,7 +68,7 @@
             }
             foreach (Instructor instructor in Instructor.InstructorList)
             {
-                if (instructor.Id == Id)
+                if (instructor.Id == InstructorsId)
                 {
                     instructorFlag = true;
                     break;
@@ -81,7 +81,8 @@
                 coursesList.Add(this);
                 return courseFlag;
             }
-            return courseFlag;
+            //return courseFlag;
+            return courseFlag && instructorFlag;
 
         }
 
