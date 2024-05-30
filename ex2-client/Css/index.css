@@ -115,3 +115,13 @@ footer {
     text-align: center;
     margin-top: 40px;
 }
+
+.home-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+    .home-button svg {
+        fill: #333; 
+    }
