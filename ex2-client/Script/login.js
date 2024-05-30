@@ -52,6 +52,10 @@ $(document).ready(function () {
     });
 });
 
+$('#homeBtn').on('click', function () {
+    window.location.href = "../Pages/index.html";
+});
+
 // will become redundant - to be removed later!
 const registerPageBtn = document.getElementById("registerPageBtn"); 
 

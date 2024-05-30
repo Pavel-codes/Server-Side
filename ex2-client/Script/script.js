@@ -1,7 +1,7 @@
 ﻿var coursesData = [];
 const udemy = "https://www.udemy.com"; 
                     
-localStorage.clear();
+//localStorage.clear();
 
 $(document).ready(function () { 
 
@@ -28,7 +28,7 @@ $(document).ready(function () {
             addCourseClick(courseElement);
         });
     }
-    
+
 
     $('*').not('script, style').css({ 
         'padding': '5px',
@@ -39,23 +39,22 @@ $(document).ready(function () {
 
 const myCoursesBtn = document.getElementById("myCourses"); 
 
-myCoursesBtn.addEventListener("click", function () { 
-    window.open("../Pages/MyCourses.html", "_blank"); 
+myCoursesBtn.addEventListener("click", function () {
+    window.location.href = "MyCourses.html";
 });
 
 
 const instructorsBtn = document.getElementById("instructorsBtn");
 
 instructorsBtn.addEventListener("click", function () {
-    window.open("../Pages/instructorsPage.html", "_blank");
-
+    window.location.href = "instructorsPage.html";
 
 });
 
 const loginBtn = document.getElementById("loginBtn"); 
 
 loginBtn.addEventListener("click", function () { 
-    window.open("../Pages/login.html", "_blank"); 
+    window.location.href = "login.html";
 });
 
 const logoutbtn = document.getElementById("logoutBtn");
@@ -69,33 +68,32 @@ logoutBtn.addEventListener("click", function () {
 const Registerbtn = document.getElementById("Registerbtn");
 
 Registerbtn.addEventListener("click", function () { 
-    window.open("../Pages/register.html", "_blank"); 
+    window.location.href = "register.html";
 });
 
 const Adminbtn = document.getElementById("Adminbtn");
 
 
 Adminbtn.addEventListener("click", function () {
-    window.open("../Pages/admin.html", "_blank");
-
+    window.location.href = "admin.html";
 
 });
 
 
-function postSCBF(result) {
-    if (!result) alert("Course is already in database"); // 
-    else {
-        alert("Course was added");
-    }
-    console.log(result);
+
+
+if (!isLoggedIn()) {
+    $('#logoutBtn').hide();
+    $('#loginBtn').show();
+    $('#Registerbtn').show();
+    $('#myCourses').hide();
 }
-
-
-function postECBF(err) {
-
-    console.log(err);
+else {
+    $('#logoutBtn').show();
+    $('#loginBtn').hide();
+    $('#Registerbtn').hide();
+    $('#myCourses').show();
 }
-
 
 function isLoggedIn() {
     return localStorage.getItem('user') !== null;
@@ -107,7 +105,7 @@ function addCourseClick(element) {
         if (event.target.tagName.toLowerCase() === 'button') {
             const buttonId = event.target.id;
             console.log("Button clicked with ID:", buttonId);
-
+            
             if (isLoggedIn()) {
                 const user = JSON.parse(localStorage.getItem('user')); //
                 addCourse(buttonId, user.id);
@@ -140,7 +138,7 @@ function addCourse(buttonId, userId) {
             };
 
             const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
-
+            
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 
         }
@@ -148,4 +146,17 @@ function addCourse(buttonId, userId) {
             console.log("not found");
         }
     });
+}
+
+function postSCBF(result) {
+    if (!result) alert("Course is already in database"); // 
+    else {
+        alert("Course was added");
+    }
+    console.log(result);
+}
+
+
+function postECBF(err) {
+    console.log(err);
 }

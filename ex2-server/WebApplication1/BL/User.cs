@@ -97,5 +97,45 @@
             myCourses.Add(course);
             return true;
         }
+
+        public void DeleteCourseById(int id)
+        {
+            Course courseToRemove = MyCourses.FirstOrDefault(course => course.Id == id);
+
+            if (courseToRemove != null)
+            {
+                MyCourses.Remove(courseToRemove);
+            }
+            else
+            {
+                throw new Exception("Course Not Found");
+            }
+        }
+
+
+        public List<Course> GetByDurationRange(double fromDuration, double toDuration)
+        {
+            List<Course> selectedCourses = new List<Course>();
+            foreach (Course course in MyCourses)
+            {
+                string[] duration = course.Duration.Split(" ");
+                string bit = duration[0];
+                if (double.Parse(bit) >= fromDuration && double.Parse(bit) <= toDuration)
+                    selectedCourses.Add(course);
+            }
+            return selectedCourses;
+        }
+
+
+        public List<Course> GetByRatingRange(double fromRating, double toRating)
+        {
+            List<Course> selectedCourses = new List<Course>();
+            foreach (Course course in MyCourses)
+            {
+                if (course.Rating >= fromRating && course.Rating <= toRating)
+                    selectedCourses.Add(course);
+            }
+            return selectedCourses;
+        }
     }
 }

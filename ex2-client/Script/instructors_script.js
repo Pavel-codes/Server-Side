@@ -8,6 +8,9 @@ $(document).ready(function () {
     //console.log(instructorsData);
 });
 
+$('#homeBtn').on('click', function () {
+    window.location.href = "../Pages/index.html";
+});
 
 $("#insertIntsructorsBtn").on("click", function () {
 
@@ -48,7 +51,6 @@ function postECBF(err) {
 
 // Get all instructors function
 function getAllInstructors() {
-    api = `https://localhost:7076/api/Instructors`;
     //ajaxCall("GET", api, postSCBF, postECBF)
     $.ajax({
         url: api,
@@ -61,7 +63,6 @@ function getAllInstructors() {
         }
     });
 }
-
 
 
 function renderInstructors(instructors) {

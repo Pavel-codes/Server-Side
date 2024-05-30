@@ -16,13 +16,17 @@ $('document').ready(function () {
     } else {
         $('#loadCoursesBtn').hide();
         alert("You are not authorized to access this page.");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
 
     $.getJSON("../Data/Instructor .json", function (data) {
         instructorsData.push(data);
     });
     
+});
+
+$('#homeBtn').on('click', function () {
+    window.location.href = "../Pages/index.html";
 });
 
 $('#loadCoursesBtn').on('click', function () { 
