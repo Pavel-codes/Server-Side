@@ -89,48 +89,57 @@
 
         public bool Insert()
         {
-            bool isPresent = CoursesList.Contains(this);
-            if (isPresent)
+            //bool isPresent = CoursesList.Contains(this);
+            //if (isPresent)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    coursesList.Add(this);
+            //}
+            //return true;
+            bool courseInList = true;
+            if (coursesList.Count == 0)
             {
-                return false;
+                coursesList.Add(this);
+                return true;
             }
             else
             {
-                coursesList.Add(this);
+                for (int i = 0; i < coursesList.Count; i++)
+                {
+                    if (coursesList[i].Id == Id && coursesList[i].Title.Equals(Title))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        courseInList = false;
+                    }
+                }
+                if (!courseInList)
+                {
+                    coursesList.Add(this);
+                }
             }
             return true;
+
+            //bool isPresent = Contains(coursesList, this);
+            //if (isPresent)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    coursesList.Add(this);
+            //}
+            //return true;
         }
+        //}
 
 
-        //if (coursesList.Count == 0)
-        //{
-        //    coursesList.Add(this);
-        //    return true;
-        //}
-        //else
-        //{
-        //    for(int i = 0; i < coursesList.Count; i++)
-        //    {
-        //        if (coursesList[i].Id == Id && coursesList[i].Title.Equals(Title))
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    coursesList.Add(this);
-        //}
-        //return true;
 
-        //bool isPresent = Contains(coursesList,this);
-        //if (isPresent)
-        //{
-        //    return false;
-        //}
-        //else
-        //{
-        //    coursesList.Add(this);
-        //}
-        //return true;
-        //}
 
         //public bool Contains(List<Course> coursesList, Course course) // to be fixed \ deleted
         //{
