@@ -20,6 +20,16 @@ $("#getInstructorsBtn").on("click", function () {
     getAllInstructors();
 });
 
+$(document).ready(function () {
+    $('#insertIntsructorsBtn').click(function () {
+        $(this).prop('disabled', true); 
+    });
+
+    $('#getInstructorsBtn').click(function () {
+        $(this).prop('disabled', true); // Disable the button
+        // Your logic for getting all instructors
+    });
+});
 
 function insertInstructors(instructorsData) {
     api = "https://localhost:7076/api/Instructors";
