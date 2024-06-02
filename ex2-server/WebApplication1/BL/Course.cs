@@ -89,54 +89,36 @@
 
         public bool Insert()
         {
-            //bool isPresent = CoursesList.Contains(this);
-            //if (isPresent)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    coursesList.Add(this);
-            //}
-            //return true;
-            bool courseInList = true;
-            if (coursesList.Count == 0)
+            // Ensure instructorList is initialized
+            if (coursesList == null)
             {
-                coursesList.Add(this);
+                throw new NullReferenceException("instructorList is not initialized.");
+            }
+
+            bool courseInList = false;
+
+            // Check if the current instance already exists in the list
+            foreach (var course in coursesList)
+            {
+                if (course.Id == this.Id && course.Title.Equals(this.Title))
+                {
+                    courseInList = true;
+                    break;
+                }
+            }
+
+            // Add the current instance to the list if it does not already exist
+            if (!courseInList)
+            {
+                // Use a temporary list to avoid modifying the collection during enumeration
+                var tempCourseList = new List<Course>(CoursesList);
+                tempCourseList.Add(this);
+                CoursesList = tempCourseList;
                 return true;
             }
-            else
-            {
-                for (int i = 0; i < coursesList.Count; i++)
-                {
-                    if (coursesList[i].Id == Id && coursesList[i].Title.Equals(Title))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        courseInList = false;
-                    }
-                }
-                if (!courseInList)
-                {
-                    coursesList.Add(this);
-                }
-            }
-            return true;
-
-            //bool isPresent = Contains(coursesList, this);
-            //if (isPresent)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    coursesList.Add(this);
-            //}
-            //return true;
+            return false;
         }
-        //}
+
 
 
 
