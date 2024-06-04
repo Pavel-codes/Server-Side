@@ -223,6 +223,6 @@ function getECBF(err) {
 $("#coursesBtn").on("click", function () {
 
     alert("Handler INSERT for `click` called.");
-    insertCourses(CourseData);
-    window.open("../Pages/createEditForm.html", "_blank");
+   /* insertCourses(CourseData);*/
+    window.location.href = "createEditForm.html";
 });

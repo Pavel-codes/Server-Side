@@ -79,10 +79,10 @@
             if (courseFlag && instructorFlag)
             {
                 coursesList.Add(this);
-                return courseFlag;
+                return true;
             }
-            //return courseFlag;
-            return courseFlag && instructorFlag;
+            return false;
+            //return courseFlag && instructorFlag;
 
         }
 
