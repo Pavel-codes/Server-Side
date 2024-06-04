@@ -47,16 +47,101 @@
             return coursesList;
         }
 
+        public bool InsertNewCourse()
+        {
+            bool courseFlag = true;
+            bool instructorFlag = false;
+            if (coursesList.Count == 0)
+            {
+                courseFlag = true;
+            }
+            else
+            {
+                foreach (Course c in coursesList)
+                {
+                    if (c.Id == Id || c.Title.Equals(Title))
+                    {
+                        courseFlag = false;
+                        break;
+                    }
+                }
+            }
+            foreach (Instructor instructor in Instructor.InstructorList)
+            {
+                if (instructor.Id == InstructorsId)
+                {
+                    instructorFlag = true;
+                    break;
+                }
+            }
+
+
+            if (courseFlag && instructorFlag)
+            {
+                coursesList.Add(this);
+                return courseFlag;
+            }
+            //return courseFlag;
+            return courseFlag && instructorFlag;
+
+        }
+
 
         public bool Insert()
         {
+            // Ensure instructorList is initialized
+            if (coursesList == null)
+            {
+                throw new NullReferenceException("instructorList is not initialized.");
+            }
+
+            bool courseInList = false;
+
+            // Check if the current instance already exists in the list
+            foreach (var course in coursesList)
+            {
+                if (course.Id == this.Id && course.Title.Equals(this.Title))
+                {
+                    courseInList = true;
+                    break;
+                }
+            }
+
+            // Add the current instance to the list if it does not already exist
+            if (!courseInList)
+            {
+                // Use a temporary list to avoid modifying the collection during enumeration
+                var tempCourseList = new List<Course>(CoursesList);
+                tempCourseList.Add(this);
+                CoursesList = tempCourseList;
+                return true;
+            }
+            return false;
+        }
+
+
+
+
+
+        //public bool Contains(List<Course> coursesList, Course course) // to be fixed \ deleted
+        //{
+        //    for(int i = 0; i < coursesList.Count; i++)
+        //    {
+        //        if (coursesList[i].Id == course.Id && coursesList[i].InstructorsId == course.InstructorsId)
+        //        {
+        //            return true; 
+        //        }
+        //    }
+        //    return false; // Course not found
+        //}
+
+        public Course getCourseByTitle(string courseName)
+        {
             foreach (Course course in coursesList)
             {
-                if (course.Id == Id || course.Title.Equals(Title)) return false;
-
+                if (course.Title == courseName) return course;
             }
-            coursesList.Add(this);
-            return true;
+            return null; //
         }
 
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
@@ -86,22 +171,24 @@
         }
 
 
-        public void DeleteById(int id)
+
+        public static bool DeleteCourse(int userId, int courseidToDelete)
         {
-            bool found = false;
-            foreach (Course course in coursesList)
+            User user = User.GetUser(userId);
+            if (user == null)
             {
-                if (course.Id == id)
-                {
-                    found = true;
-                    coursesList.Remove(course);
-                }
+                Console.WriteLine($"User with ID {userId} not found.");
+                return false;
             }
-            if (!found)
+            else
             {
-                throw new Exception("Course Not Found");
+                user.DeleteCourseById(courseidToDelete);
+                return true;
             }
         }
+
+
+
 
         public static bool AddCourseToUser(int userId, Course courseToAdd) //
         {
@@ -114,10 +201,14 @@
             if (!user.AddCourse(courseToAdd))
             {
                 Console.WriteLine($"Course {courseToAdd.title} is already added for user {userId}.");
-                return false; 
+                return false;
             }
             Console.WriteLine($"Course {courseToAdd.title} added for user {userId}.");
             return true;
         }
     }
+
+
+
+
 }

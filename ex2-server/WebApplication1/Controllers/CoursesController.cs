@@ -18,6 +18,12 @@ namespace WebApplication1.Controllers
         }
 
         // GET api/<CoursesController>/5
+        [HttpGet("{title}")]
+        public Course Get(string title)
+        {
+            return course.getCourseByTitle(title);
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -30,11 +36,25 @@ namespace WebApplication1.Controllers
         }
 
         // POST api/<CoursesController>
+        [HttpPost("NewCourse")]
+        public IActionResult PostNewCourse([FromBody] Course value)
+        {
+            bool result = value.InsertNewCourse();
+            if (!result)
+            {
+                return NotFound("Course could not be inserted.");
+            }
+            return Ok("Course inserted successfully.");
+
+        }
+
+        //POST api/<CoursesController>
         [HttpPost]
         public bool Post([FromBody] Course value)
         {
             return value.Insert();
         }
+
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
@@ -87,23 +107,25 @@ namespace WebApplication1.Controllers
             return courseByRating.GetByRatingRange(fromRating, toRating);
         }
 
-        // DELETE api/<CoursesController>/5
-        [HttpDelete("{id}")]
-        public IActionResult DeleteById(int id) // need to fix the exception
+        [HttpDelete("deleteByCourseFromUserList/{userId}")]
+        public IActionResult DeleteByCourseFromUserList(int userId, [FromQuery] int coursid)
         {
             try
             {
-                Course course = new Course();
-                course.DeleteById(id);
-                return Ok("Course Deleted Successfully");
+                if (Course.DeleteCourse(userId, coursid))
+                {
+                    return Ok("Course deleted from user successfully");
+                }
+                return BadRequest("Failed to delete course from user list");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message); // Return 500 Internal Server Error with the exception message
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
-        // POST api/<CoursesController>/addCourseToUser  //
+
+
         [HttpPost("addCourseToUser/{userId}")]
         public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
         {
@@ -125,7 +147,5 @@ namespace WebApplication1.Controllers
             var courses = user.GetCourses();
             return Ok(courses);
         }
-
-
     }
 }
