@@ -28,19 +28,37 @@
         public string JobTitle { get => jobTitle; set => jobTitle = value; }
         public static List<Instructor> InstructorList { get => instructorList; set => instructorList = value; }
 
-        public bool Insert() // fixed
+        public bool Insert()
         {
-            bool isPresent = instructorList.Contains(this);
-            if (isPresent)
+            // Ensure instructorList is initialized
+            if (instructorList == null)
             {
-                return false;
+                throw new NullReferenceException("instructorList is not initialized.");
             }
-            else
-            {
-                instructorList.Add(this);
-            }
-            return true;
 
+            bool instructorInList = false;
+
+            // Check if the current instance already exists in the list
+            foreach (var instructor in instructorList)
+            {
+                if (instructor.Id == this.Id && instructor.Title.Equals(this.Title))
+                {
+                    instructorInList = true;
+                    break;
+                }
+            }
+
+            // Add the current instance to the list if it does not already exist
+            if (!instructorInList)
+            {
+                // Use a temporary list to avoid modifying the collection during enumeration
+                var tempInstructorList = new List<Instructor>(instructorList);
+                tempInstructorList.Add(this);
+                instructorList = tempInstructorList;
+                return true;
+            }
+
+            return false;
         }
 
         public List<Instructor> Read()

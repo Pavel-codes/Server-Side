@@ -18,9 +18,21 @@ namespace WebApplication1.Controllers
         }
 
         // GET api/<CoursesController>/5
+<<<<<<< HEAD
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
+=======
+        [HttpGet("{title}")]
+        public Course Get(string title)
+        {
+            return course.getCourseByTitle(title);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+>>>>>>> main
             var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
             if (course == null)
             {
@@ -30,11 +42,25 @@ namespace WebApplication1.Controllers
         }
 
         // POST api/<CoursesController>
+        [HttpPost("NewCourse")]
+        public IActionResult PostNewCourse([FromBody] Course value)
+        {
+            bool result = value.InsertNewCourse();
+            if (!result)
+            {
+                return NotFound("Course could not be inserted.");
+            }
+            return Ok("Course inserted successfully.");
+
+        }
+
+        //POST api/<CoursesController>
         [HttpPost]
         public bool Post([FromBody] Course value)
         {
             return value.Insert();
         }
+
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
@@ -103,7 +129,10 @@ namespace WebApplication1.Controllers
             }
         }
 
+<<<<<<< HEAD
         // POST api/<CoursesController>/addCourseToUser  //
+=======
+>>>>>>> main
         [HttpPost("addCourseToUser/{userId}")]
         public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
         {
@@ -125,7 +154,10 @@ namespace WebApplication1.Controllers
             var courses = user.GetCourses();
             return Ok(courses);
         }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> main
     }
 }

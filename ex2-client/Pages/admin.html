@@ -8,10 +8,12 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
     <script src="../Script/ajaxCalls.js"></script>
-    <script src="../Script/admin.js?v=2"></script>
+    <link rel="stylesheet" href="../Css/admin.css">
+    <!--<script src="../Script/admin.js?v=2"></script>-->
 </head>
 <body>
     <h1>Admin Panel</h1>
+<<<<<<< HEAD
     <button id="loadCoursesBtn">Load Courses to Server</button>
     <h2>Edit Courses</h2>
     <input list="courses" id="courseSelect" name="courseSelect" placeholder="Select a course">
@@ -36,5 +38,19 @@
         <input type="file" id="imageFile">
         <button type="submit">Save</button>
     </form>
+=======
+    <button id="homeBtn">Home</button>
+    <div id="pageTop">
+        <button id="loadCoursesBtn">Load Courses to Server</button>
+        <label for="courseDataList">Search Course To Edit: </label>
+        <datalist id="courseDataList"></datalist>
+        <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
+        <button id="coursesBtn">Insert New Course</button>
+    </div>
+    <div id="displayCourses">
+        <form id="editForm"></form>
+    </div>
+    <script src="../Script/admin.js?v=2"></script>
+>>>>>>> main
 </body>
 </html>
