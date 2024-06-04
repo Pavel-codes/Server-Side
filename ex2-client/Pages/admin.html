@@ -8,22 +8,33 @@
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
     <script src="../Script/ajaxCalls.js"></script>
-    <link rel="stylesheet" href="../Css/admin.css">
-    <!--<script src="../Script/admin.js?v=2"></script>-->
+    <script src="../Script/admin.js?v=2"></script>
 </head>
 <body>
     <h1>Admin Panel</h1>
-    <button id="homeBtn">Home</button>
-    <div id="pageTop">
-        <button id="loadCoursesBtn">Load Courses to Server</button>
-        <label for="courseDataList">Search Course To Edit: </label>
-        <datalist id="courseDataList"></datalist>
-        <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
-        <button id="coursesBtn">Insert New Course</button>
-    </div>
-    <div id="displayCourses">
-        <form id="editForm"></form>
-    </div>
-    <script src="../Script/admin.js?v=2"></script>
+    <button id="loadCoursesBtn">Load Courses to Server</button>
+    <h2>Edit Courses</h2>
+    <input list="courses" id="courseSelect" name="courseSelect" placeholder="Select a course">
+    <datalist id="courses"></datalist>
+
+    <form id="courseForm">
+        <input type="hidden" id="courseId">
+        <label for="title">Title</label>
+        <input type="text" id="title" required>
+        <label for="url">URL</label>
+        <input type="url" id="url" required>
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" required>
+        <label for="rating">Rating</label>
+        <input type="number" id="rating" readonly>
+        <label for="numReviews">Number of Reviews</label>
+        <input type="number" id="numReviews" readonly>
+        <label for="instructorId">Instructor ID</label>
+        <input type="number" id="instructorId" readonly>
+        <label for="image">Image</label>
+        <input type="url" id="image">
+        <input type="file" id="imageFile">
+        <button type="submit">Save</button>
+    </form>
 </body>
 </html>

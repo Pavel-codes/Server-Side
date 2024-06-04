@@ -6,17 +6,6 @@ $(document).ready(function () {
 
         const email = $('#email').val();
         const password = $('#password').val();
-        /////
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert("Invalid email format.");
-            return;
-        }
-
-        if (password.length < 4) {
-            alert("Password must be at least 4 characters long.");
-            return;
-        }
 
 
         const loginData = {
@@ -43,23 +32,26 @@ $(document).ready(function () {
             else {
                 postECBF();
             }
-            
+
         }
 
-        function postECBF() { // add more distinct messages for each case email\password\etc....!!!
-            alert("User not found, Please register!");
+
+        function postECBF() {
+            const userRegistered = localStorage.getItem('user');
+            if (!userRegistered) {
+                alert("Please register first before logging in.");
+                $('#registerModal').show();
+            }
+            else {
+                alert("Invalid email or password.");
+            }
         }
     });
 });
 
-$('#homeBtn').on('click', function () {
-    window.location.href = "../Pages/index.html";
-});
-
 // will become redundant - to be removed later!
-const registerPageBtn = document.getElementById("registerPageBtn"); 
+const registerPageBtn = document.getElementById("registerPageBtn");
 
-registerPageBtn.addEventListener("click", function () {
-    window.location.href = "../Pages/register.html";
-});
-
+//registerPageBtn.addEventListener("click", function () {
+//    window.location.href = "../Pages/register.html";
+//});

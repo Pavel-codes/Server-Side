@@ -1,6 +1,6 @@
 ﻿
-$(document).ready(function () { 
-    $('#registerForm').submit(function (event) { 
+$(document).ready(function () {
+    $('#registerForm').submit(function (event) {
         event.preventDefault();
 
         const name = $('#name').val();
@@ -25,7 +25,7 @@ $(document).ready(function () {
             Password: password
         };
 
-        submitToServer(newUser); 
+        submitToServer(newUser);
 
         function submitToServer(newUser) {
             let api = `https://localhost:7076/api/Users`;
@@ -34,10 +34,10 @@ $(document).ready(function () {
         }
 
         function postSCBF(user) {
-            //alert(user); // returns true
+            alert(user);
             alert("Registration successful.");
             window.location.href = "login.html";
-            
+
         }
 
         function postECBF(err) {
@@ -47,19 +47,9 @@ $(document).ready(function () {
     });
 });
 
-
-
-
 // will become redundant - to be removed later!
 const loginPageBtn = document.getElementById("loginPageBtn");
 
 loginPageBtn.addEventListener("click", function () {
     window.location.href = "../Pages/login.html";
 });
-
-
-$('#homeBtn').on('click', function () {
-    window.location.href = "../Pages/index.html";
-});
-
-

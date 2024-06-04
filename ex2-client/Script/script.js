@@ -1,21 +1,18 @@
 ﻿var coursesData = [];
-const udemy = "https://www.udemy.com"; 
-                    
-//localStorage.clear();
+const udemy = "https://www.udemy.com";
+$(document).ready(function () {
 
-$(document).ready(function () { 
-
-    $.getJSON("../Data/Course.json", function (data) { 
+    $.getJSON("../Data/Course.json", function (data) {
         renderCourses(data);
     });
 
 
     // Render courses
-    function renderCourses(courses) { 
-        var coursesContainer = $('#courses-container'); 
-        courses.forEach(function (course) { 
-            coursesData.push(course); 
-            var courseElement = $('<div>'); 
+    function renderCourses(courses) {
+        var coursesContainer = $('#courses-container');
+        courses.forEach(function (course) {
+            coursesData.push(course);
+            var courseElement = $('<div>');
             courseElement.append('<img src=' + course.image + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
             courseElement.append('<p>Instructors ID: ' + course.instructors_id + '</p>');
@@ -23,38 +20,38 @@ $(document).ready(function () {
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
-            courseElement.append('<button id="' + course.id + '">Add Course</button>'); 
-            coursesContainer.append(courseElement); 
+            courseElement.append('<button id="' + course.id + '">Add Course</button>');
+            coursesContainer.append(courseElement);
             addCourseClick(courseElement);
         });
     }
 
-
-    $('*').not('script, style').css({ 
+    $('*').not('script, style').css({
         'padding': '5px',
         'margin-top': '5px',
         'margin-bottom': '5px'
     });
 });
 
-const myCoursesBtn = document.getElementById("myCourses"); 
+const myCoursesBtn = document.getElementById("myCourses");
 
 myCoursesBtn.addEventListener("click", function () {
-    window.location.href = "MyCourses.html";
+    window.open("../Pages/MyCourses.html", "_blank");
 });
 
 
 const instructorsBtn = document.getElementById("instructorsBtn");
 
 instructorsBtn.addEventListener("click", function () {
-    window.location.href = "instructorsPage.html";
+    window.open("../Pages/instructorsPage.html", "_blank");
+
 
 });
 
-const loginBtn = document.getElementById("loginBtn"); 
+const loginBtn = document.getElementById("loginBtn");
 
-loginBtn.addEventListener("click", function () { 
-    window.location.href = "login.html";
+loginBtn.addEventListener("click", function () {
+    window.open("../Pages/login.html", "_blank");
 });
 
 const logoutbtn = document.getElementById("logoutBtn");
@@ -67,33 +64,34 @@ logoutBtn.addEventListener("click", function () {
 
 const Registerbtn = document.getElementById("Registerbtn");
 
-Registerbtn.addEventListener("click", function () { 
-    window.location.href = "register.html";
+Registerbtn.addEventListener("click", function () {
+    window.open("../Pages/register.html", "_blank");
 });
 
 const Adminbtn = document.getElementById("Adminbtn");
 
 
 Adminbtn.addEventListener("click", function () {
-    window.location.href = "admin.html";
+    window.open("../Pages/admin.html", "_blank");
+
 
 });
 
 
+function postSCBF(result) {
+    if (!result) alert("Course is already in database"); // 
+    else {
+        alert("Course was added");
+    }
+    console.log(result);
+}
 
 
-if (!isLoggedIn()) {
-    $('#logoutBtn').hide();
-    $('#loginBtn').show();
-    $('#Registerbtn').show();
-    $('#myCourses').hide();
+function postECBF(err) {
+
+    console.log(err);
 }
-else {
-    $('#logoutBtn').show();
-    $('#loginBtn').hide();
-    $('#Registerbtn').hide();
-    $('#myCourses').show();
-}
+
 
 function isLoggedIn() {
     return localStorage.getItem('user') !== null;
@@ -105,7 +103,7 @@ function addCourseClick(element) {
         if (event.target.tagName.toLowerCase() === 'button') {
             const buttonId = event.target.id;
             console.log("Button clicked with ID:", buttonId);
-            
+
             if (isLoggedIn()) {
                 const user = JSON.parse(localStorage.getItem('user')); //
                 addCourse(buttonId, user.id);
@@ -119,7 +117,9 @@ function addCourseClick(element) {
     });
 }
 
-function addCourse(buttonId, userId) {
+
+
+function addCourse(buttonId,userId) {
     console.log(buttonId);
     var courseDataToSend;
     coursesData.forEach(courseData => {
@@ -138,7 +138,7 @@ function addCourse(buttonId, userId) {
             };
 
             const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
-            
+
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 
         }
@@ -146,17 +146,4 @@ function addCourse(buttonId, userId) {
             console.log("not found");
         }
     });
-}
-
-function postSCBF(result) {
-    if (!result) alert("Course is already in database"); // 
-    else {
-        alert("Course was added");
-    }
-    console.log(result);
-}
-
-
-function postECBF(err) {
-    console.log(err);
 }
