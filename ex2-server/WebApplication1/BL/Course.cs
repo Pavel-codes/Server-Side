@@ -137,7 +137,7 @@
 
         public Course getCourseByTitle(string courseName)
         {
-            foreach(Course course in coursesList)
+            foreach (Course course in coursesList)
             {
                 if (course.Title == courseName) return course;
             }
@@ -171,22 +171,24 @@
         }
 
 
-        public void DeleteById(int id)
+
+        public static bool DeleteCourse(int userId, int courseidToDelete)
         {
-            bool found = false;
-            foreach (Course course in coursesList)
+            User user = User.GetUser(userId);
+            if (user == null)
             {
-                if (course.Id == id)
-                {
-                    found = true;
-                    coursesList.Remove(course);
-                }
+                Console.WriteLine($"User with ID {userId} not found.");
+                return false;
             }
-            if (!found)
+            else
             {
-                throw new Exception("Course Not Found");
+                user.DeleteCourseById(courseidToDelete);
+                return true;
             }
         }
+
+
+
 
         public static bool AddCourseToUser(int userId, Course courseToAdd) //
         {
@@ -205,4 +207,8 @@
             return true;
         }
     }
+
+
+
+
 }

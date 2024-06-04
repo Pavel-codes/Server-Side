@@ -2,7 +2,7 @@
 {
     public class User
     {
-        private int id = UsersList.Count+1;
+        private int id = UsersList.Count + 1;
         private string name;
         private string email;
         private string password;
@@ -97,16 +97,19 @@
             myCourses.Add(course);
             return true;
         }
-
-        public void DeleteCourseById(int id)
+        public void DeleteCourseById(int courseid)
         {
-            Course courseToRemove = MyCourses.FirstOrDefault(course => course.Id == id);
-
-            if (courseToRemove != null)
+            bool found = false;
+            foreach (Course course in MyCourses)
             {
-                MyCourses.Remove(courseToRemove);
+                if (course.Id == courseid)
+                {
+                    found = true;
+                    MyCourses.Remove(course);
+                    break;
+                }
             }
-            else
+            if (!found)
             {
                 throw new Exception("Course Not Found");
             }

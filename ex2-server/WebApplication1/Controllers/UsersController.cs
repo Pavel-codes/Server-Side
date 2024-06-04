@@ -46,25 +46,25 @@ namespace WebApplication1.Controllers
         {
         }
 
-        // DELETE api/<UsersController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id, [FromBody] User user)
-        {
-            try
-            {
-                if (user == null)
-                {
-                    return BadRequest("User data is required.");
-                }
+        //// DELETE api/<UsersController>/5
+        //[HttpDelete("{id}")]
+        //public IActionResult Delete(int id )
+        //{
+        //    try
+        //    {
+        //        if (user == null)
+        //        {
+        //            return BadRequest("User data is required.");
+        //        }
 
-                user.DeleteCourseById(id);
-                return Ok("Course Deleted Successfully");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message); // Return 500 Internal Server Error with the exception message
-            }
-        }
+        //        user.DeleteCourseById(id);
+        //        return Ok("Course Deleted Successfully");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, ex.Message); // Return 500 Internal Server Error with the exception message
+        //    }
+        //}
 
         [HttpGet("search")]
         public IEnumerable<Course> GetByDurationRange(double fromDuration, double toDuration)

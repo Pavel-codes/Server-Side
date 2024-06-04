@@ -19,13 +19,11 @@ $('#homeBtn').on('click', function () {
 
 function loadCourses(api) {
     $.ajax({
-        url: `https://localhost:7076/api/Users/${id}`, //.https://localhost:7076/api/Courses
+        url: `https://localhost:7076/api/Users/${id}`,
         type: 'GET',
         success: function (data) {
-
             myCourses.push(data);
-            setTimeout(renderCourses, 1000);
-            
+            setTimeout(() => renderCourses(data.myCourses), 1000);
         },
         error: function () {
             alert("Error loading courses.");
@@ -33,12 +31,10 @@ function loadCourses(api) {
     });
 }
 
-
-function renderCourses() {
+function renderCourses(coursesList) {
     var coursesContainer = $('#courses-container');
-    userCourses = myCourses[0].myCourses;
+    userCourses = coursesList;
     coursesContainer.empty();
-    //myCourses = coursesList;
     userCourses.forEach(function (course) {
         var courseElement = $('<div>');
         courseElement.append('<img src="' + course.imageReference + '">');
@@ -50,77 +46,67 @@ function renderCourses() {
         courseElement.append('<button id="' + course.id + '">Remove Course</button>');
         coursesContainer.append(courseElement);
     });
-}   
+}
 
+document.addEventListener('click', function (event) {
+    if (event.target.tagName.toLowerCase() === 'button' && event.target.id != "apply-rating-filter" && event.target.id != "apply-duration-filter") {
+        const buttonId = event.target.id;
+        removeCourse(user.id, buttonId);
+        console.log("Button clicked with ID:", buttonId);
+    }
+});
 
-    document.addEventListener('click', function (event) {
-        if (event.target.tagName.toLowerCase() === 'button' && event.target.id != "apply-rating-filter" && event.target.id != "apply-duration-filter") {
-            const buttonId = event.target.id;
-            removeCourse(buttonId);
-            console.log("Button clicked with ID:", buttonId);
+const applyRatingFilterButton = document.getElementById("apply-rating-filter");
+
+applyRatingFilterButton.addEventListener("click", function () {
+    console.log("Rating filter applied!");
+    filterByRating();
+});
+
+const applyDurationFilterButton = document.getElementById("apply-duration-filter");
+
+applyDurationFilterButton.addEventListener("click", function () {
+    console.log("Duration filter applied!"); // Example action
+    filterByDuration();
+});
+
+function removeCourse(userId, courseId) {
+    const api = `https://localhost:7076/api/Courses/deleteByCourseFromUserList/${userId}?coursid=${courseId}`;
+    $.ajax({
+        url: api,
+        type: 'DELETE',
+        success: deleteSCBF,
+        error: deleteECBF
+    });
+}
+
+function deleteSCBF(result) {
+    alert("Course removed");
+    console.log(result);
+    loadCourses(apiBaseUrl);
+}
+
+function deleteECBF(err) {
+    alert("Error occurred - course may have been deleted.");
+    console.log(err);
+    loadCourses(apiBaseUrl);
+}
+
+function filterByDuration() {
+    const fromDuration = parseFloat($('#duration-from').val());
+    const toDuration = parseFloat($('#duration-to').val());
+
+    $.ajax({
+        url: `${apiBaseUrl}/search?fromDuration=${fromDuration}&toDuration=${toDuration}`,
+        type: 'GET',
+        success: function (data) {
+            renderCourses(data);
+        },
+        error: function () {
+            console.log("Error fetching courses by duration.");
         }
     });
-
-    const applyRatingFilterButton = document.getElementById("apply-rating-filter");
-
-    applyRatingFilterButton.addEventListener("click", function () {
-
-        console.log("Rating filter applied!");
-        filterByRating();
-
-    });
-
-    const applyDurationFilterButton = document.getElementById("apply-duration-filter");
-
-    applyDurationFilterButton.addEventListener("click", function () {
-        console.log("Rating filter applied!"); // Example action
-        filterByDuration();
-    });
-
-
-    function removeCourse(buttonId) {
-        console.log(userCourses);
-        const api = `${apiBaseUrl}/${buttonId}`;
-        $.ajax({
-            url: api,
-            type: 'DELETE',
-            contentType: 'application/json',
-            data: JSON.stringify(userCourses),  // Convert user data to JSON string
-            success: deleteSCBF,
-            error: deleteECBF
-        });
-    }
-
-    function deleteSCBF(result) {
-        alert("Course removed");
-        console.log(result);
-        loadCourses(apiBaseUrl);
-    }
-
-    function deleteECBF(err) {
-        alert("Error occurred - course may have been deleted.");
-        console.log(err);
-        loadCourses(apiBaseUrl);
-    }
-
-
-
-    function filterByDuration() {
-        const fromDuration = parseFloat($('#duration-from').val());
-        const toDuration = parseFloat($('#duration-to').val());
-
-        $.ajax({
-            url: `${apiBaseUrl}/search?fromDuration=${fromDuration}&toDuration=${toDuration}`,
-            type: 'GET',
-            success: function (data) {
-                renderCourses(data);
-            },
-            error: function () {
-                console.log("Error fetching courses by duration.");
-            }
-        });
-    }
-
+}
 
 function filterByRating() {
     const fromRating = parseFloat($('#rating-from').val());
