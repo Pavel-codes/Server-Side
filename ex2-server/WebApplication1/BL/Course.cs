@@ -47,101 +47,16 @@
             return coursesList;
         }
 
-        public bool InsertNewCourse()
-        {
-            bool courseFlag = true;
-            bool instructorFlag = false;
-            if (coursesList.Count == 0)
-            {
-                courseFlag = true;
-            }
-            else
-            {
-                foreach (Course c in coursesList)
-                {
-                    if (c.Id == Id || c.Title.Equals(Title))
-                    {
-                        courseFlag = false;
-                        break;
-                    }
-                }
-            }
-            foreach (Instructor instructor in Instructor.InstructorList)
-            {
-                if (instructor.Id == InstructorsId)
-                {
-                    instructorFlag = true;
-                    break;
-                }
-            }
-
-
-            if (courseFlag && instructorFlag)
-            {
-                coursesList.Add(this);
-                return courseFlag;
-            }
-            //return courseFlag;
-            return courseFlag && instructorFlag;
-
-        }
-
 
         public bool Insert()
         {
-            // Ensure instructorList is initialized
-            if (coursesList == null)
+            foreach (Course course in coursesList)
             {
-                throw new NullReferenceException("instructorList is not initialized.");
+                if (course.Id == Id || course.Title.Equals(Title)) return false;
+
             }
-
-            bool courseInList = false;
-
-            // Check if the current instance already exists in the list
-            foreach (var course in coursesList)
-            {
-                if (course.Id == this.Id && course.Title.Equals(this.Title))
-                {
-                    courseInList = true;
-                    break;
-                }
-            }
-
-            // Add the current instance to the list if it does not already exist
-            if (!courseInList)
-            {
-                // Use a temporary list to avoid modifying the collection during enumeration
-                var tempCourseList = new List<Course>(CoursesList);
-                tempCourseList.Add(this);
-                CoursesList = tempCourseList;
-                return true;
-            }
-            return false;
-        }
-
-
-
-
-
-        //public bool Contains(List<Course> coursesList, Course course) // to be fixed \ deleted
-        //{
-        //    for(int i = 0; i < coursesList.Count; i++)
-        //    {
-        //        if (coursesList[i].Id == course.Id && coursesList[i].InstructorsId == course.InstructorsId)
-        //        {
-        //            return true; 
-        //        }
-        //    }
-        //    return false; // Course not found
-        //}
-
-        public Course getCourseByTitle(string courseName)
-        {
-            foreach(Course course in coursesList)
-            {
-                if (course.Title == courseName) return course;
-            }
-            return null; //
+            coursesList.Add(this);
+            return true;
         }
 
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
@@ -199,11 +114,7 @@
             if (!user.AddCourse(courseToAdd))
             {
                 Console.WriteLine($"Course {courseToAdd.title} is already added for user {userId}.");
-<<<<<<< HEAD
                 return false; 
-=======
-                return false;
->>>>>>> main
             }
             Console.WriteLine($"Course {courseToAdd.title} added for user {userId}.");
             return true;

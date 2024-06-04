@@ -34,7 +34,7 @@ $(document).ready(function () {
         }
 
         function postSCBF(user) {
-            //alert(user); // returns true
+            alert(user);
             alert("Registration successful.");
             window.location.href = "login.html";
 
@@ -50,24 +50,6 @@ $(document).ready(function () {
 // will become redundant - to be removed later!
 const loginPageBtn = document.getElementById("loginPageBtn");
 
-<<<<<<< HEAD
 loginPageBtn.addEventListener("click", function () {
     window.location.href = "../Pages/login.html";
 });
-=======
-
-
-// will become redundant - to be removed later!
-const loginPageBtn = document.getElementById("loginPageBtn");
-
-loginPageBtn.addEventListener("click", function () {
-    window.location.href = "../Pages/login.html";
-});
-
-
-$('#homeBtn').on('click', function () {
-    window.location.href = "../Pages/index.html";
-});
-
-
->>>>>>> main

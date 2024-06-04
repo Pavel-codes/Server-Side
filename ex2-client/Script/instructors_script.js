@@ -1,16 +1,13 @@
-﻿const api = `https://localhost:7076/api/Instructors`;
+﻿
 let instructorsData = []; 
 
 $(document).ready(function () {
     $.getJSON("../Data/Instructor .json", function (data) { 
         instructorsData.push(data); 
     });
-    //console.log(instructorsData);
+    console.log(instructorsData);
 });
 
-$('#homeBtn').on('click', function () {
-    window.location.href = "../Pages/index.html";
-});
 
 $("#insertIntsructorsBtn").on("click", function () {
 
@@ -35,7 +32,7 @@ $(document).ready(function () {
 });
 
 function insertInstructors(instructorsData) {
-    //api = `https://localhost:7076/api/Instructors`;
+    api = "https://localhost:7076/api/Instructors";
     var instructorDataToSend;
     instructorsData[0].forEach(instructor => {
         instructorDataToSend = {
@@ -48,6 +45,7 @@ function insertInstructors(instructorsData) {
         ajaxCall("POST", api, JSON.stringify(instructorDataToSend), postSCBF, postECBF);
 
     })
+ 
 }
 
 function postSCBF(result) {
@@ -61,6 +59,7 @@ function postECBF(err) {
 
 // Get all instructors function
 function getAllInstructors() {
+    api = "https://localhost:7076/api/Instructors";
     //ajaxCall("GET", api, postSCBF, postECBF)
     $.ajax({
         url: api,
@@ -69,10 +68,12 @@ function getAllInstructors() {
             renderInstructors(data);
         },
         error: function () {
-            alert("Error loading instructors.");
+            alert("Error loading courses.");
         }
     });
+
 }
+
 
 
 function renderInstructors(instructors) {

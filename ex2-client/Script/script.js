@@ -1,12 +1,6 @@
 ﻿var coursesData = [];
-<<<<<<< HEAD
 const udemy = "https://www.udemy.com";
 $(document).ready(function () {
-=======
-const udemy = "https://www.udemy.com"; 
-                    
-//localStorage.clear();
->>>>>>> main
 
     $.getJSON("../Data/Course.json", function (data) {
         renderCourses(data);
@@ -26,23 +20,13 @@ const udemy = "https://www.udemy.com";
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
-<<<<<<< HEAD
             courseElement.append('<button id="' + course.id + '">Add Course</button>');
             coursesContainer.append(courseElement);
-=======
-            courseElement.append('<button id="' + course.id + '">Add Course</button>'); 
-            coursesContainer.append(courseElement); 
->>>>>>> main
             addCourseClick(courseElement);
         });
     }
 
-<<<<<<< HEAD
     $('*').not('script, style').css({
-=======
-
-    $('*').not('script, style').css({ 
->>>>>>> main
         'padding': '5px',
         'margin-top': '5px',
         'margin-bottom': '5px'
@@ -52,32 +36,22 @@ const udemy = "https://www.udemy.com";
 const myCoursesBtn = document.getElementById("myCourses");
 
 myCoursesBtn.addEventListener("click", function () {
-<<<<<<< HEAD
     window.open("../Pages/MyCourses.html", "_blank");
-=======
-    window.location.href = "MyCourses.html";
->>>>>>> main
 });
 
 
 const instructorsBtn = document.getElementById("instructorsBtn");
 
 instructorsBtn.addEventListener("click", function () {
-    window.location.href = "instructorsPage.html";
+    window.open("../Pages/instructorsPage.html", "_blank");
+
 
 });
 
-<<<<<<< HEAD
 const loginBtn = document.getElementById("loginBtn");
 
 loginBtn.addEventListener("click", function () {
     window.open("../Pages/login.html", "_blank");
-=======
-const loginBtn = document.getElementById("loginBtn"); 
-
-loginBtn.addEventListener("click", function () { 
-    window.location.href = "login.html";
->>>>>>> main
 });
 
 const logoutbtn = document.getElementById("logoutBtn");
@@ -90,47 +64,34 @@ logoutBtn.addEventListener("click", function () {
 
 const Registerbtn = document.getElementById("Registerbtn");
 
-<<<<<<< HEAD
 Registerbtn.addEventListener("click", function () {
     window.open("../Pages/register.html", "_blank");
-=======
-Registerbtn.addEventListener("click", function () { 
-    window.location.href = "register.html";
->>>>>>> main
 });
 
 const Adminbtn = document.getElementById("Adminbtn");
 
 
 Adminbtn.addEventListener("click", function () {
-    window.location.href = "admin.html";
+    window.open("../Pages/admin.html", "_blank");
+
 
 });
 
 
-<<<<<<< HEAD
 function postSCBF(result) {
     if (!result) alert("Course is already in database"); // 
     else {
         alert("Course was added");
     }
     console.log(result);
-=======
+}
 
 
-if (!isLoggedIn()) {
-    $('#logoutBtn').hide();
-    $('#loginBtn').show();
-    $('#Registerbtn').show();
-    $('#myCourses').hide();
->>>>>>> main
+function postECBF(err) {
+
+    console.log(err);
 }
-else {
-    $('#logoutBtn').show();
-    $('#loginBtn').hide();
-    $('#Registerbtn').hide();
-    $('#myCourses').show();
-}
+
 
 function isLoggedIn() {
     return localStorage.getItem('user') !== null;
@@ -142,7 +103,7 @@ function addCourseClick(element) {
         if (event.target.tagName.toLowerCase() === 'button') {
             const buttonId = event.target.id;
             console.log("Button clicked with ID:", buttonId);
-            
+
             if (isLoggedIn()) {
                 const user = JSON.parse(localStorage.getItem('user')); //
                 addCourse(buttonId, user.id);
@@ -156,13 +117,9 @@ function addCourseClick(element) {
     });
 }
 
-<<<<<<< HEAD
 
 
 function addCourse(buttonId,userId) {
-=======
-function addCourse(buttonId, userId) {
->>>>>>> main
     console.log(buttonId);
     var courseDataToSend;
     coursesData.forEach(courseData => {
@@ -181,11 +138,7 @@ function addCourse(buttonId, userId) {
             };
 
             const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> main
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 
         }
@@ -193,17 +146,4 @@ function addCourse(buttonId, userId) {
             console.log("not found");
         }
     });
-}
-
-function postSCBF(result) {
-    if (!result) alert("Course is already in database"); // 
-    else {
-        alert("Course was added");
-    }
-    console.log(result);
-}
-
-
-function postECBF(err) {
-    console.log(err);
 }
