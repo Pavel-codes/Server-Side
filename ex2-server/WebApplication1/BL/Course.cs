@@ -121,27 +121,13 @@
 
 
 
-
-
-        //public bool Contains(List<Course> coursesList, Course course) // to be fixed \ deleted
-        //{
-        //    for(int i = 0; i < coursesList.Count; i++)
-        //    {
-        //        if (coursesList[i].Id == course.Id && coursesList[i].InstructorsId == course.InstructorsId)
-        //        {
-        //            return true; 
-        //        }
-        //    }
-        //    return false; // Course not found
-        //}
-
         public Course getCourseByTitle(string courseName)
         {
             foreach (Course course in coursesList)
             {
                 if (course.Title == courseName) return course;
             }
-            return null; //
+            return null; 
         }
 
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
@@ -190,7 +176,7 @@
 
 
 
-        public static bool AddCourseToUser(int userId, Course courseToAdd) //
+        public static bool AddCourseToUser(int userId, Course courseToAdd) 
         {
             User user = User.GetUser(userId);
             if (user == null)

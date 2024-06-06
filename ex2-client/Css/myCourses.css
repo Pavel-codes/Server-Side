@@ -9,16 +9,15 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Specific styles for My Courses page (optional) */
 #filter-rating-container,
 #filter-duration-container {
     display: flex;
-    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+    flex-wrap: wrap; 
     margin-bottom: 20px;
 }
 
 .filter-container label {
-    width: 120px; /* Set width for labels */
+    width: 120px; 
     margin-right: 10px;
 }
 
@@ -27,20 +26,43 @@ h1 {
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-bottom: 5px; /* Adjust spacing as needed */
+    margin-bottom: 5px; 
 }
 
 #courses-container {
-    /* Add styles for course display (list, grid, etc.) */
+    padding: 40px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
-
-/* Other styles from previous examples (buttons, etc.) */
 button {
-    background-color: #3498db; /* Blue button color */
+    background-color: #3498db;
     color: white;
-    /* ... other button styles */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
     button:hover {
         opacity: 0.8;
     }
+
+    #courses-container button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        #courses-container button:hover {
+            opacity: 0.8;
+        }

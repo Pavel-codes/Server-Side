@@ -30,7 +30,6 @@ $('#homeBtn').on('click', function () {
 });
 
 $('#loadCoursesBtn').on('click', function () { 
-    alert("Handler INSERT for `click` called.");
     $.getJSON("../Data/Course.json", function (Data) {
         CourseData.push(Data);
         insertCourses(CourseData[0]);
@@ -222,7 +221,5 @@ function getECBF(err) {
 
 $("#coursesBtn").on("click", function () {
 
-    alert("Handler INSERT for `click` called.");
-   /* insertCourses(CourseData);*/
     window.location.href = "createEditForm.html";
 });

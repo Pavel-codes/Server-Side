@@ -1,12 +1,44 @@
 const apiBaseUrl = "https://localhost:7076/api/Courses";
-
+const udemy = "https://www.udemy.com";
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
 
-
 $("#createCourseForm").submit(function (event) {
     event.preventDefault();
+
+    if ($('#id').val() < 1 || $('#id').val() > 2147483647) {
+        alert("Course Id Not Valid");
+        return;
+    }
+
+    //url validation atart with http or https and end with .com
+    var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
+    if (!urlPattern.test($('#url').val())) {
+        alert("Url Not Valid , Must Use This Structure https://example.com");
+        return;
+    }
+
+ 
+
+    if ($('#instructorsId').val() < 1 && $('#instructorsId').val() > 2147483647) {
+        alert("Instructors Id Not Valid");
+        return;
+    }
+  
+    var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
+    if (!imagePattern.test($('#image').val())) {
+        alert("Image Reference Not Valid, Must Use This Structure https://example.jpg/png");
+        return;
+    }
+  
+    if (isNaN($('#duration').val())) {
+        alert("Duration Not Valid, Must Be A Number");
+        return;
+    }
+
+
+  
     var newCourse = {
         id: $("#id").val(),
         title: $("#title").val(),

@@ -120,11 +120,10 @@ function addCourseClick(element) {
 }
 
 function addCourse(buttonId, userId) {
-    console.log(buttonId);
+    console.log(coursesData);
     var courseDataToSend;
     coursesData.forEach(courseData => {
         if (buttonId == courseData.id) {
-            console.log("inside if statement"); // done
             courseDataToSend = {
                 id: courseData.id,
                 title: courseData.title,
@@ -149,14 +148,12 @@ function addCourse(buttonId, userId) {
 }
 
 function postSCBF(result) {
-    if (!result) alert("Course is already in database"); // 
-    else {
-        alert("Course was added");
-    }
+    alert("Course Seccesfully Added");
     console.log(result);
 }
 
 
-function postECBF(err) {
+function postECBF(err) {    
+    alert("Course Already Added");
     console.log(err);
 }
