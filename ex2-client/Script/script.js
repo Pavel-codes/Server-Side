@@ -149,7 +149,7 @@ function addCourse(buttonId, userId) {
 }
 
 function postSCBF(result) {
-    if (!result) alert("Course is already in database"); // 
+    if (!result) alert("Course is already in database"); 
     else {
         alert("Course was added");
     }
@@ -158,5 +158,6 @@ function postSCBF(result) {
 
 
 function postECBF(err) {
+    alert("eror");
     console.log(err);
 }

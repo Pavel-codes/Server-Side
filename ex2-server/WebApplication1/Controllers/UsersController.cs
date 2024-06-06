@@ -66,20 +66,20 @@ namespace WebApplication1.Controllers
         //    }
         //}
 
-        [HttpGet("search")]
-        public IEnumerable<Course> GetByDurationRange(double fromDuration, double toDuration)
-        {
-            Course courseByDuration = new Course();
+        //[HttpGet("search")]
+        //public IEnumerable<Course> GetByDurationRange(double fromDuration, double toDuration)
+        //{
+        //    Course courseByDuration = new Course();
 
-            return courseByDuration.GetByDurationRange(fromDuration, toDuration);
-        }
+        //    return courseByDuration.GetByDurationRange(fromDuration, toDuration);
+        //}
 
-        [HttpGet("searchByRouting/fromRating/{fromRating}/toRating/{toRating}")]
-        public IEnumerable<Course> GetByRatingRange(double fromRating, double toRating)
-        {
-            Course courseByRating = new Course();
+        //[HttpGet("searchByRouting/fromRating/{fromRating}/toRating/{toRating}")]
+        //public IEnumerable<Course> GetByRatingRange(double fromRating, double toRating)
+        //{
+        //    Course courseByRating = new Course();
 
-            return courseByRating.GetByRatingRange(fromRating, toRating);
-        }
+        //    return courseByRating.GetByRatingRange(fromRating, toRating);
+        //}
     }
 }

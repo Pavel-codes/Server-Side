@@ -10,6 +10,7 @@ namespace WebApplication1.Controllers
     public class CoursesController : ControllerBase
     {
         Course course = new Course();
+
         // GET: api/<CoursesController>
         [HttpGet]
         public IEnumerable<Course> Get()
@@ -45,16 +46,14 @@ namespace WebApplication1.Controllers
                 return NotFound("Course could not be inserted.");
             }
             return Ok("Course inserted successfully.");
-
         }
 
-        //POST api/<CoursesController>
+        // POST api/<CoursesController>
         [HttpPost]
         public bool Post([FromBody] Course value)
         {
             return value.Insert();
         }
-
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
@@ -91,12 +90,23 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [HttpGet("search")]
-        public IEnumerable<Course> GetByDurationRange(double fromDuration, double toDuration)
+        [HttpGet("searchByDurationForUser/{userId}")]
+        public IActionResult GetByDurationRangeForUser(int userId, [FromQuery] double fromDuration, [FromQuery] double toDuration)
         {
-            Course courseByDuration = new Course();
+            try
+            {
+                List<Course> courses = Course.GetByDurationRangeForUser(userId, fromDuration, toDuration);
 
-            return courseByDuration.GetByDurationRange(fromDuration, toDuration);
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound("No courses found for the specified duration range and user.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
         [HttpGet("searchByRouting/fromRating/{fromRating}/toRating/{toRating}")]
@@ -123,8 +133,6 @@ namespace WebApplication1.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
-
-
 
         [HttpPost("addCourseToUser/{userId}")]
         public IActionResult AddCourseToUser(int userId, [FromBody] Course course)

@@ -1,5 +1,5 @@
 ﻿var CourseData = [];
-const udemy = "https://www.udemy.com"; 
+const udemy = "https://www.udemy.com";
 const instructorsAPI = `https://localhost:7076/api/Instructors`;
 var instructorsData = [];
 
@@ -10,7 +10,7 @@ $('document').ready(function () {
     if (struser) {
         user = JSON.parse(localStorage.getItem('user'));
     }
-    
+
     if (user && user.isAdmin) {
         $('#loadCoursesBtn').show();
     } else {
@@ -22,14 +22,14 @@ $('document').ready(function () {
     $.getJSON("../Data/Instructor .json", function (data) {
         instructorsData.push(data);
     });
-    
+
 });
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
 
-$('#loadCoursesBtn').on('click', function () { 
+$('#loadCoursesBtn').on('click', function () {
     alert("Handler INSERT for `click` called.");
     $.getJSON("../Data/Course.json", function (Data) {
         CourseData.push(Data);
@@ -223,6 +223,6 @@ function getECBF(err) {
 $("#coursesBtn").on("click", function () {
 
     alert("Handler INSERT for `click` called.");
-    insertCourses(CourseData);
-    window.open("../Pages/createEditForm.html", "_blank");
+    /* insertCourses(CourseData);*/
+    window.location.href = "createEditForm.html";
 });

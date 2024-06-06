@@ -1,9 +1,14 @@
 const apiBaseUrl = "https://localhost:7076/api/Courses";
 
+$('#homeBtn').on('click', function () {
+    window.location.href = "../Pages/index.html";
+});
 
-$("#createCourseForm").submit(function () {
+
+$("#createCourseForm").submit(function (event) {
+    event.preventDefault();
     alert("Handler Submit for `click` called.")
-    let newCourse = {
+    var newCourse = {
         id: $("#id").val(),
         title: $("#title").val(),
         url: $("#url").val(),
@@ -14,19 +19,18 @@ $("#createCourseForm").submit(function () {
         duration: $("#duration").val(),
         lastUpdate: new Date().toISOString() // change the date format
     }
-
     ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), getSCBF, getECBF);
-    //return false;
+
 });
 
 
 function getSCBF(result) {
-    console.log("added successfully");
-    alert("Course created successfully");
     console.log(result);
 }
 
 function getECBF(err) {
-    alert("The course already exists or Intructor not exists. Please try again.");
-    console.log(err);
+    if (err.status == 200)
+        alert("Course Seccesfully Added");
+    if (err.status == 404)
+        alert("Course already exists/Instructor not Exist");
 }
