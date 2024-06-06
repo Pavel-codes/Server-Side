@@ -56,13 +56,6 @@ document.addEventListener('click', function (event) {
     }
 });
 
-const applyRatingFilterButton = document.getElementById("apply-rating-filter");
-
-applyRatingFilterButton.addEventListener("click", function () {
-    console.log("Rating filter applied!");
-    filterByRating();
-});
-
 function removeCourse(userId, courseId) {
     const api = `${apiBaseUrl}/Courses/deleteByCourseFromUserList/${userId}?coursid=${courseId}`;
     $.ajax({
@@ -113,12 +106,20 @@ function getUserId() {
     return id;
 }
 
-function filterByRating() {
+const applyRatingFilterButton = document.getElementById("apply-rating-filter");
+
+applyRatingFilterButton.addEventListener("click", function () {
+    console.log("Rating filter applied!");
+    const userId = getUserId(); // Assuming you have a function to get the user ID
+    filterByRating(userId);
+});
+
+function filterByRating(userId) {
     const fromRating = parseFloat($('#rating-from').val());
     const toRating = parseFloat($('#rating-to').val());
 
     $.ajax({
-        url: `${apiBaseUrl}/Courses/searchByRouting/fromRating/${fromRating}/toRating/${toRating}`,
+        url: `${apiBaseUrl}/Courses/searchByRatingForUser/${userId}?fromRating=${fromRating}&toRating=${toRating}`,
         type: 'GET',
         success: function (data) {
             renderCourses(data);

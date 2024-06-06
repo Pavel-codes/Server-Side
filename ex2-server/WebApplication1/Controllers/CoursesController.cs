@@ -36,6 +36,18 @@ namespace WebApplication1.Controllers
             return Ok(course);
         }
 
+        [HttpGet("user/{userId}")] //
+        public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
+        {
+            var user = WebApplication1.BL.User.GetUser(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var courses = user.GetCourses();
+            return Ok(courses);
+        }
+
         // POST api/<CoursesController>
         [HttpPost("NewCourse")]
         public IActionResult PostNewCourse([FromBody] Course value)
@@ -90,31 +102,14 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [HttpGet("searchByDurationForUser/{userId}")]
-        public IActionResult GetByDurationRangeForUser(int userId, [FromQuery] double fromDuration, [FromQuery] double toDuration)
+        [HttpPost("addCourseToUser/{userId}")]
+        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
         {
-            try
+            if (Course.AddCourseToUser(userId, course))
             {
-                List<Course> courses = Course.GetByDurationRangeForUser(userId, fromDuration, toDuration);
-
-                if (courses.Any())
-                {
-                    return Ok(courses);
-                }
-                return NotFound("No courses found for the specified duration range and user.");
+                return Ok("Course added to user successfully");
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-        }
-
-        [HttpGet("searchByRouting/fromRating/{fromRating}/toRating/{toRating}")]
-        public IEnumerable<Course> GetByRatingRange(double fromRating, double toRating)
-        {
-            Course courseByRating = new Course();
-
-            return courseByRating.GetByRatingRange(fromRating, toRating);
+            return BadRequest("Failed to add course to user");
         }
 
         [HttpDelete("deleteByCourseFromUserList/{userId}")]
@@ -133,27 +128,41 @@ namespace WebApplication1.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
-
-        [HttpPost("addCourseToUser/{userId}")]
-        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
+        [HttpGet("searchByDurationForUser/{userId}")]
+        public IActionResult GetByDurationRangeForUser(int userId, [FromQuery] double fromDuration, [FromQuery] double toDuration)
         {
-            if (Course.AddCourseToUser(userId, course))
+            try
             {
-                return Ok("Course added to user successfully");
+                List<Course> courses = Course.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound("No courses found for the specified duration range and user.");
             }
-            return BadRequest("Failed to add course to user");
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
-
-        [HttpGet("user/{userId}")] //
-        public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
+        [HttpGet("searchByRatingForUser/{userId}")]
+        public IActionResult GetByRatingRangeForUser(int userId, [FromQuery] double fromRating, [FromQuery] double toRating)
         {
-            var user = WebApplication1.BL.User.GetUser(userId);
-            if (user == null)
+            try
             {
-                return NotFound();
+                List<Course> courses = Course.GetByRatingRangeForUser(userId, fromRating, toRating);
+
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound("No courses found for the specified rating range and user.");
             }
-            var courses = user.GetCourses();
-            return Ok(courses);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
     }
 }

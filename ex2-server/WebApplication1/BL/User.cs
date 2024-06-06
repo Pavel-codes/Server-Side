@@ -133,7 +133,7 @@
             return selectedCourses;
         }
 
-        public List<Course> GetByRatingRange(double fromRating, double toRating)
+        public List<Course> GetByRatingRangeForCourses(double fromRating, double toRating)
         {
             List<Course> selectedCourses = new List<Course>();
             foreach (Course course in MyCourses)
@@ -143,5 +143,6 @@
             }
             return selectedCourses;
         }
+
     }
 }
