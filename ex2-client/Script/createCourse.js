@@ -7,7 +7,6 @@ $('#homeBtn').on('click', function () {
 
 $("#createCourseForm").submit(function (event) {
     event.preventDefault();
-    alert("Handler Submit for `click` called.")
     var newCourse = {
         id: $("#id").val(),
         title: $("#title").val(),

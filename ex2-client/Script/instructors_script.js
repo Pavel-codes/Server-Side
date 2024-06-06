@@ -14,12 +14,12 @@ $('#homeBtn').on('click', function () {
 
 $("#insertIntsructorsBtn").on("click", function () {
 
-    alert("Handler INSERT for `click` called.");
+    console.log("Inserting instructors");
     insertInstructors(instructorsData);
 });
 
 $("#getInstructorsBtn").on("click", function () {
-    alert("Handler GET for `click` called.");
+    console.log("Displaying instructors");
     getAllInstructors();
 });
 
