@@ -88,6 +88,10 @@ namespace WebApplication1.Controllers
                 courseToUpdate.Rating = updatedCourse.Rating;
                 courseToUpdate.NumberOfReviews = updatedCourse.NumberOfReviews;
                 courseToUpdate.InstructorsId = updatedCourse.InstructorsId;
+                if (string.IsNullOrEmpty(updatedCourse.ImageReference))
+                {
+                    updatedCourse.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
+                }
                 courseToUpdate.ImageReference = updatedCourse.ImageReference;
                 courseToUpdate.Duration = updatedCourse.Duration;
                 courseToUpdate.LastUpdate = updatedCourse.LastUpdate;

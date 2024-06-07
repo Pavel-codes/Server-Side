@@ -122,8 +122,7 @@ function addToDataList(data) {
 
 const displayCourses = $("#displayCourses");
 
-$("#courseNamesList").on('change', function () {
-    //addCoursesToDataList();
+$("#courseNamesList").on('input', function () {
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
     // clear the display area on change
     displayCourses.empty();
@@ -131,7 +130,7 @@ $("#courseNamesList").on('change', function () {
     const editForm = $('<form id="editForm"></form>');
     displayCourses.append(editForm);
 
-    console.log(CourseData);
+    //console.log(CourseData);
     if (CourseData && CourseData.length > 0) {
         CourseData[0].forEach(function (course) {
             const courseId = course.id;
@@ -140,6 +139,7 @@ $("#courseNamesList").on('change', function () {
             const courseInstructorID = course.instructors_id;
 
             if (course.title == courseTitle) {
+                console.log("inside if");
                 displayCourses.append('<img src=' + course.image + '>');
                 displayCourses.append('<p>Course ID: ' + course.id + '</p>');
                 displayCourses.append('<p>Instructors ID: ' + course.instructors_id + '</p>'); //
@@ -161,10 +161,31 @@ $("#courseNamesList").on('change', function () {
                 editForm.on("submit", function (event) {
                     event.preventDefault(); // Prevent the form from submitting the default way
 
+                    var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
+                    var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
+                    var durationPattern = /^\d+(\.\d+)?\s+\w+$/;
+
+
                     const newTitle = $('#selectedTitle').val();
+
                     const newDuration = $('#selectedDuration').val();
+                    if (!durationPattern.test($('#selectedDuration').val())) {
+                        alert("Duration is not valid");
+                        return;
+                    }
                     const newUrl = $('#selectedUrl').val();
+                    if (!urlPattern.test($('#selectedUrl').val())) {
+                        alert("Url Not Valid , Must Use This Structure https://example.com");
+                        return;
+                    }
                     const newImageUrl = $('#selectedImageUrl').val();
+                    if (newImageUrl == "") {
+                        console.log(newImageUrl);
+                    }
+                    else if (!imagePattern.test($('#selectedImageUrl').val())) {
+                        alert("Image Reference Not Valid, Must Use This Structure https://example.jpg/png");
+                        return;
+                    }
                     const newDate = getCurrentDate();
                     const updatedCourseData = {
                         id: courseId,
@@ -192,6 +213,24 @@ $("#courseNamesList").on('change', function () {
 });
 
 
+function updateCourseData() {
+    const updatedCourseData = [];
+    let api = `https://localhost:7076/api/Courses/`;
+    $.ajax({
+        url: api,
+        type: 'GET',
+        success: function (data) {
+            updatedCourseData.push(data);
+            addToDataList(data);
+            CourseData = updatedCourseData;
+            console.log(CourseData);
+        },
+        error: function () {
+            alert("Error loading courses.");
+        }
+    });
+}
+
 function getSCBF(result) {
     console.log("changed successfully");
     alert("Course changed successfully");
@@ -199,6 +238,8 @@ function getSCBF(result) {
 }
 
 function getECBF(err) {
+    updateCourseData();
+
     alert("Unable to change");
     console.log(err);
 }
