@@ -41,10 +41,64 @@
 
         public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
 
-
         public List<Course> Read()
         {
             return coursesList;
+        }
+
+        public static bool AddCourseToUser(int userId, Course courseToAdd)
+        {
+            User user = User.GetUser(userId);
+            if (user == null)
+            {
+                Console.WriteLine($"User with ID {userId} not found.");
+                return false;
+            }
+            if (!user.AddCourse(courseToAdd))
+            {
+                Console.WriteLine($"Course {courseToAdd.title} is already added for user {userId}.");
+                return false;
+            }
+            Console.WriteLine($"Course {courseToAdd.title} added for user {userId}.");
+            return true;
+        }
+
+        public static bool DeleteCourse(int userId, int courseidToDelete)
+        {
+            User user = User.GetUser(userId);
+            if (user == null)
+            {
+                Console.WriteLine($"User with ID {userId} not found.");
+                return false;
+            }
+            else
+            {
+                user.DeleteCourseById(courseidToDelete);
+                return true;
+            }
+        }
+
+        public static List<Course> GetByRatingRangeForUser(int userId, double fromRating, double toRating)
+        {
+            User user = User.GetUser(userId);
+            if (user == null)
+            {
+                throw new Exception($"User with ID {userId} not found.");
+            }
+
+            return user.GetByRatingRangeForCourses(fromRating, toRating);
+        }
+
+
+        public static List<Course> GetByDurationRangeForUser(int userId, double fromDuration, double toDuration)
+        {
+            User user = User.GetUser(userId);
+            if (user == null)
+            {
+                throw new Exception($"User with ID {userId} not found.");
+            }
+
+            return user.GetByDurationRange(fromDuration, toDuration);
         }
 
         public bool InsertNewCourse()
@@ -75,29 +129,23 @@
                 }
             }
 
-
             if (courseFlag && instructorFlag)
             {
                 coursesList.Add(this);
                 return true;
             }
             return false;
-            //return courseFlag && instructorFlag;
-
         }
-
 
         public bool Insert()
         {
-            // Ensure instructorList is initialized
             if (coursesList == null)
             {
-                throw new NullReferenceException("instructorList is not initialized.");
+                throw new NullReferenceException("coursesList is not initialized.");
             }
 
             bool courseInList = false;
 
-            // Check if the current instance already exists in the list
             foreach (var course in coursesList)
             {
                 if (course.Id == this.Id && course.Title.Equals(this.Title))
@@ -107,10 +155,8 @@
                 }
             }
 
-            // Add the current instance to the list if it does not already exist
             if (!courseInList)
             {
-                // Use a temporary list to avoid modifying the collection during enumeration
                 var tempCourseList = new List<Course>(CoursesList);
                 tempCourseList.Add(this);
                 CoursesList = tempCourseList;
@@ -119,82 +165,13 @@
             return false;
         }
 
-
-
         public Course getCourseByTitle(string courseName)
         {
             foreach (Course course in coursesList)
             {
                 if (course.Title == courseName) return course;
             }
-            return null; 
-        }
-
-        public List<Course> GetByDurationRange(double fromDuration, double toDuration)
-        {
-            List<Course> selectedCourses = new List<Course>();
-            foreach (Course course in coursesList)
-            {
-                string[] duration = course.Duration.Split(" ");
-                string bit = duration[0];
-                if (double.Parse(bit) >= fromDuration && double.Parse(bit) <= toDuration)
-                    selectedCourses.Add(course);
-            }
-            return selectedCourses;
-
-        }
-
-
-        public List<Course> GetByRatingRange(double fromRating, double toRating)
-        {
-            List<Course> selectedCourses = new List<Course>();
-            foreach (Course course in coursesList)
-            {
-                if (course.Rating >= fromRating && course.Rating <= toRating)
-                    selectedCourses.Add(course);
-            }
-            return selectedCourses;
-        }
-
-
-
-        public static bool DeleteCourse(int userId, int courseidToDelete)
-        {
-            User user = User.GetUser(userId);
-            if (user == null)
-            {
-                Console.WriteLine($"User with ID {userId} not found.");
-                return false;
-            }
-            else
-            {
-                user.DeleteCourseById(courseidToDelete);
-                return true;
-            }
-        }
-
-
-
-
-        public static bool AddCourseToUser(int userId, Course courseToAdd) 
-        {
-            User user = User.GetUser(userId);
-            if (user == null)
-            {
-                Console.WriteLine($"User with ID {userId} not found.");
-                return false;
-            }
-            if (!user.AddCourse(courseToAdd))
-            {
-                Console.WriteLine($"Course {courseToAdd.title} is already added for user {userId}.");
-                return false;
-            }
-            Console.WriteLine($"Course {courseToAdd.title} added for user {userId}.");
-            return true;
+            return null;
         }
     }
-
-
-
-
 }

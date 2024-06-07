@@ -1,5 +1,5 @@
 ﻿var CourseData = [];
-const udemy = "https://www.udemy.com"; 
+const udemy = "https://www.udemy.com";
 const instructorsAPI = `https://localhost:7076/api/Instructors`;
 var instructorsData = [];
 
@@ -22,14 +22,13 @@ $('document').ready(function () {
     $.getJSON("../Data/Instructor .json", function (data) {
         instructorsData.push(data);
     });
-    
 });
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
 
-$('#loadCoursesBtn').on('click', function () { 
+$('#loadCoursesBtn').on('click', function () {
     $.getJSON("../Data/Course.json", function (Data) {
         CourseData.push(Data);
         insertCourses(CourseData[0]);
@@ -139,7 +138,6 @@ $("#courseNamesList").on('change', function () {
             const courseRating = course.rating;
             const courseReviews = course.num_reviews;
             const courseInstructorID = course.instructors_id;
-            const courseImgRef = course.image;
 
             if (course.title == courseTitle) {
                 displayCourses.append('<img src=' + course.image + '>');
@@ -152,8 +150,10 @@ $("#courseNamesList").on('change', function () {
                 editForm.append('<input type="text" id="selectedTitle" required><br>');
                 editForm.append('<label for="duration">Duration: </label>');
                 editForm.append('<input type="text" id="selectedDuration" required><br>');
-                editForm.append('<label for="title">Url: </label>');
+                editForm.append('<label for="title">Course link: </label>');
                 editForm.append('<input type="text" id="selectedUrl" required><br>');
+                editForm.append('<label for="title">Image link: </label>');
+                editForm.append('<input type="text" id="selectedImageUrl"><br>');
                 editForm.append('<button type="submit" id="selectedSubmission">Submit changes</button>');
                 displayCourses.append(editForm);
 
@@ -164,7 +164,8 @@ $("#courseNamesList").on('change', function () {
                     const newTitle = $('#selectedTitle').val();
                     const newDuration = $('#selectedDuration').val();
                     const newUrl = $('#selectedUrl').val();
-                    const newDate = new Date().toISOString();
+                    const newImageUrl = $('#selectedImageUrl').val();
+                    const newDate = getCurrentDate();
                     const updatedCourseData = {
                         id: courseId,
                         title: newTitle,
@@ -172,7 +173,7 @@ $("#courseNamesList").on('change', function () {
                         rating: courseRating,
                         numberOfReviews: courseReviews,
                         instructorsId: courseInstructorID,
-                        imageReference: courseImgRef,
+                        imageReference: newImageUrl,
                         duration: newDuration,
                         lastUpdate: newDate
                     };
@@ -202,24 +203,17 @@ function getECBF(err) {
     console.log(err);
 }
 
-//function updateCourse(courseId, updatedData) {
-
-//    $.ajax({
-//        url: `https://localhost:7076/api/Courses/${courseId}`,
-//        type: 'PUT',
-//        dataType: 'json', // Expect JSON response from server
-//        data: JSON.stringify(updatedData), // Convert updated data to JSON string
-//        success: function (response) {
-//            console.log("Course updated successfully:", response);
-//        },
-//        error: function (error) {
-//            console.error("Error updating course:", error);
-//        }
-//    });
-//}
-
-
 $("#coursesBtn").on("click", function () {
 
     window.location.href = "createEditForm.html";
 });
+
+
+function getCurrentDate() {
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+}

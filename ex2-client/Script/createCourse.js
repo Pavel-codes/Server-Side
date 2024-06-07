@@ -1,5 +1,6 @@
 const apiBaseUrl = "https://localhost:7076/api/Courses";
 const udemy = "https://www.udemy.com";
+
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
@@ -37,8 +38,6 @@ $("#createCourseForm").submit(function (event) {
         return;
     }
 
-
-  
     var newCourse = {
         id: $("#id").val(),
         title: $("#title").val(),
@@ -48,7 +47,7 @@ $("#createCourseForm").submit(function (event) {
         instructorsId: $("#instructorsId").val(),
         imageReference: $("#image").val(),
         duration: $("#duration").val(),
-        lastUpdate: new Date().toISOString() // change the date format
+        lastUpdate: getCurrentDate() // change the date format - fixed
     }
     ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), getSCBF, getECBF);
   
@@ -64,4 +63,14 @@ function getECBF(err) {
         alert("Course Seccesfully Added");
     if (err.status == 404)
         alert("Course already exists/Instructor not Exist");
+}
+
+
+function getCurrentDate() {
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
 }

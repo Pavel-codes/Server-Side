@@ -36,7 +36,6 @@
             this.isActive = true;
         }
 
-
         public User(int id, string name, string email, string password, bool isAdmin, bool isActive)
         {
             this.id = id;
@@ -47,8 +46,7 @@
             this.isActive = isActive;
         }
 
-
-        public List<User> GetUsers() //
+        public List<User> GetUsers()
         {
             return usersList;
         }
@@ -58,7 +56,7 @@
             return usersList.FirstOrDefault(u => u.Id == userId);
         }
 
-        public List<Course> GetCourses() //
+        public List<Course> GetCourses()
         {
             return myCourses;
         }
@@ -87,16 +85,21 @@
             return null;
         }
 
-        public bool AddCourse(Course course) //
+        public bool AddCourse(Course course)
         {
-            if (myCourses.Contains(course))
+            if (myCourses.Any(c => c.Id == course.Id))
             {
                 return false;
             }
 
+            if (myCourses.Any(c => c.Title == course.Title))
+            {
+                return false;
+            }
             myCourses.Add(course);
             return true;
         }
+
         public void DeleteCourseById(int courseid)
         {
             bool found = false;
@@ -115,7 +118,6 @@
             }
         }
 
-
         public List<Course> GetByDurationRange(double fromDuration, double toDuration)
         {
             List<Course> selectedCourses = new List<Course>();
@@ -124,13 +126,14 @@
                 string[] duration = course.Duration.Split(" ");
                 string bit = duration[0];
                 if (double.Parse(bit) >= fromDuration && double.Parse(bit) <= toDuration)
+                {
                     selectedCourses.Add(course);
+                }
             }
             return selectedCourses;
         }
 
-
-        public List<Course> GetByRatingRange(double fromRating, double toRating)
+        public List<Course> GetByRatingRangeForCourses(double fromRating, double toRating)
         {
             List<Course> selectedCourses = new List<Course>();
             foreach (Course course in MyCourses)
@@ -140,5 +143,6 @@
             }
             return selectedCourses;
         }
+
     }
 }

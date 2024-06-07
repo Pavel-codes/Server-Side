@@ -26,3 +26,7 @@ button {
     button:hover {
         opacity: 0.8; 
     }
+
+#selectedTitle, #selectedDuration, #selectedUrl, #selectedImageUrl {
+    margin-bottom: 15px;
+}

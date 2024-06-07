@@ -3,7 +3,7 @@ var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
 
-const apiBaseUrl = "https://localhost:7076/api/Users";
+const apiBaseUrl = "https://localhost:7076/api";
 
 $(document).ready(function () {
     loadCourses(apiBaseUrl);
@@ -19,7 +19,7 @@ $('#homeBtn').on('click', function () {
 
 function loadCourses(api) {
     $.ajax({
-        url: `https://localhost:7076/api/Users/${id}`,
+        url: `${apiBaseUrl}/Users/${id}`,
         type: 'GET',
         success: function (data) {
             myCourses.push(data);
@@ -56,22 +56,8 @@ document.addEventListener('click', function (event) {
     }
 });
 
-const applyRatingFilterButton = document.getElementById("apply-rating-filter");
-
-applyRatingFilterButton.addEventListener("click", function () {
-    console.log("Rating filter applied!");
-    filterByRating();
-});
-
-const applyDurationFilterButton = document.getElementById("apply-duration-filter");
-
-applyDurationFilterButton.addEventListener("click", function () {
-    console.log("Duration filter applied!"); // Example action
-    filterByDuration();
-});
-
 function removeCourse(userId, courseId) {
-    const api = `https://localhost:7076/api/Courses/deleteByCourseFromUserList/${userId}?coursid=${courseId}`;
+    const api = `${apiBaseUrl}/Courses/deleteByCourseFromUserList/${userId}?coursid=${courseId}`;
     $.ajax({
         url: api,
         type: 'DELETE',
@@ -92,12 +78,20 @@ function deleteECBF(err) {
     loadCourses(apiBaseUrl);
 }
 
-function filterByDuration() {
+const applyDurationFilterButton = document.getElementById("apply-duration-filter");
+
+applyDurationFilterButton.addEventListener("click", function () {
+    const userId = getUserId();
+    console.log("Duration filter applied!");
+    filterByDuration(userId);
+});
+
+function filterByDuration(userId) {
     const fromDuration = parseFloat($('#duration-from').val());
     const toDuration = parseFloat($('#duration-to').val());
 
     $.ajax({
-        url: `${apiBaseUrl}/search?fromDuration=${fromDuration}&toDuration=${toDuration}`,
+        url: `${apiBaseUrl}/Courses/searchByDurationForUser/${userId}?fromDuration=${fromDuration}&toDuration=${toDuration}`,
         type: 'GET',
         success: function (data) {
             renderCourses(data);
@@ -108,12 +102,24 @@ function filterByDuration() {
     });
 }
 
-function filterByRating() {
+function getUserId() {
+    return id;
+}
+
+const applyRatingFilterButton = document.getElementById("apply-rating-filter");
+
+applyRatingFilterButton.addEventListener("click", function () {
+    console.log("Rating filter applied!");
+    const userId = getUserId(); // Assuming you have a function to get the user ID
+    filterByRating(userId);
+});
+
+function filterByRating(userId) {
     const fromRating = parseFloat($('#rating-from').val());
     const toRating = parseFloat($('#rating-to').val());
 
     $.ajax({
-        url: `${apiBaseUrl}/searchByRouting/fromRating/${fromRating}/toRating/${toRating}`,
+        url: `${apiBaseUrl}/Courses/searchByRatingForUser/${userId}?fromRating=${fromRating}&toRating=${toRating}`,
         type: 'GET',
         success: function (data) {
             renderCourses(data);
