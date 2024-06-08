@@ -1,19 +1,33 @@
 ﻿var CourseData = [];
+var coursesFromServer = [];
 const udemy = "https://www.udemy.com";
 const instructorsAPI = `https://localhost:7076/api/Instructors`;
 var instructorsData = [];
 
 
+
 $('document').ready(function () {
     const struser = localStorage.getItem('user');
     let user = undefined;
+    const areLoaded = sessionStorage.getItem('coursesLoaded');
     if (struser) {
         user = JSON.parse(localStorage.getItem('user'));
     }
-    
+
+    if (areLoaded) {
+        var coursesLoaded = JSON.parse(sessionStorage.getItem('coursesLoaded'));
+        console.log(coursesLoaded);
+    }
+
     if (user && user.isAdmin) {
+        if (coursesLoaded) {
+            $('#loadCoursesBtn').hide();
+            addCoursesToDataList();
+            return;
+        }
         $('#loadCoursesBtn').show();
-    } else {
+    }
+    else {
         $('#loadCoursesBtn').hide();
         alert("You are not authorized to access this page.");
         window.location.href = "index.html";
@@ -32,10 +46,12 @@ $('#loadCoursesBtn').on('click', function () {
     $.getJSON("../Data/Course.json", function (Data) {
         CourseData.push(Data);
         insertCourses(CourseData[0]);
+        sessionStorage.setItem('coursesLoaded', true);
+        $('#loadCoursesBtn').hide();
+        
     });
     insertInstructors();
     setTimeout(addCoursesToDataList, 1000);
-    $('#loadCoursesBtn').prop('disabled', true);
 });
 
 
@@ -51,7 +67,7 @@ function insertInstructors() {
             image: instructor.image_100x100,
             jobTitle: instructor.job_title
         };
-        ajaxCall("POST", instructorsAPI, JSON.stringify(instructorDataToSend), postInstructorsSCBF, postInstructorsECBF);
+        ajaxCall("POST", instructorsAPI, JSON.stringify(instructorDataToSend), false, postInstructorsSCBF, postInstructorsECBF); //async
     })
 }
 
@@ -71,7 +87,7 @@ function insertCourses(CourseData) {
             duration: course.duration,
             lastUpdate: course.last_update_date
         };
-        ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF);
+        ajaxCall("POST", api, JSON.stringify(courseDataToSend), false, postSCBF, postECBF);
     });
 }
 
@@ -84,7 +100,6 @@ function postInstructorsECBF(err) {
 }
 
 
-
 function postSCBF(result) {
     console.log(result);
 }
@@ -94,11 +109,15 @@ function postECBF(err) {
 }
 
 function addCoursesToDataList() {
+    displayCourses.empty();
     api = "https://localhost:7076/api/Courses";
+    coursesFromServer.length = 0;
     $.ajax({
         url: api,
         type: 'GET',
+        async: false,
         success: function (data) {
+            coursesFromServer.push(data);
             addToDataList(data);
         },
         error: function () {
@@ -110,7 +129,7 @@ function addCoursesToDataList() {
 const courseDataList = document.getElementById("courseDataList");
 
 function addToDataList(data) {
-    //courseDataList.innerHTML = ""; // Clear existing options
+    //displayCourses.empty();
     for (const course of data) {
         const option = document.createElement('option');
         option.value = course.title; // Set the value attribute
@@ -121,45 +140,41 @@ function addToDataList(data) {
 
 
 const displayCourses = $("#displayCourses");
-
 $("#courseNamesList").on('input', function () {
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
     // clear the display area on change
     displayCourses.empty();
-    //create new form 
     const editForm = $('<form id="editForm"></form>');
+    console.log(coursesFromServer);
     displayCourses.append(editForm);
-
-    //console.log(CourseData);
-    if (CourseData && CourseData.length > 0) {
-        CourseData[0].forEach(function (course) {
+    if (coursesFromServer && coursesFromServer.length > 0) {
+        coursesFromServer[0].forEach(function (course) {
             const courseId = course.id;
             const courseRating = course.rating;
-            const courseReviews = course.num_reviews;
-            const courseInstructorID = course.instructors_id;
+            const courseReviews = course.numberOfReviews;
+            const courseInstructorID = course.instructorsId;
 
             if (course.title == courseTitle) {
-                console.log("inside if");
-                displayCourses.append('<img src=' + course.image + '>');
+                displayCourses.append('<img src=' + course.imageReference + '>');
                 displayCourses.append('<p>Course ID: ' + course.id + '</p>');
-                displayCourses.append('<p>Instructors ID: ' + course.instructors_id + '</p>'); //
+                displayCourses.append('<p>Instructors ID: ' + course.instructorsId + '</p>'); //
                 displayCourses.append('<p>Rating: ' + course.rating + '</p>'); //
-                displayCourses.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>'); //
+                displayCourses.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>'); //
 
-                editForm.append('<label for="title">Title: </label>');
+                editForm.append('<label for="Title">Title: </label>');
                 editForm.append('<input type="text" id="selectedTitle" required><br>');
-                editForm.append('<label for="duration">Duration: </label>');
+                editForm.append('<label for="Duration">Duration: </label>');
                 editForm.append('<input type="text" id="selectedDuration" required><br>');
-                editForm.append('<label for="title">Course link: </label>');
+                editForm.append('<label for="Course link">Course link: </label>');
                 editForm.append('<input type="text" id="selectedUrl" required><br>');
-                editForm.append('<label for="title">Image link: </label>');
+                editForm.append('<label for="Image link">Image link: </label>');
                 editForm.append('<input type="text" id="selectedImageUrl"><br>');
                 editForm.append('<button type="submit" id="selectedSubmission">Submit changes</button>');
                 displayCourses.append(editForm);
 
                 // Use the submit event of the form
                 editForm.on("submit", function (event) {
-                    event.preventDefault(); // Prevent the form from submitting the default way
+                    event.preventDefault();
 
                     var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
                     var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
@@ -201,8 +216,6 @@ $("#courseNamesList").on('input', function () {
                     console.log(updatedCourseData);
                     let id = courseId;
                     const api = `https://localhost:7076/api/Courses/${id}`;
-                    console.log(api);
-                    console.log(courseId);
                     ajaxCall("PUT", api, JSON.stringify(updatedCourseData), getSCBF, getECBF);
                 });
             }
@@ -213,31 +226,36 @@ $("#courseNamesList").on('input', function () {
 });
 
 
+
 function updateCourseData() {
-    const updatedCourseData = [];
+    removeAllOptionsFromDataList(); // trying
+    coursesFromServer.length = 0;
     let api = `https://localhost:7076/api/Courses/`;
     $.ajax({
         url: api,
         type: 'GET',
+        async: false,
         success: function (data) {
-            updatedCourseData.push(data);
+            coursesFromServer.push(data);
             addToDataList(data);
-            CourseData = updatedCourseData;
-            console.log(CourseData);
         },
         error: function () {
             alert("Error loading courses.");
         }
     });
+    location.reload;
 }
 
 function getSCBF(result) {
     console.log("changed successfully");
     alert("Course changed successfully");
+    displayCourses.empty();
+    updateCourseData();
     console.log(result);
 }
 
 function getECBF(err) {
+    displayCourses.empty();
     updateCourseData();
 
     alert("Unable to change");
@@ -257,4 +275,12 @@ function getCurrentDate() {
     const year = date.getFullYear();
 
     return `${day}/${month}/${year}`;
+}
+
+function removeAllOptionsFromDataList() {
+    var dataList = document.getElementById('courseDataList');
+    var options = dataList.getElementsByTagName('option');
+    while (options.length > 0) {
+        dataList.removeChild(options[0]);
+    }
 }
