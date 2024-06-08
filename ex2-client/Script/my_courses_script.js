@@ -75,7 +75,7 @@ function deleteSCBF(result) {
 function deleteECBF(err) {
     alert("Error occurred - course may have been deleted.");
     console.log(err);
-    loadCourses(apiBaseUrl);
+    //loadCourses(apiBaseUrl);
 }
 
 const applyDurationFilterButton = document.getElementById("apply-duration-filter");
@@ -97,6 +97,7 @@ function filterByDuration(userId) {
             renderCourses(data);
         },
         error: function () {
+            $('#courses-container').empty();
             console.log("Error fetching courses by duration.");
         }
     });
@@ -125,6 +126,7 @@ function filterByRating(userId) {
             renderCourses(data);
         },
         error: function () {
+            $('#courses-container').empty();
             console.log("Error fetching courses by rating.");
         }
     });

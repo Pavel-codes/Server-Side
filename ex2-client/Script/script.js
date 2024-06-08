@@ -149,19 +149,11 @@ function addCourse(buttonId, userId) {
 }
 
 function postSCBF(result) {
-    if (!result) alert("Course is already in database");
-    else {
-        alert("Course was added");
-    }
+    alert("Course added successfully!");
     console.log(result);
 }
 
 
 function postECBF(err) {
-    if (err.status == 200)
-        alert("Course Seccesfully Added");
-    if (err.status == 404)
-        alert("Course not found");
-    if (err.status == 400)
-        alert("Course already exists");
+    alert("Course was already added.");
 }

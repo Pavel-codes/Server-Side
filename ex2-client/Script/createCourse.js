@@ -32,9 +32,10 @@ $("#createCourseForm").submit(function (event) {
         alert("Image Reference Not Valid, Must Use This Structure https://example.jpg/png");
         return;
     }
-  
-    if (isNaN($('#duration').val())) {
-        alert("Duration Not Valid, Must Be A Number");
+
+    var durationPattern = /^\d+(\.\d+)?\s+\w+$/;
+    if (!durationPattern.test($('#duration').val())) {
+        alert("Duration is not valid Must Use This Structure: [number] [text]");
         return;
     }
 
@@ -55,14 +56,12 @@ $("#createCourseForm").submit(function (event) {
 
 
 function getSCBF(result) {
+    alert("Course Successfully Added");
     console.log(result);
 }
 
 function getECBF(err) {
-    if (err.status == 200)
-        alert("Course Seccesfully Added");
-    if (err.status == 404)
-        alert("Course already exists/Instructor not Exist");
+    alert("Course already exists/Instructor not Exist");
 }
 
 

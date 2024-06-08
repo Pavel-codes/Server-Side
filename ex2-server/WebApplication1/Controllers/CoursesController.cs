@@ -55,9 +55,9 @@ namespace WebApplication1.Controllers
             bool result = value.InsertNewCourse();
             if (!result)
             {
-                return NotFound("Course could not be inserted.");
+                return NotFound(new { message = "Course could not be inserted." });
             }
-            return Ok("Course inserted successfully.");
+            return Ok(new { message = "Course inserted successfully." } );
         }
 
         // POST api/<CoursesController>
@@ -73,31 +73,9 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                // Find the course with the given id
-                Course courseToUpdate = course.Read().FirstOrDefault(c => c.Id == id);
-
-                // If the course is not found, return NotFound
-                if (courseToUpdate == null)
-                {
-                    return NotFound("Course not found");
-                }
-
-                // Update the course properties with the new data
-                courseToUpdate.Title = updatedCourse.Title;
-                courseToUpdate.Url = updatedCourse.Url;
-                courseToUpdate.Rating = updatedCourse.Rating;
-                courseToUpdate.NumberOfReviews = updatedCourse.NumberOfReviews;
-                courseToUpdate.InstructorsId = updatedCourse.InstructorsId;
-                if (string.IsNullOrEmpty(updatedCourse.ImageReference))
-                {
-                    updatedCourse.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
-                }
-                courseToUpdate.ImageReference = updatedCourse.ImageReference;
-                courseToUpdate.Duration = updatedCourse.Duration;
-                courseToUpdate.LastUpdate = updatedCourse.LastUpdate;
-
-                // Return Ok with a success message
-                return Ok("Course updated successfully");
+                bool result = course.updateCourse(id, updatedCourse);
+                if (result) { return Ok(new { message = "Course updated." }); }
+                else { return NotFound(new { message = "Course could not be updated." }); }
             }
             catch (Exception ex)
             {
@@ -111,9 +89,9 @@ namespace WebApplication1.Controllers
         {
             if (Course.AddCourseToUser(userId, course))
             {
-                return Ok("Course added to user successfully");
+                return Ok(new { message = "Course added to user successfully" });
             }
-            return BadRequest("Failed to add course to user");
+            return BadRequest(new { message = "Failed to add course to user" });
         }
 
         [HttpDelete("deleteByCourseFromUserList/{userId}")]
@@ -123,9 +101,9 @@ namespace WebApplication1.Controllers
             {
                 if (Course.DeleteCourse(userId, coursid))
                 {
-                    return Ok("Course deleted from user successfully");
+                    return Ok(new { message = "Course deleted from user successfully" });
                 }
-                return BadRequest("Failed to delete course from user list");
+                return BadRequest(new { message = "Failed to delete course from user list" });
             }
             catch (Exception ex)
             {
@@ -143,7 +121,7 @@ namespace WebApplication1.Controllers
                 {
                     return Ok(courses);
                 }
-                return NotFound("No courses found for the specified duration range and user.");
+                return NotFound(new { message = "No courses found for the specified duration range and user." });
             }
             catch (Exception ex)
             {
@@ -161,7 +139,7 @@ namespace WebApplication1.Controllers
                 {
                     return Ok(courses);
                 }
-                return NotFound("No courses found for the specified rating range and user.");
+                return NotFound(new { message = "No courses found for the specified rating range and user." });
             }
             catch (Exception ex)
             {

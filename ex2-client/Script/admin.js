@@ -58,7 +58,6 @@ $('#loadCoursesBtn').on('click', function () {
 function insertInstructors() {
     const instructorsAPI = `https://localhost:7076/api/Instructors`;
     var instructorDataToSend;
-    console.log(instructorsData);
     instructorsData[0].forEach(instructor => {
         instructorDataToSend = {
             id: instructor.id,
@@ -87,7 +86,7 @@ function insertCourses(CourseData) {
             duration: course.duration,
             lastUpdate: course.last_update_date
         };
-        ajaxCall("POST", api, JSON.stringify(courseDataToSend), false, postSCBF, postECBF);
+        ajaxCall("POST", api, JSON.stringify(courseDataToSend), false, postCoursesSCBF, postCoursesECBF);
     });
 }
 
@@ -100,11 +99,11 @@ function postInstructorsECBF(err) {
 }
 
 
-function postSCBF(result) {
+function postCoursesSCBF(result) {
     console.log(result);
 }
 
-function postECBF(err) {
+function postCoursesECBF(err) {
     console.log(err);
 }
 
@@ -145,7 +144,6 @@ $("#courseNamesList").on('input', function () {
     // clear the display area on change
     displayCourses.empty();
     const editForm = $('<form id="editForm"></form>');
-    console.log(coursesFromServer);
     displayCourses.append(editForm);
     if (coursesFromServer && coursesFromServer.length > 0) {
         coursesFromServer[0].forEach(function (course) {
@@ -185,7 +183,7 @@ $("#courseNamesList").on('input', function () {
 
                     const newDuration = $('#selectedDuration').val();
                     if (!durationPattern.test($('#selectedDuration').val())) {
-                        alert("Duration is not valid");
+                        alert("Duration is not valid Must Use This Structure: [number] [text]");
                         return;
                     }
                     const newUrl = $('#selectedUrl').val();
@@ -216,7 +214,7 @@ $("#courseNamesList").on('input', function () {
                     console.log(updatedCourseData);
                     let id = courseId;
                     const api = `https://localhost:7076/api/Courses/${id}`;
-                    ajaxCall("PUT", api, JSON.stringify(updatedCourseData), getSCBF, getECBF);
+                    ajaxCall("PUT", api, JSON.stringify(updatedCourseData), putSCBF, putECBF);
                 });
             }
         });
@@ -243,23 +241,20 @@ function updateCourseData() {
             alert("Error loading courses.");
         }
     });
-    location.reload;
+    //location.reload();
 }
 
-function getSCBF(result) {
-    console.log("changed successfully");
-    alert("Course changed successfully");
+function putSCBF(result) {
+    console.log("changed successfully!");
+    alert("Course changed successfully!");
     displayCourses.empty();
     updateCourseData();
     console.log(result);
 }
 
-function getECBF(err) {
-    displayCourses.empty();
-    updateCourseData();
-
-    alert("Unable to change");
+function putECBF(err) {
     console.log(err);
+    alert("Unable to update.");
 }
 
 $("#coursesBtn").on("click", function () {

@@ -27,6 +27,7 @@ $("#getInstructorsBtn").on("click", function () {
 function insertInstructors(instructorsData) {
     //api = `https://localhost:7076/api/Instructors`;
     var instructorDataToSend;
+    var instructorsToServer = [];
     instructorsData[0].forEach(instructor => {
         instructorDataToSend = {
             id: instructor.id,
@@ -36,7 +37,6 @@ function insertInstructors(instructorsData) {
             jobTitle: instructor.job_title
         };
         ajaxCall("POST", api, JSON.stringify(instructorDataToSend), postSCBF, postECBF);
-
     })
 }
 
@@ -45,7 +45,6 @@ function postSCBF(result) {
 }
 
 function postECBF(err) {
-
     console.log(err);
 }
 
