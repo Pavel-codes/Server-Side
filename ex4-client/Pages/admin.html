@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Admin Panel</title>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
+    <script src="../Script/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="../Css/admin.css">
+    <!--<script src="../Script/admin.js?v=2"></script>-->
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <button id="homeBtn">Home</button>
+    <div id="pageTop">
+        <button id="loadCoursesBtn">Load Courses to Server</button>
+        <label for="courseDataList">Search Course To Edit: </label>
+        <datalist id="courseDataList"></datalist>
+        <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
+        <button id="coursesBtn">Insert New Course</button>
+    </div>
+    <div id="displayCourses">
+        <form id="editForm"></form>
+    </div>
+    <script src="../Script/admin.js?v=2"></script>
+</body>
+</html>
