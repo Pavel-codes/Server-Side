@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<title>My Courses</title>-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
+    <script src="../Script/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="../Css/myCourses.css">
+</head>
+<body>
+
+    <h1>My Courses</h1>
+    <button id="homeBtn">Home</button>
+    <!-- HTML structure for rating filter -->
+    <div id="filter-rating-container" class="filter-container">
+        <label for="rating-from">From Rating:</label>
+        <input type="number" step="0.1" id="rating-from" placeholder="From Rating">
+        <label for="rating-to">To Rating:</label>
+        <input type="number" step="0.1" id="rating-to" placeholder="To Rating">
+        <button id="apply-rating-filter">Apply Rating Filter</button>
+    </div>
+
+    <!-- HTML structure for duration filter -->
+    <div id="filter-duration-container" class="filter-container">
+        <label for="duration-from">From Duration:</label>
+        <input type="number" id="duration-from" placeholder="From Duration">
+        <label for="duration-to">To Duration:</label>
+        <input type="number" id="duration-to" placeholder="To Duration">
+        <button id="apply-duration-filter">Apply Duration Filter</button>
+    </div>
+
+
+
+    <!-- Courses container -->
+    <div id="courses-container">
+        <!-- Courses will be rendered here -->
+    </div>
+
+    <script src="../Script/my_courses_script.js?v=1"></script>
+</body>
+</html>

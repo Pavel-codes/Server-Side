@@ -165,6 +165,35 @@
             return false;
         }
 
+        public bool updateCourse(int id, Course updatedCourse)
+        {
+            // Find the course with the given id
+            Course courseToUpdate = CoursesList.FirstOrDefault(c => c.Id == id);
+
+            // If the course is not found, return NotFound
+            if (courseToUpdate == null)
+            {
+                return false;
+            }
+
+            // Update the course properties with the new data
+            courseToUpdate.Title = updatedCourse.Title;
+            courseToUpdate.Url = updatedCourse.Url;
+            courseToUpdate.Rating = updatedCourse.Rating;
+            courseToUpdate.NumberOfReviews = updatedCourse.NumberOfReviews;
+            courseToUpdate.InstructorsId = updatedCourse.InstructorsId;
+            if (string.IsNullOrEmpty(updatedCourse.ImageReference))
+            {
+                updatedCourse.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
+            }
+            courseToUpdate.ImageReference = updatedCourse.ImageReference;
+            courseToUpdate.Duration = updatedCourse.Duration;
+            courseToUpdate.LastUpdate = updatedCourse.LastUpdate;
+
+            // Return Ok with a success message
+            return true;
+        }
+
         public Course getCourseByTitle(string courseName)
         {
             foreach (Course course in coursesList)
@@ -175,4 +204,3 @@
         }
     }
 }
-

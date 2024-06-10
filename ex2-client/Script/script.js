@@ -1,21 +1,21 @@
 ﻿var coursesData = [];
-const udemy = "https://www.udemy.com"; 
-                    
+const udemy = "https://www.udemy.com";
+
 //localStorage.clear();
 
-$(document).ready(function () { 
+$(document).ready(function () {
 
-    $.getJSON("../Data/Course.json", function (data) { 
+    $.getJSON("../Data/Course.json", function (data) {
         renderCourses(data);
     });
 
 
     // Render courses
-    function renderCourses(courses) { 
-        var coursesContainer = $('#courses-container'); 
-        courses.forEach(function (course) { 
-            coursesData.push(course); 
-            var courseElement = $('<div>'); 
+    function renderCourses(courses) {
+        var coursesContainer = $('#courses-container');
+        courses.forEach(function (course) {
+            coursesData.push(course);
+            var courseElement = $('<div>');
             courseElement.append('<img src=' + course.image + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
             courseElement.append('<p>Instructors ID: ' + course.instructors_id + '</p>');
@@ -23,21 +23,21 @@ $(document).ready(function () {
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
-            courseElement.append('<button id="' + course.id + '">Add Course</button>'); 
-            coursesContainer.append(courseElement); 
+            courseElement.append('<button id="' + course.id + '">Add Course</button>');
+            coursesContainer.append(courseElement);
             addCourseClick(courseElement);
         });
     }
 
 
-    $('*').not('script, style').css({ 
+    $('*').not('script, style').css({
         'padding': '5px',
         'margin-top': '5px',
         'margin-bottom': '5px'
     });
 });
 
-const myCoursesBtn = document.getElementById("myCourses"); 
+const myCoursesBtn = document.getElementById("myCourses");
 
 myCoursesBtn.addEventListener("click", function () {
     window.location.href = "MyCourses.html";
@@ -51,9 +51,9 @@ instructorsBtn.addEventListener("click", function () {
 
 });
 
-const loginBtn = document.getElementById("loginBtn"); 
+const loginBtn = document.getElementById("loginBtn");
 
-loginBtn.addEventListener("click", function () { 
+loginBtn.addEventListener("click", function () {
     window.location.href = "login.html";
 });
 
@@ -67,7 +67,7 @@ logoutBtn.addEventListener("click", function () {
 
 const Registerbtn = document.getElementById("Registerbtn");
 
-Registerbtn.addEventListener("click", function () { 
+Registerbtn.addEventListener("click", function () {
     window.location.href = "register.html";
 });
 
@@ -105,7 +105,7 @@ function addCourseClick(element) {
         if (event.target.tagName.toLowerCase() === 'button') {
             const buttonId = event.target.id;
             console.log("Button clicked with ID:", buttonId);
-            
+
             if (isLoggedIn()) {
                 const user = JSON.parse(localStorage.getItem('user')); //
                 addCourse(buttonId, user.id);
@@ -138,7 +138,7 @@ function addCourse(buttonId, userId) {
             };
 
             const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
-            
+
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 
         }
@@ -149,15 +149,11 @@ function addCourse(buttonId, userId) {
 }
 
 function postSCBF(result) {
-    if (!result) alert("Course is already in database"); 
-    else {
-        alert("Course was added");
-    }
+    alert("Course added successfully!");
     console.log(result);
 }
 
 
 function postECBF(err) {
-    alert("eror");
-    console.log(err);
+    alert("Course was already added.");
 }

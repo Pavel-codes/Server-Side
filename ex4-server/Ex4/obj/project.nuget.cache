@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "LvWz4PULivj45OqJUPqBijeI80xTZ9lyFEqDH0nInjNqzV1mC7PEENv8JhBYPGrcmgcdf/M5cA6A9zVbodjTwQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4\\Ex4.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fabel\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\fabel\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\fabel\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\fabel\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\fabel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\fabel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
