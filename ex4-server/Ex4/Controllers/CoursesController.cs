@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using WebApplication1.BL;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,26 +10,28 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class CoursesController : ControllerBase
     {
+        private readonly DBservices dbservices = new DBservices();
+
         Course course = new Course();
 
-        // GET: api/<CoursesController>
+        // GET: api/Courses
         [HttpGet]
         public IEnumerable<Course> Get()
         {
-            return course.Read();
+            return new Course().Read();
         }
 
         // GET api/<CoursesController>/5
         [HttpGet("{title}")]
         public Course Get(string title)
         {
-            return course.getCourseByTitle(title);
+            return course.GetCourseByTitle(title);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
+            var courseById = course.Id;
             if (course == null)
             {
                 return NotFound("Course not found");
@@ -36,16 +39,29 @@ namespace WebApplication1.Controllers
             return Ok(course);
         }
 
-        [HttpGet("user/{userId}")] //
+        // GET: api/Courses/user/{userId}
+        [HttpGet("user/{userId}")]
         public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
         {
-            var user = WebApplication1.BL.User.GetUser(userId);
-            if (user == null)
+            var userById = dbservices.GetUser(userId);
+            if (userById == null)
             {
                 return NotFound();
             }
-            var courses = user.GetCourses();
-            return Ok(courses);
+            var userCourses = userById.GetCourses();
+            return Ok(userCourses);
+        }
+
+        // POST: api/Courses/NewCourse
+        [HttpPost("NewCourse")]
+        public IActionResult PostNewCourse([FromBody] Course value)
+        {
+            bool result = value.InsertNewCourse();
+            if (!result)
+            {
+                return NotFound(new { message = "Course could not be inserted." });
+            }
+            return Ok(new { message = "Course inserted successfully." });
         }
 
         // POST api/<CoursesController>
@@ -55,9 +71,9 @@ namespace WebApplication1.Controllers
             bool result = value.InsertNewCourse();
             if (!result)
             {
-                return NotFound(new { message = "Course could not be inserted." });
+                return NotFound("Course could not be inserted.");
             }
-            return Ok(new { message = "Course inserted successfully." } );
+            return Ok("Course inserted successfully.");
         }
 
         // POST api/<CoursesController>
@@ -67,15 +83,21 @@ namespace WebApplication1.Controllers
             return value.Insert();
         }
 
-        // PUT api/<CoursesController>/5
+        // PUT: api/Courses/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Course updatedCourse)
         {
             try
             {
-                bool result = course.updateCourse(id, updatedCourse);
-                if (result) { return Ok(new { message = "Course updated." }); }
-                else { return NotFound(new { message = "Course could not be updated." }); }
+                bool result = new Course().UpdateCourse(id, updatedCourse);
+                if (result)
+                {
+                    return Ok(new { message = "Course updated." });
+                }
+                else
+                {
+                    return NotFound(new { message = "Course could not be updated." });
+                }
             }
             catch (Exception ex)
             {
@@ -146,5 +168,9 @@ namespace WebApplication1.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+
+
     }
+
+
 }

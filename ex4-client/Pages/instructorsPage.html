@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,18 +7,27 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
-    <script src="../Script/ajaxCalls.js"></script>
+    <script src="../Script/instructors_script.js"></script>
     <link href="../Css/instructorsPage.css" rel="stylesheet" />
+    <link href="../Css/modal.css" rel="stylesheet" /> <!-- Link to modal.css -->
 </head>
 <body>
     <h1>Instructors</h1>
     <button id="homeBtn">Home</button>
-    <button id="insertIntsructorsBtn">Insert instructors</button>
-    <button id="getInstructorsBtn">Display instructors</button>
 
     <div id="instructors-container">
-
+        <!-- Instructor content goes here -->
     </div>
-    <script src="../Script/instructors_script.js"></script>
+
+    <!-- Modal container -->
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-container">
+                <!-- Instructor courses will be rendered here -->
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

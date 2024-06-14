@@ -1,79 +1,52 @@
 ﻿const api = `https://localhost:7076/api/Instructors`;
-let instructorsData = []; 
+let instructorsData = [];
 
 $(document).ready(function () {
-    $.getJSON("../Data/Instructor .json", function (data) { 
-        instructorsData.push(data); 
+    $.getJSON("../Data/Instructor.json", function (data) {
+        instructorsData = data; // Update instructorsData directly
+        renderInstructors(instructorsData); // Render instructors on document ready
     });
-    //console.log(instructorsData);
-});
 
-$('#homeBtn').on('click', function () {
-    window.location.href = "../Pages/index.html";
-});
-
-$("#insertIntsructorsBtn").on("click", function () {
-
-    console.log("Inserting instructors");
-    insertInstructors(instructorsData);
-});
-
-$("#getInstructorsBtn").on("click", function () {
-    console.log("Displaying instructors");
-    getAllInstructors();
-});
-
-
-function insertInstructors(instructorsData) {
-    //api = `https://localhost:7076/api/Instructors`;
-    var instructorDataToSend;
-    var instructorsToServer = [];
-    instructorsData[0].forEach(instructor => {
-        instructorDataToSend = {
-            id: instructor.id,
-            title: instructor.title,
-            name: instructor.display_name,
-            image: instructor.image_100x100,
-            jobTitle: instructor.job_title
-        };
-        ajaxCall("POST", api, JSON.stringify(instructorDataToSend), postSCBF, postECBF);
-    })
-}
-
-function postSCBF(result) {
-    console.log(result);
-}
-
-function postECBF(err) {
-    console.log(err);
-}
-
-// Get all instructors function
-function getAllInstructors() {
-    //ajaxCall("GET", api, postSCBF, postECBF)
-    $.ajax({
-        url: api,
-        type: 'GET',
-        success: function (data) {
-            renderInstructors(data);
-        },
-        error: function () {
-            alert("Error loading instructors.");
-        }
+    $('#homeBtn').on('click', function () {
+        window.location.href = "../Pages/index.html";
     });
-}
+});
 
-
+// Render instructors
 function renderInstructors(instructors) {
     var instructorsContainer = $('#instructors-container');
     instructors.forEach(function (instructor) {
         var instructorElement = $('<div>');
         instructorElement.append('<h2>' + instructor.name + '</h2>');
-        instructorElement.append('<img src=' + instructor.image + '>');
-        instructorElement.append('<p>ID: ' + instructor.id + '</p>');
-        instructorElement.append('<p>Title: ' + instructor.title + '</p>');
-        instructorElement.append('<p>Job: ' + instructor.jobTitle + '</p>');
-        
+        instructorElement.append('<button class="show-courses-btn" data-instructor-id="' + instructor.id + '">Show Courses</button>'); // Add the button
         instructorsContainer.append(instructorElement);
     });
+}
+
+// Show courses button click event
+$(document).on('click', '.show-courses-btn', function () {
+    var instructorId = $(this).data('instructor-id');
+    // Make AJAX call to fetch courses of this instructor
+    var apiUrl = `URL_TO_FETCH_COURSES_BY_INSTRUCTOR?id=${instructorId}`;
+    $.ajax({
+        url: apiUrl,
+        type: 'GET',
+        success: function (data) {
+            // Render the retrieved courses in a modal view or a new page
+            renderInstructorCourses(data);
+        },
+        error: function () {
+            console.log("Error fetching instructor courses.");
+        }
+    });
+});
+
+// Function to render instructor courses
+function renderInstructorCourses(courses) {
+    $('#modal-container').empty(); // Assuming you have a modal container
+    courses.forEach(function (course) {
+        // Render each course in the modal container
+        $('#modal-container').append('<p>' + course.title + '</p>');
+    });
+    $('#modal').show(); // Show the modal
 }

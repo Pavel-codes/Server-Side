@@ -18,12 +18,13 @@ $(document).ready(function () {
             var courseElement = $('<div>');
             courseElement.append('<img src=' + course.image + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
-            courseElement.append('<p>Instructors ID: ' + course.instructors_id + '</p>');
+            courseElement.append('<p>Instructor: ' + course.instructorName + '</p>'); 
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
             courseElement.append('<button id="' + course.id + '">Add Course</button>');
+            courseElement.append('<button class="show-instructor-courses-btn" data-instructor-id="' + course.instructorId + '">Show more courses of this instructor</button>'); 
             coursesContainer.append(courseElement);
             addCourseClick(courseElement);
         });
@@ -36,6 +37,33 @@ $(document).ready(function () {
         'margin-bottom': '5px'
     });
 });
+
+// Function to fetch and render courses by instructor ID
+function fetchAndRenderInstructorCourses(instructorId) {
+    const apiUrl = `URL_TO_FETCH_COURSES_BY_INSTRUCTOR?instructorId=${instructorId}`;
+
+    // Make an AJAX call using your ajaxCall function
+    ajaxCall('GET', apiUrl, null, function (data) {
+        // Render the retrieved courses in a modal view or a new page
+        renderInstructorCourses(data);
+    }, function () {
+        console.log("Error fetching instructor courses.");
+    });
+}
+
+// Function to render instructor courses
+function renderInstructorCourses(courses) {
+    // Render the courses in a modal view or a new page
+    // Example: Display courses in a modal view
+    $('#modal-container').empty(); // Assuming you have a modal container
+    courses.forEach(function (course) {
+        // Render each course in the modal container
+        $('#modal-container').append('<p>' + course.title + '</p>');
+    });
+    $('#modal').show(); // Show the modal
+}
+
+
 
 const myCoursesBtn = document.getElementById("myCourses");
 

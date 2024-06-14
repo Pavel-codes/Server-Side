@@ -1,5 +1,4 @@
-﻿﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +9,7 @@
             crossorigin="anonymous"></script>
     <script src="../Script/ajaxCalls.js"></script>
     <link href="../Css/index.css" rel="stylesheet" />
+    <link href="../Css/modal.css" rel="stylesheet" /> <!-- Link to modal.css -->
 </head>
 <body>
 
@@ -25,13 +25,20 @@
     <header>
         <img src="../Pic/udemy1.jpg" alt="Udemy Header Image">
         <h1>Udemy</h1>
-
     </header>
-
-
 
     <div id="courses-container">
         <!-- Course content goes here -->
+    </div>
+
+    <!-- Modal container -->
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-container">
+                <!-- Instructor courses will be rendered here -->
+            </div>
+        </div>
     </div>
 
     <footer>
