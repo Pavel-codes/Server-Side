@@ -46,8 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 8,
@@ -58,8 +74,7 @@
               "RelativeToolTip": "ex2-client\\Css\\createCourse.css",
               "ViewState": "AQIAACEAAAAAAAAAAAAAACwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T14:38:03.287Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:38:03.287Z"
             },
             {
               "$type": "Document",
@@ -84,8 +99,7 @@
               "RelativeToolTip": "ex2-client\\Pages\\MyCourses.html",
               "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-06T14:35:52.486Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:35:52.486Z"
             },
             {
               "$type": "Document",
@@ -97,8 +111,7 @@
               "RelativeToolTip": "ex2-client\\Css\\index.css",
               "ViewState": "AQIAADMAAAAAAAAAAAAAADkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T14:34:14.654Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:34:14.654Z"
             },
             {
               "$type": "Document",
@@ -110,8 +123,7 @@
               "RelativeToolTip": "ex2-client\\Pages\\index.html",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAA8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-29T22:50:02.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T22:50:02.234Z"
             },
             {
               "$type": "Document",
@@ -123,8 +135,7 @@
               "RelativeToolTip": "ex2-client\\Script\\script.js",
               "ViewState": "AQIAACwAAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-06T14:33:44.154Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:33:44.154Z"
             },
             {
               "$type": "Document",
@@ -136,8 +147,7 @@
               "RelativeToolTip": "ex2-client\\Script\\my_courses_script.js",
               "ViewState": "AQIAAB4AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-06T14:33:26.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:33:26.318Z"
             },
             {
               "$type": "Document",
@@ -149,8 +159,7 @@
               "RelativeToolTip": "ex2-client\\Pages\\instructorsPage.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-06T14:32:06.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:32:06.525Z"
             },
             {
               "$type": "Document",
@@ -162,8 +171,7 @@
               "RelativeToolTip": "ex2-client\\Css\\instructorsPage.css",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAACEAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T14:32:03.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:32:03.804Z"
             }
           ]
         }

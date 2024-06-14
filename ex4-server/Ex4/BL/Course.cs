@@ -43,7 +43,8 @@
 
         public List<Course> Read()
         {
-            return coursesList;
+            DBservices db = new DBservices();
+            return db.ReadCourses();
         }
 
         public static bool AddCourseToUser(int userId, Course courseToAdd)
