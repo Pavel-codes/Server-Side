@@ -111,7 +111,7 @@ const applyRatingFilterButton = document.getElementById("apply-rating-filter");
 
 applyRatingFilterButton.addEventListener("click", function () {
     console.log("Rating filter applied!");
-    const userId = getUserId(); // Assuming you have a function to get the user ID
+    const userId = getUserId(); 
     filterByRating(userId);
 });
 

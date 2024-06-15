@@ -15,7 +15,7 @@ namespace WebApplication1.BL
         private bool isAdmin = false;
         private bool isActive = true;
 
-        private List<Course> myCourses = new List<Course>();
+        //private List<Course> myCourses = new List<Course>();
 
         private DBservices dbServices = new DBservices(); 
 
@@ -65,8 +65,8 @@ namespace WebApplication1.BL
 
         public bool Registration()
         {
-            
-            return dbServices.GetCourseByTitle("courseTitle");
+
+            return dbServices.RegisterUser(user);
         }
 
         public static User Login()
@@ -74,24 +74,6 @@ namespace WebApplication1.BL
             return new DBservices().Login();
         }
 
-        public bool AddCourse(int courseId)
-        {
-            return dbServices.AddCourseToUser(this.id, courseId);
-        }
 
-        public void DeleteCourseById(int courseId)
-        {
-            dbServices.DeleteCourseFromUser(this.id, courseId);
-        }
-
-        public List<Course> GetByDurationRange(double fromDuration, double toDuration)
-        {
-            return dbServices.GetByDurationRangeForUser(this.id, fromDuration, toDuration);
-        }
-
-        public List<Course> GetByRatingRangeForCourses(double fromRating, double toRating)
-        {
-            return dbServices.GetByRatingRangeForUser(this.id, fromRating, toRating);
-        }
     }
 }
