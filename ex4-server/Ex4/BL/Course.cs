@@ -49,57 +49,72 @@
 
         public static bool AddCourseToUser(int userId, Course courseToAdd)
         {
-            User user = User.GetUser(userId);
-            if (user == null)
+            DBservices db = new DBservices();
+            try
             {
-                Console.WriteLine($"User with ID {userId} not found.");
-                return false;
+                db.AddCourseToUser(userId, courseToAdd);
+                return true;
             }
-            if (!user.AddCourse(courseToAdd))
+            catch (Exception ex)
             {
-                Console.WriteLine($"Course {courseToAdd.title} is already added for user {userId}.");
-                return false;
+                return false;     
             }
-            Console.WriteLine($"Course {courseToAdd.title} added for user {userId}.");
-            return true;
+            //User user = User.GetUser(userId);
+            //if (user == null)
+            //{
+            //    Console.WriteLine($"User with ID {userId} not found.");
+            //    return false;
+            //}
+            //if (!user.AddCourse(courseToAdd))
+            //{
+            //    Console.WriteLine($"Course {courseToAdd.title} is already added for user {userId}.");
+            //    return false;
+            //}
+            //Console.WriteLine($"Course {courseToAdd.title} added for user {userId}.");
+            //return true;
         }
 
         public static bool DeleteCourse(int userId, int courseidToDelete)
         {
-            User user = User.GetUser(userId);
-            if (user == null)
+            DBservices db = new DBservices();
+            try
             {
-                Console.WriteLine($"User with ID {userId} not found.");
-                return false;
-            }
-            else
-            {
-                user.DeleteCourseById(courseidToDelete);
+                db.DeleteCourseFromUser(userId, courseidToDelete);
                 return true;
             }
+            catch (Exception ex)
+            {
+                return false;
+            }
+       
         }
 
         public static List<Course> GetByRatingRangeForUser(int userId, double fromRating, double toRating)
         {
-            User user = User.GetUser(userId);
-            if (user == null)
+            DBservices db = new DBservices();
+            if (db.GetByRatingRangeForUser(userId, fromRating, toRating).Count == 0)
             {
-                throw new Exception($"User with ID {userId} not found.");
+                return null;
             }
-
-            return user.GetByRatingRangeForCourses(fromRating, toRating);
+            else
+            {
+                return db.GetByRatingRangeForUser(userId, fromRating, toRating);
+            }
         }
 
 
         public static List<Course> GetByDurationRangeForUser(int userId, double fromDuration, double toDuration)
         {
-            User user = User.GetUser(userId);
-            if (user == null)
+            DBservices db = new DBservices();
+            if (db.GetByDurationRangeForUser(userId, fromDuration, toDuration).Count == 0)
             {
-                throw new Exception($"User with ID {userId} not found.");
+                return null;
             }
-
-            return user.GetByDurationRange(fromDuration, toDuration);
+            else
+            {
+                return db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+            }
+           
         }
 
         public bool InsertNewCourse()
@@ -112,102 +127,28 @@
             catch (Exception ex)
             {
                 return false;
-                throw ex;
+               
             }
 
 
-
-            //bool courseFlag = true;
-            //bool instructorFlag = false;
-            //if (coursesList.Count == 0)
-            //{
-            //    courseFlag = true;
-            //}
-            //else
-            //{
-            //    foreach (Course c in coursesList)
-            //    {
-            //        if (c.Id == Id || c.Title.Equals(Title))
-            //        {
-            //            courseFlag = false;
-            //            break;
-            //        }
-            //    }
-            //}
-            //foreach (Instructor instructor in Instructor.InstructorList)
-            //{
-            //    if (instructor.Id == InstructorsId)
-            //    {
-            //        instructorFlag = true;
-            //        break;
-            //    }
-            //}
-
-            //if (courseFlag && instructorFlag)
-            //{
-            //    coursesList.Add(this);
-            //    return true;
-            //}
-            //return false;
         }
 
-
-        // need to be deleted
-        public bool Insert()
-        {
-            if (coursesList == null)
-            {
-                throw new NullReferenceException("coursesList is not initialized.");
-            }
-
-            bool courseInList = false;
-
-            foreach (var course in coursesList)
-            {
-                if (course.Id == this.Id && course.Title.Equals(this.Title))
-                {
-                    courseInList = true;
-                    break;
-                }
-            }
-
-            if (!courseInList)
-            {
-                var tempCourseList = new List<Course>(CoursesList);
-                tempCourseList.Add(this);
-                CoursesList = tempCourseList;
-                return true;
-            }
-            return false;
-        }
+      
 
         public bool updateCourse(int id, Course updatedCourse)
         {
-            // Find the course with the given id
-            Course courseToUpdate = CoursesList.FirstOrDefault(c => c.Id == id);
-
-            // If the course is not found, return NotFound
-            if (courseToUpdate == null)
+            DBservices db = new DBservices();
+            try
+            {
+                db.EditCourse(id, updatedCourse);
+                return true;
+            }
+            catch (Exception ex)
             {
                 return false;
             }
 
-            // Update the course properties with the new data
-            courseToUpdate.Title = updatedCourse.Title;
-            courseToUpdate.Url = updatedCourse.Url;
-            courseToUpdate.Rating = updatedCourse.Rating;
-            courseToUpdate.NumberOfReviews = updatedCourse.NumberOfReviews;
-            courseToUpdate.InstructorsId = updatedCourse.InstructorsId;
-            if (string.IsNullOrEmpty(updatedCourse.ImageReference))
-            {
-                updatedCourse.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
-            }
-            courseToUpdate.ImageReference = updatedCourse.ImageReference;
-            courseToUpdate.Duration = updatedCourse.Duration;
-            courseToUpdate.LastUpdate = updatedCourse.LastUpdate;
-
-            // Return Ok with a success message
-            return true;
+     
         }
 
         public Course getCourseByTitle(string courseName)

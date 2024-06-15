@@ -61,16 +61,20 @@
             return myCourses;
         }
 
-        public bool registration()
+        public bool registration(User user)
         {
-            foreach (User user in usersList)
+            DBservices db = new DBservices();
+            try
             {
-                if (user.Email == this.Email)
-                    return false;
-            }
+                registration(user);
+                return true;
 
-            usersList.Add(this);
-            return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
         }
 
         public static User login(Login login)

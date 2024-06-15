@@ -30,7 +30,17 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public bool Post([FromBody] User value)
         {
-            return value.registration();
+            try
+            {
+                User nUser = user.registration(value);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+           
+
         }
 
         // POST api/<UsersController>/login

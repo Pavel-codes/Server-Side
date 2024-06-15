@@ -60,12 +60,6 @@ namespace WebApplication1.Controllers
             return Ok(new { message = "Course inserted successfully." } );
         }
 
-        // POST api/<CoursesController>
-        [HttpPost]
-        public bool Post([FromBody] Course value)
-        {
-            return value.Insert();
-        }
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]

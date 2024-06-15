@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,18 +66,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "createCourse.css",
-              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
-              "RelativeDocumentMoniker": "ex2-client\\Css\\createCourse.css",
-              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
-              "RelativeToolTip": "ex2-client\\Css\\createCourse.css",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAACwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T14:38:03.287Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "myCourses.css",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\myCourses.css",
@@ -88,6 +76,18 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-06-06T14:36:48.653Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "createCourse.css",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
+              "RelativeDocumentMoniker": "ex2-client\\Css\\createCourse.css",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
+              "RelativeToolTip": "ex2-client\\Css\\createCourse.css",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-06-06T14:38:03.287Z"
             },
             {
               "$type": "Document",
