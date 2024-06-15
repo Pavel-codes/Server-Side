@@ -35,7 +35,7 @@ public class DBservices
     }
 
 
-    // Method to get all courses
+    // Method to get all Courses
     public List<Course> ReadCourses()
     {
 
@@ -109,47 +109,81 @@ public class DBservices
 
 
     //--------------------------------------------------------------------------------------------------
-    // This method insert a student to the student table 
+    // Insert New Course to the Corses table 
     //--------------------------------------------------------------------------------------------------
-    //public int Insert(Student student)
-    //{
+    public int InsertNewCourse(Course course)
+    {
 
-    //    SqlConnection con;
-    //    SqlCommand cmd;
+        SqlConnection con;
+        SqlCommand cmd;
 
-    //    try
-    //    {
-    //        con = connect("myProjDB"); // create the connection
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw (ex);
-    //    }
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
 
-    //    cmd = CreateCommandWithStoredProcedure("spInsertStudent1", con, student);             // create the command
+        cmd = CreateCommandWithStoredProcedureCreateCourse("SP_CreateCourse", con, course);             // create the command
 
-    //    try
-    //    {
-    //        int numEffected = cmd.ExecuteNonQuery(); // execute the command
-    //        return numEffected;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw (ex);
-    //    }
+        try
+        {
+            int numEffected = cmd.ExecuteNonQuery(); // execute the command
+            return numEffected;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
 
-    //    finally
-    //    {
-    //        if (con != null)
-    //        {
-    //            // close the db connection
-    //            con.Close();
-    //        }
-    //    }
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
 
-    //}
+    }
+    //---------------------------------------------------------------------------------
+    // Create Course SqlCommand using a stored procedure
+    //---------------------------------------------------------------------------------
+    private SqlCommand CreateCommandWithStoredProcedureCreateCourse(String spName, SqlConnection con, Course course)
+    {
+
+        SqlCommand cmd = new SqlCommand(); // create the command object
+
+        cmd.Connection = con;              // assign the connection to the command object
+
+        cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
+
+        cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
+
+        cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
+
+        cmd.Parameters.AddWithValue("@p_title", course.Title);
+
+        cmd.Parameters.AddWithValue("@p_url", course.Url);
+
+        cmd.Parameters.AddWithValue("@p_rating", course.Rating);
+
+        cmd.Parameters.AddWithValue("@p_numberOfReviews", course.NumberOfReviews);
+
+        cmd.Parameters.AddWithValue("@p_lastUpdate", course.LastUpdate);
+
+        cmd.Parameters.AddWithValue("@p_duration", course.Duration);
+
+        cmd.Parameters.AddWithValue("@p_instructorId", course.InstructorsId);
+
+        cmd.Parameters.AddWithValue("@p_imageReference", course.ImageReference);
+
+        return cmd;
+    }
 
     ////--------------------------------------------------------------------------------------------------
     //// This method update a student to the student table 
@@ -196,30 +230,5 @@ public class DBservices
 
 
 
-    ////---------------------------------------------------------------------------------
-    //// Create the SqlCommand using a stored procedure
-    ////---------------------------------------------------------------------------------
-    //private SqlCommand CreateCommandWithStoredProcedure(String spName, SqlConnection con, Student student)
-    //{
-
-    //    SqlCommand cmd = new SqlCommand(); // create the command object
-
-    //    cmd.Connection = con;              // assign the connection to the command object
-
-    //    cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
-
-    //    cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
-
-    //    cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
-
-    //    cmd.Parameters.AddWithValue("@id", student.Id);
-
-    //    cmd.Parameters.AddWithValue("@name", student.Name);
-
-    //    cmd.Parameters.AddWithValue("@age", student.Age);
-
-
-    //    return cmd;
-    //}
 
 }

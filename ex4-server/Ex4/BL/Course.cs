@@ -104,40 +104,55 @@
 
         public bool InsertNewCourse()
         {
-            bool courseFlag = true;
-            bool instructorFlag = false;
-            if (coursesList.Count == 0)
-            {
-                courseFlag = true;
-            }
-            else
-            {
-                foreach (Course c in coursesList)
-                {
-                    if (c.Id == Id || c.Title.Equals(Title))
-                    {
-                        courseFlag = false;
-                        break;
-                    }
-                }
-            }
-            foreach (Instructor instructor in Instructor.InstructorList)
-            {
-                if (instructor.Id == InstructorsId)
-                {
-                    instructorFlag = true;
-                    break;
-                }
-            }
-
-            if (courseFlag && instructorFlag)
-            {
-                coursesList.Add(this);
+            DBservices db = new DBservices();
+            try { 
+                db.InsertNewCourse(this);
                 return true;
             }
-            return false;
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+
+
+
+            //bool courseFlag = true;
+            //bool instructorFlag = false;
+            //if (coursesList.Count == 0)
+            //{
+            //    courseFlag = true;
+            //}
+            //else
+            //{
+            //    foreach (Course c in coursesList)
+            //    {
+            //        if (c.Id == Id || c.Title.Equals(Title))
+            //        {
+            //            courseFlag = false;
+            //            break;
+            //        }
+            //    }
+            //}
+            //foreach (Instructor instructor in Instructor.InstructorList)
+            //{
+            //    if (instructor.Id == InstructorsId)
+            //    {
+            //        instructorFlag = true;
+            //        break;
+            //    }
+            //}
+
+            //if (courseFlag && instructorFlag)
+            //{
+            //    coursesList.Add(this);
+            //    return true;
+            //}
+            //return false;
         }
 
+
+        // need to be deleted
         public bool Insert()
         {
             if (coursesList == null)
