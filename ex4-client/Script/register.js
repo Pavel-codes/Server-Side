@@ -33,10 +33,10 @@ $(document).ready(function () {
             return false;
         }
 
-        function postSCBF(user) {
-            //alert(user); // returns true
+        function postSCBF(response) {
             alert("Registration successful.");
             window.location.href = "login.html";
+            // need to add login after successful registration!
             
         }
 
