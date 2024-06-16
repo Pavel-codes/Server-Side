@@ -66,7 +66,7 @@
             DBservices db = new DBservices();
             try
             {
-                registration(user);
+                db.Registration(user);
                 return true;
 
             }

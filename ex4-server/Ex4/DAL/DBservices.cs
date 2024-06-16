@@ -562,7 +562,7 @@ public class DBservices
         return cmd;
     }
 
-    public int Registation(User user)
+    public int Registration(User user)
     {
         SqlConnection con;
         SqlCommand cmd;
