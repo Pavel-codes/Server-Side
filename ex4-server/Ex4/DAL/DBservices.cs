@@ -626,57 +626,139 @@ public class DBservices
         return cmd;
     }
 
+    public User Login(Login login)
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+        // use a stored predures "spGetStudent" to get all the students from the student table
+        cmd = CreateCommandWithStoredProcedureLogin("SP_Login", con, login);
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+            if (reader.Read())
+            {
+                User user = new User();
+                user.Id = Convert.ToInt32(reader["id"]);
+                user.Name = reader["name"].ToString();
+                user.Email = reader["email"].ToString();
+                user.Password = reader["password"].ToString();
+                user.IsAdmin = Convert.ToBoolean(reader["isAdmin"]);
+                user.IsActive = Convert.ToBoolean(reader["isActive"]);
+                return user;
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
+
+    private SqlCommand CreateCommandWithStoredProcedureLogin(String spName, SqlConnection con, Login login)
+    {
+
+        SqlCommand cmd = new SqlCommand(); // create the command object
+
+        cmd.Connection = con;              // assign the connection to the command object
+
+        cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
+
+        cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
+
+        cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
+
+        cmd.Parameters.AddWithValue("@p_userEmail", login.Email);
+
+        cmd.Parameters.AddWithValue("@p_passwordHash", login.Password);
+
+        return cmd;
+    }
+
+    public List<Instructor> ReadInstructors()
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+        // use a stored predures "spGetStudent" to get all the students from the student table
+        cmd = CreateCommandWithStoredProcedureGetInstructors("SP_GetInstructors", con);
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+            List<Instructor> instructors = new List<Instructor>();
+            while (reader.Read())
+            {
+                Instructor instructor = new Instructor();
+                instructor.Id = Convert.ToInt32(reader["id"]);
+                instructor.Title = reader["title"].ToString();
+                instructor.Name = reader["displayName"].ToString();
+                instructor.Image = reader["image"].ToString();
+                instructor.JobTitle = reader["job_title"].ToString();
+
+                instructors.Add(instructor);
+            }
+            return instructors;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+
+    }
+
+    private SqlCommand CreateCommandWithStoredProcedureGetInstructors(String spName, SqlConnection con)
+    {
+
+        SqlCommand cmd = new SqlCommand(); // create the command object
+
+        cmd.Connection = con;              // assign the connection to the command object
+
+        cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
+
+        cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
+
+        cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
+
+        return cmd;
+    }
+
    
-    //// Method to login a user
-    //public User Login(string userName, string passwordHash)
-    //{
-    //    using (SqlConnection con = Connect())
-    //    {
-    //        SqlCommand cmd = new SqlCommand("Login", con)
-    //        {
-    //            CommandType = CommandType.StoredProcedure
-    //        };
-    //        cmd.Parameters.AddWithValue("@p_userName", userName);
-    //        cmd.Parameters.AddWithValue("@p_passwordHash", passwordHash);
-
-    //        SqlDataReader reader = cmd.ExecuteReader();
-
-    //        if (reader.Read())
-    //        {
-    //            User user = new User
-    //            {
-    //                Id = (int)reader["UserID"],
-    //                Name = reader["UserName"].ToString(),
-    //                Email = reader["Email"].ToString(),
-    //                //Role = reader["Role"].ToString()
-    //            };
-    //            return user;
-    //        }
-    //        else
-    //        {
-    //            return null;
-    //        }
-    //    }
-    //}
-
-
-    //// Method to insert an instructor into the database
-    //public int InsertInstructor(Instructor instructor)
-    //{
-    //    using (SqlConnection con = Connect())
-    //    {
-    //        SqlCommand cmd = new SqlCommand("SP_CreateInstructor", con)
-    //        {
-    //            CommandType = CommandType.StoredProcedure
-    //        };
-    //        cmd.Parameters.AddWithValue("@Name", instructor.Name);
-    //        cmd.Parameters.AddWithValue("@Title", instructor.Title);
-    //        cmd.Parameters.AddWithValue("@JobTitle", instructor.JobTitle);
-    //        cmd.Parameters.AddWithValue("@Image", instructor.Image);
-    //        return cmd.ExecuteNonQuery();
-    //    }
-    //}
-
 
     //public User GetUser(int userId)
     //{

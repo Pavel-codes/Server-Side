@@ -63,7 +63,9 @@
 
         public List<Instructor> Read()
         {
-            return instructorList;
+            DBservices db = new DBservices();
+            return db.ReadInstructors();
+
         }
     }
 }

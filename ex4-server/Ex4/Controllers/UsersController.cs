@@ -30,16 +30,11 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public bool Post([FromBody] User value)
         {
-            try
-            {
-                User nUser = user.registration(value);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-           
+            
+            bool result = user.registration(value);
+            if(result)
+                return true;         
+            return false;          
 
         }
 
@@ -47,7 +42,12 @@ namespace WebApplication1.Controllers
         [HttpPost("login")]
         public User Login([FromBody] Login value)
         {
-            return WebApplication1.BL.User.login(value);
+            User nUser = user.login(value);
+            if (nUser != null)
+            {
+                return nUser;
+            }
+            return null;
         }
 
         // PUT api/<UsersController>/5

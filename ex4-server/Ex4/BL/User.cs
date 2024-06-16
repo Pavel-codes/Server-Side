@@ -77,16 +77,18 @@
             
         }
 
-        public static User login(Login login)
+        public User login(Login login)
         {
-            foreach (User user in usersList)
+            DBservices db = new DBservices();
+            User user = db.Login(login);
+            if (user != null)
             {
-                if (user.Email == login.Email && user.Password.Equals(login.Password, StringComparison.OrdinalIgnoreCase))
-                {
-                    return user;
-                }
+                return user;
             }
-            return null;
+          
+          return null;
+            
+            
         }
 
         public bool AddCourse(Course course)
