@@ -28,7 +28,7 @@ $(document).ready(function () {
         submitToServer(newUser); 
 
         function submitToServer(newUser) {
-            let api = `https://localhost:7076/api/Users`;
+            let api = `https://localhost:7283/api/Users`;
             ajaxCall("POST", api, JSON.stringify(newUser), postSCBF, postECBF);
             return false;
         }

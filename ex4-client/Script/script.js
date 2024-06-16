@@ -1,14 +1,24 @@
 ﻿var coursesData = [];
 const udemy = "https://www.udemy.com";
+const apiBaseUrl = "https://localhost:7283/api/Courses";
 
 //localStorage.clear();
 
 $(document).ready(function () {
 
-    $.getJSON("../Data/Course.json", function (data) {
-        renderCourses(data);
-    });
+    function getCoursesFromDB() {
+        ajaxCall('GET', apiBaseUrl, true, postSCBF, postECBF);
+    }
 
+    function postSCBF(response) {
+        console.log(response);
+        renderCourses(response);
+    }
+
+    function postECBF(err) {
+        console.log(err)
+        alert("Failed to load courses!");
+    }
 
     // Render courses
     function renderCourses(courses) {
@@ -16,19 +26,20 @@ $(document).ready(function () {
         courses.forEach(function (course) {
             coursesData.push(course);
             var courseElement = $('<div>');
-            courseElement.append('<img src=' + course.image + '>');
+            courseElement.append('<img src=' + course.imageReference + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
-            courseElement.append('<p>Instructors ID: ' + course.instructors_id + '</p>');
+            courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
-            courseElement.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>');
+            courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
+            courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
             courseElement.append('<button id="' + course.id + '">Add Course</button>');
             coursesContainer.append(courseElement);
             addCourseClick(courseElement);
         });
     }
-
+    getCoursesFromDB();
 
     $('*').not('script, style').css({
         'padding': '5px',
@@ -137,7 +148,7 @@ function addCourse(buttonId, userId) {
                 lastUpdate: courseData.last_update_date
             };
 
-            const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
+            const api = `https://localhost:7283/api/Courses/addCourseToUser/${userId}`;
 
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 

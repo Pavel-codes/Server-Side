@@ -1,4 +1,4 @@
-﻿const apiBaseUrl = "https://localhost:7076/api/Users";
+﻿const apiBaseUrl = "https://localhost:7283/api/Users";
 
 $(document).ready(function () {
     $('#loginForm').submit(function (event) {
