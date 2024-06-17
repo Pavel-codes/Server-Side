@@ -61,6 +61,16 @@ namespace WebApplication1.Controllers
         }
 
 
+        [HttpPost("addCourseToUser/{userId}")]
+        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
+        {
+            if (Course.AddCourseToUser(userId, course))
+            {
+                return Ok(new { message = "Course added to user successfully" });
+            }
+            return NotFound(new { message = "Failed to add course to user" });
+        }
+
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Course updatedCourse)
@@ -76,16 +86,6 @@ namespace WebApplication1.Controllers
                 // Return 500 Internal Server Error with the exception message
                 return StatusCode(500, ex.Message);
             }
-        }
-
-        [HttpPost("addCourseToUser/{userId}")]
-        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
-        {
-            if (Course.AddCourseToUser(userId, course))
-            {
-                return Ok(new { message = "Course added to user successfully" });
-            }
-            return BadRequest(new { message = "Failed to add course to user" });
         }
 
         [HttpDelete("deleteByCourseFromUserList/{userId}")]

@@ -130,27 +130,29 @@ function addCourseClick(element) {
     });
 }
 
-function addCourse(buttonId, userId) {
+
+function addCourse(buttonId, userId) { 
     console.log(buttonId);
     var courseDataToSend;
     coursesData.forEach(courseData => {
         if (buttonId == courseData.id) {
-            console.log("inside if statement"); // done
+            console.log("inside if statement");
+            
             courseDataToSend = {
                 id: courseData.id,
                 title: courseData.title,
                 url: udemy + courseData.url,
                 rating: courseData.rating,
-                numberOfReviews: courseData.num_reviews,
-                instructorsId: courseData.instructors_id,
-                imageReference: courseData.image,
+                numberOfReviews: courseData.numberOfReviews,
+                instructorsId: courseData.instructorsId,
+                imageReference: courseData.imageReference,
                 duration: courseData.duration,
-                lastUpdate: courseData.last_update_date
+                lastUpdate: courseData.lastUpdate
             };
+            console.log(courseDataToSend, userId);
 
-            const api = `https://localhost:7283/api/Courses/addCourseToUser/${userId}`;
 
-            ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
+            ajaxCall("POST", `${apiBaseUrl}/addCourseToUser/${userId}`, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 
         }
         else {
@@ -167,4 +169,5 @@ function postSCBF(result) {
 
 function postECBF(err) {
     alert("Course was already added.");
+    console.log(err);
 }
