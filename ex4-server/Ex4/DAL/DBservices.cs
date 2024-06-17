@@ -91,6 +91,8 @@ public class DBservices
 
     }
 
+
+
     private SqlCommand CreateCommandWithStoredProcedureGetCourses(String spName, SqlConnection con)
     {
 
@@ -103,6 +105,77 @@ public class DBservices
         cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
 
         cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
+
+        return cmd;
+    }
+
+
+    //-------------------------------------------------------------------------------------------------- need to check if needed
+    public Course GetCourseByTitle(string courseName)
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        try
+        {
+            con = connect("myProjDB"); 
+        }
+        catch (Exception ex)
+        {
+           
+            throw (ex);
+        }
+       
+        cmd = CreateCommandWithStoredProcedureGetCourseByTitle("SP_GetCourseByTitle", con, courseName);
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); 
+            if(reader.Read())
+            {
+                Course course = new Course();
+                course.Id = Convert.ToInt32(reader["id"]);
+                course.Title = reader["title"].ToString();
+                course.Url = reader["url"].ToString();
+                course.Rating = Convert.ToDouble(reader["rating"]);
+                course.NumberOfReviews = Convert.ToInt32(reader["num_reviews"]);
+                course.LastUpdate = reader["last_update_date"].ToString();
+                course.Duration = reader["duration"].ToString();
+                course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
+                course.ImageReference = reader["image"].ToString();
+                return course;
+               
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
+
+    private SqlCommand CreateCommandWithStoredProcedureGetCourseByTitle(String spName, SqlConnection con, string courseName)
+    {
+
+        SqlCommand cmd = new SqlCommand(); 
+
+        cmd.Connection = con;            
+
+        cmd.CommandText = spName;     
+
+        cmd.CommandTimeout = 10;          
+
+        cmd.CommandType = System.Data.CommandType.StoredProcedure; 
+
+        cmd.Parameters.AddWithValue("@p_title", courseName);
 
         return cmd;
     }
@@ -783,6 +856,78 @@ public class DBservices
         return cmd;
     }
 
-   
+   public User GetCoursesFromUser(int userId)
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+        // use a stored predures "SP_GetCoursesByInstructor" to get all the courses of that instructor
+        cmd = CreateCommandWithStoredProcedureGetCoursesFromUser("SP_GetCoursesFromUser ", con, userId);
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+            User user = new User();
+            user.Id = userId;
+            user.MyCourses = new List<Course>();
+            while (reader.Read())
+            {
+                Course course = new Course();
+                course.Id = Convert.ToInt32(reader["id"]);
+                course.Title = reader["title"].ToString();
+                course.Url = reader["url"].ToString();
+                course.Rating = Convert.ToDouble(reader["rating"]);
+                course.NumberOfReviews = Convert.ToInt32(reader["num_reviews"]);
+                course.LastUpdate = reader["last_update_date"].ToString();
+                course.Duration = reader["duration"].ToString();
+                course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
+                course.ImageReference = reader["image"].ToString();
 
+                user.MyCourses.Add(course);
+            }
+            return user;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
+    
+
+    private SqlCommand CreateCommandWithStoredProcedureGetCoursesFromUser(String spName, SqlConnection con, int userId)
+    {
+        SqlCommand cmd = new SqlCommand(); // create the command object
+
+        cmd.Connection = con;              // assign the connection to the command object
+
+        cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
+
+        cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
+
+        cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
+
+        cmd.Parameters.AddWithValue("@UserId", userId);
+
+        return cmd;
+    }
+
+ 
+   
 }

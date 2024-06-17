@@ -13,7 +13,7 @@ $("#createCourseForm").submit(function (event) {
         return;
     }
 
-    //url validation atart with http or https and end with .com
+   
     var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
     if (!urlPattern.test($('#url').val())) {
         alert("Url Not Valid , Must Use This Structure https://example.com");
@@ -28,7 +28,8 @@ $("#createCourseForm").submit(function (event) {
     }
   
     var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
-    if (!imagePattern.test($('#image').val())) {
+
+    if (!imagePattern.test($('#image').val()) && $('#image').val().trim() !== "") {
         alert("Image Reference Not Valid, Must Use This Structure https://example.jpg/png");
         return;
     }

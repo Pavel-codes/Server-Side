@@ -95,7 +95,7 @@
         public static List<Course> GetByDurationRangeForUser(int userId, double fromDuration, double toDuration)
         {
             DBservices db = new DBservices();
-            List<Course> courses = db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+            List<Course> courses = db.GetByRatingRangeForUser(userId, fromDuration, toDuration);
             if (courses.Count == 0)
             {
                 return null;
@@ -157,11 +157,16 @@
 
         public Course getCourseByTitle(string courseName)
         {
-            foreach (Course course in coursesList)
+            DBservices db = new DBservices();
+            Course course = db.GetCourseByTitle(courseName);
+            if(course == null)
             {
-                if (course.Title == courseName) return course;
+                return null;
             }
-            return null;
+            else
+            {
+                return course;
+            }
         }
     }
 }

@@ -9,21 +9,21 @@ namespace WebApplication1.Controllers
     {
         User user = new User();
         // GET: api/<UsersController>
-        [HttpGet]
-        public IEnumerable<User> Get()
-        {
-            return user.GetUsers();
-        }
+        //[HttpGet]
+        //public IEnumerable<User> Get()
+        //{
+        //    return user.GetUsers();
+        //}
         //GET api/Users/5
         [HttpGet("{id}")]
         public ActionResult<User> Get(int id)
         {
-            var user = WebApplication1.BL.User.GetUser(id);
-            if (user == null)
+            User nUser = user.GetUser(id);
+            if (nUser == null)
             {
                 return NotFound();
             }
-            return user;
+            return nUser;
         }
 
         //POST api/<UsersController>

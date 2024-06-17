@@ -25,28 +25,28 @@ namespace WebApplication1.Controllers
             return course.getCourseByTitle(title);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
-            if (course == null)
-            {
-                return NotFound("Course not found");
-            }
-            return Ok(course);
-        }
+        //[HttpGet("{id}")]
+        //public IActionResult Get(int id)
+        //{
+        //    var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
+        //    if (course == null)
+        //    {
+        //        return NotFound("Course not found");
+        //    }
+        //    return Ok(course);
+        //}
 
-        [HttpGet("user/{userId}")] //
-        public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
-        {
-            var user = WebApplication1.BL.User.GetUser(userId);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            var courses = user.GetCourses();
-            return Ok(courses);
-        }
+        //[HttpGet("user/{userId}")] //
+        //public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
+        //{
+        //    var user = WebApplication1.BL.User.GetUser(userId);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var courses = user.GetCourses();
+        //    return Ok(courses);
+        //}
 
         // POST api/<CoursesController>
         [HttpPost("NewCourse")]
@@ -129,7 +129,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                List<Course> courses = Course.GetByDurationRangeForUser(userId, fromRating, toRating);
+                List<Course> courses = Course.GetByRatingRangeForUser(userId, fromRating, toRating);
                 if (courses == null)
                 {
                     return NotFound(new { message = "No courses found for the specified duration range and user." });
