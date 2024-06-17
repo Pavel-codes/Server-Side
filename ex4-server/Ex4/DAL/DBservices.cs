@@ -190,49 +190,6 @@ public class DBservices
         return cmd;
     }
 
-    ////--------------------------------------------------------------------------------------------------
-    //// This method update a student to the student table 
-    ////--------------------------------------------------------------------------------------------------
-    //public int Update(Student student)
-    //{
-
-    //    SqlConnection con;
-    //    SqlCommand cmd;
-
-    //    try
-    //    {
-    //        con = connect("myProjDB"); // create the connection
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw (ex);
-    //    }
-
-    //    cmd = CreateCommandWithStoredProcedure("spUpdateStudent1", con,student);             // create the command
-
-    //    try
-    //    {
-    //        int numEffected = cmd.ExecuteNonQuery(); // execute the command
-    //        return numEffected;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw (ex);
-    //    }
-
-    //    finally
-    //    {
-    //        if (con != null)
-    //        {
-    //            // close the db connection
-    //            con.Close();
-    //        }
-    //    }
-
-    //}
-
     // Method to add a course to a user
     
     public int AddCourseToUser(int userId, Course course)
@@ -550,9 +507,7 @@ public class DBservices
         cmd.Parameters.AddWithValue("@p_lastUpdate", course.LastUpdate);
 
         cmd.Parameters.AddWithValue("@p_duration", course.Duration);
-
-        cmd.Parameters.AddWithValue("@p_instructorId", course.InstructorsId);
-       
+    
         if (string.IsNullOrEmpty(course.ImageReference))
         {
             course.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
@@ -828,129 +783,6 @@ public class DBservices
         return cmd;
     }
 
-    // create new func ------ InstructorCourses(instructorId)
-
-    //public User GetUser(int userId)
-    //{
-    //    using (SqlConnection con = Connect())
-    //    {
-    //        SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE UserID = @UserId", con);
-    //        cmd.Parameters.AddWithValue("@UserId", userId);
-
-    //        using (SqlDataReader reader = cmd.ExecuteReader())
-    //        {
-    //            if (reader.Read())
-    //            {
-    //                return new User
-    //                {
-    //                    Id = (int)reader["UserID"],
-    //                    Name = (string)reader["UserName"],
-    //                    Email = (string)reader["Email"],
-    //                    Password = (string)reader["Password"],
-    //                   /* Role = (string)reader["Role"*/]
-    //                };
-    //            }
-    //        }
-    //    }
-    //    return null;
-    //}
-
-    //// Method to get courses for a specific user
-    //public List<Course> GetUsersCourses(int userId)
-    //{
-    //    using (SqlConnection con = Connect())
-    //    {
-    //        SqlCommand cmd = new SqlCommand("GetUsersCourses", con)
-    //        {
-    //            CommandType = CommandType.StoredProcedure
-    //        };
-    //        cmd.Parameters.AddWithValue("@UserId", userId);
-
-    //        SqlDataReader reader = cmd.ExecuteReader();
-    //        List<Course> courses = new List<Course>();
-
-    //        while (reader.Read())
-    //        {
-    //            Course course = new Course
-    //            {
-    //                Id = (int)reader["CourseID"],
-    //                Title = reader["Title"].ToString(),
-    //                Url = reader["URL"].ToString(),
-    //                Rating = (double)reader["Rating"],
-    //                NumberOfReviews = (int)reader["NumberOfReviews"],
-    //                InstructorId = (int)reader["InstructorID"],
-    //                ImageReference = reader["ImageReference"].ToString(),
-    //                Duration = reader["Duration"].ToString(),
-    //                LastUpdate = (DateTime)reader["LastUpdate"]
-    //            };
-    //            courses.Add(course);
-    //        }
-    //        return courses;
-    //    }
-    //}
-
-
-    //// Method to get courses by instructor ID
-    //public List<Course> GetCoursesByInstructor(int instructorId)
-    //{
-    //    using (SqlConnection con = Connect())
-    //    {
-    //        SqlCommand cmd = new SqlCommand("GetCoursesByInstructor", con)
-    //        {
-    //            CommandType = CommandType.StoredProcedure
-    //        };
-    //        cmd.Parameters.AddWithValue("@p_instructorID", instructorId);
-
-    //        SqlDataReader reader = cmd.ExecuteReader();
-    //        List<Course> courses = new List<Course>();
-
-    //        while (reader.Read())
-    //        {
-    //            Course course = new Course
-    //            {
-    //                Id = (int)reader["CourseID"],
-    //                Title = reader["Title"].ToString(),
-    //                Url = reader["URL"].ToString(),
-    //                Rating = (double)reader["Rating"],
-    //                NumberOfReviews = (int)reader["NumberOfReviews"],
-    //                InstructorId = (int)reader["InstructorID"],
-    //                ImageReference = reader["ImageReference"].ToString(),
-    //                Duration = reader["Duration"].ToString(),
-    //                LastUpdate = (DateTime)reader["LastUpdate"]
-    //            };
-    //            courses.Add(course);
-    //        }
-    //        return courses;
-    //    }
-    //}
-
-    //public List<User> GetUsers()
-    //{
-    //    List<User> users = new List<User>();
-
-    //    using (SqlConnection con = Connect())
-    //    {
-    //        SqlCommand cmd = new SqlCommand("SELECT * FROM Users", con);
-
-    //        using (SqlDataReader reader = cmd.ExecuteReader())
-    //        {
-    //            while (reader.Read())
-    //            {
-    //                users.Add(new User
-    //                {
-    //                    Id = (int)reader["UserID"],
-    //                    Name = (string)reader["UserName"],
-    //                    Email = (string)reader["Email"],
-    //                    Password = (string)reader["PasswordHash"],
-    //                    IsAdmin = (string)reader["Role"] == "admin",
-    //                    IsActive = true
-    //                });
-    //            }
-    //        }
-    //    }
-
-    //    return users;
-    //}
-
+   
 
 }

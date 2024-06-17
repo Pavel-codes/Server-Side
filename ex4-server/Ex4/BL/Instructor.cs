@@ -29,39 +29,7 @@ namespace WebApplication1.BL
         public string JobTitle { get => jobTitle; set => jobTitle = value; }
         public static List<Instructor> InstructorList { get => instructorList; set => instructorList = value; }
 
-        public bool Insert()
-        {
-            // Ensure instructorList is initialized
-            if (instructorList == null)
-            {
-                throw new NullReferenceException("instructorList is not initialized.");
-            }
-
-            bool instructorInList = false;
-
-            // Check if the current instance already exists in the list
-            foreach (var instructor in instructorList)
-            {
-                if (instructor.Id == this.Id && instructor.Title.Equals(this.Title))
-                {
-                    instructorInList = true;
-                    break;
-                }
-            }
-
-            // Add the current instance to the list if it does not already exist
-            if (!instructorInList)
-            {
-                // Use a temporary list to avoid modifying the collection during enumeration
-                var tempInstructorList = new List<Instructor>(instructorList);
-                tempInstructorList.Add(this);
-                instructorList = tempInstructorList;
-                return true;
-            }
-
-            return false;
-        }
-
+       
         public List<Instructor> Read()
         {
             DBservices db = new DBservices();

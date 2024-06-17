@@ -24,11 +24,27 @@ namespace WebApplication1.Controllers
             return "value";
         }
 
-        // POST api/<InstructorsController>
-        [HttpPost]
-        public bool Post([FromBody] Instructor value)
+        // Get courses by instructor id
+        [HttpGet("GetCoursesByInstructorId/{instructorId}")]
+        public IActionResult GetByInstructorId(int instructorId)
         {
-            return value.Insert();
+            try
+            {
+                List<Course> courses = Course.GetCoursesByInstructor(instructorId);
+
+                if (courses == null)
+                {
+                    return NotFound(new { message = "No courses found for this instructor." });
+                }
+                else
+                {
+                    return Ok(courses);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
         // PUT api/<InstructorsController>/5

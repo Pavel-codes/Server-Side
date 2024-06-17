@@ -80,13 +80,14 @@
         public static List<Course> GetByRatingRangeForUser(int userId, double fromRating, double toRating)
         {
             DBservices db = new DBservices();
-            if (db.GetByRatingRangeForUser(userId, fromRating, toRating).Count == 0)
+            List<Course> courses = db.GetByRatingRangeForUser(userId, fromRating, toRating);
+            if (courses.Count == 0)
             {
                 return null;
             }
             else
             {
-                return db.GetByRatingRangeForUser(userId, fromRating, toRating);
+                return courses;
             }
         }
 
@@ -94,13 +95,14 @@
         public static List<Course> GetByDurationRangeForUser(int userId, double fromDuration, double toDuration)
         {
             DBservices db = new DBservices();
-            if (db.GetByDurationRangeForUser(userId, fromDuration, toDuration).Count == 0)
+            List<Course> courses = db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+            if (courses.Count == 0)
             {
                 return null;
             }
             else
             {
-                return db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+                return courses;
             }
            
         }
@@ -142,13 +144,14 @@
         public static List<Course> GetCoursesByInstructor(int instructorId)
         {
             DBservices db = new DBservices();
-            if (db.GetCoursesByInstructor(instructorId).Count == 0)
+            List<Course> courses = db.GetCoursesByInstructor(instructorId);
+            if (courses.Count == 0)
             {
                 return null;
             }
             else
             {
-                return db.GetCoursesByInstructor(instructorId);
+                return courses;
             }
         }
 

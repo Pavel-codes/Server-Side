@@ -23,8 +23,7 @@
 
         public User()
         {
-            if (usersList.Count == 0)
-                usersList.Add(new User(Id = 1, Name = "admin", Email = "admin@admin.com", Password = "admin", IsAdmin = true, IsActive = true));
+            
         }
 
         public User(string name, string email, string password)

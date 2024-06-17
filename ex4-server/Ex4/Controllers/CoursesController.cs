@@ -110,16 +110,18 @@ namespace WebApplication1.Controllers
             try
             {
                 List<Course> courses = Course.GetByDurationRangeForUser(userId, fromDuration, toDuration);
-
-                if (courses.Any())
+                if (courses == null)
+                {
+                    return NotFound(new { message = "No courses found for the specified duration range and user." });
+                }
+                else
                 {
                     return Ok(courses);
                 }
-                return NotFound(new { message = "No courses found for the specified duration range and user." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
+                return NotFound(new { message = "No courses found for the specified duration range and user." });
             }
         }
         [HttpGet("searchByRatingForUser/{userId}")]
@@ -127,17 +129,19 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                List<Course> courses = Course.GetByRatingRangeForUser(userId, fromRating, toRating);
-
-                if (courses.Any())
+                List<Course> courses = Course.GetByDurationRangeForUser(userId, fromRating, toRating);
+                if (courses == null)
+                {
+                    return NotFound(new { message = "No courses found for the specified duration range and user." });
+                }
+                else
                 {
                     return Ok(courses);
                 }
-                return NotFound(new { message = "No courses found for the specified rating range and user." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
+                return NotFound(new { message = "No courses found for the specified duration range and user." });
             }
         }
 
