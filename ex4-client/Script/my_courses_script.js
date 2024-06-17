@@ -26,7 +26,7 @@ function loadCourses(api) {
             setTimeout(() => renderCourses(data.myCourses), 1000);
         },
         error: function () {
-            alert("Error loading courses.");
+            console.log("Your Bag Is Empty");
         }
     });
 }
