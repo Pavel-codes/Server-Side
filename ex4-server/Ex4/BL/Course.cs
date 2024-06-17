@@ -139,6 +139,19 @@
      
         }
 
+        public static List<Course> GetCoursesByInstructor(int instructorId)
+        {
+            DBservices db = new DBservices();
+            if (db.GetCoursesByInstructor(instructorId).Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return db.GetCoursesByInstructor(instructorId);
+            }
+        }
+
         public Course getCourseByTitle(string courseName)
         {
             foreach (Course course in coursesList)

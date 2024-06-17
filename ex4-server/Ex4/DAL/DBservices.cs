@@ -758,7 +758,77 @@ public class DBservices
         return cmd;
     }
 
-   
+    // Method to get courses by instructor
+    public List<Course> GetCoursesByInstructor(int instructorId)
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+        // use a stored predures "SP_GetCoursesByInstructor" to get all the courses of that instructor
+        cmd = CreateCommandWithStoredProcedureGetCoursesByInstructor("SP_GetCoursesByInstructor ", con, instructorId);
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+            List<Course> courses = new List<Course>();
+            while (reader.Read())
+            {
+                Course course = new Course();
+                course.Id = Convert.ToInt32(reader["id"]);
+                course.Title = reader["title"].ToString();
+                course.Url = reader["url"].ToString();
+                course.Rating = Convert.ToDouble(reader["rating"]);
+                course.NumberOfReviews = Convert.ToInt32(reader["num_reviews"]);
+                course.LastUpdate = reader["last_update_date"].ToString();
+                course.Duration = reader["duration"].ToString();
+                course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
+                course.ImageReference = reader["image"].ToString();
+
+                courses.Add(course);
+            }
+            return courses;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
+
+    private SqlCommand CreateCommandWithStoredProcedureGetCoursesByInstructor(String spName, SqlConnection con, int instructorId)
+    {
+        SqlCommand cmd = new SqlCommand(); // create the command object
+
+        cmd.Connection = con;              // assign the connection to the command object
+
+        cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
+
+        cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
+
+        cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
+
+        cmd.Parameters.AddWithValue("@p_instructorID", instructorId);
+
+        return cmd;
+    }
+
+    // create new func ------ InstructorCourses(instructorId)
 
     //public User GetUser(int userId)
     //{

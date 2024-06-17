@@ -1,12 +1,13 @@
 ﻿const apiBaseUrl = "https://localhost:7283/api/Instructors";
 let instructorsData = []; 
-
+var modal = $('#coursesModal');
+var span = $('.close');
 
 $(document).ready(function () {
 
 
     function getInstructorsFromDB() {
-        ajaxCall('GET', apiBaseUrl, true, postSCBF, postECBF);
+        ajaxCall('GET', apiBaseUrl, true, getInstructorsSCBF, getInstructorsECBF);
     }
 
     function renderInstructors(instructors) {
@@ -19,30 +20,45 @@ $(document).ready(function () {
             instructorElement.append('<p>Job: ' + instructor.jobTitle + '</p>');
             instructorElement.append('<button id="' + instructor.id + '">View more</button>');
 
-
             instructorsContainer.append(instructorElement);
+
             let instructorBtn = document.getElementById(instructor.id);
-            viewCourses(instructorBtn);
+            console.log(instructorBtn);
+            $(instructorBtn).on('click', function () {
+                modal.css('display', 'block');
+                addCoursesToModal(instructorBtn.id);
+            });
         });
     }
 
-    function postSCBF(result) {
+    function getInstructorsSCBF(result) {
         renderInstructors(result)
         console.log("Received instructors");
 
     }
 
-    function postECBF(err) {
+    function getInstructorsECBF(err) {
         console.log(err);
     }
 
     getInstructorsFromDB();
+
+    span.on('click', function () {
+        modal.css('display', 'none');
+    });
+
+    $(window).on('click', function (event) {
+        if ($(event.target).is(modal)) {
+            modal.css('display', 'none');
+        }
+    });
 
 });
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
+
 
 function viewCourses(element) { // needs fixing
     element.click(function (event) {
@@ -51,43 +67,21 @@ function viewCourses(element) { // needs fixing
 }
 
 function addCoursesToModal(buttonId) { // not working
-
-    //redo the logic to fit the modal
     console.log(buttonId);
-    var courseDataToSend;
-    coursesData.forEach(courseData => {
-        if (buttonId == courseData.id) {
-            courseDataToSend = {
-                id: courseData.id,
-                title: courseData.title,
-                url: udemy + courseData.url,
-                rating: courseData.rating,
-                numberOfReviews: courseData.num_reviews,
-                instructorsId: courseData.instructors_id,
-                imageReference: courseData.image,
-                duration: courseData.duration,
-                lastUpdate: courseData.last_update_date
-            };
-
-            const api = `https://localhost:7283/api/Courses/addCourseToUser/${userId}`;
-
-            ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
-
-        }
-        else {
-            console.log("not found");
-        }
-    });
+    //redo the logic to fit the modal
+    let api = `https://localhost:7283/api/Courses/searchByInstructorId/${buttonId}`;
+    ajaxCall("GET", api, getSCBF, getECBF);
 }
 
-function postSCBF(result) {
-    alert("Course added successfully!");
+function getSCBF(result) {
+    alert("Courses added successfully!");
     console.log(result);
 }
 
 
-function postECBF(err) {
-    alert("Course was already added.");
+function getECBF(err) {
+    console.log(err);
+    alert("Error adding courses");
 }
 
 

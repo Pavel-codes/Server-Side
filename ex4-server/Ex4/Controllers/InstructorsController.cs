@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
             return instructor.Read();
         }
 
-        // GET api/<InstructorsController>/5
+        //GET api/<InstructorsController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
