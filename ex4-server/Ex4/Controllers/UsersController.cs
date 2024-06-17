@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.BL;
 
 namespace WebApplication1.Controllers
@@ -11,34 +10,44 @@ namespace WebApplication1.Controllers
         User user = new User();
         // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<User> Get()
         {
-            return WebApplication1.BL.User.GetUsers();
+            return user.GetUsers();
         }
         //GET api/Users/5
         [HttpGet("{id}")]
-        public ActionResult<User> GetUserById(int id)
+        public ActionResult<User> Get(int id)
         {
-            var ThisUser = user.GetUser(id);
-            if (ThisUser == null)
+            var user = WebApplication1.BL.User.GetUser(id);
+            if (user == null)
             {
                 return NotFound();
             }
-            return ThisUser;
+            return user;
         }
 
         //POST api/<UsersController>
         [HttpPost]
-        public bool Post([FromBody] User user)
+        public bool Post([FromBody] User value)
         {
-            return user.Registration();
+            
+            bool result = user.registration(value);
+            if(result)
+                return true;         
+            return false;          
+
         }
 
         // POST api/<UsersController>/login
         [HttpPost("login")]
         public User Login([FromBody] Login value)
         {
-            return WebApplication1.BL.User.Login(value);
+            User nUser = user.login(value);
+            if (nUser != null)
+            {
+                return nUser;
+            }
+            return null;
         }
 
         // PUT api/<UsersController>/5

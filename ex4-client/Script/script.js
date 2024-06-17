@@ -1,14 +1,24 @@
 ﻿var coursesData = [];
 const udemy = "https://www.udemy.com";
+const apiBaseUrl = "https://localhost:7283/api/Courses";
 
 //localStorage.clear();
 
 $(document).ready(function () {
 
-    $.getJSON("../Data/Course.json", function (data) {
-        renderCourses(data);
-    });
+    function getCoursesFromDB() {
+        ajaxCall('GET', apiBaseUrl, true, postSCBF, postECBF);
+    }
 
+    function postSCBF(response) {
+        console.log(response);
+        renderCourses(response);
+    }
+
+    function postECBF(err) {
+        console.log(err)
+        alert("Failed to load courses!");
+    }
 
     // Render courses
     function renderCourses(courses) {
@@ -16,20 +26,20 @@ $(document).ready(function () {
         courses.forEach(function (course) {
             coursesData.push(course);
             var courseElement = $('<div>');
-            courseElement.append('<img src=' + course.image + '>');
+            courseElement.append('<img src=' + course.imageReference + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
-            courseElement.append('<p>Instructor: ' + course.instructorName + '</p>'); 
+            courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
-            courseElement.append('<p>Number Of Reviews: ' + course.num_reviews + '</p>');
+            courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
+            courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
             courseElement.append('<button id="' + course.id + '">Add Course</button>');
-            courseElement.append('<button class="show-instructor-courses-btn" data-instructor-id="' + course.instructorId + '">Show more courses of this instructor</button>'); 
             coursesContainer.append(courseElement);
             addCourseClick(courseElement);
         });
     }
-
+    getCoursesFromDB();
 
     $('*').not('script, style').css({
         'padding': '5px',
@@ -37,33 +47,6 @@ $(document).ready(function () {
         'margin-bottom': '5px'
     });
 });
-
-// Function to fetch and render courses by instructor ID
-function fetchAndRenderInstructorCourses(instructorId) {
-    const apiUrl = `URL_TO_FETCH_COURSES_BY_INSTRUCTOR?instructorId=${instructorId}`;
-
-    // Make an AJAX call using your ajaxCall function
-    ajaxCall('GET', apiUrl, null, function (data) {
-        // Render the retrieved courses in a modal view or a new page
-        renderInstructorCourses(data);
-    }, function () {
-        console.log("Error fetching instructor courses.");
-    });
-}
-
-// Function to render instructor courses
-function renderInstructorCourses(courses) {
-    // Render the courses in a modal view or a new page
-    // Example: Display courses in a modal view
-    $('#modal-container').empty(); // Assuming you have a modal container
-    courses.forEach(function (course) {
-        // Render each course in the modal container
-        $('#modal-container').append('<p>' + course.title + '</p>');
-    });
-    $('#modal').show(); // Show the modal
-}
-
-
 
 const myCoursesBtn = document.getElementById("myCourses");
 
@@ -165,7 +148,7 @@ function addCourse(buttonId, userId) {
                 lastUpdate: courseData.last_update_date
             };
 
-            const api = `https://localhost:7076/api/Courses/addCourseToUser/${userId}`;
+            const api = `https://localhost:7283/api/Courses/addCourseToUser/${userId}`;
 
             ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
 

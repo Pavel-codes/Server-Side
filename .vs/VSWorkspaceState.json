@@ -1,16 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ex2-client",
-    "\\ex2-client\\Data",
-    "\\ex2-client\\Pages",
-    "\\ex2-client\\Pic",
-    "\\ex2-client\\Script",
-    "\\ex2-server",
-    "\\ex2-server\\WebApplication1",
-    "\\ex2-server\\WebApplication1\\BL",
-    "\\ex2-server\\WebApplication1\\Controllers"
+    "\\ex4-server",
+    "\\ex4-server\\Ex4",
+    "\\ex4-server\\Ex4\\BL",
+    "\\ex4-server\\Ex4\\DAL"
   ],
-  "SelectedNode": "\\ex2-server\\ex2-server.sln",
+  "SelectedNode": "\\ex4-server\\Ex4\\BL\\User.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -3,7 +3,7 @@ var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
 
-const apiBaseUrl = "https://localhost:7076/api";
+const apiBaseUrl = "https://localhost:7283/api";
 
 $(document).ready(function () {
     loadCourses(apiBaseUrl);

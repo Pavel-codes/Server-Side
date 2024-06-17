@@ -128,7 +128,6 @@ function addCoursesToDataList() {
 const courseDataList = document.getElementById("courseDataList");
 
 function addToDataList(data) {
-    //displayCourses.empty();
     for (const course of data) {
         const option = document.createElement('option');
         option.value = course.title; // Set the value attribute
@@ -176,14 +175,14 @@ $("#courseNamesList").on('input', function () {
 
                     var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
                     var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
-                    var durationPattern = /^\d+(\.\d+)?\s+\w+$/;
+                    var durationPattern = /^\s*\d+(\.\d+)?\s*$/;
 
 
                     const newTitle = $('#selectedTitle').val();
 
                     const newDuration = $('#selectedDuration').val();
                     if (!durationPattern.test($('#selectedDuration').val())) {
-                        alert("Duration is not valid Must Use This Structure: [number] [text]");
+                        alert("Duration is not valid must be a number!");
                         return;
                     }
                     const newUrl = $('#selectedUrl').val();

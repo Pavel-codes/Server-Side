@@ -33,9 +33,9 @@ $("#createCourseForm").submit(function (event) {
         return;
     }
 
-    var durationPattern = /^\d+(\.\d+)?\s+\w+$/;
+    var durationPattern = /^\s*\d+(\.\d+)?\s*$/;
     if (!durationPattern.test($('#duration').val())) {
-        alert("Duration is not valid Must Use This Structure: [number] [text]");
+        alert("Duration is not valid must be a number!");
         return;
     }
 
@@ -47,8 +47,8 @@ $("#createCourseForm").submit(function (event) {
         numberOfReviews: 0,
         instructorsId: $("#instructorsId").val(),
         imageReference: $("#image").val(),
-        duration: $("#duration").val(),
-        lastUpdate: getCurrentDate() // change the date format - fixed
+        duration: $("#duration").val() + "total hours",
+        lastUpdate: getCurrentDate()
     }
     ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), getSCBF, getECBF);
   

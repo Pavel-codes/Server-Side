@@ -1,92 +1,151 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-
-namespace WebApplication1.BL
+﻿namespace WebApplication1.BL
 {
     public class Course
     {
-        private static DBservices dbServices = new DBservices();
-
         private int id;
         private string title;
         private string url;
         private double rating;
         private int numberOfReviews;
-        private int instructorId;
+        private int instructorsId;
         private string imageReference;
         private string duration;
-        private DateTime lastUpdate;
+        private string lastUpdate;
+
+        private static List<Course> coursesList = new List<Course>();
+
+        public Course() { }
+
+        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate)
+        {
+            Id = id;
+            Title = title;
+            Url = url;
+            Rating = rating;
+            NumberOfReviews = numberOfReviews;
+            InstructorsId = instructorsId;
+            ImageReference = imageReference;
+            Duration = duration;
+            LastUpdate = lastUpdate;
+        }
 
         public int Id { get => id; set => id = value; }
         public string Title { get => title; set => title = value; }
         public string Url { get => url; set => url = value; }
         public double Rating { get => rating; set => rating = value; }
         public int NumberOfReviews { get => numberOfReviews; set => numberOfReviews = value; }
-        public int InstructorId { get => instructorId; set => instructorId = value; }
+        public int InstructorsId { get => instructorsId; set => instructorsId = value; }
         public string ImageReference { get => imageReference; set => imageReference = value; }
         public string Duration { get => duration; set => duration = value; }
-        public DateTime LastUpdate { get => lastUpdate; set => lastUpdate = value; }
+        public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
-        public Course() { }
-
-        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorId, string imageReference, string duration, DateTime lastUpdate)
-        {
-            this.id = id;
-            this.title = title;
-            this.url = url;
-            this.rating = rating;
-            this.numberOfReviews = numberOfReviews;
-            this.instructorId = instructorId;
-            this.imageReference = imageReference;
-            this.duration = duration;
-            this.lastUpdate = lastUpdate;
-        }
+        public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
 
         public List<Course> Read()
         {
-            return dbServices.GetAllCourses();
+            DBservices db = new DBservices();
+            return db.ReadCourses();
         }
 
         public static bool AddCourseToUser(int userId, Course courseToAdd)
         {
-            return dbServices.AddCourseToUser(userId, courseToAdd.Id) > 0;
+            DBservices db = new DBservices();
+            try
+            {
+                db.AddCourseToUser(userId, courseToAdd);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;     
+            }
+          
         }
 
-        public static bool DeleteCourse(int userId, int courseIdToDelete)
+        public static bool DeleteCourse(int userId, int courseidToDelete)
         {
-            return dbServices.DeleteCourseFromUser(userId, courseIdToDelete) > 0;
+            DBservices db = new DBservices();
+            try
+            {
+                db.DeleteCourseFromUser(userId, courseidToDelete);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+       
         }
 
         public static List<Course> GetByRatingRangeForUser(int userId, double fromRating, double toRating)
         {
-            return dbServices.GetByRatingRangeForUser(userId, fromRating, toRating);
+            DBservices db = new DBservices();
+            if (db.GetByRatingRangeForUser(userId, fromRating, toRating).Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return db.GetByRatingRangeForUser(userId, fromRating, toRating);
+            }
         }
+
 
         public static List<Course> GetByDurationRangeForUser(int userId, double fromDuration, double toDuration)
         {
-            return dbServices.GetByDurationRangeForUser(userId, fromDuration, toDuration);
-        }
-
-        public Course GetCourseByTitle(string courseTitle)
-        {
-            return dbServices.GetCourseByTitle(courseTitle);
+            DBservices db = new DBservices();
+            if (db.GetByDurationRangeForUser(userId, fromDuration, toDuration).Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+            }
+           
         }
 
         public bool InsertNewCourse()
         {
-            return dbServices.InsertCourse(this) > 0;
+            DBservices db = new DBservices();
+            try { 
+                db.InsertNewCourse(this);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+               
+            }
+
+
         }
 
-        public bool UpdateCourse(int courseId, Course updatedCourse)
+      
+
+        public bool updateCourse(int id, Course updatedCourse)
         {
-            updatedCourse.Id = courseId;
-            return dbServices.UpdateCourse(updatedCourse) > 0;
+            DBservices db = new DBservices();
+            try
+            {
+                db.EditCourse(id, updatedCourse);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+     
         }
 
-        public static List<Course> GetCoursesByInstructor(int instructorId)
+        public Course getCourseByTitle(string courseName)
         {
-            return dbServices.GetCoursesByInstructor(instructorId);
+            foreach (Course course in coursesList)
+            {
+                if (course.Title == courseName) return course;
+            }
+            return null;
         }
     }
 }
