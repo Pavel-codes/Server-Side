@@ -1,13 +1,12 @@
 ﻿const apiBaseUrl = "https://localhost:7283/api/Instructors";
-let instructorsData = []; 
+const udemy = "https://www.udemy.com";
+let instructorsData = [];
 var modal = $('#coursesModal');
 var span = $('.close');
 
 $(document).ready(function () {
-
-
     function getInstructorsFromDB() {
-        ajaxCall('GET', apiBaseUrl, true, getInstructorsSCBF, getInstructorsECBF);
+        ajaxCall('GET', apiBaseUrl, null, getInstructorsSCBF, getInstructorsECBF);
     }
 
     function renderInstructors(instructors) {
@@ -15,7 +14,7 @@ $(document).ready(function () {
         instructors.forEach(function (instructor) {
             var instructorElement = $('<div>');
             instructorElement.append('<h2>' + instructor.name + '</h2>');
-            instructorElement.append('<img src=' + instructor.image + '>');
+            instructorElement.append('<img src="' + instructor.image + '">');
             instructorElement.append('<p>Title: ' + instructor.title + '</p>');
             instructorElement.append('<p>Job: ' + instructor.jobTitle + '</p>');
             instructorElement.append('<button id="' + instructor.id + '">View more</button>');
@@ -23,18 +22,16 @@ $(document).ready(function () {
             instructorsContainer.append(instructorElement);
 
             let instructorBtn = document.getElementById(instructor.id);
-            console.log(instructorBtn);
             $(instructorBtn).on('click', function () {
-                modal.css('display', 'block');
+                
                 addCoursesToModal(instructorBtn.id);
             });
         });
     }
-
+    modal.css('display', 'none');
     function getInstructorsSCBF(result) {
-        renderInstructors(result)
+        renderInstructors(result);
         console.log("Received instructors");
-
     }
 
     function getInstructorsECBF(err) {
@@ -48,8 +45,8 @@ $(document).ready(function () {
     });
 
     $(window).on('click', function (event) {
-        if ($(event.target).is(modal)) {
-            modal.css('display', 'none');
+        if (event.target === $('#coursesModal')[0]) {
+            $('#coursesModal').hide();
         }
     });
 
@@ -59,64 +56,33 @@ $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
 
+function addCoursesToModal(buttonId) {
+    modal.css('display', 'block');
+    $('modal-content').html = '';
 
-function viewCourses(element) { // needs fixing
-    element.click(function (event) {
-        $('#myModal').css('display', 'block');
-    });
-}
-
-function addCoursesToModal(buttonId) { // not working
-    console.log(buttonId);
-    //redo the logic to fit the modal
     let api = `https://localhost:7283/api/Courses/searchByInstructorId/${buttonId}`;
-    ajaxCall("GET", api, getSCBF, getECBF);
+    ajaxCall("GET", api, null, getSCBF, getECBF);
 }
 
 function getSCBF(result) {
-    alert("Courses added successfully!");
     console.log(result);
-}
+    var modalContent = $('#modal-content');
+    result.forEach(function (course) {
+        var courseElement = $('<div>');
+        courseElement.append('<img src="' + course.imageReference + '">');
+        courseElement.append('<h2>' + course.title + '</h2>');
+        courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
+        courseElement.append('<p>Duration: ' + course.duration + '</p>');
+        courseElement.append('<p>Rating: ' + course.rating + '</p>');
+        courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
+        courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
+        courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
 
+        modalContent.append(courseElement);
+    });
+}
 
 function getECBF(err) {
     console.log(err);
     alert("Error adding courses");
 }
-
-
-
-
-//$("#insertIntsructorsBtn").on("click", function () {
-
-//    console.log("Inserting instructors");
-//    insertInstructors(instructorsData);
-//});
-
-//$("#getInstructorsBtn").on("click", function () {
-//    console.log("Displaying instructors");
-//    getAllInstructors();
-//});
-
-
-//function insertInstructors(instructorsData) {
-//    //api = `https://localhost:7076/api/Instructors`;
-//    var instructorDataToSend;
-//    var instructorsToServer = [];
-//    instructorsData[0].forEach(instructor => {
-//        instructorDataToSend = {
-//            id: instructor.id,
-//            title: instructor.title,
-//            name: instructor.display_name,
-//            image: instructor.image_100x100,
-//            jobTitle: instructor.job_title
-//        };
-//        ajaxCall("POST", api, JSON.stringify(instructorDataToSend), postSCBF, postECBF);
-//    })
-//}
-
-// Get all instructors function
-
-
-
-

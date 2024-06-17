@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\",
+  "WorkspaceRootPath": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\",
   "Documents": [
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\createCourse.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
@@ -18,11 +18,11 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex2-server\\webapplication1\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex2-server\\webapplication1\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex2-server\\webapplication1\\bl\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex2-server\\webapplication1\\bl\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\bl\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -38,11 +38,11 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex2-server\\webapplication1\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex2-server\\webapplication1\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex2-server\\webapplication1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex2-server\\webapplication1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E22344CC-83A3-4B27-95D0-25598167473A}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -62,215 +62,218 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "CoursesController.cs",
-              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\Controllers\\CoursesController.cs",
+              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\Controllers\\CoursesController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\CoursesController.cs",
-              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\Controllers\\CoursesController.cs",
+              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\Controllers\\CoursesController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\CoursesController.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAgwB8AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T15:07:49.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T15:07:49.18Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Course.cs",
-              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\BL\\Course.cs",
+              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\BL\\Course.cs",
               "RelativeDocumentMoniker": "WebApplication1\\BL\\Course.cs",
-              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\BL\\Course.cs",
+              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\BL\\Course.cs",
               "RelativeToolTip": "WebApplication1\\BL\\Course.cs",
               "ViewState": "AQIAAKoAAAAAAAAAAAAewLoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T16:13:26.554Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T16:13:26.554Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Course.json",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Data\\Course.json",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Data\\Course.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Data\\Course.json",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Data\\Course.json",
-              "RelativeToolTip": "..\\ex2-client\\Data\\Course.json",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Data\\Course.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-06T15:02:45.064Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T15:02:45.064Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "createCourse.css",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Css\\createCourse.css",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
-              "RelativeToolTip": "..\\ex2-client\\Css\\createCourse.css",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\createCourse.css",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-04T15:55:16.417Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T15:55:16.417Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "createCourse.js",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\createCourse.js",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Script\\createCourse.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\createCourse.js",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\createCourse.js",
-              "RelativeToolTip": "..\\ex2-client\\Script\\createCourse.js",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBsAAAACAAAA",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\createCourse.js",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-04T15:24:25.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T15:24:25.525Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "login.js",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\login.js",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Script\\login.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\login.js",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\login.js",
-              "RelativeToolTip": "..\\ex2-client\\Script\\login.js",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\login.js",
               "ViewState": "AQIAAAEAAAAAAAAAAAAiwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-04T17:06:34.927Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T17:06:34.927Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "createEditForm.html",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\createEditForm.html",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Pages\\createEditForm.html",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\createEditForm.html",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\createEditForm.html",
-              "RelativeToolTip": "..\\ex2-client\\Pages\\createEditForm.html",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\createEditForm.html",
               "ViewState": "AQIAABgAAAAAAAAAAAAAACUAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-04T15:39:59.119Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T15:39:59.119Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\Controllers\\UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\Controllers\\UsersController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\UsersController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T15:07:07.801Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T15:07:07.801Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Pages\\index.html",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
-              "RelativeToolTip": "..\\ex2-client\\Pages\\index.html",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\index.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-28T17:18:22.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T17:18:22.374Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "admin.js",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\admin.js",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Script\\admin.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\admin.js",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\admin.js",
-              "RelativeToolTip": "..\\ex2-client\\Script\\admin.js",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\admin.js",
               "ViewState": "AQIAALgAAAAAAAAAAAAQwN0AAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-05-28T16:47:03.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T16:47:03.303Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "script.js",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\script.js",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Script\\script.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\script.js",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\script.js",
-              "RelativeToolTip": "..\\ex2-client\\Script\\script.js",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\script.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-05-29T12:28:27.358Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T12:28:27.358Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\BL\\User.cs",
+              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\BL\\User.cs",
               "RelativeDocumentMoniker": "WebApplication1\\BL\\User.cs",
-              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-server\\WebApplication1\\BL\\User.cs",
+              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex2-server\\WebApplication1\\BL\\User.cs",
               "RelativeToolTip": "WebApplication1\\BL\\User.cs",
               "ViewState": "AQIAADYAAAAAAAAAAAAhwF0AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T15:05:07.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T15:05:07.243Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "admin.html",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Pages\\admin.html",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html",
-              "RelativeToolTip": "..\\ex2-client\\Pages\\admin.html",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Pages\\admin.html",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAA8AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-28T16:43:40.429Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T16:43:40.429Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "myCourses.css",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\myCourses.css",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Css\\myCourses.css",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\myCourses.css",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\myCourses.css",
-              "RelativeToolTip": "..\\ex2-client\\Css\\myCourses.css",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\myCourses.css",
               "ViewState": "AQIAACEAAAAAAAAAAAAAADkAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T14:49:15.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:49:15.491Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "my_courses_script.js",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\my_courses_script.js",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Script\\my_courses_script.js",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\my_courses_script.js",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\my_courses_script.js",
-              "RelativeToolTip": "..\\ex2-client\\Script\\my_courses_script.js",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Script\\my_courses_script.js",
               "ViewState": "AQIAAEEAAAAAAAAAAAAwwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-06T15:21:59.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T15:21:59.874Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "admin.css",
               "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\admin.css",
-              "RelativeDocumentMoniker": "..\\ex2-client\\Css\\admin.css",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\admin.css",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\admin.css",
-              "RelativeToolTip": "..\\ex2-client\\Css\\admin.css",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\chena\\source\\repos\\Server-Side-Final\\ex2-client\\Css\\admin.css",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-29T12:21:22.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T12:21:22.152Z"
             }
           ]
         }

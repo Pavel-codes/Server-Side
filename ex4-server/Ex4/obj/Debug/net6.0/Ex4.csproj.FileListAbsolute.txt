@@ -75,4 +75,4 @@ C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.pdb
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.genruntimeconfig.cache
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\ref\Ex4.dll
-C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.csproj.CopyComplete
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.csproj.Up2Date
