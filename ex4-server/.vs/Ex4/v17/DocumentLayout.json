@@ -80,7 +80,7 @@
               "RelativeDocumentMoniker": "Ex4\\Program.cs",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Program.cs",
               "RelativeToolTip": "Ex4\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-16T13:38:05.151Z",
               "EditorCaption": ""
@@ -107,8 +107,7 @@
               "RelativeToolTip": "Ex4\\Controllers\\InstructorsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T08:25:49.989Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T08:25:49.989Z"
             },
             {
               "$type": "Document",
@@ -120,8 +119,7 @@
               "RelativeToolTip": "Ex4\\BL\\Instructor.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAqwD8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T08:23:06.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T08:23:06.937Z"
             },
             {
               "$type": "Document",
@@ -145,8 +143,7 @@
               "RelativeToolTip": "Ex4\\Controllers\\UsersController.cs",
               "ViewState": "AQIAACMAAAAAAAAAAAAwwCcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T22:02:52.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-15T22:02:52.821Z"
             },
             {
               "$type": "Document",
@@ -170,8 +167,7 @@
               "RelativeToolTip": "Ex4\\DAL\\DBservices.cs",
               "ViewState": "AQIAABsDAAAAAAAAAAAAwCsDAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T10:33:37.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-14T10:33:37.892Z"
             },
             {
               "$type": "Document",
@@ -183,8 +179,7 @@
               "RelativeToolTip": "Ex4\\Controllers\\CoursesController.cs",
               "ViewState": "AQIAAHwAAAAAAAAAAAAYwI4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T10:34:10.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-14T10:34:10.734Z"
             },
             {
               "$type": "Document",
@@ -196,8 +191,7 @@
               "RelativeToolTip": "Ex4\\BL\\Course.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAAwCAAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T10:34:17.828Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-14T10:34:17.828Z"
             }
           ]
         }

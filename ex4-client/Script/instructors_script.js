@@ -58,11 +58,14 @@ $('#homeBtn').on('click', function () {
 
 function addCoursesToModal(buttonId) {
     modal.css('display', 'block');
-    $('modal-content').html = '';
+    //clearModal();
+    $('#modal-content').children().slice(1).remove();
+    //$('#modal-content').html('');
 
     let api = `https://localhost:7283/api/Courses/searchByInstructorId/${buttonId}`;
     ajaxCall("GET", api, null, getSCBF, getECBF);
 }
+
 
 function getSCBF(result) {
     console.log(result);

@@ -100,7 +100,7 @@
               "RelativeDocumentMoniker": "Css\\instructorsPage.css",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\instructorsPage.css",
               "RelativeToolTip": "Css\\instructorsPage.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAGUAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-06-17T11:19:06.343Z",
               "EditorCaption": ""
@@ -113,7 +113,7 @@
               "RelativeDocumentMoniker": "Script\\instructors_script.js",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\instructors_script.js",
               "RelativeToolTip": "Script\\instructors_script.js",
-              "ViewState": "AQIAAB8AAAAAAAAAAAA0wCkAAAAAAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAAwDwAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-06-16T21:35:04.173Z",
               "EditorCaption": ""
@@ -126,7 +126,7 @@
               "RelativeDocumentMoniker": "Pages\\instructorsPage.html",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\instructorsPage.html",
               "RelativeToolTip": "Pages\\instructorsPage.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAApAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-06-16T21:33:59.201Z",
               "EditorCaption": ""
@@ -189,8 +189,7 @@
               "RelativeToolTip": "Script\\login.js",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-16T18:15:17.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T18:15:17.671Z"
             },
             {
               "$type": "Document",
@@ -202,8 +201,7 @@
               "RelativeToolTip": "Script\\script.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-16T18:14:14.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T18:14:14.992Z"
             },
             {
               "$type": "Document",
@@ -215,8 +213,7 @@
               "RelativeToolTip": "Script\\my_courses_script.js",
               "ViewState": "AQIAAGsAAAAAAAAAAAAqwAsAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-16T18:14:48.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T18:14:48.223Z"
             },
             {
               "$type": "Document",
