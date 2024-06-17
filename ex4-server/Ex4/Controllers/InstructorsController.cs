@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public bool Post([FromBody] Instructor value)
         {
-            return value.InsertInstructor();
+            return value.Insert();
         }
 
         // PUT api/<InstructorsController>/5

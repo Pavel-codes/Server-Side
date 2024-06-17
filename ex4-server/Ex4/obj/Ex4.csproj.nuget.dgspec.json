@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj": {}
+    "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj": {
+    "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj",
         "projectName": "Ex4",
-        "projectPath": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj",
-        "packagesPath": "C:\\Users\\fabel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\obj\\",
+        "projectPath": "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\fabel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

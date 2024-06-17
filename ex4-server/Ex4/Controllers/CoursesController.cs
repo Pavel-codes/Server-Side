@@ -10,28 +10,26 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class CoursesController : ControllerBase
     {
-        private readonly DBservices dbservices = new DBservices();
-
         Course course = new Course();
 
-        // GET: api/Courses
+        // GET: api/<CoursesController>
         [HttpGet]
         public IEnumerable<Course> Get()
         {
-            return new Course().Read();
+            return course.Read();
         }
 
         // GET api/<CoursesController>/5
         [HttpGet("{title}")]
         public Course Get(string title)
         {
-            return course.GetCourseByTitle(title);
+            return course.getCourseByTitle(title);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var courseById = course.Id;
+            var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
             if (course == null)
             {
                 return NotFound("Course not found");
@@ -39,20 +37,19 @@ namespace WebApplication1.Controllers
             return Ok(course);
         }
 
-        // GET: api/Courses/user/{userId}
-        [HttpGet("user/{userId}")]
+        [HttpGet("user/{userId}")] //
         public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
         {
-            var userById = dbservices.GetUser(userId);
-            if (userById == null)
+            var user = WebApplication1.BL.User.GetUser(userId);
+            if (user == null)
             {
                 return NotFound();
             }
-            var userCourses = userById.GetCourses();
-            return Ok(userCourses);
+            var courses = user.GetCourses();
+            return Ok(courses);
         }
 
-        // POST: api/Courses/NewCourse
+        // POST api/<CoursesController>
         [HttpPost("NewCourse")]
         public IActionResult PostNewCourse([FromBody] Course value)
         {
@@ -64,34 +61,16 @@ namespace WebApplication1.Controllers
             return Ok(new { message = "Course inserted successfully." });
         }
 
-        // POST api/<CoursesController>
-        [HttpPost("NewCourse")]
-        public IActionResult PostNewCourse([FromBody] Course value)
-        {
-            bool result = value.InsertNewCourse();
-            if (!result)
-            {
-                return NotFound("Course could not be inserted.");
-            }
-            return Ok("Course inserted successfully.");
-        }
 
-
-        // PUT: api/Courses/5
+        // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Course updatedCourse)
         {
             try
             {
-                bool result = new Course().UpdateCourse(id, updatedCourse);
-                if (result)
-                {
-                    return Ok(new { message = "Course updated." });
-                }
-                else
-                {
-                    return NotFound(new { message = "Course could not be updated." });
-                }
+                bool result = course.updateCourse(id, updatedCourse);
+                if (result) { return Ok(new { message = "Course updated." }); }
+                else { return NotFound(new { message = "Course could not be updated." }); }
             }
             catch (Exception ex)
             {
@@ -163,8 +142,24 @@ namespace WebApplication1.Controllers
             }
         }
 
+        // Get courses by instructor id
+        [HttpGet("searchByInstructorId/{instructorId}")]
+        public IActionResult GetByInstructorId(int instructorId)
+        {
+            try
+            {
+                List<Course> courses = Course.GetCoursesByInstructor(instructorId);
 
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound(new { message = "No courses found for this instructor." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
     }
-
-
 }

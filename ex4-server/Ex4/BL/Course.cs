@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.BL
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace WebApplication1.BL
 {
     public class Course
     {
@@ -147,5 +149,21 @@
             }
             return null;
         }
+
+        public static List<Course> GetCoursesByInstructor(int instructorId)
+        {
+            DBservices db = new DBservices();
+            if (db.GetCoursesByInstructor(instructorId).Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return db.GetCoursesByInstructor(instructorId);
+            }
+
+        }
+
+        
     }
 }
