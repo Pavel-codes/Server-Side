@@ -70,9 +70,9 @@ C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Ex4.props
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\scopedcss\bundle\Ex4.styles.css
-C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.csproj.Up2Date
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.dll
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\refint\Ex4.dll
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.pdb
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.genruntimeconfig.cache
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\ref\Ex4.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Debug\net6.0\Ex4.csproj.CopyComplete

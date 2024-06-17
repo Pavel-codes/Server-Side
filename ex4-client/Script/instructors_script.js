@@ -1,6 +1,7 @@
 ﻿const apiBaseUrl = "https://localhost:7283/api/Instructors";
 let instructorsData = []; 
 
+
 $(document).ready(function () {
 
 
@@ -14,11 +15,14 @@ $(document).ready(function () {
             var instructorElement = $('<div>');
             instructorElement.append('<h2>' + instructor.name + '</h2>');
             instructorElement.append('<img src=' + instructor.image + '>');
-            instructorElement.append('<p>ID: ' + instructor.id + '</p>');
             instructorElement.append('<p>Title: ' + instructor.title + '</p>');
             instructorElement.append('<p>Job: ' + instructor.jobTitle + '</p>');
+            instructorElement.append('<button id="' + instructor.id + '">View more</button>');
+
 
             instructorsContainer.append(instructorElement);
+            let instructorBtn = document.getElementById(instructor.id);
+            viewCourses(instructorBtn);
         });
     }
 
@@ -32,9 +36,6 @@ $(document).ready(function () {
         console.log(err);
     }
 
-    
-
-
     getInstructorsFromDB();
 
 });
@@ -42,6 +43,55 @@ $(document).ready(function () {
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
+
+function viewCourses(element) { // needs fixing
+    element.click(function (event) {
+        $('#myModal').css('display', 'block');
+    });
+}
+
+function addCoursesToModal(buttonId) { // not working
+
+    //redo the logic to fit the modal
+    console.log(buttonId);
+    var courseDataToSend;
+    coursesData.forEach(courseData => {
+        if (buttonId == courseData.id) {
+            courseDataToSend = {
+                id: courseData.id,
+                title: courseData.title,
+                url: udemy + courseData.url,
+                rating: courseData.rating,
+                numberOfReviews: courseData.num_reviews,
+                instructorsId: courseData.instructors_id,
+                imageReference: courseData.image,
+                duration: courseData.duration,
+                lastUpdate: courseData.last_update_date
+            };
+
+            const api = `https://localhost:7283/api/Courses/addCourseToUser/${userId}`;
+
+            ajaxCall("POST", api, JSON.stringify(courseDataToSend), postSCBF, postECBF)
+
+        }
+        else {
+            console.log("not found");
+        }
+    });
+}
+
+function postSCBF(result) {
+    alert("Course added successfully!");
+    console.log(result);
+}
+
+
+function postECBF(err) {
+    alert("Course was already added.");
+}
+
+
+
 
 //$("#insertIntsructorsBtn").on("click", function () {
 
