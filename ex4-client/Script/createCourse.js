@@ -1,4 +1,4 @@
-const apiBaseUrl = "https://localhost:7076/api/Courses";
+const apiBaseUrl = "https://localhost:7283/api/Courses";
 const udemy = "https://www.udemy.com";
 
 $('#homeBtn').on('click', function () {
@@ -41,27 +41,29 @@ $("#createCourseForm").submit(function (event) {
     }
 
     var newCourse = {
-        id: $("#id").val(),
+        id: 0,
         title: $("#title").val(),
         url: $("#url").val(),
         rating: 0.0,
         numberOfReviews: 0,
         instructorsId: $("#instructorsId").val(),
         imageReference: $("#image").val(),
-        duration: $("#duration").val() + "total hours",
+        duration: $("#duration").val() + " total hours",
         lastUpdate: getCurrentDate()
-    }
-    ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), getSCBF, getECBF);
+    };
+    console.log(newCourse);
+    ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), postSCBF, postECBF);
   
 });
 
 
-function getSCBF(result) {
+function postSCBF(result) {
     alert("Course Successfully Added");
     console.log(result);
 }
 
-function getECBF(err) {
+function postECBF(err) {
+    console.log(err);
     alert("Course already exists/Instructor not Exist");
 }
 

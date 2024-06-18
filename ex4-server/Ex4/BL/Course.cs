@@ -95,7 +95,7 @@
         public static List<Course> GetByDurationRangeForUser(int userId, double fromDuration, double toDuration)
         {
             DBservices db = new DBservices();
-            List<Course> courses = db.GetByRatingRangeForUser(userId, fromDuration, toDuration);
+            List<Course> courses = db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
             if (courses.Count == 0)
             {
                 return null;
