@@ -36,5 +36,11 @@ namespace WebApplication1.BL
             return db.ReadInstructors();
 
         }
+
+        public string instructorNameById(int id)
+        {
+            DBservices db = new DBservices();
+            return db.InstructorName(id);
+        }
     }
 }

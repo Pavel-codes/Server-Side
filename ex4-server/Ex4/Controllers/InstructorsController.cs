@@ -17,11 +17,23 @@ namespace WebApplication1.Controllers
             return instructor.Read();
         }
 
-        //GET api/<InstructorsController>/5
+        // GET api/Instructors/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                string name = instructor.instructorNameById(id);
+                if (string.IsNullOrEmpty(name))
+                {
+                    return NotFound(new { message = "Instructor not found" });
+                }
+                return Ok(name);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
         // Get courses by instructor id

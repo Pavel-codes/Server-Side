@@ -3,6 +3,7 @@ const udemy = "https://www.udemy.com";
 const apiBaseUrl = "https://localhost:7283/api/Courses";
 var modal = $('#coursesModal');
 var span = $('.close');
+var instructorName;
 //localStorage.clear();
 
 $(document).ready(function () {
@@ -25,11 +26,13 @@ $(document).ready(function () {
     function renderCourses(courses) {
         var coursesContainer = $('#courses-container');
         courses.forEach(function (course) {
+            instructorName = getInstructorNameFromDB(course.instructorsId);
+            console.log(instructorName);
             coursesData.push(course);
             var courseElement = $('<div>');
             courseElement.append('<img src=' + course.imageReference + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
-            courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
+            courseElement.append('<p>By: ' + instructorName + '</p>');
             courseElement.append('<button id="' + course.instructorsId + '">Show more courses of this instructor</button>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
@@ -42,12 +45,27 @@ $(document).ready(function () {
 
             let instructorBtn = document.getElementById(course.instructorsId);
             $(instructorBtn).on('click', function () {
-                console.log("Button clicked with ID:", instructorBtn);
+                //console.log("Button clicked with ID:", instructorBtn);
                 addCoursesToModal(instructorBtn.id);
             });
 
         });
+
     }
+    function getInstructorNameFromDB(id) {
+        let api = `https://localhost:7283/api/Instructors/${id}`;
+        ajaxCall('GET', api, true, getInstructorNameSCBF, getInstructorNameECBF);
+    }
+
+    function getInstructorNameSCBF(response) {
+        console.log(response);
+        instructorName = response;
+    }
+
+    function getInstructorNameECBF(err) {
+        console.log(err)
+    }
+
     getCoursesFromDB();
 
     $('*').not('script, style').css({
@@ -71,14 +89,12 @@ function addCoursesToModal(buttonId) {
 
     //clearModal();
     $('#modal-content').children().slice(1).remove();
-    //$('#modal-content').html('');
 
     let api = `https://localhost:7283/api/Courses/searchByInstructorId/${buttonId}`;
     ajaxCall("GET", api, null, getInstructorCoursesSCBF, getInstructorCoursesECBF);
 }
 
 function getInstructorCoursesSCBF(result) {
-    console.log(result);
     var modalContent = $('#modal-content');
     result.forEach(function (course) {
         var courseElement = $('<div>');
@@ -144,8 +160,6 @@ Adminbtn.addEventListener("click", function () {
 });
 
 
-
-
 if (!isLoggedIn()) {
     $('#logoutBtn').hide();
     $('#loginBtn').show();
@@ -183,13 +197,13 @@ function addCourseClick(element) {
     });
 }
 
-
+//possibly need to change implementation to use database instead of list
 function addCourse(buttonId, userId) { 
     console.log(buttonId);
     var courseDataToSend;
     coursesData.forEach(courseData => {
         if (buttonId == courseData.id) {
-            console.log("inside if statement");
+            //console.log("inside if statement");
             
             courseDataToSend = {
                 id: courseData.id,

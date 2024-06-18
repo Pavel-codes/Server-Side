@@ -720,6 +720,66 @@ public class DBservices
 
         return cmd;
     }
+    public string InstructorName(int InstructorId)
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        string instructorName = "";
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+        // use a stored predures "spGetStudent" to get all the students from the student table
+        cmd = CreateCommandWithStoredProcedureGetInstructorsNameById("SP_GetInstructorNameById", con, InstructorId);
+        try
+        {
+            
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+            while (reader.Read())
+            {
+                instructorName = reader["displayName"].ToString();
+            }
+            return instructorName;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw (ex);
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+        
+    }
+
+    private SqlCommand CreateCommandWithStoredProcedureGetInstructorsNameById(String spName, SqlConnection con, int id)
+    {
+
+        SqlCommand cmd = new SqlCommand(); // create the command object
+
+        cmd.Connection = con;              // assign the connection to the command object
+
+        cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
+
+        cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
+
+        cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
+
+        cmd.Parameters.AddWithValue("@p_id", id);
+
+        return cmd;
+    }
 
     public List<Instructor> ReadInstructors()
     {
