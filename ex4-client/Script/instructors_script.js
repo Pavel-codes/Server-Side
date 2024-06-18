@@ -17,7 +17,7 @@ $(document).ready(function () {
             instructorElement.append('<img src="' + instructor.image + '">');
             instructorElement.append('<p>Title: ' + instructor.title + '</p>');
             instructorElement.append('<p>Job: ' + instructor.jobTitle + '</p>');
-            instructorElement.append('<button id="' + instructor.id + '">View more</button>');
+            instructorElement.append('<button id="' + instructor.id + '">Show courses</button>');
 
             instructorsContainer.append(instructorElement);
 
@@ -58,6 +58,7 @@ $('#homeBtn').on('click', function () {
 
 function addCoursesToModal(buttonId) {
     modal.css('display', 'block');
+    
     //clearModal();
     $('#modal-content').children().slice(1).remove();
     //$('#modal-content').html('');
@@ -82,6 +83,7 @@ function getSCBF(result) {
         courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
 
         modalContent.append(courseElement);
+        modalContent.css('width', '50%');
     });
 }
 

@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\ex4-client",
+    "\\ex4-client\\Css",
     "\\ex4-client\\Pages",
     "\\ex4-client\\Script",
     "\\ex4-server",
@@ -10,6 +11,6 @@
     "\\ex4-server\\Ex4\\Controllers",
     "\\ex4-server\\Ex4\\DAL"
   ],
-  "SelectedNode": "\\ex4-server\\Ex4.sln",
+  "SelectedNode": "\\ex4-client\\Css\\index.css",
   "PreviewInSolutionExplorer": false
 }
