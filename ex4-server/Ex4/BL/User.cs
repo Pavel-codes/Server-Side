@@ -9,7 +9,7 @@
         private bool isAdmin = false;
         private bool isActive = true;
 
-        private List<Course> myCourses = new List<Course>();
+        private List<Course> myCourses = new List<Course>(); // needs to be removed
         //static List<User> usersList = new List<User>();
 
         public int Id { get => id; set => id = value; }

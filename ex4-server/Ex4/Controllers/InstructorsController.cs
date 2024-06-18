@@ -28,7 +28,7 @@ namespace WebApplication1.Controllers
                 {
                     return NotFound(new { message = "Instructor not found" });
                 }
-                return Ok(name);
+                return Ok(new { name });
             }
             catch (Exception ex)
             {

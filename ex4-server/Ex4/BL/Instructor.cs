@@ -9,7 +9,7 @@ namespace WebApplication1.BL
         private string image;
         private string jobTitle;
 
-        private static List<Instructor> instructorList = new List<Instructor>();
+        //private static List<Instructor> instructorList = new List<Instructor>();
 
         public Instructor() { }
 
@@ -27,7 +27,7 @@ namespace WebApplication1.BL
         public string Name { get => name; set => name = value; }
         public string Image { get => image; set => image = value; }
         public string JobTitle { get => jobTitle; set => jobTitle = value; }
-        public static List<Instructor> InstructorList { get => instructorList; set => instructorList = value; }
+        //public static List<Instructor> InstructorList { get => instructorList; set => instructorList = value; }
 
        
         public List<Instructor> Read()

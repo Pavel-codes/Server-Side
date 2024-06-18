@@ -3,10 +3,12 @@ const udemy = "https://www.udemy.com";
 const apiBaseUrl = "https://localhost:7283/api/Courses";
 var modal = $('#coursesModal');
 var span = $('.close');
-var instructorName;
+var instructors = [];
 //localStorage.clear();
 
 $(document).ready(function () {
+
+    getInstructors();
 
     function getCoursesFromDB() {
         ajaxCall('GET', apiBaseUrl, true, getCoursesSCBF, getCoursesECBF);
@@ -22,17 +24,34 @@ $(document).ready(function () {
         alert("Failed to load courses!");
     }
 
+    function getInstructors() {
+        let api = "https://localhost:7283/api/Instructors/";
+        ajaxCall('GET', api, true, getInstructorSCBF, getInstructorECBF);
+    }
+
+    function getInstructorSCBF(response) {
+        instructors.push(response);
+
+    }
+
+    function getInstructorECBF(err) {
+        console.log(err)
+    }
+
     // Render courses
     function renderCourses(courses) {
         var coursesContainer = $('#courses-container');
+        var courseInstructorName;
         courses.forEach(function (course) {
-            instructorName = getInstructorNameFromDB(course.instructorsId);
-            console.log(instructorName);
-            coursesData.push(course);
+            coursesData.push(course); // to be removed
+            console.log(instructors);
+            courseInstructorName = instructors[0].find(instructor => instructor.id == course.instructorsId);
+            //console.log(courseInstructorName.name);
+
             var courseElement = $('<div>');
             courseElement.append('<img src=' + course.imageReference + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
-            courseElement.append('<p>By: ' + instructorName + '</p>');
+            courseElement.append('<p>By: ' + courseInstructorName.name + '</p>'); // created with array - workaround
             courseElement.append('<button id="' + course.instructorsId + '">Show more courses of this instructor</button>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
@@ -48,22 +67,8 @@ $(document).ready(function () {
                 //console.log("Button clicked with ID:", instructorBtn);
                 addCoursesToModal(instructorBtn.id);
             });
-
         });
 
-    }
-    function getInstructorNameFromDB(id) {
-        let api = `https://localhost:7283/api/Instructors/${id}`;
-        ajaxCall('GET', api, true, getInstructorNameSCBF, getInstructorNameECBF);
-    }
-
-    function getInstructorNameSCBF(response) {
-        console.log(response);
-        instructorName = response;
-    }
-
-    function getInstructorNameECBF(err) {
-        console.log(err)
     }
 
     getCoursesFromDB();
