@@ -122,8 +122,7 @@
               "RelativeToolTip": "Ex4\\BL\\User.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAkwBAAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T22:02:46.957Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-15T22:02:46.957Z"
             },
             {
               "$type": "Document",
@@ -133,7 +132,7 @@
               "RelativeDocumentMoniker": "Ex4\\BL\\Instructor.cs",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\Instructor.cs",
               "RelativeToolTip": "Ex4\\BL\\Instructor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-16T08:23:06.937Z",
               "EditorCaption": ""
@@ -148,8 +147,7 @@
               "RelativeToolTip": "Ex4\\Controllers\\InstructorsController.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAowA0AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T08:25:49.989Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T08:25:49.989Z"
             },
             {
               "$type": "Document",
@@ -161,8 +159,7 @@
               "RelativeToolTip": "Ex4\\BL\\Login.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T08:16:54.26Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T08:16:54.26Z"
             }
           ]
         }

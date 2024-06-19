@@ -4,7 +4,7 @@ const apiBaseUrl = "https://localhost:7283/api/Courses";
 var modal = $('#coursesModal');
 var span = $('.close');
 var instructors = [];
-//localStorage.clear();
+var user = JSON.parse(localStorage.getItem('user'));
 
 $(document).ready(function () {
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
     }
 
     function getCoursesECBF(err) {
-        console.log(err)
+        console.log(err);
         alert("Failed to load courses!");
     }
 
@@ -31,11 +31,10 @@ $(document).ready(function () {
 
     function getInstructorSCBF(response) {
         instructors.push(response);
-
     }
 
     function getInstructorECBF(err) {
-        console.log(err)
+        console.log(err);
     }
 
     // Render courses
@@ -44,41 +43,60 @@ $(document).ready(function () {
         var courseInstructorName;
         courses.forEach(function (course) {
             coursesData.push(course); // to be removed
-            console.log(instructors);
             courseInstructorName = instructors[0].find(instructor => instructor.id == course.instructorsId);
-            //console.log(courseInstructorName.name);
 
             var courseElement = $('<div>');
             courseElement.append('<img src=' + course.imageReference + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
             courseElement.append('<p>By: ' + courseInstructorName.name + '</p>'); // created with array - workaround
-            courseElement.append('<button id="' + course.instructorsId + '">Show more courses of this instructor</button>');
+            var showMoreBtn = $('<button id="' + course.instructorsId + '">Show more courses of this instructor</button>');
+            var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
+            courseElement.append(showMoreBtn);
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
             courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
-            courseElement.append('<button id="' + course.id + '">Add Course</button>');
-            coursesContainer.append(courseElement);
-            addCourseClick(courseElement);
+            courseElement.append(addCourseBtn);
 
-            let instructorBtn = document.getElementById(course.instructorsId);
-            $(instructorBtn).on('click', function () {
-                //console.log("Button clicked with ID:", instructorBtn);
-                addCoursesToModal(instructorBtn.id);
+            coursesContainer.append(courseElement);
+
+            // Attach the click event using addCourseClick directly
+            addCourseClick(addCourseBtn);
+
+            showMoreBtn.on('click', function () {
+                addCoursesToModal(this.id);
             });
         });
+    }
 
+    // still need to fix login
+    function isLoggedIn() {
+        return localStorage.getItem('user') !== null;
+    }
+
+    function addCourseClick(button) {
+        button.on('click', function (event) {
+            if (event.target.tagName.toLowerCase() === 'button') {
+                const buttonId = event.target.id;
+                console.log("Button clicked with ID:", buttonId);
+
+                if (isLoggedIn()) {
+                    const user = JSON.parse(localStorage.getItem('user'));
+                    addCourse(buttonId, user.id);
+                } else {
+                    console.log("User not logged in. Redirecting to login.");
+                    alert("Please login or register to add courses.");
+                    window.location.href = "login.html";
+                }
+            }
+        });
     }
 
     getCoursesFromDB();
-
-    $('*').not('script, style').css({
-        'padding': '5px',
-        'margin-top': '5px',
-        'margin-bottom': '5px'
-    });
 });
+
+
 modal.css('display', 'none');
 span.on('click', function () {
     modal.css('display', 'none');
@@ -164,43 +182,32 @@ Adminbtn.addEventListener("click", function () {
 
 });
 
-
-if (!isLoggedIn()) {
-    $('#logoutBtn').hide();
-    $('#loginBtn').show();
-    $('#Registerbtn').show();
-    $('#myCourses').hide();
-}
-else {
+//check
+if (user && !user.isAdmin) {
     $('#logoutBtn').show();
     $('#loginBtn').hide();
     $('#Registerbtn').hide();
     $('#myCourses').show();
+    $('#Adminbtn').hide();
+
 }
 
-function isLoggedIn() {
-    return localStorage.getItem('user') !== null;
+else if (user && user.isAdmin)
+{
+    $('#logoutBtn').show();
+    $('#loginBtn').hide();
+    $('#Registerbtn').hide();
+    $('#myCourses').show();
+    $('#Adminbtn').show();
+}
+else {
+    $('#logoutBtn').hide();
+    $('#loginBtn').show();
+    $('#Registerbtn').show();
+    $('#myCourses').hide();
+    $('#Adminbtn').hide();
 }
 
-function addCourseClick(element) {
-    element.click(function (event) {
-
-        if (event.target.tagName.toLowerCase() === 'button') {
-            const buttonId = event.target.id;
-            console.log("Button clicked with ID:", buttonId);
-
-            if (isLoggedIn()) {
-                const user = JSON.parse(localStorage.getItem('user')); //
-                addCourse(buttonId, user.id);
-            }
-            else {
-                console.log("User not logged in. Redirecting to login.");
-                alert("Please login or register to add courses.");
-                window.location.href = "login.html";
-            }
-        }
-    });
-}
 
 //possibly need to change implementation to use database instead of list
 function addCourse(buttonId, userId) { 
