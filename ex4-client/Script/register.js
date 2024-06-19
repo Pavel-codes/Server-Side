@@ -1,4 +1,4 @@
-﻿
+﻿const apiBaseUrl = "https://localhost:7283/api/Users";
 $(document).ready(function () { 
     $('#registerForm').submit(function (event) { 
         event.preventDefault();
@@ -25,25 +25,45 @@ $(document).ready(function () {
             Password: password
         };
 
-        submitToServer(newUser); 
+        
 
         function submitToServer(newUser) {
             let api = `https://localhost:7283/api/Users`;
             ajaxCall("POST", api, JSON.stringify(newUser), postSCBF, postECBF);
-            return false;
+            //return false;
         }
 
         function postSCBF(response) {
             alert("Registration successful.");
-            window.location.href = "login.html";
-            // need to add login after successful registration!
-            
+            autoLogin();
+
         }
 
         function postECBF(err) {
             alert("User with this email already exists.");
             console.log(err);
         }
+
+        function autoLogin() {
+            let api = apiBaseUrl + '/login';
+            let userDetails = { Email : newUser.Email, Password : newUser.Password };
+            ajaxCall("POST", api, JSON.stringify(userDetails), postLoginSCBF, postLoginECBF);
+        }
+
+        function postLoginSCBF(response) {
+            if (response) {
+                localStorage.setItem('user', JSON.stringify(response));
+                console.log(response);
+                if (response.isAdmin) window.location.href = "admin.html";
+                else window.location.href = "index.html";
+            }
+        }
+
+        function postLoginECBF(err) {
+            console.log(err);
+        }
+
+        submitToServer(newUser); 
     });
 });
 

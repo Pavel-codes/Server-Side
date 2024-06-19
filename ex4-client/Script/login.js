@@ -37,7 +37,7 @@ $(document).ready(function () {
                 localStorage.setItem('user', JSON.stringify(response));
                 console.log(response);
                 alert("Login successful.");
-                if (response.id == "1") window.location.href = "admin.html";
+                if (response.isAdmin) window.location.href = "admin.html";
                 else window.location.href = "index.html";
             }
             else {
