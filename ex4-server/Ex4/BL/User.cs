@@ -9,6 +9,8 @@
         private bool isAdmin = false;
         private bool isActive = true;
 
+
+        // code needs changing not to store course list!
         private List<Course> myCourses = new List<Course>(); // needs to be removed
         //static List<User> usersList = new List<User>();
 
@@ -18,6 +20,8 @@
         public string Password { get => password; set => password = value; }
         public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
         public bool IsActive { get => isActive; set => isActive = value; }
+
+        // to be removed
         public List<Course> MyCourses { get => myCourses; set => myCourses = value; }
         //public static List<User> UsersList { get => usersList; set => usersList = value; }
 
@@ -45,11 +49,8 @@
             this.isActive = isActive;
         }
 
-        //public List<User> GetUsers()
-        //{
-        //    return usersList;
-        //}
 
+        // if used has no courses, doesnt display the user!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         public User GetUser(int userId)
         {
             DBservices db = new DBservices();
@@ -64,6 +65,8 @@
             }
         }
 
+
+        // remove the function! (needs to be from db)
         public List<Course> GetCourses()
         {
             return myCourses;

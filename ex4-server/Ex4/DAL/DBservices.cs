@@ -280,7 +280,7 @@ public class DBservices
             throw (ex);
         }
 
-        cmd = CreateCommandWithStoredProcedureAddCourseToUser("SP_AddCourseToUser", con,userId, course);             // create the command
+        cmd = CreateCommandWithStoredProcedureAddCourseToUser("SP_AddCourseToUser", con, userId, course);             // create the command
 
         try
         {
@@ -987,7 +987,4 @@ public class DBservices
 
         return cmd;
     }
-
- 
-   
 }

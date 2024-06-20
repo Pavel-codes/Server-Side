@@ -12,7 +12,7 @@
         private string duration;
         private string lastUpdate;
 
-        private static List<Course> coursesList = new List<Course>();
+        //private static List<Course> coursesList = new List<Course>();
 
         public Course() { }
 
@@ -39,7 +39,7 @@
         public string Duration { get => duration; set => duration = value; }
         public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
-        public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
+        //public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
 
         public List<Course> Read()
         {
@@ -119,11 +119,7 @@
                 return false;
                
             }
-
-
         }
-
-      
 
         public bool updateCourse(int id, Course updatedCourse)
         {
@@ -137,8 +133,6 @@
             {
                 return false;
             }
-
-     
         }
 
         public static List<Course> GetCoursesByInstructor(int instructorId)
