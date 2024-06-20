@@ -15,11 +15,10 @@ $("#createCourseForm").submit(function (event) {
         alert("Course Id Not Valid");
         return;
     }
-
    
-    var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
+    var urlPattern = /^(https):\/\/www\.[^\s"]+\.[^\s"]+$/;
     if (!urlPattern.test($('#url').val())) {
-        alert("Url Not Valid , Must Use This Structure https://example.com");
+        alert("Url Not Valid , Must Use This Structure https://www.example.com");
         return;
     }
 
@@ -30,10 +29,10 @@ $("#createCourseForm").submit(function (event) {
         return;
     }
   
-    var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
+    var imagePattern = /^(https):\/\/www\.[^\s"]+(\.jpg|\.png)$/;
 
     if (!imagePattern.test($('#image').val()) && $('#image').val().trim() !== "") {
-        alert("Image Reference Not Valid, Must Use This Structure https://example.jpg/png");
+        alert("Image Reference Not Valid, Must Use This Structure https://www.example.jpg/png");
         return;
     }
 
@@ -62,7 +61,16 @@ $("#createCourseForm").submit(function (event) {
 
 function postSCBF(result) {
     alert("Course Successfully Added");
+    clearFields();
     console.log(result);
+}
+
+function clearFields() {
+    $('#title').val('');
+    $('#url').val('');
+    $('#instructorsId').val('');
+    $('#image').val('');
+    $('#duration').val('');
 }
 
 function postECBF(err) {

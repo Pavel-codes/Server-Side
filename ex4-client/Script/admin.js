@@ -1,6 +1,6 @@
 ﻿var coursesFromServer = [];
 const udemy = "https://www.udemy.com";
-const instructorsAPI = `https://localhost:7076/api/Instructors`;
+//const instructorsAPI = `https://localhost:7076/api/Instructors`;
 const apiBaseUrl = "https://localhost:7283/api/Courses";
 const displayCourses = $("#displayCourses");
 
@@ -11,11 +11,6 @@ $('document').ready(function () {
     if (struser) {
         user = JSON.parse(localStorage.getItem('user'));
     }
-
-    //if (areLoaded) {
-    //    var coursesLoaded = JSON.parse(sessionStorage.getItem('coursesLoaded'));
-    //    console.log(coursesLoaded);
-    //}
 
     if (user && user.isAdmin) {
         addCoursesToDataList();
@@ -31,7 +26,8 @@ $('document').ready(function () {
     }
 
     function getCoursesSCBF(response) {
-        console.log(response);
+        console.log("Received courses!");
+        coursesFromServer = response;
         addToDataList(response);
     }
 
@@ -55,26 +51,9 @@ $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
 
-function addCoursesToDataList() {
-    displayCourses.empty();
-    api = "https://localhost:7076/api/Courses";
-    coursesFromServer.length = 0;
-    $.ajax({
-        url: api,
-        type: 'GET',
-        async: false,
-        success: function (data) {
-            addToDataList(data);
-        },
-        error: function () {
-            alert("Error loading courses.");
-        }
-    });
-}
-
 const courseDataList = document.getElementById("courseDataList");
 
-
+var selectedCourse = {} ;
 
 
 //change implememtation to get from server - basic idea -->> get course ID from course title, change all other data according to fields and send back
@@ -84,84 +63,77 @@ $("#courseNamesList").on('input', function () {
     displayCourses.empty();
     const editForm = $('<form id="editForm"></form>');
     displayCourses.append(editForm);
-    if (coursesFromServer && coursesFromServer.length > 0) {
-        coursesFromServer[0].forEach(function (course) {
-            const courseId = course.id;
-            const courseRating = course.rating;
-            const courseReviews = course.numberOfReviews;
-            const courseInstructorID = course.instructorsId;
 
-            if (course.title == courseTitle) {
-                displayCourses.append('<img src=' + course.imageReference + '>');
-                displayCourses.append('<p>Course ID: ' + course.id + '</p>');
-                displayCourses.append('<p>Instructors ID: ' + course.instructorsId + '</p>'); //
-                displayCourses.append('<p>Rating: ' + course.rating + '</p>'); //
-                displayCourses.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>'); //
+    selectedCourse = coursesFromServer.find(course => course.title === courseTitle);
 
-                editForm.append('<label for="Title">Title: </label>');
-                editForm.append('<input type="text" id="selectedTitle" required><br>');
-                editForm.append('<label for="Duration">Duration: </label>');
-                editForm.append('<input type="text" id="selectedDuration" required><br>');
-                editForm.append('<label for="Course link">Course link: </label>');
-                editForm.append('<input type="text" id="selectedUrl" required><br>');
-                editForm.append('<label for="Image link">Image link: </label>');
-                editForm.append('<input type="text" id="selectedImageUrl"><br>');
-                editForm.append('<button type="submit" id="selectedSubmission">Submit changes</button>');
-                displayCourses.append(editForm);
+    if (courseTitle != '') {
+        const courseId = selectedCourse.id;
+        const courseRating = selectedCourse.rating;
+        const courseReviews = selectedCourse.numberOfReviews;
+        const courseInstructorID = selectedCourse.instructorsId;
 
-                // Use the submit event of the form
-                editForm.on("submit", function (event) {
-                    event.preventDefault();
+        displayCourses.append('<img src=' + selectedCourse.imageReference + '>');
+        displayCourses.append('<p>Course ID: ' + courseId + '</p>');
+        displayCourses.append('<p>Instructors ID: ' + courseInstructorID + '</p>');
+        displayCourses.append('<p>Rating: ' + courseRating + '</p>');
+        displayCourses.append('<p>Number Of Reviews: ' + courseReviews + '</p>');
 
-                    var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
-                    var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
-                    var durationPattern = /^\s*\d+(\.\d+)?\s*$/;
+        editForm.append('<label for="Title">Title: </label>');
+        editForm.append('<input type="text" id="selectedTitle" required><br>');
+        editForm.append('<label for="Duration">Duration: </label>');
+        editForm.append('<input type="text" id="selectedDuration" required><br>');
+        editForm.append('<label for="Course link">Course link: </label>');
+        editForm.append('<input type="text" id="selectedUrl" required><br>');
+        editForm.append('<label for="Image link">Image link: </label>');
+        editForm.append('<input type="text" id="selectedImageUrl"><br>');
+        editForm.append('<button type="submit" id="selectedSubmission">Submit changes</button>');
+        displayCourses.append(editForm);
 
+        // Use the submit event of the form
+        editForm.on("submit", function (event) {
+            event.preventDefault();
 
-                    const newTitle = $('#selectedTitle').val();
+            var urlPattern = /^(https):\/\/www\.[^\s"]+\.[^\s"]+$/;
+            var imagePattern = /^(https):\/\/www\.[^\s"]+(\.jpg|\.png)$/;
+            var durationPattern = /^\s*\d+(\.\d+)?\s*$/;
 
-                    const newDuration = $('#selectedDuration').val();
-                    if (!durationPattern.test($('#selectedDuration').val())) {
-                        alert("Duration is not valid must be a number!");
-                        return;
-                    }
-                    const newUrl = $('#selectedUrl').val();
-                    if (!urlPattern.test($('#selectedUrl').val())) {
-                        alert("Url Not Valid , Must Use This Structure https://example.com");
-                        return;
-                    }
-                    const newImageUrl = $('#selectedImageUrl').val();
-                    if (newImageUrl == "") {
-                        console.log(newImageUrl);
-                    }
-                    else if (!imagePattern.test($('#selectedImageUrl').val())) {
-                        alert("Image Reference Not Valid, Must Use This Structure https://example.jpg/png");
-                        return;
-                    }
-                    const newDate = getCurrentDate();
-                    const updatedCourseData = {
-                        id: courseId,
-                        title: newTitle,
-                        url: newUrl,
-                        rating: courseRating,
-                        numberOfReviews: courseReviews,
-                        instructorsId: courseInstructorID,
-                        imageReference: newImageUrl,
-                        duration: newDuration,
-                        lastUpdate: newDate
-                    };
-                    let id = courseId;
-                    const api = `https://localhost:7076/api/Courses/${id}`;
-                    ajaxCall("PUT", api, JSON.stringify(updatedCourseData), putSCBF, putECBF);
-                });
+            const newTitle = $('#selectedTitle').val();
+
+            const newDuration = $('#selectedDuration').val();
+            if (!durationPattern.test($('#selectedDuration').val())) {
+                alert("Duration is not valid must be a number!");
+                return;
             }
+            const newUrl = $('#selectedUrl').val();
+            if (!urlPattern.test($('#selectedUrl').val())) {
+                alert("Url Not Valid , Must Use This Structure https://www.example.com");
+                return;
+            }
+            const newImageUrl = $('#selectedImageUrl').val();
+            if (newImageUrl == "") {
+            }
+            else if (!imagePattern.test($('#selectedImageUrl').val())) {
+                alert("Image Reference Not Valid, Must Use This Structure https://www.example.jpg/png");
+                return;
+            }
+            const newDate = getCurrentDate();
+            const updatedCourseData = {
+                id: courseId,
+                title: newTitle,
+                url: newUrl,
+                rating: courseRating,
+                numberOfReviews: courseReviews,
+                instructorsId: courseInstructorID,
+                imageReference: newImageUrl,
+                duration: newDuration,
+                lastUpdate: newDate
+            };
+            //let id = courseId;
+            const api = `https://localhost:7283/api/Courses/${courseId}`;
+            ajaxCall("PUT", api, JSON.stringify(updatedCourseData), putSCBF, putECBF);
         });
-    } else {
-        console.error("CourseData is empty or not an array");
     }
 });
-
-
 
 function updateCourseData() {
     removeAllOptionsFromDataList(); // trying
@@ -170,13 +142,22 @@ function updateCourseData() {
 }
 
 function getUpdatedCoursesSCBF(response) {
-    console.log(response);
+    console.log("Updating list");
+    $('#courseNamesList').val('');
     addToDataList(response);
+}
+
+function addToDataList(data) {
+    for (const course of data) {
+        const option = document.createElement('option');
+        option.value = course.title; // Set the value attribute
+        option.textContent = course.title; // Set the displayed text
+        courseDataList.appendChild(option);
+    }
 }
 
 function getUpdatedCoursesECBF(err) {
     console.log(err);
-    //alert("Failed to load courses!");
 }
 
 function putSCBF(result) {
@@ -184,7 +165,6 @@ function putSCBF(result) {
     alert("Course changed successfully!");
     displayCourses.empty();
     updateCourseData();
-    console.log(result);
 }
 
 function putECBF(err) {
