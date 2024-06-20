@@ -1,4 +1,4 @@
-﻿var myCourses = [];
+﻿//var myCourses = [];
 var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
@@ -6,7 +6,41 @@ var id = user.id;
 const apiBaseUrl = "https://localhost:7283/api";
 
 $(document).ready(function () {
-    loadCourses(apiBaseUrl);
+    function getUserCoursesFromDB() {
+        //let api = apiBaseUrl + "/Courses/UserCourse/" + user.id;
+        let api = `https://localhost:7283/api/Courses/UserCourse/${user.id}`;
+        console.log(api);
+        ajaxCall('GET', api, true, getCoursesSCBF, getCoursesECBF);
+    }
+
+    function getCoursesSCBF(response) {
+        console.log(response);
+        renderCourses(response);
+    }
+
+    function getCoursesECBF(err) {
+        console.log(err);
+        alert("Your list is empty!");
+    }
+
+    function renderCourses(coursesList) {
+        var coursesContainer = $('#courses-container');
+        userCourses = coursesList;
+        coursesContainer.empty();
+        userCourses.forEach(function (course) {
+            var courseElement = $('<div>');
+            courseElement.append('<img src="' + course.imageReference + '">');
+            courseElement.append('<h2>' + course.title + '</h2>');
+            courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
+            courseElement.append('<p>Duration: ' + course.duration + '</p>');
+            courseElement.append('<p>Rating: ' + course.rating + '</p>');
+            courseElement.append('<p><a href="' + course.url + '">Link</a></p>');
+            courseElement.append('<button id="' + course.id + '">Remove Course</button>');
+            coursesContainer.append(courseElement);
+        });
+    }
+
+    getUserCoursesFromDB();
 
     $('*').not('script, style').css({
         'padding': '5px'
@@ -18,36 +52,20 @@ $('#homeBtn').on('click', function () {
 });
 
 // fix to read courses of user by userID
-function loadCourses(api) {
-    $.ajax({
-        url: `${apiBaseUrl}/Users/${id}`,
-        type: 'GET',
-        success: function (data) {
-            myCourses.push(data);
-            setTimeout(() => renderCourses(data.myCourses), 1000);
-        },
-        error: function () {
-            console.log("Your Bag Is Empty");
-        }
-    });
-}
+//function loadCourses(api) {
+//    $.ajax({
+//        url: `${apiBaseUrl}/Users/${id}`,
+//        type: 'GET',
+//        success: function (data) {
+//            //myCourses.push(data);
+//            setTimeout(() => renderCourses(data.myCourses), 1000);
+//        },
+//        error: function () {
+//            console.log("Your Bag Is Empty");
+//        }
+//    });
+//}
 
-function renderCourses(coursesList) {
-    var coursesContainer = $('#courses-container');
-    userCourses = coursesList;
-    coursesContainer.empty();
-    userCourses.forEach(function (course) {
-        var courseElement = $('<div>');
-        courseElement.append('<img src="' + course.imageReference + '">');
-        courseElement.append('<h2>' + course.title + '</h2>');
-        courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
-        courseElement.append('<p>Duration: ' + course.duration + '</p>');
-        courseElement.append('<p>Rating: ' + course.rating + '</p>');
-        courseElement.append('<p><a href="' + course.url + '">Link</a></p>');
-        courseElement.append('<button id="' + course.id + '">Remove Course</button>');
-        coursesContainer.append(courseElement);
-    });
-}
 
 document.addEventListener('click', function (event) {
     if (event.target.tagName.toLowerCase() === 'button' && event.target.id != "apply-rating-filter" && event.target.id != "apply-duration-filter") {

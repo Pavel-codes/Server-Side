@@ -11,7 +11,7 @@
 
 
         // code needs changing not to store course list!
-        private List<Course> myCourses = new List<Course>(); // needs to be removed
+        //private List<Course> myCourses = new List<Course>(); // needs to be removed
         //static List<User> usersList = new List<User>();
 
         public int Id { get => id; set => id = value; }
@@ -22,7 +22,7 @@
         public bool IsActive { get => isActive; set => isActive = value; }
 
         // to be removed
-        public List<Course> MyCourses { get => myCourses; set => myCourses = value; }
+        //public List<Course> MyCourses { get => myCourses; set => myCourses = value; }
         //public static List<User> UsersList { get => usersList; set => usersList = value; }
 
         public User()
@@ -66,10 +66,10 @@
 
 
         // remove the function! (needs to be from db)
-        public List<Course> GetCourses()
-        {
-            return myCourses;
-        }
+        //public List<Course> GetCourses()
+        //{
+        //    return myCourses;
+        //}
 
         public bool registration(User user)
         {

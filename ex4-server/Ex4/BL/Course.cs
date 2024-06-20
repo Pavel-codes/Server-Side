@@ -12,8 +12,6 @@
         private string duration;
         private string lastUpdate;
 
-        //private static List<Course> coursesList = new List<Course>();
-
         public Course() { }
 
         public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate)
@@ -38,8 +36,6 @@
         public string ImageReference { get => imageReference; set => imageReference = value; }
         public string Duration { get => duration; set => duration = value; }
         public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
-
-        //public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
 
         public List<Course> Read()
         {
@@ -104,7 +100,6 @@
             {
                 return courses;
             }
-           
         }
 
         public bool InsertNewCourse()
@@ -117,7 +112,6 @@
             catch (Exception ex)
             {
                 return false;
-               
             }
         }
 
@@ -132,6 +126,20 @@
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        public static List<Course> GetCoursesByUser(int userId)
+        {
+            DBservices db = new DBservices();
+            List<Course> courses = db.GetCoursesOfUser(userId);
+            if (courses.Any())
+            {
+                return courses;
+            }
+            else
+            {
+                return null;
             }
         }
 

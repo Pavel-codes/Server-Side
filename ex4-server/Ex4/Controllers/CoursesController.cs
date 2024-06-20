@@ -19,11 +19,11 @@ namespace WebApplication1.Controllers
         }
 
         // GET api/<CoursesController>/5
-        [HttpGet("{title}")]
-        public Course Get(string title)
-        {
-            return course.getCourseByTitle(title);
-        }
+        //[HttpGet("{title}")]
+        //public Course Get(string title)
+        //{
+        //    return course.getCourseByTitle(title);
+        //}
 
         //[HttpGet("{id}")]
         //public IActionResult Get(int id)
@@ -60,7 +60,7 @@ namespace WebApplication1.Controllers
             return Ok(new { message = "Course inserted successfully." } );
         }
 
-
+        // POST api/<CoursesController>/5
         [HttpPost("addCourseToUser/{userId}")]
         public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
         {
@@ -152,6 +152,26 @@ namespace WebApplication1.Controllers
             try
             {
                 List<Course> courses = Course.GetCoursesByInstructor(instructorId);
+
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound(new { message = "No courses found for this instructor." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        // Get courses by user id
+        [HttpGet("/UserCourse/{userId}")]
+        public IActionResult GetByUserId(int userId)
+        {
+            try
+            {
+                List<Course> courses = Course.GetCoursesByUser(userId);
 
                 if (courses.Any())
                 {
