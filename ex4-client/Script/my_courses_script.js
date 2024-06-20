@@ -1,5 +1,5 @@
 ﻿//var myCourses = [];
-var userCourses = [];
+//var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
 
@@ -25,9 +25,9 @@ $(document).ready(function () {
 
     function renderCourses(coursesList) {
         var coursesContainer = $('#courses-container');
-        userCourses = coursesList;
+        //userCourses = coursesList;
         coursesContainer.empty();
-        userCourses.forEach(function (course) {
+        coursesList.forEach(function (course) {
             var courseElement = $('<div>');
             courseElement.append('<img src="' + course.imageReference + '">');
             courseElement.append('<h2>' + course.title + '</h2>');
@@ -71,7 +71,7 @@ document.addEventListener('click', function (event) {
     if (event.target.tagName.toLowerCase() === 'button' && event.target.id != "apply-rating-filter" && event.target.id != "apply-duration-filter") {
         const buttonId = event.target.id;
         removeCourse(user.id, buttonId);
-        console.log("Button clicked with ID:", buttonId);
+        
     }
 });
 
@@ -88,7 +88,7 @@ function removeCourse(userId, courseId) {
 function deleteSCBF(result) {
     alert("Course removed");
     console.log(result);
-    loadCourses(apiBaseUrl);
+    location.reload(); //reload page to clear deleted course
 }
 
 function deleteECBF(err) {

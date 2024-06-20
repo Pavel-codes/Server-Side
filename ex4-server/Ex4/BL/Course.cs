@@ -37,6 +37,7 @@
         public string Duration { get => duration; set => duration = value; }
         public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
+
         public List<Course> Read()
         {
             DBservices db = new DBservices();
