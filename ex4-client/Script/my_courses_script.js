@@ -17,6 +17,7 @@ $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
 
+// fix to read courses of user by userID
 function loadCourses(api) {
     $.ajax({
         url: `${apiBaseUrl}/Users/${id}`,

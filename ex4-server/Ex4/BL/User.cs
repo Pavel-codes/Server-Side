@@ -50,18 +50,17 @@
         }
 
 
-        // if used has no courses, doesnt display the user!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         public User GetUser(int userId)
         {
             DBservices db = new DBservices();
-            User user = db.GetCoursesFromUser(userId);
-           if(user.myCourses.Count==0)
+            User user = db.GetUser(userId);
+            if (user != null)
             {
-                return null;
+                return user;
             }
             else
             {
-                return user;
+                return null;
             }
         }
 

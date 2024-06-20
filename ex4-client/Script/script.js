@@ -8,22 +8,6 @@ var user = JSON.parse(localStorage.getItem('user'));
 
 $(document).ready(function () {
 
-    getInstructors();
-
-    function getCoursesFromDB() {
-        ajaxCall('GET', apiBaseUrl, true, getCoursesSCBF, getCoursesECBF);
-    }
-
-    function getCoursesSCBF(response) {
-        console.log(response);
-        renderCourses(response);
-    }
-
-    function getCoursesECBF(err) {
-        console.log(err);
-        alert("Failed to load courses!");
-    }
-
     function getInstructors() {
         let api = "https://localhost:7283/api/Instructors/";
         ajaxCall('GET', api, true, getInstructorSCBF, getInstructorECBF);
@@ -37,12 +21,28 @@ $(document).ready(function () {
         console.log(err);
     }
 
+    getInstructors();
+
+    function getCoursesFromDB() {
+        ajaxCall('GET', apiBaseUrl, true, getCoursesSCBF, getCoursesECBF);
+    }
+    
+    function getCoursesSCBF(response) {
+        console.log(response);
+        renderCourses(response);
+    }
+
+    function getCoursesECBF(err) {
+        console.log(err);
+        alert("Failed to load courses!");
+    }
+
     // Render courses
     function renderCourses(courses) {
         var coursesContainer = $('#courses-container');
         var courseInstructorName;
         courses.forEach(function (course) {
-            coursesData.push(course); // to be removed
+            coursesData.push(course); // do not remove 
             courseInstructorName = instructors[0].find(instructor => instructor.id == course.instructorsId);
 
             var courseElement = $('<div>');
