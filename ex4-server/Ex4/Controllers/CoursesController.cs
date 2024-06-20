@@ -166,7 +166,7 @@ namespace WebApplication1.Controllers
         }
 
         // Get courses by user id
-        [HttpGet("/UserCourse/{userId}")]
+        [HttpGet("UserCourse/{userId}")]
         public IActionResult GetByUserId(int userId)
         {
             try
