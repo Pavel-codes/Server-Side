@@ -143,6 +143,7 @@ function updateCourseData() {
 
 function getUpdatedCoursesSCBF(response) {
     console.log("Updating list");
+    coursesFromServer = response;
     $('#courseNamesList').val('');
     addToDataList(response);
 }

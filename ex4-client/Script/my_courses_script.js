@@ -1,5 +1,5 @@
 ﻿//var myCourses = [];
-//var userCourses = [];
+var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     function renderCourses(coursesList) {
         var coursesContainer = $('#courses-container');
-        //userCourses = coursesList;
+        userCourses = coursesList;
         coursesContainer.empty();
         coursesList.forEach(function (course) {
             var courseElement = $('<div>');

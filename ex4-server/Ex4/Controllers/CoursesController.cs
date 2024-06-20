@@ -18,35 +18,6 @@ namespace WebApplication1.Controllers
             return course.Read();
         }
 
-        //GET api/<CoursesController>/5
-        [HttpGet("{title}")]
-        public Course Get(string title)
-        {
-            return course.getCourseByTitle(title);
-        }
-
-        //[HttpGet("{id}")]
-        //public IActionResult Get(int id)
-        //{
-        //    var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
-        //    if (course == null)
-        //    {
-        //        return NotFound("Course not found");
-        //    }
-        //    return Ok(course);
-        //}
-
-        //[HttpGet("user/{userId}")] //
-        //public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
-        //{
-        //    var user = WebApplication1.BL.User.GetUser(userId);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var courses = user.GetCourses();
-        //    return Ok(courses);
-        //}
 
         // POST api/<CoursesController>
         [HttpPost("NewCourse")]

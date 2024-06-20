@@ -158,18 +158,5 @@
             }
         }
 
-        public Course getCourseByTitle(string courseName)
-        {
-            DBservices db = new DBservices();
-            Course course = db.GetCourseByTitle(courseName);
-            if(course == null)
-            {
-                return null;
-            }
-            else
-            {
-                return course;
-            }
-        }
     }
 }

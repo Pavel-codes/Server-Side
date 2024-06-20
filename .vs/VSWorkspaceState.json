@@ -11,6 +11,6 @@
     "\\ex4-server\\Ex4\\Controllers",
     "\\ex4-server\\Ex4\\DAL"
   ],
-  "SelectedNode": "\\ex4-client\\Css\\index.css",
+  "SelectedNode": "\\ex4-server\\Ex4\\Controllers\\CoursesController.cs",
   "PreviewInSolutionExplorer": false
 }
