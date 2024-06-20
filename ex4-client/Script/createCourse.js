@@ -4,6 +4,9 @@ const udemy = "https://www.udemy.com";
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
+$('#returnToPanel').on('click', function () {
+    window.location.href = "../Pages/admin.html";
+});
 
 $("#createCourseForm").submit(function (event) {
     event.preventDefault();

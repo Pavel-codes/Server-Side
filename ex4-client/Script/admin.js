@@ -1,111 +1,59 @@
-﻿var CourseData = [];
-var coursesFromServer = [];
+﻿var coursesFromServer = [];
 const udemy = "https://www.udemy.com";
 const instructorsAPI = `https://localhost:7076/api/Instructors`;
-var instructorsData = [];
-
-
+const apiBaseUrl = "https://localhost:7283/api/Courses";
+const displayCourses = $("#displayCourses");
 
 $('document').ready(function () {
     const struser = localStorage.getItem('user');
     let user = undefined;
-    const areLoaded = sessionStorage.getItem('coursesLoaded');
+    //const areLoaded = sessionStorage.getItem('coursesLoaded');
     if (struser) {
         user = JSON.parse(localStorage.getItem('user'));
     }
 
-    if (areLoaded) {
-        var coursesLoaded = JSON.parse(sessionStorage.getItem('coursesLoaded'));
-        console.log(coursesLoaded);
-    }
+    //if (areLoaded) {
+    //    var coursesLoaded = JSON.parse(sessionStorage.getItem('coursesLoaded'));
+    //    console.log(coursesLoaded);
+    //}
 
     if (user && user.isAdmin) {
-        if (coursesLoaded) {
-            $('#loadCoursesBtn').hide();
-            addCoursesToDataList();
-            return;
-        }
-        $('#loadCoursesBtn').show();
+        addCoursesToDataList();
     }
     else {
-        $('#loadCoursesBtn').hide();
         alert("You are not authorized to access this page.");
         window.location.href = "index.html";
     }
 
-    $.getJSON("../Data/Instructor .json", function (data) {
-        instructorsData.push(data);
-    });
+
+    function addCoursesToDataList() {
+        ajaxCall('GET', apiBaseUrl, true, getCoursesSCBF, getCoursesECBF);
+    }
+
+    function getCoursesSCBF(response) {
+        console.log(response);
+        addToDataList(response);
+    }
+
+    function getCoursesECBF(err) {
+        console.log(err);
+        alert("Failed to load courses!");
+    }
+
+    function addToDataList(data) {
+        for (const course of data) {
+            const option = document.createElement('option');
+            option.value = course.title; // Set the value attribute
+            option.textContent = course.title; // Set the displayed text
+            courseDataList.appendChild(option);
+        }
+    }
+
 });
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
-
-$('#loadCoursesBtn').on('click', function () {
-    $.getJSON("../Data/Course.json", function (Data) {
-        CourseData.push(Data);
-        insertCourses(CourseData[0]);
-        sessionStorage.setItem('coursesLoaded', true);
-        $('#loadCoursesBtn').hide();
-        
-    });
-    insertInstructors();
-    setTimeout(addCoursesToDataList, 1000);
-});
-
-
-function insertInstructors() {
-    const instructorsAPI = `https://localhost:7076/api/Instructors`;
-    var instructorDataToSend;
-    instructorsData[0].forEach(instructor => {
-        instructorDataToSend = {
-            id: instructor.id,
-            title: instructor.title,
-            name: instructor.display_name,
-            image: instructor.image_100x100,
-            jobTitle: instructor.job_title
-        };
-        ajaxCall("POST", instructorsAPI, JSON.stringify(instructorDataToSend), false, postInstructorsSCBF, postInstructorsECBF); //async
-    })
-}
-
-
-function insertCourses(CourseData) {
-    api = "https://localhost:7076/api/Courses";
-    var courseDataToSend;
-    CourseData.forEach(course => {
-        courseDataToSend = {
-            id: course.id,
-            title: course.title,
-            url: udemy + course.url,
-            rating: course.rating,
-            numberOfReviews: course.num_reviews,
-            instructorsId: course.instructors_id,
-            imageReference: course.image,
-            duration: course.duration,
-            lastUpdate: course.last_update_date
-        };
-        ajaxCall("POST", api, JSON.stringify(courseDataToSend), false, postCoursesSCBF, postCoursesECBF);
-    });
-}
-
-function postInstructorsSCBF(result) {
-    console.log(result);
-}
-
-function postInstructorsECBF(err) {
-    console.log(err);
-}
-
-
-function postCoursesSCBF(result) {
-    console.log(result);
-}
-
-function postCoursesECBF(err) {
-    console.log(err);
-}
 
 function addCoursesToDataList() {
     displayCourses.empty();
@@ -116,7 +64,6 @@ function addCoursesToDataList() {
         type: 'GET',
         async: false,
         success: function (data) {
-            coursesFromServer.push(data);
             addToDataList(data);
         },
         error: function () {
@@ -127,17 +74,10 @@ function addCoursesToDataList() {
 
 const courseDataList = document.getElementById("courseDataList");
 
-function addToDataList(data) {
-    for (const course of data) {
-        const option = document.createElement('option');
-        option.value = course.title; // Set the value attribute
-        option.textContent = course.title; // Set the displayed text
-        courseDataList.appendChild(option);
-    }
-}
 
 
-const displayCourses = $("#displayCourses");
+
+//change implememtation to get from server - basic idea -->> get course ID from course title, change all other data according to fields and send back
 $("#courseNamesList").on('input', function () {
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
     // clear the display area on change
@@ -210,7 +150,6 @@ $("#courseNamesList").on('input', function () {
                         duration: newDuration,
                         lastUpdate: newDate
                     };
-                    console.log(updatedCourseData);
                     let id = courseId;
                     const api = `https://localhost:7076/api/Courses/${id}`;
                     ajaxCall("PUT", api, JSON.stringify(updatedCourseData), putSCBF, putECBF);
@@ -227,20 +166,17 @@ $("#courseNamesList").on('input', function () {
 function updateCourseData() {
     removeAllOptionsFromDataList(); // trying
     coursesFromServer.length = 0;
-    let api = `https://localhost:7076/api/Courses/`;
-    $.ajax({
-        url: api,
-        type: 'GET',
-        async: false,
-        success: function (data) {
-            coursesFromServer.push(data);
-            addToDataList(data);
-        },
-        error: function () {
-            alert("Error loading courses.");
-        }
-    });
-    //location.reload();
+    ajaxCall('GET', apiBaseUrl, true, getUpdatedCoursesSCBF, getUpdatedCoursesECBF);
+}
+
+function getUpdatedCoursesSCBF(response) {
+    console.log(response);
+    addToDataList(response);
+}
+
+function getUpdatedCoursesECBF(err) {
+    console.log(err);
+    //alert("Failed to load courses!");
 }
 
 function putSCBF(result) {

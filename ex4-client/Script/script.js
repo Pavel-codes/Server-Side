@@ -42,7 +42,7 @@ $(document).ready(function () {
         var coursesContainer = $('#courses-container');
         var courseInstructorName;
         courses.forEach(function (course) {
-            coursesData.push(course); // do not remove 
+            coursesData.push(course); // do not remove for now!
             courseInstructorName = instructors[0].find(instructor => instructor.id == course.instructorsId);
 
             var courseElement = $('<div>');

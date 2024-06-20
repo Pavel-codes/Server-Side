@@ -18,12 +18,12 @@ namespace WebApplication1.Controllers
             return course.Read();
         }
 
-        // GET api/<CoursesController>/5
-        //[HttpGet("{title}")]
-        //public Course Get(string title)
-        //{
-        //    return course.getCourseByTitle(title);
-        //}
+        //GET api/<CoursesController>/5
+        [HttpGet("{title}")]
+        public Course Get(string title)
+        {
+            return course.getCourseByTitle(title);
+        }
 
         //[HttpGet("{id}")]
         //public IActionResult Get(int id)
