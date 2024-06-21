@@ -18,18 +18,46 @@ namespace WebApplication1.Controllers
             return instructor.Read();
         }
 
-        // GET api/<InstructorsController>/5
+        // GET api/Instructors/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                string name = instructor.instructorNameById(id);
+                if (string.IsNullOrEmpty(name))
+                {
+                    return NotFound(new { message = "Instructor not found" });
+                }
+                return Ok(new { name });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
-        // POST api/<InstructorsController>
-        [HttpPost]
-        public bool Post([FromBody] Instructor value)
+        // Get courses by instructor id
+        [HttpGet("GetCoursesByInstructorId/{instructorId}")]
+        public IActionResult GetByInstructorId(int instructorId)
         {
-            return value.Insert();
+            try
+            {
+                List<Course> courses = Course.GetCoursesByInstructor(instructorId);
+
+                if (courses == null)
+                {
+                    return NotFound(new { message = "No courses found for this instructor." });
+                }
+                else
+                {
+                    return Ok(courses);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
         // PUT api/<InstructorsController>/5

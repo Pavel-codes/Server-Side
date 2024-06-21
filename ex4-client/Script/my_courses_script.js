@@ -1,4 +1,4 @@
-﻿var myCourses = [];
+﻿//var myCourses = [];
 var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
@@ -6,36 +6,52 @@ var id = user.id;
 const apiBaseUrl = "https://localhost:7283/api";
 
 $(document).ready(function () {
-    loadCourses(apiBaseUrl);
+
+    function getUserCoursesFromDB() {
+        //let api = apiBaseUrl + "/Courses/UserCourse/" + user.id;
+        let api = `https://localhost:7283/api/Courses/UserCourse/${user.id}`;
+        console.log(api);
+        ajaxCall('GET', api, true, getCoursesSCBF, getCoursesECBF);
+    }
+
+    function getCoursesSCBF(response) {
+        console.log(response);
+        renderCourses(response);
+    }
+
+    function getCoursesECBF(err) {
+        console.log(err);
+        alert("Your list is empty!");
+    }
+
+    function renderCourses(coursesList) {
+        var coursesContainer = $('#courses-container');
+        userCourses = coursesList;
+        coursesContainer.empty();
+        coursesList.forEach(function (course) {
+            var courseElement = $('<div>');
+            courseElement.append('<img src="' + course.imageReference + '">');
+            courseElement.append('<h2>' + course.title + '</h2>');
+            courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
+            courseElement.append('<p>Duration: ' + course.duration + '</p>');
+            courseElement.append('<p>Rating: ' + course.rating + '</p>');
+            courseElement.append('<p><a href="' + course.url + '">Link</a></p>');
+            courseElement.append('<button id="' + course.id + '">Remove Course</button>');
+            coursesContainer.append(courseElement);
+        });
+    }
+
+    getUserCoursesFromDB();
 
     $('*').not('script, style').css({
         'padding': '5px'
     });
 });
-
-$('#homeBtn').on('click', function () {
-    window.location.href = "../Pages/index.html";
-});
-
-function loadCourses(api) {
-    $.ajax({
-        url: `${apiBaseUrl}/Users/${id}`,
-        type: 'GET',
-        success: function (data) {
-            myCourses.push(data);
-            setTimeout(() => renderCourses(data.myCourses), 1000);
-        },
-        error: function () {
-            alert("Error loading courses.");
-        }
-    });
-}
-
-function renderCourses(coursesList) {
+function renderFilteredCourses(coursesList) {
     var coursesContainer = $('#courses-container');
     userCourses = coursesList;
     coursesContainer.empty();
-    userCourses.forEach(function (course) {
+    coursesList.forEach(function (course) {
         var courseElement = $('<div>');
         courseElement.append('<img src="' + course.imageReference + '">');
         courseElement.append('<h2>' + course.title + '</h2>');
@@ -48,11 +64,15 @@ function renderCourses(coursesList) {
     });
 }
 
+$('#homeBtn').on('click', function () {
+    window.location.href = "../Pages/index.html";
+});
+
 document.addEventListener('click', function (event) {
     if (event.target.tagName.toLowerCase() === 'button' && event.target.id != "apply-rating-filter" && event.target.id != "apply-duration-filter") {
         const buttonId = event.target.id;
         removeCourse(user.id, buttonId);
-        console.log("Button clicked with ID:", buttonId);
+        
     }
 });
 
@@ -69,7 +89,7 @@ function removeCourse(userId, courseId) {
 function deleteSCBF(result) {
     alert("Course removed");
     console.log(result);
-    loadCourses(apiBaseUrl);
+    location.reload(); //reload page to clear deleted course
 }
 
 function deleteECBF(err) {
@@ -89,18 +109,22 @@ applyDurationFilterButton.addEventListener("click", function () {
 function filterByDuration(userId) {
     const fromDuration = parseFloat($('#duration-from').val());
     const toDuration = parseFloat($('#duration-to').val());
-
-    $.ajax({
-        url: `${apiBaseUrl}/Courses/searchByDurationForUser/${userId}?fromDuration=${fromDuration}&toDuration=${toDuration}`,
-        type: 'GET',
-        success: function (data) {
-            renderCourses(data);
-        },
-        error: function () {
-            $('#courses-container').empty();
-            console.log("Error fetching courses by duration.");
-        }
-    });
+    if (fromDuration < toDuration) {
+        $.ajax({
+            url: `${apiBaseUrl}/Courses/searchByDurationForUser/${userId}?fromDuration=${fromDuration}&toDuration=${toDuration}`,
+            type: 'GET',
+            success: function (data) {
+                renderFilteredCourses(data);
+            },
+            error: function () {
+                $('#courses-container').empty();
+                console.log("Error fetching courses by duration.");
+            }
+        });
+    }
+    else {
+        alert("Invalid duration input!");
+    }
 }
 
 function getUserId() {
@@ -118,16 +142,21 @@ applyRatingFilterButton.addEventListener("click", function () {
 function filterByRating(userId) {
     const fromRating = parseFloat($('#rating-from').val());
     const toRating = parseFloat($('#rating-to').val());
-
-    $.ajax({
-        url: `${apiBaseUrl}/Courses/searchByRatingForUser/${userId}?fromRating=${fromRating}&toRating=${toRating}`,
-        type: 'GET',
-        success: function (data) {
-            renderCourses(data);
-        },
-        error: function () {
-            $('#courses-container').empty();
-            console.log("Error fetching courses by rating.");
-        }
-    });
+    console.log(toRating);
+    if (fromRating < toRating) {
+        $.ajax({
+            url: `${apiBaseUrl}/Courses/searchByRatingForUser/${userId}?fromRating=${fromRating}&toRating=${toRating}`,
+            type: 'GET',
+            success: function (data) {
+                renderFilteredCourses(data);
+            },
+            error: function () {
+                $('#courses-container').empty();
+                console.log("Error fetching courses by rating.");
+            }
+        });
+    }
+    else {
+        alert("Invalid rating input!");
+    }
 }

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace WebApplication1.BL
+﻿namespace WebApplication1.BL
 {
     public class Course
     {
@@ -13,8 +11,6 @@ namespace WebApplication1.BL
         private string imageReference;
         private string duration;
         private string lastUpdate;
-
-        private static List<Course> coursesList = new List<Course>();
 
         public Course() { }
 
@@ -41,7 +37,6 @@ namespace WebApplication1.BL
         public string Duration { get => duration; set => duration = value; }
         public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
-        public static List<Course> CoursesList { get => coursesList; set => coursesList = value; }
 
         public List<Course> Read()
         {
@@ -82,13 +77,14 @@ namespace WebApplication1.BL
         public static List<Course> GetByRatingRangeForUser(int userId, double fromRating, double toRating)
         {
             DBservices db = new DBservices();
-            if (db.GetByRatingRangeForUser(userId, fromRating, toRating).Count == 0)
+            List<Course> courses = db.GetByRatingRangeForUser(userId, fromRating, toRating);
+            if (courses.Count == 0)
             {
                 return null;
             }
             else
             {
-                return db.GetByRatingRangeForUser(userId, fromRating, toRating);
+                return courses;
             }
         }
 
@@ -96,15 +92,15 @@ namespace WebApplication1.BL
         public static List<Course> GetByDurationRangeForUser(int userId, double fromDuration, double toDuration)
         {
             DBservices db = new DBservices();
-            if (db.GetByDurationRangeForUser(userId, fromDuration, toDuration).Count == 0)
+            List<Course> courses = db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+            if (courses.Count == 0)
             {
                 return null;
             }
             else
             {
-                return db.GetByDurationRangeForUser(userId, fromDuration, toDuration);
+                return courses;
             }
-           
         }
 
         public bool InsertNewCourse()
@@ -117,13 +113,8 @@ namespace WebApplication1.BL
             catch (Exception ex)
             {
                 return false;
-               
             }
-
-
         }
-
-      
 
         public bool updateCourse(int id, Course updatedCourse)
         {
@@ -137,33 +128,35 @@ namespace WebApplication1.BL
             {
                 return false;
             }
-
-     
         }
 
-        public Course getCourseByTitle(string courseName)
+        public static List<Course> GetCoursesByUser(int userId)
         {
-            foreach (Course course in coursesList)
+            DBservices db = new DBservices();
+            List<Course> courses = db.GetCoursesOfUser(userId);
+            if (courses.Any())
             {
-                if (course.Title == courseName) return course;
+                return courses;
             }
-            return null;
+            else
+            {
+                return null;
+            }
         }
 
         public static List<Course> GetCoursesByInstructor(int instructorId)
         {
             DBservices db = new DBservices();
-            if (db.GetCoursesByInstructor(instructorId).Count == 0)
+            List<Course> courses = db.GetCoursesByInstructor(instructorId);
+            if (courses.Count == 0)
             {
                 return null;
             }
             else
             {
-                return db.GetCoursesByInstructor(instructorId);
+                return courses;
             }
-
         }
 
-        
     }
 }

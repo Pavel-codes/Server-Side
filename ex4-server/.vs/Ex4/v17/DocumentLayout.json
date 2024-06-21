@@ -1,46 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\",
+  "WorkspaceRootPath": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\bl\\instructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\bl\\instructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\my_courses_script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\dal\\dbservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\dal\\dbservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\controllers\\instructorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\controllers\\instructorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\bl\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\bl\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\fabel\\source\\repos\\github desktop\\server-side\\ex4-server\\ex4\\bl\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\bl\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\bl\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\dal\\dbservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\dal\\dbservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\bl\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\bl\\instructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\bl\\instructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\controllers\\instructorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\controllers\\instructorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|c:\\users\\chena\\source\\repos\\server-side-final\\ex4-server\\ex4\\bl\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87E190ED-9F6D-4809-BBB9-02FE806E329B}|Ex4\\Ex4.csproj|solutionrelative:ex4\\bl\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,12 +54,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -74,127 +74,156 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Program.cs",
-              "RelativeDocumentMoniker": "Ex4\\Program.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Program.cs",
-              "RelativeToolTip": "Ex4\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T13:38:05.151Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\appsettings.json",
-              "RelativeDocumentMoniker": "Ex4\\appsettings.json",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\appsettings.json",
-              "RelativeToolTip": "Ex4\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-16T13:38:19.787Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InstructorsController.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Controllers\\InstructorsController.cs",
-              "RelativeDocumentMoniker": "Ex4\\Controllers\\InstructorsController.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Controllers\\InstructorsController.cs",
-              "RelativeToolTip": "Ex4\\Controllers\\InstructorsController.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAiwBAAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T08:25:49.989Z",
+              "DocumentIndex": 0,
+              "Title": "my_courses_script.js",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\my_courses_script.js",
+              "RelativeDocumentMoniker": "..\\ex4-client\\Script\\my_courses_script.js",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\my_courses_script.js",
+              "RelativeToolTip": "..\\ex4-client\\Script\\my_courses_script.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-20T16:19:53.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Instructor.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\Instructor.cs",
-              "RelativeDocumentMoniker": "Ex4\\BL\\Instructor.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\Instructor.cs",
-              "RelativeToolTip": "Ex4\\BL\\Instructor.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAuwDwAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T08:23:06.937Z",
+              "DocumentIndex": 1,
+              "Title": "admin.js",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\admin.js",
+              "RelativeDocumentMoniker": "..\\ex4-client\\Script\\admin.js",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\admin.js",
+              "RelativeToolTip": "..\\ex4-client\\Script\\admin.js",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAuwJEAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-20T16:08:00.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "script.js",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\script.js",
+              "RelativeDocumentMoniker": "..\\ex4-client\\Script\\script.js",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Script\\script.js",
+              "RelativeToolTip": "..\\ex4-client\\Script\\script.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAANoAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-20T16:04:14.29Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\Login.cs",
-              "RelativeDocumentMoniker": "Ex4\\BL\\Login.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\Login.cs",
-              "RelativeToolTip": "Ex4\\BL\\Login.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T08:16:54.26Z"
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Pages\\index.html",
+              "RelativeDocumentMoniker": "..\\ex4-client\\Pages\\index.html",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-client\\Pages\\index.html",
+              "RelativeToolTip": "..\\ex4-client\\Pages\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-06-20T16:01:46.223Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Ex4\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Ex4\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwCUAAAAAAAAA",
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "Ex4\\Controllers\\CoursesController.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "Ex4\\Controllers\\CoursesController.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAcwI8AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T22:02:52.821Z",
+              "WhenOpened": "2024-06-14T10:34:10.734Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\User.cs",
-              "RelativeDocumentMoniker": "Ex4\\BL\\User.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\User.cs",
-              "RelativeToolTip": "Ex4\\BL\\User.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAcwE0AAAAIAAAA",
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\Course.cs",
+              "RelativeDocumentMoniker": "Ex4\\BL\\Course.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\Course.cs",
+              "RelativeToolTip": "Ex4\\BL\\Course.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAqwIsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T22:02:46.957Z"
+              "WhenOpened": "2024-06-14T10:34:17.828Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "DBservices.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\DAL\\DBservices.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\DAL\\DBservices.cs",
               "RelativeDocumentMoniker": "Ex4\\DAL\\DBservices.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\DAL\\DBservices.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\DAL\\DBservices.cs",
               "RelativeToolTip": "Ex4\\DAL\\DBservices.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAuwBYAAAAEAAAA",
+              "ViewState": "AQIAAGsAAAAAAAAAAAAowIQAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-14T10:33:37.892Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CoursesController.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Controllers\\CoursesController.cs",
-              "RelativeDocumentMoniker": "Ex4\\Controllers\\CoursesController.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Controllers\\CoursesController.cs",
-              "RelativeToolTip": "Ex4\\Controllers\\CoursesController.cs",
-              "ViewState": "AQIAAHMAAAAAAAAAAAAYwD0AAAAAAAAA",
+              "DocumentIndex": 7,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Ex4\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Ex4\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwBQAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T10:34:10.734Z"
+              "WhenOpened": "2024-06-15T22:02:52.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\User.cs",
+              "RelativeDocumentMoniker": "Ex4\\BL\\User.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\User.cs",
+              "RelativeToolTip": "Ex4\\BL\\User.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAuwDcAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T22:02:46.957Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Course.cs",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\Course.cs",
-              "RelativeDocumentMoniker": "Ex4\\BL\\Course.cs",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\BL\\Course.cs",
-              "RelativeToolTip": "Ex4\\BL\\Course.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAIwC0AAAAtAAAA",
+              "Title": "Instructor.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\Instructor.cs",
+              "RelativeDocumentMoniker": "Ex4\\BL\\Instructor.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\Instructor.cs",
+              "RelativeToolTip": "Ex4\\BL\\Instructor.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T10:34:17.828Z"
+              "WhenOpened": "2024-06-16T08:23:06.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "InstructorsController.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\Controllers\\InstructorsController.cs",
+              "RelativeDocumentMoniker": "Ex4\\Controllers\\InstructorsController.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\Controllers\\InstructorsController.cs",
+              "RelativeToolTip": "Ex4\\Controllers\\InstructorsController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowA0AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T08:25:49.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\Login.cs",
+              "RelativeDocumentMoniker": "Ex4\\BL\\Login.cs",
+              "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\BL\\Login.cs",
+              "RelativeToolTip": "Ex4\\BL\\Login.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T08:16:54.26Z"
             }
           ]
         }

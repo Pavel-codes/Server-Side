@@ -19,35 +19,6 @@ namespace WebApplication1.Controllers
             return course.Read();
         }
 
-        // GET api/<CoursesController>/5
-        [HttpGet("{title}")]
-        public Course Get(string title)
-        {
-            return course.getCourseByTitle(title);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            var course = Course.CoursesList.FirstOrDefault(c => c.Id == id);
-            if (course == null)
-            {
-                return NotFound("Course not found");
-            }
-            return Ok(course);
-        }
-
-        [HttpGet("user/{userId}")] //
-        public ActionResult<IEnumerable<Course>> GetUserCourses(int userId)
-        {
-            var user = WebApplication1.BL.User.GetUser(userId);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            var courses = user.GetCourses();
-            return Ok(courses);
-        }
 
         // POST api/<CoursesController>
         [HttpPost("NewCourse")]
@@ -61,6 +32,16 @@ namespace WebApplication1.Controllers
             return Ok(new { message = "Course inserted successfully." });
         }
 
+        // POST api/<CoursesController>/5
+        [HttpPost("addCourseToUser/{userId}")]
+        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
+        {
+            if (Course.AddCourseToUser(userId, course))
+            {
+                return Ok(new { message = "Course added to user successfully" });
+            }
+            return NotFound(new { message = "Failed to add course to user" });
+        }
 
         // PUT api/<CoursesController>/5
         [HttpPut("{id}")]
@@ -77,16 +58,6 @@ namespace WebApplication1.Controllers
                 // Return 500 Internal Server Error with the exception message
                 return StatusCode(500, ex.Message);
             }
-        }
-
-        [HttpPost("addCourseToUser/{userId}")]
-        public IActionResult AddCourseToUser(int userId, [FromBody] Course course)
-        {
-            if (Course.AddCourseToUser(userId, course))
-            {
-                return Ok(new { message = "Course added to user successfully" });
-            }
-            return BadRequest(new { message = "Failed to add course to user" });
         }
 
         [HttpDelete("deleteByCourseFromUserList/{userId}")]
@@ -111,16 +82,18 @@ namespace WebApplication1.Controllers
             try
             {
                 List<Course> courses = Course.GetByDurationRangeForUser(userId, fromDuration, toDuration);
-
-                if (courses.Any())
+                if (courses == null)
+                {
+                    return NotFound(new { message = "No courses found for the specified duration range and user." });
+                }
+                else
                 {
                     return Ok(courses);
                 }
-                return NotFound(new { message = "No courses found for the specified duration range and user." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
+                return NotFound(new { message = "No courses found for the specified duration range and user." });
             }
         }
         [HttpGet("searchByRatingForUser/{userId}")]
@@ -129,12 +102,54 @@ namespace WebApplication1.Controllers
             try
             {
                 List<Course> courses = Course.GetByRatingRangeForUser(userId, fromRating, toRating);
+                if (courses == null)
+                {
+                    return NotFound(new { message = "No courses found for the specified duration range and user." });
+                }
+                else
+                {
+                    return Ok(courses);
+                }
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = "No courses found for the specified duration range and user." });
+            }
+        }
+
+        // Get courses by instructor id
+        [HttpGet("searchByInstructorId/{instructorId}")]
+        public IActionResult GetByInstructorId(int instructorId)
+        {
+            try
+            {
+                List<Course> courses = Course.GetCoursesByInstructor(instructorId);
 
                 if (courses.Any())
                 {
                     return Ok(courses);
                 }
-                return NotFound(new { message = "No courses found for the specified rating range and user." });
+                return NotFound(new { message = "No courses found for this instructor." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        // Get courses by user id
+        [HttpGet("UserCourse/{userId}")]
+        public IActionResult GetByUserId(int userId)
+        {
+            try
+            {
+                List<Course> courses = Course.GetCoursesByUser(userId);
+
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound(new { message = "No courses found for this instructor." });
             }
             catch (Exception ex)
             {

@@ -1,8 +1,11 @@
-const apiBaseUrl = "https://localhost:7076/api/Courses";
+const apiBaseUrl = "https://localhost:7283/api/Courses";
 const udemy = "https://www.udemy.com";
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
+});
+$('#returnToPanel').on('click', function () {
+    window.location.href = "../Pages/admin.html";
 });
 
 $("#createCourseForm").submit(function (event) {
@@ -12,11 +15,10 @@ $("#createCourseForm").submit(function (event) {
         alert("Course Id Not Valid");
         return;
     }
-
-    //url validation atart with http or https and end with .com
-    var urlPattern = /^(https):\/\/[^ "]+(.com)$/;
+   
+    var urlPattern = /^(https):\/\/www\.[^\s"]+\.[^\s"]+$/;
     if (!urlPattern.test($('#url').val())) {
-        alert("Url Not Valid , Must Use This Structure https://example.com");
+        alert("Url Not Valid , Must Use This Structure https://www.example.com");
         return;
     }
 
@@ -27,9 +29,10 @@ $("#createCourseForm").submit(function (event) {
         return;
     }
   
-    var imagePattern = /^(https):\/\/[^ "]+(.jpg|.png)$/;
-    if (!imagePattern.test($('#image').val())) {
-        alert("Image Reference Not Valid, Must Use This Structure https://example.jpg/png");
+    var imagePattern = /^(https):\/\/www\.[^\s"]+(\.jpg|\.png)$/;
+
+    if (!imagePattern.test($('#image').val()) && $('#image').val().trim() !== "") {
+        alert("Image Reference Not Valid, Must Use This Structure https://www.example.jpg/png");
         return;
     }
 
@@ -40,27 +43,38 @@ $("#createCourseForm").submit(function (event) {
     }
 
     var newCourse = {
-        id: $("#id").val(),
+        id: 0,
         title: $("#title").val(),
         url: $("#url").val(),
         rating: 0.0,
         numberOfReviews: 0,
         instructorsId: $("#instructorsId").val(),
         imageReference: $("#image").val(),
-        duration: $("#duration").val() + "total hours",
+        duration: $("#duration").val() + " total hours",
         lastUpdate: getCurrentDate()
-    }
-    ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), getSCBF, getECBF);
+    };
+    console.log(newCourse);
+    ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), postSCBF, postECBF);
   
 });
 
 
-function getSCBF(result) {
+function postSCBF(result) {
     alert("Course Successfully Added");
+    clearFields();
     console.log(result);
 }
 
-function getECBF(err) {
+function clearFields() {
+    $('#title').val('');
+    $('#url').val('');
+    $('#instructorsId').val('');
+    $('#image').val('');
+    $('#duration').val('');
+}
+
+function postECBF(err) {
+    console.log(err);
     alert("Course already exists/Instructor not Exist");
 }
 
