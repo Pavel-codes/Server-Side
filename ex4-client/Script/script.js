@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     function getInstructors() {
         let api = "https://localhost:7283/api/Instructors/";
-        ajaxCall('GET', api, true, getInstructorSCBF, getInstructorECBF);
+        ajaxCall('GET', api, true, getInstructorSCBF, getInstructorECBF); // check ajax call for sync and async
     }
 
     function getInstructorSCBF(response) {
