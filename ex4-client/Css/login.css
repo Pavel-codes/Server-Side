@@ -1,3 +1,4 @@
+
 body {
     font-family: sans-serif;
     margin: 0; /* Remove default margin from body */
@@ -32,7 +33,7 @@ input[type="password"] {
 }
 
 button {
-    background-color: #3498db; 
+    background-color: #3498db;
     color: white;
     padding: 10px 20px;
     border: none;

@@ -1,6 +1,7 @@
-﻿const apiBaseUrl = "https://localhost:7283/api/Users";
-$(document).ready(function () { 
-    $('#registerForm').submit(function (event) { 
+﻿
+const apiBaseUrl = "https://localhost:7283/api/Users";
+$(document).ready(function () {
+    $('#registerForm').submit(function (event) {
         event.preventDefault();
 
         const name = $('#name').val();
@@ -25,7 +26,7 @@ $(document).ready(function () {
             Password: password
         };
 
-        
+
 
         function submitToServer(newUser) {
             let api = `https://localhost:7283/api/Users`;
@@ -46,7 +47,7 @@ $(document).ready(function () {
 
         function autoLogin() {
             let api = apiBaseUrl + '/login';
-            let userDetails = { Email : newUser.Email, Password : newUser.Password };
+            let userDetails = { Email: newUser.Email, Password: newUser.Password };
             ajaxCall("POST", api, JSON.stringify(userDetails), postLoginSCBF, postLoginECBF);
         }
 
@@ -63,7 +64,7 @@ $(document).ready(function () {
             console.log(err);
         }
 
-        submitToServer(newUser); 
+        submitToServer(newUser);
     });
 });
 
@@ -81,5 +82,3 @@ loginPageBtn.addEventListener("click", function () {
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
-
-

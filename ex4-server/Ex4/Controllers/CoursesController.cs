@@ -156,6 +156,25 @@ namespace WebApplication1.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+        // Get courses by top 5 most user
+        [HttpGet("Top5Courses")]
+        public IActionResult GetTop5Courses()
+        {
+            try
+            {
+                List<Course> courses = Course.GetTop5Courses();
+
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound(new { message = "No courses found." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
 
     }
 }

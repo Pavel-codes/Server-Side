@@ -1,4 +1,5 @@
-﻿//var myCourses = [];
+﻿
+//var myCourses = [];
 var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
@@ -72,7 +73,7 @@ document.addEventListener('click', function (event) {
     if (event.target.tagName.toLowerCase() === 'button' && event.target.id != "apply-rating-filter" && event.target.id != "apply-duration-filter") {
         const buttonId = event.target.id;
         removeCourse(user.id, buttonId);
-        
+
     }
 });
 

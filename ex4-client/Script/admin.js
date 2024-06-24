@@ -1,4 +1,5 @@
-﻿var coursesFromServer = [];
+﻿
+var coursesFromServer = [];
 const udemy = "https://www.udemy.com";
 //const instructorsAPI = `https://localhost:7076/api/Instructors`;
 const apiBaseUrl = "https://localhost:7283/api/Courses";
@@ -53,7 +54,7 @@ $('#homeBtn').on('click', function () {
 
 const courseDataList = document.getElementById("courseDataList");
 
-var selectedCourse = {} ;
+var selectedCourse = {};
 
 
 //change implememtation to get from server - basic idea -->> get course ID from course title, change all other data according to fields and send back
@@ -182,7 +183,7 @@ $("#coursesBtn").on("click", function () {
 function getCurrentDate() {
     const date = new Date();
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
 
     return `${day}/${month}/${year}`;

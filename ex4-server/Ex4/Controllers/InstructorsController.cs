@@ -71,26 +71,5 @@ namespace WebApplication1.Controllers
         public void Delete(int id)
         {
         }
-
-
-        // Get courses by instructor id
-        [HttpGet("GetCoursesByInstructorId/{instructorId}")]
-        public IActionResult GetByInstructorId(int instructorId)
-        {
-            try
-            {
-                List<Course> courses = Course.GetCoursesByInstructor(instructorId);
-
-                if (courses.Any())
-                {
-                    return Ok(courses);
-                }
-                return NotFound(new { message = "No courses found for this instructor." });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using WebApplication1.BL;
 
 namespace WebApplication1.Controllers
@@ -30,11 +31,11 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public bool Post([FromBody] User value)
         {
-            
+
             bool result = user.registration(value);
-            if(result)
-                return true;         
-            return false;          
+            if (result)
+                return true;
+            return false;
 
         }
 

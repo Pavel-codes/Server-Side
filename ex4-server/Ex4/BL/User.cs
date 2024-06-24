@@ -1,4 +1,5 @@
-﻿namespace WebApplication1.BL
+﻿
+namespace WebApplication1.BL
 {
     public class User
     {
@@ -27,7 +28,7 @@
 
         public User()
         {
-            
+
         }
 
         public User(string name, string email, string password)
@@ -84,7 +85,7 @@
             {
                 return false;
             }
-            
+
         }
 
         public User login(Login login)
@@ -95,10 +96,10 @@
             {
                 return user;
             }
-          
-          return null;
-            
-            
+
+            return null;
+
+
         }
 
         //public bool AddCourse(Course course)

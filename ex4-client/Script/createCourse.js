@@ -1,3 +1,4 @@
+
 const apiBaseUrl = "https://localhost:7283/api/Courses";
 const udemy = "https://www.udemy.com";
 
@@ -15,20 +16,20 @@ $("#createCourseForm").submit(function (event) {
         alert("Course Id Not Valid");
         return;
     }
-   
+
     var urlPattern = /^(https):\/\/www\.[^\s"]+\.[^\s"]+$/;
     if (!urlPattern.test($('#url').val())) {
         alert("Url Not Valid , Must Use This Structure https://www.example.com");
         return;
     }
 
- 
+
 
     if ($('#instructorsId').val() < 1 && $('#instructorsId').val() > 2147483647) {
         alert("Instructors Id Not Valid");
         return;
     }
-  
+
     var imagePattern = /^(https):\/\/www\.[^\s"]+(\.jpg|\.png)$/;
 
     if (!imagePattern.test($('#image').val()) && $('#image').val().trim() !== "") {
@@ -55,7 +56,7 @@ $("#createCourseForm").submit(function (event) {
     };
     console.log(newCourse);
     ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), postSCBF, postECBF);
-  
+
 });
 
 
