@@ -12,7 +12,10 @@ namespace WebApplication1.BL
         private string imageReference;
         private string duration;
         private string lastUpdate;
+<<<<<<< Updated upstream
         private int numOfRegisters;
+=======
+>>>>>>> Stashed changes
 
         public Course() { }
 
@@ -40,11 +43,14 @@ namespace WebApplication1.BL
         public string Duration { get => duration; set => duration = value; }
         public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
+<<<<<<< Updated upstream
         public int NumOfRegisters { get => numOfRegisters; set => numOfRegisters = value; }
 
 
 
 
+=======
+>>>>>>> Stashed changes
         public List<Course> Read()
         {
             DBservices db = new DBservices();
@@ -138,6 +144,7 @@ namespace WebApplication1.BL
             }
         }
 
+<<<<<<< Updated upstream
         public static List<Course> GetCoursesByUser(int userId)
         {
             DBservices db = new DBservices();
@@ -152,6 +159,8 @@ namespace WebApplication1.BL
             }
         }
 
+=======
+>>>>>>> Stashed changes
         public static List<Course> GetCoursesByInstructor(int instructorId)
         {
             DBservices db = new DBservices();
