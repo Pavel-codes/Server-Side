@@ -996,7 +996,7 @@ public class DBservices
         return cmd;
     }
 
-    public List<Object> GetTop5Courses()
+    public List<Object> GetTopFiveCourses()
     {
         SqlConnection con;
         SqlCommand cmd;

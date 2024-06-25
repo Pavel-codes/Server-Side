@@ -166,10 +166,10 @@ namespace WebApplication1.BL
             }
         }
 
-        public static List<Object> GetTop5Courses()
+        public static List<Object> GetTopFiveCourses()
         {
             DBservices db = new DBservices();
-            List<Object> courses = db.GetTop5Courses();
+            List<Object> courses = db.GetTopFiveCourses();
             if (courses.Count == 0)
             {
                 return null;
