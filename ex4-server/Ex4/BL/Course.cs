@@ -1,4 +1,5 @@
 ﻿
+
 namespace WebApplication1.BL
 {
     public class Course
@@ -12,14 +13,12 @@ namespace WebApplication1.BL
         private string imageReference;
         private string duration;
         private string lastUpdate;
-<<<<<<< Updated upstream
-        private int numOfRegisters;
-=======
->>>>>>> Stashed changes
+        private bool isActive = true;
+
 
         public Course() { }
 
-        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate, int numOfRegisters)
+        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate, bool isActive)
         {
             Id = id;
             Title = title;
@@ -30,7 +29,8 @@ namespace WebApplication1.BL
             ImageReference = imageReference;
             Duration = duration;
             LastUpdate = lastUpdate;
-            NumOfRegisters = numOfRegisters;
+            IsActive = isActive;
+            //NumOfRegisters = numOfRegisters;
         }
 
         public int Id { get => id; set => id = value; }
@@ -42,15 +42,9 @@ namespace WebApplication1.BL
         public string ImageReference { get => imageReference; set => imageReference = value; }
         public string Duration { get => duration; set => duration = value; }
         public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
-
-<<<<<<< Updated upstream
-        public int NumOfRegisters { get => numOfRegisters; set => numOfRegisters = value; }
+        public bool IsActive { get => isActive; set => isActive = value; }
 
 
-
-
-=======
->>>>>>> Stashed changes
         public List<Course> Read()
         {
             DBservices db = new DBservices();
@@ -144,7 +138,6 @@ namespace WebApplication1.BL
             }
         }
 
-<<<<<<< Updated upstream
         public static List<Course> GetCoursesByUser(int userId)
         {
             DBservices db = new DBservices();
@@ -159,8 +152,6 @@ namespace WebApplication1.BL
             }
         }
 
-=======
->>>>>>> Stashed changes
         public static List<Course> GetCoursesByInstructor(int instructorId)
         {
             DBservices db = new DBservices();
@@ -175,10 +166,10 @@ namespace WebApplication1.BL
             }
         }
 
-        public static List<Course> GetTop5Courses()
+        public static List<Object> GetTop5Courses()
         {
             DBservices db = new DBservices();
-            List<Course> courses = db.GetTop5Courses();
+            List<Object> courses = db.GetTop5Courses();
             if (courses.Count == 0)
             {
                 return null;

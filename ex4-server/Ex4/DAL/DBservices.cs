@@ -1,4 +1,5 @@
 ﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -144,6 +146,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -256,12 +259,14 @@ public class DBservices
 
         cmd.Parameters.AddWithValue("@p_instructorId", course.InstructorsId);
 
+
         if (string.IsNullOrEmpty(course.ImageReference))
         {
             course.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
         }
         cmd.Parameters.AddWithValue("@p_imageReference", course.ImageReference);
 
+        cmd.Parameters.AddWithValue("@p_isActive", course.IsActive);
 
         return cmd;
     }
@@ -418,6 +423,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -471,6 +477,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -589,6 +596,8 @@ public class DBservices
             course.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
         }
         cmd.Parameters.AddWithValue("@p_imageReference", course.ImageReference);
+
+        cmd.Parameters.AddWithValue("@p_isActive", course.IsActive);
 
         return cmd;
     }
@@ -881,6 +890,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -986,7 +996,7 @@ public class DBservices
         return cmd;
     }
 
-    public List<Course> GetTop5Courses()
+    public List<Object> GetTop5Courses()
     {
         SqlConnection con;
         SqlCommand cmd;
@@ -1005,15 +1015,16 @@ public class DBservices
         try
         {
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
-            List<Course> topCourses = new List<Course>();
+            List<Object> topCourses = new List<Object>();
             while (reader.Read())
             {
-                Course course = new Course();
-                course.Id = Convert.ToInt32(reader["id"]);
-                course.Title = reader["title"].ToString();
-                course.Rating = Convert.ToDouble(reader["rating"]);
-                course.NumOfRegisters = Convert.ToInt32(reader["numOfRegisters"]);
-                topCourses.Add(course);
+                topCourses.Add(new
+                {
+                    id = Convert.ToInt32(reader["id"]),
+                    title = reader["name"].ToString(),
+                    rating = Convert.ToDouble(reader["rating"]),
+                    numOfRegisters = Convert.ToInt32(reader["NumberOfUsers"])
+                });
             }
             return topCourses;
         }

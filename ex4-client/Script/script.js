@@ -14,8 +14,8 @@ $(document).ready(function () {
     }
 
     function getInstructorSCBF(response) {
-        instructors = response; // Assuming response is an array of instructors
-        getCoursesFromDB(); // Fetch courses after getting instructors
+        instructors = response;
+        getCoursesFromDB();
     }
 
     function getInstructorECBF(err) {
@@ -28,9 +28,8 @@ $(document).ready(function () {
 
     function getCoursesSCBF(response) {
         console.log(response);
-        coursesData = response; // Store courses data globally
-        renderCourses(response); // Render courses after fetching from DB
-        renderTopCourses(response); // Render top 5 courses based on registrations
+        coursesData = response;
+        getTop5Courses(); // Fetch top 5 courses after fetching all courses
     }
 
     function getCoursesECBF(err) {
@@ -39,15 +38,27 @@ $(document).ready(function () {
     }
 
     // Function to fetch top 5 courses based on number of registrations
-    function fetchTop5Courses(courses) {
-        // Sort courses by number of registrations in descending order
-        courses.sort((a, b) => b.numberOfRegistrations - a.numberOfRegistrations);
+    function getTop5Courses() {
+        let top5CoursesApiUrl = `${apiBaseUrl}/Top5Courses`;
+        ajaxCall('GET', top5CoursesApiUrl, true, getTop5CoursesSCBF, getTop5CoursesECBF);
+    }
 
-        // Take the top 5 courses
+    function getTop5CoursesSCBF(response) {
+        console.log(response);
+        renderTopCourses(response); // Render top 5 courses
+        renderOtherCourses(coursesData); // Render remaining courses
+    }
+
+    function getTop5CoursesECBF(err) {
+        console.log(err);
+        alert("Failed to load top 5 courses!");
+    }
+
+    function fetchTop5Courses(courses) {
+        courses.sort((a, b) => b.numberOfRegistrations - a.numberOfRegistrations);
         return courses.slice(0, 5);
     }
 
-    // Render top 5 courses
     function renderTopCourses(courses) {
         var topCoursesContainer = $('#top-courses-container');
         var top5Courses = fetchTop5Courses(courses);
@@ -56,7 +67,7 @@ $(document).ready(function () {
             courseElement.append('<img src=' + course.imageReference + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
             var instructor = instructors.find(instructor => instructor.id == course.instructorsId);
-            courseElement.append('<p>By: ' + (instructor ? instructor.name : 'Unknown') + '</p>'); // Assuming name is a property of instructor
+            courseElement.append('<p>By: ' + (instructor ? instructor.name : 'Unknown') + '</p>');
             var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
@@ -67,21 +78,18 @@ $(document).ready(function () {
             courseElement.append(addCourseBtn);
 
             topCoursesContainer.append(courseElement);
-
-            // Attach the click event using addCourseClick directly
             addCourseClick(addCourseBtn);
         });
     }
 
-    // Function to render regular courses
-    function renderCourses(courses) {
+    function renderOtherCourses(courses) {
         var coursesContainer = $('#courses-container');
         courses.forEach(function (course) {
             var courseElement = $('<div>');
             courseElement.append('<img src=' + course.imageReference + '>');
             courseElement.append('<h2>' + course.title + '</h2>');
             var instructor = instructors.find(instructor => instructor.id == course.instructorsId);
-            courseElement.append('<p>By: ' + (instructor ? instructor.name : 'Unknown') + '</p>'); // Assuming name is a property of instructor
+            courseElement.append('<p>By: ' + (instructor ? instructor.name : 'Unknown') + '</p>');
             var showMoreBtn = $('<button id="' + course.instructorsId + '">Show more courses of this instructor</button>');
             var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
             courseElement.append(showMoreBtn);
@@ -94,17 +102,13 @@ $(document).ready(function () {
             courseElement.append(addCourseBtn);
 
             coursesContainer.append(courseElement);
-
-            // Attach the click event using addCourseClick directly
             addCourseClick(addCourseBtn);
-
             showMoreBtn.on('click', function () {
                 addCoursesToModal(this.id);
             });
         });
     }
 
-    // still need to fix login
     function isLoggedIn() {
         return localStorage.getItem('user') !== null;
     }
@@ -127,25 +131,9 @@ $(document).ready(function () {
         });
     }
 
-    // Call getInstructors to fetch instructors and then get courses
-    getInstructors();
-
-    modal.css('display', 'none');
-    span.on('click', function () {
-        modal.css('display', 'none');
-    });
-
-    $(window).on('click', function (event) {
-        if (event.target === $('#coursesModal')[0]) {
-            $('#coursesModal').hide();
-        }
-    });
-
     function addCoursesToModal(buttonId) {
         modal.css('display', 'block');
-
-        $('#modal-content').children().slice(1).remove(); // Clear previous modal content
-
+        $('#modal-content').children().slice(1).remove();
         let api = `https://localhost:7283/api/Courses/searchByInstructorId/${buttonId}`;
         ajaxCall("GET", api, null, getInstructorCoursesSCBF, getInstructorCoursesECBF);
     }
@@ -162,7 +150,6 @@ $(document).ready(function () {
             courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
             courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
-
             modalContent.append(courseElement);
             modalContent.css('width', '50%');
         });
@@ -174,46 +161,36 @@ $(document).ready(function () {
     }
 
     const myCoursesBtn = document.getElementById("myCourses");
-
     myCoursesBtn.addEventListener("click", function () {
         window.location.href = "MyCourses.html";
     });
 
-
     const instructorsBtn = document.getElementById("instructorsBtn");
-
     instructorsBtn.addEventListener("click", function () {
         window.location.href = "instructorsPage.html";
-
     });
 
     const loginBtn = document.getElementById("loginBtn");
-
     loginBtn.addEventListener("click", function () {
         window.location.href = "login.html";
     });
 
-    const logoutbtn = document.getElementById("logoutBtn");
-
+    const logoutBtn = document.getElementById("logoutBtn");
     logoutBtn.addEventListener("click", function () {
         localStorage.clear();
         window.location.reload();
     });
 
-
     const Registerbtn = document.getElementById("Registerbtn");
-
     Registerbtn.addEventListener("click", function () {
         window.location.href = "register.html";
     });
 
     const Adminbtn = document.getElementById("Adminbtn");
-
     Adminbtn.addEventListener("click", function () {
         window.location.href = "admin.html";
     });
 
-    // Check user status and display appropriate buttons
     if (user && !user.isAdmin) {
         $('#logoutBtn').show();
         $('#loginBtn').hide();
@@ -234,7 +211,6 @@ $(document).ready(function () {
         $('#Adminbtn').hide();
     }
 
-    // Function to add a course to user's list
     function addCourse(buttonId, userId) {
         var courseDataToSend;
         coursesData.forEach(courseData => {
@@ -250,7 +226,6 @@ $(document).ready(function () {
                     duration: courseData.duration,
                     lastUpdate: courseData.lastUpdate
                 };
-
                 ajaxCall("POST", `${apiBaseUrl}/addCourseToUser/${userId}`, JSON.stringify(courseDataToSend), postSCBF, postECBF);
             }
         });
