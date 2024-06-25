@@ -1,4 +1,5 @@
-﻿const apiBaseUrl = "https://localhost:7283/api/Instructors";
+﻿
+const apiBaseUrl = "https://localhost:7283/api/Instructors";
 const udemy = "https://www.udemy.com";
 let instructorsData = [];
 var modal = $('#coursesModal');
@@ -23,7 +24,7 @@ $(document).ready(function () {
 
             let instructorBtn = document.getElementById(instructor.id);
             $(instructorBtn).on('click', function () {
-                
+
                 addCoursesToModal(instructorBtn.id);
             });
         });
@@ -58,7 +59,7 @@ $('#homeBtn').on('click', function () {
 
 function addCoursesToModal(buttonId) {
     modal.css('display', 'block');
-    
+
     //clearModal();
     $('#modal-content').children().slice(1).remove();
 

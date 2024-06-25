@@ -1,4 +1,5 @@
-﻿const apiBaseUrl = "https://localhost:7283/api/Users";
+﻿
+const apiBaseUrl = "https://localhost:7283/api/Users";
 
 $(document).ready(function () {
     $('#loginForm').submit(function (event) {
@@ -43,7 +44,7 @@ $(document).ready(function () {
             else {
                 postECBF();
             }
-            
+
         }
 
         function postECBF() { // add more distinct messages for each case email\password\etc....!!!
@@ -57,9 +58,8 @@ $('#homeBtn').on('click', function () {
 });
 
 // will become redundant - to be removed later!
-const registerPageBtn = document.getElementById("registerPageBtn"); 
+const registerPageBtn = document.getElementById("registerPageBtn");
 
 registerPageBtn.addEventListener("click", function () {
     window.location.href = "../Pages/register.html";
 });
-

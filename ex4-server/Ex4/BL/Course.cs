@@ -1,4 +1,5 @@
-﻿namespace WebApplication1.BL
+﻿
+namespace WebApplication1.BL
 {
     public class Course
     {
@@ -11,10 +12,14 @@
         private string imageReference;
         private string duration;
         private string lastUpdate;
+<<<<<<< Updated upstream
+        private int numOfRegisters;
+=======
+>>>>>>> Stashed changes
 
         public Course() { }
 
-        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate)
+        public Course(int id, string title, string url, double rating, int numberOfReviews, int instructorsId, string imageReference, string duration, string lastUpdate, int numOfRegisters)
         {
             Id = id;
             Title = title;
@@ -25,6 +30,7 @@
             ImageReference = imageReference;
             Duration = duration;
             LastUpdate = lastUpdate;
+            NumOfRegisters = numOfRegisters;
         }
 
         public int Id { get => id; set => id = value; }
@@ -37,7 +43,14 @@
         public string Duration { get => duration; set => duration = value; }
         public string LastUpdate { get => lastUpdate; set => lastUpdate = value; }
 
+<<<<<<< Updated upstream
+        public int NumOfRegisters { get => numOfRegisters; set => numOfRegisters = value; }
 
+
+
+
+=======
+>>>>>>> Stashed changes
         public List<Course> Read()
         {
             DBservices db = new DBservices();
@@ -54,9 +67,9 @@
             }
             catch (Exception ex)
             {
-                return false;     
+                return false;
             }
-          
+
         }
 
         public static bool DeleteCourse(int userId, int courseidToDelete)
@@ -71,7 +84,7 @@
             {
                 return false;
             }
-       
+
         }
 
         public static List<Course> GetByRatingRangeForUser(int userId, double fromRating, double toRating)
@@ -106,7 +119,8 @@
         public bool InsertNewCourse()
         {
             DBservices db = new DBservices();
-            try { 
+            try
+            {
                 db.InsertNewCourse(this);
                 return true;
             }
@@ -130,6 +144,7 @@
             }
         }
 
+<<<<<<< Updated upstream
         public static List<Course> GetCoursesByUser(int userId)
         {
             DBservices db = new DBservices();
@@ -144,10 +159,26 @@
             }
         }
 
+=======
+>>>>>>> Stashed changes
         public static List<Course> GetCoursesByInstructor(int instructorId)
         {
             DBservices db = new DBservices();
             List<Course> courses = db.GetCoursesByInstructor(instructorId);
+            if (courses.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return courses;
+            }
+        }
+
+        public static List<Course> GetTop5Courses()
+        {
+            DBservices db = new DBservices();
+            List<Course> courses = db.GetTop5Courses();
             if (courses.Count == 0)
             {
                 return null;

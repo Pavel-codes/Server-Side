@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using WebApplication1.BL;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -28,7 +29,7 @@ namespace WebApplication1.Controllers
             {
                 return NotFound(new { message = "Course could not be inserted." });
             }
-            return Ok(new { message = "Course inserted successfully." } );
+            return Ok(new { message = "Course inserted successfully." });
         }
 
         // POST api/<CoursesController>/5
@@ -155,5 +156,25 @@ namespace WebApplication1.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+        // Get courses by top 5 most user
+        [HttpGet("Top5Courses")]
+        public IActionResult GetTop5Courses()
+        {
+            try
+            {
+                List<Course> courses = Course.GetTop5Courses();
+
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound(new { message = "No courses found." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+
 namespace WebApplication1.BL
 {
     public class Instructor

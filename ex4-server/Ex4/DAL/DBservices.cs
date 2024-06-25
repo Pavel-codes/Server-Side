@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -111,8 +112,8 @@ public class DBservices
 
 
 
-        public List<Course> GetCoursesOfUser(int userId)
-        {
+    public List<Course> GetCoursesOfUser(int userId)
+    {
 
         SqlConnection con;
         SqlCommand cmd;
@@ -260,13 +261,13 @@ public class DBservices
             course.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
         }
         cmd.Parameters.AddWithValue("@p_imageReference", course.ImageReference);
-       
+
 
         return cmd;
     }
 
     // Method to add a course to a user
-    
+
     public int AddCourseToUser(int userId, Course course)
     {
         SqlConnection con;
@@ -306,7 +307,7 @@ public class DBservices
 
     }
 
-    private SqlCommand CreateCommandWithStoredProcedureAddCourseToUser(String spName, SqlConnection con,int userId, Course course)
+    private SqlCommand CreateCommandWithStoredProcedureAddCourseToUser(String spName, SqlConnection con, int userId, Course course)
     {
 
         SqlCommand cmd = new SqlCommand(); // create the command object
@@ -503,7 +504,7 @@ public class DBservices
 
         cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
 
-        if(spName == "SP_GetCoursesByDurationRangeForUser")
+        if (spName == "SP_GetCoursesByDurationRangeForUser")
         {
             cmd.Parameters.AddWithValue("@UserId", userId);
             cmd.Parameters.AddWithValue("@FromDuration", from);
@@ -514,14 +515,14 @@ public class DBservices
             cmd.Parameters.AddWithValue("@UserId", userId);
             cmd.Parameters.AddWithValue("@FromRating", from);
             cmd.Parameters.AddWithValue("@ToRating", to);
-        }    
+        }
 
         return cmd;
     }
 
 
     // update course
-    public int EditCourse(int id,Course course)
+    public int EditCourse(int id, Course course)
     {
         SqlConnection con;
         SqlCommand cmd;
@@ -536,7 +537,7 @@ public class DBservices
             throw (ex);
         }
 
-        cmd = CreateCommandWithStoredProcedureEditCourse("SP_EditCourse", con,id, course);             // create the command
+        cmd = CreateCommandWithStoredProcedureEditCourse("SP_EditCourse", con, id, course);             // create the command
 
         try
         {
@@ -560,7 +561,7 @@ public class DBservices
 
     }
 
-    private SqlCommand CreateCommandWithStoredProcedureEditCourse(String spName, SqlConnection con,int id, Course course)
+    private SqlCommand CreateCommandWithStoredProcedureEditCourse(String spName, SqlConnection con, int id, Course course)
     {
 
         SqlCommand cmd = new SqlCommand(); // create the command object
@@ -582,7 +583,7 @@ public class DBservices
         cmd.Parameters.AddWithValue("@p_lastUpdate", course.LastUpdate);
 
         cmd.Parameters.AddWithValue("@p_duration", course.Duration);
-    
+
         if (string.IsNullOrEmpty(course.ImageReference))
         {
             course.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
@@ -740,7 +741,7 @@ public class DBservices
         cmd = CreateCommandWithStoredProcedureGetInstructorsNameById("SP_GetInstructorNameById", con, InstructorId);
         try
         {
-            
+
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
             while (reader.Read())
             {
@@ -762,7 +763,7 @@ public class DBservices
                 con.Close();
             }
         }
-        
+
     }
 
     private SqlCommand CreateCommandWithStoredProcedureGetInstructorsNameById(String spName, SqlConnection con, int id)
@@ -919,7 +920,7 @@ public class DBservices
     }
 
 
-    
+
     public User GetUser(int userId)
     {
         SqlConnection con;
@@ -985,75 +986,63 @@ public class DBservices
         return cmd;
     }
 
-    //public User GetCoursesFromUser(int userId)
-    //{
-    //    SqlConnection con;
-    //    SqlCommand cmd;
-    //    try
-    //    {
-    //        con = connect("myProjDB"); // create the connection
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw (ex);
-    //    }
-        
-    //    cmd = CreateCommandWithStoredProcedureGetCoursesFromUser("SP_GetCoursesFromUser ", con, userId);
-    //    try
-    //    {
-    //        SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
-    //        User user = new User();
-    //        user.Id = userId;
-    //        user.MyCourses = new List<Course>();
-    //        while (reader.Read())
-    //        {
-    //            Course course = new Course();
-    //            course.Id = Convert.ToInt32(reader["id"]);
-    //            course.Title = reader["title"].ToString();
-    //            course.Url = reader["url"].ToString();
-    //            course.Rating = Convert.ToDouble(reader["rating"]);
-    //            course.NumberOfReviews = Convert.ToInt32(reader["num_reviews"]);
-    //            course.LastUpdate = reader["last_update_date"].ToString();
-    //            course.Duration = reader["duration"].ToString();
-    //            course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
-    //            course.ImageReference = reader["image"].ToString();
+    public List<Course> GetTop5Courses()
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw ex;
+        }
 
-    //            user.MyCourses.Add(course);
-    //        }
-    //        return user;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw (ex);
-    //    }
+        // Use the stored procedure "SP_GetTop5Courses" to get the top 5 courses
+        cmd = CreateCommandWithStoredProcedure("SP_GetTop5Courses", con);
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+            List<Course> topCourses = new List<Course>();
+            while (reader.Read())
+            {
+                Course course = new Course();
+                course.Id = Convert.ToInt32(reader["id"]);
+                course.Title = reader["title"].ToString();
+                course.Rating = Convert.ToDouble(reader["rating"]);
+                course.NumOfRegisters = Convert.ToInt32(reader["numOfRegisters"]);
+                topCourses.Add(course);
+            }
+            return topCourses;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw ex;
+        }
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
 
-    //    finally
-    //    {
-    //        if (con != null)
-    //        {
-    //            // close the db connection
-    //            con.Close();
-    //        }
-    //    }
-    //}
-    
+    private SqlCommand CreateCommandWithStoredProcedure(string spName, SqlConnection con)
+    {
+        SqlCommand cmd = new SqlCommand
+        {
+            Connection = con,              // assign the connection to the command object
+            CommandText = spName,          // can be Select, Insert, Update, Delete 
+            CommandTimeout = 10,           // Time to wait for the execution, the default is 30 seconds
+            CommandType = CommandType.StoredProcedure // the type of the command, can also be text
+        };
+        return cmd;
+    }
 
-    //private SqlCommand CreateCommandWithStoredProcedureGetCoursesFromUser(String spName, SqlConnection con, int userId)
-    //{
-    //    SqlCommand cmd = new SqlCommand(); // create the command object
 
-    //    cmd.Connection = con;              // assign the connection to the command object
-
-    //    cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
-
-    //    cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
-
-    //    cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
-
-    //    cmd.Parameters.AddWithValue("@UserId", userId);
-
-    //    return cmd;
-    //}
 }
