@@ -896,23 +896,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Users\\chena\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj",
+      "projectUniqueName": "C:\\Users\\chena\\Source\\Repos\\Server-Side-Final\\ex4-server\\Ex4\\Ex4.csproj",
       "projectName": "Ex4",
-      "projectPath": "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\Ex4.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\source\\repos\\Github desktop\\Server-Side\\ex4-server\\Ex4\\obj\\",
+      "projectPath": "C:\\Users\\chena\\Source\\Repos\\Server-Side-Final\\ex4-server\\Ex4\\Ex4.csproj",
+      "packagesPath": "C:\\Users\\chena\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chena\\Source\\Repos\\Server-Side-Final\\ex4-server\\Ex4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\chena\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -933,6 +933,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -967,7 +972,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
       }
     }
   }

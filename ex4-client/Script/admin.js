@@ -72,6 +72,7 @@ $("#courseNamesList").on('input', function () {
         const courseRating = selectedCourse.rating;
         const courseReviews = selectedCourse.numberOfReviews;
         const courseInstructorID = selectedCourse.instructorsId;
+        const courseisActive = selectedCourse.isActive;
 
         displayCourses.append('<img src=' + selectedCourse.imageReference + '>');
         displayCourses.append('<p>Course ID: ' + courseId + '</p>');
@@ -127,7 +128,8 @@ $("#courseNamesList").on('input', function () {
                 instructorsId: courseInstructorID,
                 imageReference: newImageUrl,
                 duration: newDuration,
-                lastUpdate: newDate
+                lastUpdate: newDate,
+                isActive: courseisActive
             };
             //let id = courseId;
             const api = `https://localhost:7283/api/Courses/${courseId}`;

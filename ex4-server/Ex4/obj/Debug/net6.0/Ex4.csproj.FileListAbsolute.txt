@@ -6,7 +6,6 @@ C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\Ex
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\Ex4.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\Ex4.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\Ex4.sourcelink.json
-C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\bin\Debug\net6.0\appsettings.json
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\bin\Debug\net6.0\Ex4.exe
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\bin\Debug\net6.0\Ex4.deps.json

@@ -70,6 +70,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -144,6 +145,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -256,12 +258,14 @@ public class DBservices
 
         cmd.Parameters.AddWithValue("@p_instructorId", course.InstructorsId);
 
+        
         if (string.IsNullOrEmpty(course.ImageReference))
         {
             course.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
         }
         cmd.Parameters.AddWithValue("@p_imageReference", course.ImageReference);
 
+        cmd.Parameters.AddWithValue("@p_isActive", course.IsActive);
 
         return cmd;
     }
@@ -418,6 +422,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -471,6 +476,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -589,6 +595,8 @@ public class DBservices
             course.ImageReference = "https://www.clio.com/wp-content/uploads/2024/03/Journal-Entry-Accounting-1-750x422.png";
         }
         cmd.Parameters.AddWithValue("@p_imageReference", course.ImageReference);
+
+        cmd.Parameters.AddWithValue("@p_isActive", course.IsActive);
 
         return cmd;
     }
@@ -881,6 +889,7 @@ public class DBservices
                 course.Duration = reader["duration"].ToString();
                 course.InstructorsId = Convert.ToInt32(reader["instructors_id"]);
                 course.ImageReference = reader["image"].ToString();
+                course.IsActive = Convert.ToBoolean(reader["isActive"]);
 
                 courses.Add(course);
             }
@@ -986,51 +995,51 @@ public class DBservices
         return cmd;
     }
 
-    public List<Course> GetTop5Courses()
-    {
-        SqlConnection con;
-        SqlCommand cmd;
-        try
-        {
-            con = connect("myProjDB"); // create the connection
-        }
-        catch (Exception ex)
-        {
-            // write to log
-            throw ex;
-        }
+    //public List<Course> GetTop5Courses()
+    //{
+    //    SqlConnection con;
+    //    SqlCommand cmd;
+    //    try
+    //    {
+    //        con = connect("myProjDB"); // create the connection
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        // write to log
+    //        throw ex;
+    //    }
 
-        // Use the stored procedure "SP_GetTop5Courses" to get the top 5 courses
-        cmd = CreateCommandWithStoredProcedure("SP_GetTop5Courses", con);
-        try
-        {
-            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
-            List<Course> topCourses = new List<Course>();
-            while (reader.Read())
-            {
-                Course course = new Course();
-                course.Id = Convert.ToInt32(reader["id"]);
-                course.Title = reader["title"].ToString();
-                course.Rating = Convert.ToDouble(reader["rating"]);
-                course.NumOfRegisters = Convert.ToInt32(reader["numOfRegisters"]);
-                topCourses.Add(course);
-            }
-            return topCourses;
-        }
-        catch (Exception ex)
-        {
-            // write to log
-            throw ex;
-        }
-        finally
-        {
-            if (con != null)
-            {
-                // close the db connection
-                con.Close();
-            }
-        }
-    }
+    //    // Use the stored procedure "SP_GetTop5Courses" to get the top 5 courses
+    //    cmd = CreateCommandWithStoredProcedure("SP_GetTop5Courses", con);
+    //    try
+    //    {
+    //        SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+    //        List<Course> topCourses = new List<Course>();
+    //        while (reader.Read())
+    //        {
+    //            Course course = new Course();
+    //            course.Id = Convert.ToInt32(reader["id"]);
+    //            course.Title = reader["title"].ToString();
+    //            course.Rating = Convert.ToDouble(reader["rating"]);
+    //            course.NumOfRegisters = Convert.ToInt32(reader["numOfRegisters"]);
+    //            topCourses.Add(course);
+    //        }
+    //        return topCourses;
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        // write to log
+    //        throw ex;
+    //    }
+    //    finally
+    //    {
+    //        if (con != null)
+    //        {
+    //            // close the db connection
+    //            con.Close();
+    //        }
+    //    }
+    //}
 
     private SqlCommand CreateCommandWithStoredProcedure(string spName, SqlConnection con)
     {

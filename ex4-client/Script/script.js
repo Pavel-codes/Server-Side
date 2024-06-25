@@ -89,7 +89,7 @@ $(document).ready(function () {
             courseElement.append('<p>Rating: ' + course.rating + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
             courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
-            courseElement.append('<p> Num of registers: ' + course.numberOfRegistrations + '</p>');
+            //courseElement.append('<p> Num of registers: ' + course.numberOfRegistrations + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
             courseElement.append(addCourseBtn);
 
