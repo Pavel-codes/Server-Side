@@ -8,19 +8,31 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
             crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="../Script/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="../Css/admin.css">
-    <!--<script src="../Script/admin.js?v=2"></script>-->
 </head>
 <body>
     <h1>Admin Panel</h1>
     <button id="homeBtn">Home</button>
+    <button id="showDataTable">Show courses</button>
     <div id="pageTop">
         <label for="courseDataList">Search Course To Edit: </label>
         <datalist id="courseDataList"></datalist>
         <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
         <button id="coursesBtn">Insert New Course</button>
     </div>
+    <form id="dataTableForm">
+        <table id="coursesDataTable" class="display">
+            <thead>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </form>
     <div id="displayCourses">
         <form id="editForm"></form>
     </div>

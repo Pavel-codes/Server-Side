@@ -206,7 +206,6 @@ namespace WebApplication1.Controllers
 
             // Return status code  
             return Ok(imageLinks);
-
         }
 
     }

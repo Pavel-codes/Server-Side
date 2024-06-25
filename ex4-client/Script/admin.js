@@ -21,15 +21,17 @@ $('document').ready(function () {
         window.location.href = "index.html";
     }
 
-
+    $('#dataTableForm').hide();
     function addCoursesToDataList() {
         ajaxCall('GET', apiBaseUrl, true, getCoursesSCBF, getCoursesECBF);
     }
 
     function getCoursesSCBF(response) {
         console.log("Received courses!");
+        console.log(response);
         coursesFromServer = response;
         addToDataList(response);
+        populateDataTable(response);
     }
 
     function getCoursesECBF(err) {
@@ -45,12 +47,36 @@ $('document').ready(function () {
             courseDataList.appendChild(option);
         }
     }
+    //////////////////////////////////// testing /////////////////////////////////
+    function populateDataTable(courses) {
+        $('#coursesDataTable').DataTable({
+            data: courses,
+            pageLength: 10,
+            columns: [
+                { data: "title", title: "Course" },
+                {
+                    data: "isActive",
+                    title: "Active",
+                    render: function (data, type, row, meta) {
+                        return '<input type="checkbox"' + (data ? ' checked="checked"' : '') + ' />';
+                    }
+                }
+            ],
+            destroy: true // Allow reinitialization of the table
+        });
+    }
+
+    $('#showDataTable').on('click', function(){
+        $('#dataTableForm').show();
+    });
 
 });
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";
 });
+
+
 
 const courseDataList = document.getElementById("courseDataList");
 

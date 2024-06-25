@@ -30,3 +30,40 @@ button {
 #selectedTitle, #selectedDuration, #selectedUrl, #selectedImageUrl {
     margin-bottom: 15px;
 }
+
+
+#coursesDataTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    align-content: center;
+    align-items: center;
+    justify-content:center;
+}
+
+    #coursesDataTable tr {
+        width: 100%;
+        padding: 50px;
+    }
+
+.odd, even{
+    width: 500px;
+}
+
+#coursesDataTable td, #coursesDataTable th {
+    font-size: 18px; /* Increase the font size */
+    padding: 20px; /* Add padding for more spacing */
+
+}
+
+/* Make text take up more space */
+#coursesDataTable {
+    width: 100%; /* Make the table take up full width */
+    align-content: center;
+    text-align: center;
+}
+
+    #coursesDataTable th, #coursesDataTable td {
+        text-align: center; /* Center-align text */
+        vertical-align: middle; /* Center-align text vertically */
+    }
