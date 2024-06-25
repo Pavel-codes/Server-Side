@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Pages\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Script\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Script\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\my_courses_script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Script\\my_courses_script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Pages\\admin.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\createCourse.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -25,18 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Script\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Script\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Css\\admin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Script\\register.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\login.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -53,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\instructorsPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Css\\instructorsPage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Css\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\instructorsPage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -78,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -102,65 +102,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "admin.html",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\admin.html",
               "RelativeDocumentMoniker": "Pages\\admin.html",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\admin.html",
               "RelativeToolTip": "Pages\\admin.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAzAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-06-16T19:14:57.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T19:14:57.691Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "admin.css",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\admin.css",
               "RelativeDocumentMoniker": "Css\\admin.css",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\admin.css",
               "RelativeToolTip": "Css\\admin.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-16T18:22:48.298Z"
+              "WhenOpened": "2024-06-16T18:22:48.298Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "script.js",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\script.js",
               "RelativeDocumentMoniker": "Script\\script.js",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\script.js",
               "RelativeToolTip": "Script\\script.js",
-              "ViewState": "AQIAALUAAAAAAAAAAAAuwL8AAAAAAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAkwEsAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-16T18:14:14.992Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "my_courses_script.js",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\my_courses_script.js",
-              "RelativeDocumentMoniker": "Script\\my_courses_script.js",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\my_courses_script.js",
-              "RelativeToolTip": "Script\\my_courses_script.js",
-              "ViewState": "AQIAAIcAAAAAAAAAAAA1wI0AAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-16T18:14:48.223Z",
+              "WhenOpened": "2024-06-16T18:14:14.992Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "register.js",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\register.js",
-              "RelativeDocumentMoniker": "Script\\register.js",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\register.js",
-              "RelativeToolTip": "Script\\register.js",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAIwBoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-16T18:14:35.514Z"
             },
             {
               "$type": "Document",
@@ -170,14 +146,51 @@
               "RelativeDocumentMoniker": "Pages\\index.html",
               "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\index.html",
               "RelativeToolTip": "Pages\\index.html",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-06-16T13:37:16.534Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 0,
+              "Title": "index.css",
+              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\index.css",
+              "RelativeDocumentMoniker": "Css\\index.css",
+              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\index.css",
+              "RelativeToolTip": "Css\\index.css",
+              "ViewState": "AQIAADYAAAAAAAAAAAAmwEcAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-06-16T18:09:32.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "my_courses_script.js",
+              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\my_courses_script.js",
+              "RelativeDocumentMoniker": "Script\\my_courses_script.js",
+              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\my_courses_script.js",
+              "RelativeToolTip": "Script\\my_courses_script.js",
+              "ViewState": "AQIAAIgAAAAAAAAAAAAQwI0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-16T18:14:48.223Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "register.js",
+              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\register.js",
+              "RelativeDocumentMoniker": "Script\\register.js",
+              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\register.js",
+              "RelativeToolTip": "Script\\register.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEkAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-16T18:14:35.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "instructorsPage.css",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\instructorsPage.css",
               "RelativeDocumentMoniker": "Css\\instructorsPage.css",
@@ -186,18 +199,6 @@
               "ViewState": "AQIAAEUAAAAAAAAAAAAAAFMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-06-17T11:19:06.343Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "index.css",
-              "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\index.css",
-              "RelativeDocumentMoniker": "Css\\index.css",
-              "ToolTip": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Css\\index.css",
-              "RelativeToolTip": "Css\\index.css",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAAAEAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-16T18:09:32.556Z"
             },
             {
               "$type": "Document",
@@ -213,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "admin.js",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\admin.js",
               "RelativeDocumentMoniker": "Script\\admin.js",
@@ -225,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "createCourse.js",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\createCourse.js",
               "RelativeDocumentMoniker": "Script\\createCourse.js",
@@ -233,12 +234,11 @@
               "RelativeToolTip": "Script\\createCourse.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-16T21:13:09.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-16T21:13:09.892Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "createEditForm.html",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\createEditForm.html",
               "RelativeDocumentMoniker": "Pages\\createEditForm.html",
@@ -250,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "login.html",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Pages\\login.html",
               "RelativeDocumentMoniker": "Pages\\login.html",
@@ -262,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "instructors_script.js",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\instructors_script.js",
               "RelativeDocumentMoniker": "Script\\instructors_script.js",
@@ -274,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "login.js",
               "DocumentMoniker": "C:\\Users\\fabel\\source\\repos\\Github desktop\\Server-Side\\ex4-client\\Script\\login.js",
               "RelativeDocumentMoniker": "Script\\login.js",

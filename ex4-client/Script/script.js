@@ -22,6 +22,25 @@ $(document).ready(function () {
         console.log(err);
     }
 
+
+
+    function getTopCoursesFromDB() {
+        let api = apiBaseUrl + "/Top5Courses";
+        ajaxCall('GET', api, true, getTopCoursesSCBF, getTopCoursesECBF); // check ajax call for sync and async
+    }
+
+    function getTopCoursesSCBF(response) {
+        console.log(response);
+        renderTopCourses(response); // Render top 5 courses based on registrations
+    }
+
+    function getTopCoursesECBF(err) {
+        console.log(err);
+        alert("Failed to load top courses!");
+    }
+
+    getTopCoursesFromDB();
+
     function getCoursesFromDB() {
         ajaxCall('GET', apiBaseUrl, true, getCoursesSCBF, getCoursesECBF);
     }
@@ -30,7 +49,6 @@ $(document).ready(function () {
         console.log(response);
         coursesData = response; // Store courses data globally
         renderCourses(response); // Render courses after fetching from DB
-        renderTopCourses(response); // Render top 5 courses based on registrations
     }
 
     function getCoursesECBF(err) {
@@ -39,7 +57,7 @@ $(document).ready(function () {
     }
 
     // Function to fetch top 5 courses based on number of registrations
-    function fetchTop5Courses(courses) {
+    function fetchTopFiveCourses(courses) {
         // Sort courses by number of registrations in descending order
         courses.sort((a, b) => b.numberOfRegistrations - a.numberOfRegistrations);
 
@@ -50,27 +68,28 @@ $(document).ready(function () {
     // Render top 5 courses
     function renderTopCourses(courses) {
         var topCoursesContainer = $('#top-courses-container');
-        var top5Courses = fetchTop5Courses(courses);
-        top5Courses.forEach(function (course) {
-            var courseElement = $('<div>');
-            courseElement.append('<img src=' + course.imageReference + '>');
-            courseElement.append('<h2>' + course.title + '</h2>');
-            var instructor = instructors.find(instructor => instructor.id == course.instructorsId);
-            courseElement.append('<p>By: ' + (instructor ? instructor.name : 'Unknown') + '</p>'); // Assuming name is a property of instructor
+        var table = $('<table>');
+        var tableHeader = $('<th>');
+
+        var topFiveCourses = courses;
+        //var topFiveCourses = fetchTopFiveCourses(courses);
+        topFiveCourses.forEach(function (course) {
+            var courseElement = $('<td>');
+            courseElement.append('<h3>' + course.title + '</h3>');
+            courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
             var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
-            courseElement.append('<p>Duration: ' + course.duration + '</p>');
-            courseElement.append('<p>Rating: ' + course.rating + '</p>');
-            courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
-            courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
-            courseElement.append('<p> Num of registers: ' + course.numberOfRegistrations + '</p>');
-            courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
+            courseElement.append('<p> Registered: ' + course.numOfRegisters + '</p>');
             courseElement.append(addCourseBtn);
 
-            topCoursesContainer.append(courseElement);
+
+
+            tableHeader.append(courseElement);
 
             // Attach the click event using addCourseClick directly
             addCourseClick(addCourseBtn);
         });
+        table.append(tableHeader);
+        topCoursesContainer.append(table);
     }
 
     // Function to render regular courses
@@ -86,7 +105,7 @@ $(document).ready(function () {
             var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
             courseElement.append(showMoreBtn);
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
-            courseElement.append('<p>Rating: ' + course.rating + '</p>');
+            courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
             courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
             //courseElement.append('<p> Num of registers: ' + course.numberOfRegistrations + '</p>');
@@ -158,7 +177,7 @@ $(document).ready(function () {
             courseElement.append('<h2>' + course.title + '</h2>');
             courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
-            courseElement.append('<p>Rating: ' + course.rating + '</p>');
+            courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
             courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
             courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
             courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');

@@ -36,7 +36,6 @@ C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\re
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\Ex4.pdb
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\Ex4.genruntimeconfig.cache
 C:\Users\chena\Source\Repos\Server-Side-Final\ex4-server\Ex4\obj\Debug\net6.0\ref\Ex4.dll
-C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\bin\Debug\net6.0\appsettings.json
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\bin\Debug\net6.0\Ex4.exe
 C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\bin\Debug\net6.0\Ex4.deps.json

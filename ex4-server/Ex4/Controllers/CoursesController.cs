@@ -159,11 +159,11 @@ namespace WebApplication1.Controllers
 
         //Get courses by top 5 most user
        [HttpGet("Top5Courses")]
-        public IActionResult GetTop5Courses()
+        public IActionResult GetTopFiveCourses()
         {
             try
             {
-                List<Object> courses = Course.GetTop5Courses();
+                List<Object> courses = Course.GetTopFiveCourses();
 
                 if (courses.Any())
                 {
