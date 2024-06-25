@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.BL;
 
@@ -175,6 +176,37 @@ namespace WebApplication1.Controllers
             {
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
+        }
+
+        // POST api/<uploadFiles>
+        [HttpPost("uploadFiles")]
+        public async Task<IActionResult> Post([FromForm] List<IFormFile> files)
+        {
+
+
+            List<string> imageLinks = new List<string>();
+
+            string path = System.IO.Directory.GetCurrentDirectory();
+
+            long size = files.Sum(f => f.Length);
+
+            foreach (var formFile in files)
+            {
+                if (formFile.Length > 0)
+                {
+                    var filePath = Path.Combine(path, "uploadedFiles/" + formFile.FileName);
+
+                    using (var stream = System.IO.File.Create(filePath))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }
+                    imageLinks.Add(formFile.FileName);
+                }
+            }
+
+            // Return status code  
+            return Ok(imageLinks);
+
         }
 
     }
