@@ -165,19 +165,19 @@ namespace WebApplication1.BL
             }
         }
 
-        //public static List<Course> GetTop5Courses()
-        //{
-        //    DBservices db = new DBservices();
-        //    List<Course> courses = db.GetTop5Courses();
-        //    if (courses.Count == 0)
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        return courses;
-        //    }
-        //}
+        public static List<Object> GetTop5Courses()
+        {
+            DBservices db = new DBservices();
+            List<Object> courses = db.GetTop5Courses();
+            if (courses.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return courses;
+            }
+        }
 
     }
 }

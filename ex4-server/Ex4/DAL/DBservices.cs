@@ -995,51 +995,51 @@ public class DBservices
         return cmd;
     }
 
-    //public List<Course> GetTop5Courses()
-    //{
-    //    SqlConnection con;
-    //    SqlCommand cmd;
-    //    try
-    //    {
-    //        con = connect("myProjDB"); // create the connection
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw ex;
-    //    }
+    public List<Object> GetTop5Courses()
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw ex;
+        }
 
-    //    // Use the stored procedure "SP_GetTop5Courses" to get the top 5 courses
-    //    cmd = CreateCommandWithStoredProcedure("SP_GetTop5Courses", con);
-    //    try
-    //    {
-    //        SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
-    //        List<Course> topCourses = new List<Course>();
-    //        while (reader.Read())
-    //        {
-    //            Course course = new Course();
-    //            course.Id = Convert.ToInt32(reader["id"]);
-    //            course.Title = reader["title"].ToString();
-    //            course.Rating = Convert.ToDouble(reader["rating"]);
-    //            course.NumOfRegisters = Convert.ToInt32(reader["numOfRegisters"]);
-    //            topCourses.Add(course);
-    //        }
-    //        return topCourses;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw ex;
-    //    }
-    //    finally
-    //    {
-    //        if (con != null)
-    //        {
-    //            // close the db connection
-    //            con.Close();
-    //        }
-    //    }
-    //}
+        // Use the stored procedure "SP_GetTop5Courses" to get the top 5 courses
+        cmd = CreateCommandWithStoredProcedure("SP_GetTop5Courses", con);
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // execute the command
+            List<Object> topCourses = new List<Object>();
+            while (reader.Read())
+            {
+               topCourses.Add( new {
+                    id = Convert.ToInt32(reader["id"]),
+                    title = reader["name"].ToString(),
+                    rating = Convert.ToDouble(reader["rating"]),
+                    numOfRegisters = Convert.ToInt32(reader["NumberOfUsers"])
+                 });
+            }
+            return topCourses;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw ex;
+        }
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
 
     private SqlCommand CreateCommandWithStoredProcedure(string spName, SqlConnection con)
     {
