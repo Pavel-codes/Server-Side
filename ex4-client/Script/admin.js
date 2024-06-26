@@ -178,23 +178,23 @@ $('document').ready(function () {
     function imageSent(data) {
         console.log(data);
     }
-    
     $('#dataTableForm').on('change', '.editedTitle', function () {
         var input = $(this);
         var newValue = input.val();
-        var courseId = input.data('course-id'); // Get the course ID from the data attribute
+        var courseId = input.data('course-id'); // Get the ID
 
         console.log(newValue);
         console.log(courseId);
 
         // AJAX PUT call for title change
         $.ajax({
-            url: `${apiBaseUrl}/ChangeCourseTitle/${courseId}/${newValue}`, // Replace with your actual API endpoint
+            url: `${apiBaseUrl}/ChangeCourseTitle/${courseId}/${newValue}`,
             type: 'PUT',
             contentType: 'application/json',
             data: null,
             success: function (response) {
                 console.log('Title updated successfully', response);
+                $('#overlayMessage').fadeIn();
             },
             error: function (xhr, status, error) {
                 console.error('Error updating title', error);
@@ -202,6 +202,12 @@ $('document').ready(function () {
         });
     });
 
+    // Close the overlay message
+    $('#closeOverlay').on('click', function () {
+        $('#overlayMessage').fadeOut();
+    });
+
+    // Event delegation for isActive checkbox change
     $('#dataTableForm').on('change', '.isActiveCheckbox', function () {
         var checkbox = $(this);
         var isActive = checkbox.is(':checked');
@@ -209,12 +215,15 @@ $('document').ready(function () {
 
         // AJAX PUT call for isActive change
         $.ajax({
-            url: statusChangeUrl + courseId, // Replace with your actual API endpoint
+            url: `${apiBaseUrl}/ChangeActiveStatus/${courseId}`, 
             type: 'PUT',
             contentType: 'application/json',
-            data: null,
+            data: JSON.stringify({
+                isActive: isActive
+            }),
             success: function (response) {
                 console.log('isActive status updated successfully', response);
+                $('#overlayMessage').fadeIn();
             },
             error: function (xhr, status, error) {
                 console.error('Error updating isActive status', error);
