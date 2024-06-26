@@ -70,7 +70,60 @@ $('document').ready(function () {
         $('#dataTableForm').show();
     });
 
+    $('#buttonUpload').on('click', function () {
+        var data = new FormData();
+        var files = $("#files").get(0).files;
+
+        // Add the uploaded file to the form data collection  
+        if (files.length > 0) {
+            for (f = 0; f < files.length; f++) {
+                data.append("files", files[f]);
+            }
+        }
+
+        api = "https://localhost:7283/api/Courses/uploadFiles";
+        
+
+        // Ajax upload  
+        $.ajax({
+            type: "POST",
+            url: api,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: showImages,
+            error: error
+        });
+
+        return false;
+    });
+    //checking
+    
+
+    function showImages(data) {
+        console.log(data);
+        var imageFolder = "https://localhost:7283/Images/";
+        var imgStr = "";
+
+        if (Array.isArray(data)) {
+            for (var i = 0; i < data.length; i++) {
+                src = imageFolder + data[i];
+                imgStr += `<img src='${src}'/>`;
+            }
+        } else { // just in case you have an api returning a single string
+            src = imageFolder + data;
+            imgStr = `<img src='${src}'/>`;
+        }
+
+        document.getElementById("ph").innerHTML = imgStr;
+    }
+
 });
+
+
+function error(data) {
+    console.log(data);
+}
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";

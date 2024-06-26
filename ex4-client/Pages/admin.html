@@ -36,6 +36,16 @@
     <div id="displayCourses">
         <form id="editForm"></form>
     </div>
+    <!-- File upload section -->
+    <form method="post" enctype="multipart/form-data" id="formUpload">
+        <div>
+            <label for="files">Files</label>
+            <input type="file" id="files" name="files" multiple="multiple" />
+        </div>
+        <br />
+        <button type="button" id="buttonUpload">Upload files</button>
+    </form>
+    <div id="ph"></div>
     <script src="../Script/admin.js?v=2"></script>
 </body>
 </html>
