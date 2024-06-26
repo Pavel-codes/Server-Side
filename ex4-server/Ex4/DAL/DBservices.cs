@@ -1022,8 +1022,9 @@ public class DBservices
                     id = Convert.ToInt32(reader["id"]),
                     title = reader["name"].ToString(),
                     rating = Convert.ToDouble(reader["rating"]),
-                    numOfRegisters = Convert.ToInt32(reader["NumberOfUsers"])
-                 });
+                    numOfRegisters = Convert.ToInt32(reader["NumberOfUsers"]),
+                    image = reader["image"].ToString()
+               });
             }
             return topCourses;
         }

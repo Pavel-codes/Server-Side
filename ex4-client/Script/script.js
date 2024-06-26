@@ -76,6 +76,7 @@ $(document).ready(function () {
         topFiveCourses.forEach(function (course) {
             var courseElement = $('<td>');
             courseElement.append('<h3>' + course.title + '</h3>');
+            courseElement.append('<img src=' + course.image + '>');
             courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
             var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
             courseElement.append('<p> Registered: ' + course.numOfRegisters + '</p>');
