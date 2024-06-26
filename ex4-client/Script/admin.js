@@ -5,6 +5,8 @@ const udemy = "https://www.udemy.com";
 const apiBaseUrl = "https://localhost:7283/api/Courses";
 const displayCourses = $("#displayCourses");
 const statusChangeUrl = 'https://localhost:7283/api/Courses/ChangeActiveStatus/';
+const uploadPath = "https://localhost:7283/Images/";
+const uploadApi = "https://localhost:7283/api/Courses/uploadFiles";
 
 $('document').ready(function () {
     const struser = localStorage.getItem('user');
@@ -49,23 +51,13 @@ $('document').ready(function () {
             courseDataList.appendChild(option);
         }
     }
-    //////////////////////////////////// testing /////////////////////////////////
+
     function populateDataTable(courses) {
         $('#coursesDataTable').DataTable({
             data: courses,
             pageLength: 10,
             columns: [
-                //{
-                //    data: null,
-                //    title: "Actions",
-                //    render: function (data, type, row, meta) {
-                //        return '<button class="editBtn">Edit</button>' // +
-                //            //'<button class="deleteBtn">Delete</button>' +
-                //            //'<button class="viewBtn">View</button>';
-                //    }
-                //},
 
-                
                 {
                     data: "title",
                     title: "Course",
@@ -112,29 +104,28 @@ $('document').ready(function () {
         });
     }
 
-    //function when i clicked delete button Delete the course from the display and from the database
-    $('#coursesDataTable').on('click', '.deleteBtn', function () {
-        var table = $('#coursesDataTable').DataTable();
-        var data = table.row($(this).parents('tr')).data();
-        var id = Number(data.id);
-        console.log(id);
+    ////function when i clicked delete button Delete the course from the display and from the database
+    //$('#coursesDataTable').on('click', '.deleteBtn', function () {
+    //    var table = $('#coursesDataTable').DataTable();
+    //    var data = table.row($(this).parents('tr')).data();
+    //    var id = Number(data.id);
+    //    console.log(id);
 
-        if (!confirm("Are you sure you want to delete this course?")) return false;
-        var api = `${apiBaseUrl}/DeleteCourse/${id}?coursid=${id}`;
-        ajaxCall("DELETE", api, null, deleteSCBF, deleteECBF);
-    });
+    //    if (!confirm("Are you sure you want to delete this course?")) return false;
+    //    var api = `${apiBaseUrl}/DeleteCourse/${id}?coursid=${id}`;
+    //    ajaxCall("DELETE", api, null, deleteSCBF, deleteECBF);
+    //});
 
-    function deleteSCBF(result) {
-        console.log("Deleted successfully!");
-        alert("Course deleted successfully!");
-        //populateDataTable(result)
-        
-    }
+    //function deleteSCBF(result) {
+    //    console.log("Deleted successfully!");
+    //    alert("Course deleted successfully!");
 
-    function deleteECBF(err) {
-        console.log(err);
-        alert("Unable to delete.");
-    }
+    //}
+
+    //function deleteECBF(err) {
+    //    console.log(err);
+    //    alert("Unable to delete.");
+    //}
 
     $('#showDataTable').on('click', function () {
         $('#showDataTable').hide();
@@ -147,37 +138,10 @@ $('document').ready(function () {
         $('#hideDataTable').hide();
         $('#dataTableForm').hide();
     });
-
-    $('#buttonUpload').on('click', function () {
-        var data = new FormData();
-        var files = $("#imageFile").get(0).files;
-
-        // Add the uploaded file to the form data collection  
-        if (files.length > 0) {
-            for (f = 0; f < files.length; f++) {
-                data.append("files", files[f]);
-            }
-        }
-
-        api = "https://localhost:7283/api/Courses/uploadFiles";
-        
-        // Ajax upload  
-        $.ajax({
-            type: "POST",
-            url: api,
-            contentType: false,
-            processData: false,
-            data: data,
-            success: imageSent,
-            error: error
-        });
-
-        return false;
-    });
-
     function imageSent(data) {
         console.log(data);
     }
+
     $('#dataTableForm').on('change', '.editedTitle', function () {
         var input = $(this);
         var newValue = input.val();
@@ -232,6 +196,9 @@ $('document').ready(function () {
     });
 });
 
+function imageSent(response) {
+    console.log(response);
+}
 
 function error(data) {
     console.log(data);
@@ -242,15 +209,13 @@ $('#homeBtn').on('click', function () {
 });
 
 
-
 const courseDataList = document.getElementById("courseDataList");
 
 var selectedCourse = {};
 
-
-//change implememtation to get from server - basic idea -->> get course ID from course title, change all other data according to fields and send back
 $("#courseNamesList").on('input', function () {
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
+    var uploadFileName;
     // clear the display area on change
     //displayCourses.empty();
     $('#displayCourses').children().slice(0, -1).remove();
@@ -269,7 +234,7 @@ $("#courseNamesList").on('input', function () {
         displayCourses.append('<img src=' + selectedCourse.imageReference + '>');
         displayCourses.append('<p>Course ID: ' + courseId + '</p>');
         displayCourses.append('<p>Instructors ID: ' + courseInstructorID + '</p>');
-        displayCourses.append('<p>Rating: ' + courseRating + '</p>');
+        displayCourses.append('<p>Rating: ' + courseRating.toFixed(2) + '</p>');
         displayCourses.append('<p>Number Of Reviews: ' + courseReviews + '</p>');
 
         editForm.append('<label for="Title">Title: </label>');
@@ -280,13 +245,45 @@ $("#courseNamesList").on('input', function () {
         editForm.append('<input type="text" id="selectedUrl" required><br>');
         editForm.append('<label for="Image link">Image link: </label>');
         editForm.append('<input type="text" id="selectedImageUrl"><br>');
-
+        editForm.append('<label for="file upload">Or upload image</label>');
+        editForm.append('<input type="file" id="imageFile" name="files" accept=".jpg,.png"/>');
         editForm.append('<button type="submit" id="selectedSubmission">Submit changes</button>');
         displayCourses.append(editForm);
+
+        editForm.on('change', '#imageFile', function () {
+            var fileInput = $(this)[0];
+            uploadFileName = fileInput.files[0].name; // Get the selected file
+            var data = new FormData();
+            var files = $("#imageFile").get(0).files;
+
+            // Add the uploaded file to the form data collection  
+            if (files.length > 0) {
+                for (f = 0; f < files.length; f++) {
+                    data.append("files", files[f]);
+                }
+            }
+
+            // Ajax upload  
+            $.ajax({
+                type: "POST",
+                url: uploadApi,
+                contentType: false,
+                processData: false,
+                data: data,
+                success: imageSent,
+                error: error
+            });
+
+            return false;
+
+        });
 
         // Use the submit event of the form
         editForm.on("submit", function (event) {
             event.preventDefault();
+
+
+
 
             var urlPattern = /^(https):\/\/www\.[^\s"]+\.[^\s"]+$/;
             var imagePattern = /^(https):\/\/www\.[^\s"]+(\.jpg|\.png)$/;
@@ -304,13 +301,20 @@ $("#courseNamesList").on('input', function () {
                 alert("Url Not Valid , Must Use This Structure https://www.example.com");
                 return;
             }
-            const newImageUrl = $('#selectedImageUrl').val();
+            var newImageUrl = $('#selectedImageUrl').val();
             if (newImageUrl == "") {
+                console.log(uploadFileName);
+                console.log(uploadPath);
+                newImageUrl = uploadPath + uploadFileName;
+                
             }
             else if (!imagePattern.test($('#selectedImageUrl').val())) {
                 alert("Image Reference Not Valid, Must Use This Structure https://www.example.jpg/png");
                 return;
             }
+
+
+
             const newDate = getCurrentDate();
             const updatedCourseData = {
                 id: courseId,
