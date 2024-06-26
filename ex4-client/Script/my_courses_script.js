@@ -35,7 +35,7 @@ $(document).ready(function () {
             courseElement.append('<h2>' + course.title + '</h2>');
             courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
             courseElement.append('<p>Duration: ' + course.duration + '</p>');
-            courseElement.append('<p>Rating: ' + course.rating + '</p>');
+            courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
             courseElement.append('<p><a href="' + course.url + '">Link</a></p>');
             courseElement.append('<button id="' + course.id + '">Remove Course</button>');
             coursesContainer.append(courseElement);
@@ -58,7 +58,7 @@ function renderFilteredCourses(coursesList) {
         courseElement.append('<h2>' + course.title + '</h2>');
         courseElement.append('<p>Instructors ID: ' + course.instructorsId + '</p>');
         courseElement.append('<p>Duration: ' + course.duration + '</p>');
-        courseElement.append('<p>Rating: ' + course.rating + '</p>');
+        courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
         courseElement.append('<p><a href="' + course.url + '">Link</a></p>');
         courseElement.append('<button id="' + course.id + '">Remove Course</button>');
         coursesContainer.append(courseElement);

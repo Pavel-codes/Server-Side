@@ -104,29 +104,6 @@ $('document').ready(function () {
         });
     }
 
-    ////function when i clicked delete button Delete the course from the display and from the database
-    //$('#coursesDataTable').on('click', '.deleteBtn', function () {
-    //    var table = $('#coursesDataTable').DataTable();
-    //    var data = table.row($(this).parents('tr')).data();
-    //    var id = Number(data.id);
-    //    console.log(id);
-
-    //    if (!confirm("Are you sure you want to delete this course?")) return false;
-    //    var api = `${apiBaseUrl}/DeleteCourse/${id}?coursid=${id}`;
-    //    ajaxCall("DELETE", api, null, deleteSCBF, deleteECBF);
-    //});
-
-    //function deleteSCBF(result) {
-    //    console.log("Deleted successfully!");
-    //    alert("Course deleted successfully!");
-
-    //}
-
-    //function deleteECBF(err) {
-    //    console.log(err);
-    //    alert("Unable to delete.");
-    //}
-
     $('#showDataTable').on('click', function () {
         $('#showDataTable').hide();
         $('#hideDataTable').show();
@@ -224,7 +201,7 @@ $("#courseNamesList").on('input', function () {
 
     selectedCourse = coursesFromServer.find(course => course.title === courseTitle);
 
-    if (courseTitle != '') {
+    if (courseTitle != '' && selectedCourse.id) {
         const courseId = selectedCourse.id;
         const courseRating = selectedCourse.rating;
         const courseReviews = selectedCourse.numberOfReviews;
@@ -302,13 +279,11 @@ $("#courseNamesList").on('input', function () {
                 return;
             }
             var newImageUrl = $('#selectedImageUrl').val();
-            if (newImageUrl == "") {
-                console.log(uploadFileName);
-                console.log(uploadPath);
+            if (newImageUrl == "" && uploadFileName) {
                 newImageUrl = uploadPath + uploadFileName;
                 
             }
-            else if (!imagePattern.test($('#selectedImageUrl').val())) {
+            else if (!imagePattern.test($('#selectedImageUrl').val()) && $('#selectedImageUrl').val() !== "") {
                 alert("Image Reference Not Valid, Must Use This Structure https://www.example.jpg/png");
                 return;
             }

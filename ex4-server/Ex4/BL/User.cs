@@ -12,8 +12,6 @@ namespace WebApplication1.BL
 
 
         // code needs changing not to store course list!
-        //private List<Course> myCourses = new List<Course>(); // needs to be removed
-        //static List<User> usersList = new List<User>();
 
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
@@ -22,9 +20,6 @@ namespace WebApplication1.BL
         public bool IsAdmin { get => isAdmin; set => isAdmin = value; }
         public bool IsActive { get => isActive; set => isActive = value; }
 
-        // to be removed
-        //public List<Course> MyCourses { get => myCourses; set => myCourses = value; }
-        //public static List<User> UsersList { get => usersList; set => usersList = value; }
 
         public User()
         {
