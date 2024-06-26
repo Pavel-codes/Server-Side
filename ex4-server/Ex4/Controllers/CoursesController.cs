@@ -180,13 +180,12 @@ namespace WebApplication1.Controllers
         }
 
 
-        //Delete Course From Data Base Need to implement
         [HttpDelete("deleteCourse/{courseId}")]
-        public IActionResult DeleteCourse([FromQuery] int coursid)
+        public IActionResult DeleteCourse(int coursid, [FromQuery] int coursId)
         {
             try
             {
-                List<Course> courses =course.DeleteCourse(coursid);
+                List<Course> courses =course.DeleteCourse(coursId);
 
                 if (courses.Any())
                 {

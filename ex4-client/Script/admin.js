@@ -88,18 +88,20 @@ $('document').ready(function () {
 
     //function when i clicked delete button Delete the course from the display and from the dtatabase
     $('#coursesDataTable').on('click', '.deleteBtn', function () {
-        if (!confirm("Are you sure you want to delete this course?")) return;
         var table = $('#coursesDataTable').DataTable();
         var data = table.row($(this).parents('tr')).data();
-        var id = data.id;
-        var api = `${apiBaseUrl}/DeleteCourse/${id}`;
+        var id = Number(data.id);
+        console.log(id);
+
+        if (!confirm("Are you sure you want to delete this course?")) return false;
+        var api = `${apiBaseUrl}/DeleteCourse/${id}?coursid=${id}`;
         ajaxCall("DELETE", api, null, deleteSCBF, deleteECBF);
     });
 
     function deleteSCBF(result) {
         console.log("Deleted successfully!");
         alert("Course deleted successfully!");
-        populateDataTable(result)
+        //populateDataTable(result)
         
     }
 
