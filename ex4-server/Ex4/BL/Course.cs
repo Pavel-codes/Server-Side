@@ -179,6 +179,13 @@ namespace WebApplication1.BL
             }
         }
 
+        public bool changeActiveStatus(int id)
+        {
+            DBservices db = new DBservices();
+            int result = db.changeActiveStatus(id);
+            return Convert.ToBoolean(result);
+        }
+
         public static List<Object> GetTopFiveCourses()
         {
             DBservices db = new DBservices();

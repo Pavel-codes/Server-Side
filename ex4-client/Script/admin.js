@@ -65,13 +65,13 @@ $('document').ready(function () {
 
                 
                 { data: "title", title: "Course" },
-                {data: "id", title: "ID" },
+                { data: "id", title: "ID" },
                 { data: "url", title: "Course Link" },
                 { data: "rating", title: "Rating" },
                 { data: "numberOfReviews", title: "Reviews" },
                 { data: "instructorsId", title: "Instructors Id" },
                 { data: "duration", title: "Duration" },
-                {data :"imageReference", title: "Image Reference"},
+                { data :"imageReference", title: "Image Reference"},
                 { data: "lastUpdate", title: "Last Update" },
 
                 {

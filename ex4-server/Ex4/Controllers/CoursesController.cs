@@ -199,6 +199,23 @@ namespace WebApplication1.Controllers
             }
         }
 
+        // PUT api/<ChangeActiveStatus>
+        [HttpPut("ChangeActiveStatus")]
+        public IActionResult ChangeActiveStatus(int id)
+        {
+            try
+            {
+                bool result = course.changeActiveStatus(id);
+                if (result) { return Ok(new { message = "Status updated." }); }
+                else { return NotFound(new { message = "Status could not be updated." }); }
+            }
+            catch (Exception ex)
+            {
+                // Return 500 Internal Server Error with the exception message
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         // POST api/<uploadFiles>
         [HttpPost("uploadFiles")]
         public async Task<IActionResult> Post([FromForm] List<IFormFile> files)
