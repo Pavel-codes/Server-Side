@@ -61,22 +61,6 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [HttpDelete("deleteByCourseFromUserList/{userId}")]
-        public IActionResult DeleteByCourseFromUserList(int userId, [FromQuery] int coursid)
-        {
-            try
-            {
-                if (Course.DeleteCourse(userId, coursid))
-                {
-                    return Ok(new { message = "Course deleted from user successfully" });
-                }
-                return BadRequest(new { message = "Failed to delete course from user list" });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-        }
         [HttpGet("searchByDurationForUser/{userId}")]
         public IActionResult GetByDurationRangeForUser(int userId, [FromQuery] double fromDuration, [FromQuery] double toDuration)
         {
@@ -171,6 +155,44 @@ namespace WebApplication1.Controllers
                     return Ok(courses);
                 }
                 return NotFound(new { message = "No courses found." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("deleteByCourseFromUserList/{userId}")]
+        public IActionResult DeleteByCourseFromUserList(int userId, [FromQuery] int coursid)
+        {
+            try
+            {
+                if (Course.DeleteCourseFromUser(userId, coursid))
+                {
+                    return Ok(new { message = "Course deleted from user successfully" });
+                }
+                return BadRequest(new { message = "Failed to delete course from user list" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+
+        //Delete Course From Data Base Need to implement
+        [HttpDelete("deleteCourse/{courseId}")]
+        public IActionResult DeleteCourse([FromQuery] int coursid)
+        {
+            try
+            {
+                List<Course> courses =course.DeleteCourse(coursid);
+
+                if (courses.Any())
+                {
+                    return Ok(courses);
+                }
+                return NotFound(new { message = "Course not Exist" });
             }
             catch (Exception ex)
             {

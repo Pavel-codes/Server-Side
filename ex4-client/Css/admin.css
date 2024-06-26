@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 20px;
     text-align: center;
+  
 }
 
 h1 {
@@ -51,9 +52,8 @@ button {
 }
 
 #coursesDataTable td, #coursesDataTable th {
-    font-size: 18px; /* Increase the font size */
-    padding: 20px; /* Add padding for more spacing */
-
+    font-size: 15px; 
+  
 }
 
 /* Make text take up more space */

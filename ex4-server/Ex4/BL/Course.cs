@@ -65,7 +65,21 @@ namespace WebApplication1.BL
 
         }
 
-        public static bool DeleteCourse(int userId, int courseidToDelete)
+        public List<Course> DeleteCourse(int courseId)
+        {
+            DBservices db = new DBservices();
+            try
+            {
+                db.DeleteCourse(courseId);
+                return db.ReadCourses();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static bool DeleteCourseFromUser(int userId, int courseidToDelete)
         {
             DBservices db = new DBservices();
             try

@@ -53,7 +53,27 @@ $('document').ready(function () {
             data: courses,
             pageLength: 10,
             columns: [
+                {
+                    data: null,
+                    title: "Actions",
+                    render: function (data, type, row, meta) {
+                        return '<button class="editBtn">Edit</button>' +
+                            '<button class="deleteBtn">Delete</button>' +
+                            '<button class="viewBtn">View</button>';
+                    }
+                },
+
+                
                 { data: "title", title: "Course" },
+                {data: "id", title: "ID" },
+                { data: "url", title: "Course Link" },
+                { data: "rating", title: "Rating" },
+                { data: "numberOfReviews", title: "Reviews" },
+                { data: "instructorsId", title: "Instructors Id" },
+                { data: "duration", title: "Duration" },
+                {data :"imageReference", title: "Image Reference"},
+                { data: "lastUpdate", title: "Last Update" },
+
                 {
                     data: "isActive",
                     title: "Active",
@@ -64,6 +84,28 @@ $('document').ready(function () {
             ],
             destroy: true // Allow reinitialization of the table
         });
+    }
+
+    //function when i clicked delete button Delete the course from the display and from the dtatabase
+    $('#coursesDataTable').on('click', '.deleteBtn', function () {
+        if (!confirm("Are you sure you want to delete this course?")) return;
+        var table = $('#coursesDataTable').DataTable();
+        var data = table.row($(this).parents('tr')).data();
+        var id = data.id;
+        var api = `${apiBaseUrl}/DeleteCourse/${id}`;
+        ajaxCall("DELETE", api, null, deleteSCBF, deleteECBF);
+    });
+
+    function deleteSCBF(result) {
+        console.log("Deleted successfully!");
+        alert("Course deleted successfully!");
+        populateDataTable(result)
+        
+    }
+
+    function deleteECBF(err) {
+        console.log(err);
+        alert("Unable to delete.");
     }
 
     $('#showDataTable').on('click', function(){

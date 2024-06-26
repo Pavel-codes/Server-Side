@@ -86,8 +86,7 @@
               "RelativeToolTip": "ex4-client\\Script\\script.js",
               "ViewState": "AQIAAKwAAAAAAAAAAAAwwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-25T09:40:03.797Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T09:40:03.797Z"
             },
             {
               "$type": "Document",
@@ -97,7 +96,7 @@
               "RelativeDocumentMoniker": "ex4-server\\Ex4\\Controllers\\CoursesController.cs",
               "ToolTip": "C:\\Users\\chena\\source\\repos\\Server-Side-Final\\ex4-server\\Ex4\\Controllers\\CoursesController.cs",
               "RelativeToolTip": "ex4-server\\Ex4\\Controllers\\CoursesController.cs",
-              "ViewState": "AQIAAJkAAAAAAAAAAAAAAKUAAAAxAAAA",
+              "ViewState": "AQIAALQAAAAAAAAAAAAAAKUAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T09:35:04.356Z",
               "EditorCaption": ""
@@ -112,8 +111,7 @@
               "RelativeToolTip": "ex4-server\\Ex4\\BL\\Course.cs",
               "ViewState": "AQIAAJ8AAAAAAAAAAAAAALIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T09:35:13.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T09:35:13.737Z"
             },
             {
               "$type": "Document",
@@ -125,8 +123,7 @@
               "RelativeToolTip": "ex4-server\\Ex4\\DAL\\DBservices.cs",
               "ViewState": "AQIAAPADAAAAAAAAAAAAAAIEAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T09:34:12.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T09:34:12.258Z"
             }
           ]
         }
