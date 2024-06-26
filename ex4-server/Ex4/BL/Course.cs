@@ -12,7 +12,7 @@ namespace WebApplication1.BL
         private string imageReference;
         private string duration;
         private string lastUpdate;
-        private bool isActive=true;
+        private bool isActive;
 
 
         public Course() { }

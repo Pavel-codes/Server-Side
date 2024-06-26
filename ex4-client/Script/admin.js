@@ -2,11 +2,11 @@
 var coursesFromServer = [];
 const udemy = "https://www.udemy.com";
 //const instructorsAPI = `https://localhost:7076/api/Instructors`;
-const apiBaseUrl = "https://localhost:7283/api/Courses";
+const apiBaseUrl = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses";
 const displayCourses = $("#displayCourses");
-const statusChangeUrl = 'https://localhost:7283/api/Courses/ChangeActiveStatus/';
-const uploadPath = "https://localhost:7283/Images/";
-const uploadApi = "https://localhost:7283/api/Courses/uploadFiles";
+const statusChangeUrl = 'https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses/ChangeActiveStatus/';
+const uploadPath = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/Images/";
+const uploadApi = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses/uploadFiles";
 
 $('document').ready(function () {
     const struser = localStorage.getItem('user');
@@ -194,8 +194,8 @@ $("#courseNamesList").on('input', function () {
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
     var uploadFileName;
     // clear the display area on change
-    //displayCourses.empty();
-    $('#displayCourses').children().slice(0, -1).remove();
+    displayCourses.empty();
+    //$('#displayCourses').children().slice(0, -1).remove();
     const editForm = $('<form id="editForm"></form>');
     displayCourses.append(editForm);
 
@@ -304,7 +304,7 @@ $("#courseNamesList").on('input', function () {
                 isActive: courseisActive
             };
             //let id = courseId;
-            const api = `https://localhost:7283/api/Courses/${courseId}`;
+            const api = `https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses/${courseId}`;
             ajaxCall("PUT", api, JSON.stringify(updatedCourseData), putSCBF, putECBF);
         });
     }

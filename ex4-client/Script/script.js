@@ -1,6 +1,6 @@
 ﻿var coursesData = [];
 const udemy = "https://www.udemy.com";
-const apiBaseUrl = "https://localhost:7283/api/Courses";
+const apiBaseUrl = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses";
 var modal = $('#coursesModal');
 var span = $('.close');
 var instructors = [];
@@ -9,7 +9,7 @@ var user = JSON.parse(localStorage.getItem('user'));
 $(document).ready(function () {
 
     function getInstructors() {
-        let api = "https://localhost:7283/api/Instructors/";
+        let api = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Instructors/";
         ajaxCall('GET', api, true, getInstructorSCBF, getInstructorECBF); // check ajax call for sync and async
     }
 
@@ -95,30 +95,32 @@ $(document).ready(function () {
     function renderCourses(courses) {
         var coursesContainer = $('#courses-container');
         courses.forEach(function (course) {
-            var courseElement = $('<div>');
-            courseElement.append('<img src=' + course.imageReference + '>');
-            courseElement.append('<h2>' + course.title + '</h2>');
-            var instructor = instructors.find(instructor => instructor.id == course.instructorsId);
-            courseElement.append('<p>By: ' + (instructor ? instructor.name : 'Unknown') + '</p>'); // Assuming name is a property of instructor
-            var showMoreBtn = $('<button id="' + course.instructorsId + '">Show more courses of this instructor</button>');
-            var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
-            courseElement.append(showMoreBtn);
-            courseElement.append('<p>Duration: ' + course.duration + '</p>');
-            courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
-            courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
-            courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
-            //courseElement.append('<p> Num of registers: ' + course.numberOfRegistrations + '</p>');
-            courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
-            courseElement.append(addCourseBtn);
+            if (course.isActive) {
+                var courseElement = $('<div>');
+                courseElement.append('<img src=' + course.imageReference + '>');
+                courseElement.append('<h2>' + course.title + '</h2>');
+                var instructor = instructors.find(instructor => instructor.id == course.instructorsId);
+                courseElement.append('<p>By: ' + (instructor ? instructor.name : 'Unknown') + '</p>'); // Assuming name is a property of instructor
+                var showMoreBtn = $('<button id="' + course.instructorsId + '">Show more courses of this instructor</button>');
+                var addCourseBtn = $('<button id="' + course.id + '">Add Course</button>');
+                courseElement.append(showMoreBtn);
+                courseElement.append('<p>Duration: ' + course.duration + '</p>');
+                courseElement.append('<p>Rating: ' + course.rating.toFixed(2) + '</p>');
+                courseElement.append('<p>Number Of Reviews: ' + course.numberOfReviews + '</p>');
+                courseElement.append('<p>Last update: ' + course.lastUpdate + '</p>');
+                //courseElement.append('<p> Num of registers: ' + course.numberOfRegistrations + '</p>');
+                courseElement.append('<p><a href="' + udemy + course.url + '">Link</a></p>');
+                courseElement.append(addCourseBtn);
 
-            coursesContainer.append(courseElement);
+                coursesContainer.append(courseElement);
 
-            // Attach the click event using addCourseClick directly
-            addCourseClick(addCourseBtn);
+                // Attach the click event using addCourseClick directly
+                addCourseClick(addCourseBtn);
 
-            showMoreBtn.on('click', function () {
-                addCoursesToModal(this.id);
-            });
+                showMoreBtn.on('click', function () {
+                    addCoursesToModal(this.id);
+                });
+            }
         });
     }
 
@@ -164,7 +166,7 @@ $(document).ready(function () {
 
         $('#modal-content').children().slice(1).remove(); // Clear previous modal content
 
-        let api = `https://localhost:7283/api/Courses/searchByInstructorId/${buttonId}`;
+        let api = `https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses/searchByInstructorId/${buttonId}`;
         ajaxCall("GET", api, null, getInstructorCoursesSCBF, getInstructorCoursesECBF);
     }
 

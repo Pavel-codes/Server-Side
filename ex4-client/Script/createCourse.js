@@ -1,8 +1,8 @@
 
-const apiBaseUrl = "https://localhost:7283/api/Courses";
+const apiBaseUrl = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses";
 const udemy = "https://www.udemy.com";
-const uploadPath = "https://localhost:7283/Images/";
-const uploadApi = "https://localhost:7283/api/Courses/uploadFiles";
+const uploadPath = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/Images/";
+const uploadApi = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses/uploadFiles";
 
 $('#homeBtn').on('click', function () {
     window.location.href = "../Pages/index.html";

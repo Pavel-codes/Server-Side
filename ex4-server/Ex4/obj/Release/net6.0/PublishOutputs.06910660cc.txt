@@ -1,0 +1,16 @@
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Ex4.exe
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Ex4.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Ex4.deps.json
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Ex4.runtimeconfig.json
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Ex4.pdb
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\System.Data.SqlClient.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\sni.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\sni.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\sni.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\fabel\source\repos\Github desktop\Server-Side\ex4-server\Ex4\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

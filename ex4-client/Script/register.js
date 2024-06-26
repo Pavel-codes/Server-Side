@@ -1,5 +1,5 @@
 ﻿
-const apiBaseUrl = "https://localhost:7283/api/Users";
+const apiBaseUrl = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Users";
 $(document).ready(function () {
     $('#registerForm').submit(function (event) {
         event.preventDefault();
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 
         function submitToServer(newUser) {
-            let api = `https://localhost:7283/api/Users`;
+            let api = `https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Users`;
             ajaxCall("POST", api, JSON.stringify(newUser), postSCBF, postECBF);
             //return false;
         }

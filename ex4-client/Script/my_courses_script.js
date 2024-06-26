@@ -4,13 +4,13 @@ var userCourses = [];
 var user = JSON.parse(localStorage.getItem('user'));
 var id = user.id;
 
-const apiBaseUrl = "https://localhost:7283/api";
+const apiBaseUrl = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api";
 
 $(document).ready(function () {
 
     function getUserCoursesFromDB() {
         //let api = apiBaseUrl + "/Courses/UserCourse/" + user.id;
-        let api = `https://localhost:7283/api/Courses/UserCourse/${user.id}`;
+        let api = `https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses/UserCourse/${user.id}`;
         console.log(api);
         ajaxCall('GET', api, true, getCoursesSCBF, getCoursesECBF);
     }

@@ -1,5 +1,5 @@
 ﻿
-const apiBaseUrl = "https://localhost:7283/api/Instructors";
+const apiBaseUrl = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Instructors";
 const udemy = "https://www.udemy.com";
 let instructorsData = [];
 var modal = $('#coursesModal');
@@ -63,7 +63,7 @@ function addCoursesToModal(buttonId) {
     //clearModal();
     $('#modal-content').children().slice(1).remove();
 
-    let api = `https://localhost:7283/api/Courses/searchByInstructorId/${buttonId}`;
+    let api = `https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Courses/searchByInstructorId/${buttonId}`;
     ajaxCall("GET", api, null, getSCBF, getECBF);
 }
 

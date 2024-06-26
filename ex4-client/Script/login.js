@@ -1,5 +1,5 @@
 ﻿
-const apiBaseUrl = "https://localhost:7283/api/Users";
+const apiBaseUrl = "https://proj.ruppin.ac.il/cgroup85/test2/tar1/api/Users";
 
 $(document).ready(function () {
     $('#loginForm').submit(function (event) {
