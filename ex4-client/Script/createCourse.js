@@ -52,7 +52,8 @@ $("#createCourseForm").submit(function (event) {
         instructorsId: $("#instructorsId").val(),
         imageReference: $("#image").val(),
         duration: $("#duration").val() + " total hours",
-        lastUpdate: getCurrentDate()
+        lastUpdate: getCurrentDate(),
+        isAdmin: true
     };
     console.log(newCourse);
     ajaxCall("POST", `${apiBaseUrl}/NewCourse`, JSON.stringify(newCourse), postSCBF, postECBF);
