@@ -19,12 +19,15 @@
 <body>
     <h1>Admin Panel</h1>
     <button id="homeBtn">Home</button>
-    <button id="showDataTable">Show courses</button>
+
     <div id="pageTop">
+        <button id="showDataTable">Show courses</button>
+        <button id="hideDataTable">Hide courses</button>
+        <button id="coursesBtn">Insert New Course</button>
         <label for="courseDataList">Search Course To Edit: </label>
         <datalist id="courseDataList"></datalist>
         <input type="text" list="courseDataList" id="courseNamesList" name="courseName">
-        <button id="coursesBtn">Insert New Course</button>
+
     </div>
     <form id="dataTableForm">
         <table id="coursesDataTable" class="display">
@@ -40,12 +43,12 @@
     <form method="post" enctype="multipart/form-data" id="formUpload">
         <div>
             <label for="files">Files</label>
-            <input type="file" id="files" name="files" multiple="multiple" />
+            <input type="file" id="imageFile" name="files" accept=".jpg,.png" />
         </div>
         <br />
         <button type="button" id="buttonUpload">Upload files</button>
     </form>
-    <div id="ph"></div>
+    <!--<div id="ph"></div>-->
     <script src="../Script/admin.js?v=2"></script>
 </body>
 </html>

@@ -28,6 +28,20 @@ button {
         opacity: 0.8;
     }
 
+#homeBtn {
+    margin: auto;
+    position: absolute;
+    left: 200px;
+}
+
+td > img{
+    width: 60%;
+}
+
+td{
+    vertical-align: central;
+}
+
 #selectedTitle, #selectedDuration, #selectedUrl, #selectedImageUrl {
     margin-bottom: 15px;
 }

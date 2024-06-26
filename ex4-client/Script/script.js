@@ -22,8 +22,6 @@ $(document).ready(function () {
         console.log(err);
     }
 
-
-
     function getTopCoursesFromDB() {
         let api = apiBaseUrl + "/Top5Courses";
         ajaxCall('GET', api, true, getTopCoursesSCBF, getTopCoursesECBF); // check ajax call for sync and async

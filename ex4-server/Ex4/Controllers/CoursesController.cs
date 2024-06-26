@@ -179,7 +179,7 @@ namespace WebApplication1.Controllers
             }
         }
 
-
+        //probably dont need
         [HttpDelete("deleteCourse/{courseId}")]
         public IActionResult DeleteCourse(int coursid, [FromQuery] int coursId)
         {
@@ -200,12 +200,29 @@ namespace WebApplication1.Controllers
         }
 
         // PUT api/<ChangeActiveStatus>
-        [HttpPut("ChangeActiveStatus")]
+        [HttpPut("ChangeActiveStatus/{id}")]
         public IActionResult ChangeActiveStatus(int id)
         {
             try
             {
                 bool result = course.changeActiveStatus(id);
+                if (result) { return Ok(new { message = "Status updated." }); }
+                else { return NotFound(new { message = "Status could not be updated." }); }
+            }
+            catch (Exception ex)
+            {
+                // Return 500 Internal Server Error with the exception message
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        // PUT api/<ChangeActiveStatus>
+        [HttpPut("ChangeCourseTitle/{id}/{title}")]
+        public IActionResult ChangeCourseTitle(int id, string title)
+        {
+            try
+            {
+                bool result = course.changeCourseTitle(id, title);
                 if (result) { return Ok(new { message = "Status updated." }); }
                 else { return NotFound(new { message = "Status could not be updated." }); }
             }

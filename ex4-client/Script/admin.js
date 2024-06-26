@@ -4,6 +4,7 @@ const udemy = "https://www.udemy.com";
 //const instructorsAPI = `https://localhost:7076/api/Instructors`;
 const apiBaseUrl = "https://localhost:7283/api/Courses";
 const displayCourses = $("#displayCourses");
+const statusChangeUrl = 'https://localhost:7283/api/Courses/ChangeActiveStatus/';
 
 $('document').ready(function () {
     const struser = localStorage.getItem('user');
@@ -22,6 +23,7 @@ $('document').ready(function () {
     }
 
     $('#dataTableForm').hide();
+    $('#hideDataTable').hide();
     function addCoursesToDataList() {
         ajaxCall('GET', apiBaseUrl, true, getCoursesSCBF, getCoursesECBF);
     }
@@ -53,32 +55,56 @@ $('document').ready(function () {
             data: courses,
             pageLength: 10,
             columns: [
-                {
-                    data: null,
-                    title: "Actions",
-                    render: function (data, type, row, meta) {
-                        return '<button class="editBtn">Edit</button>' +
-                            '<button class="deleteBtn">Delete</button>' +
-                            '<button class="viewBtn">View</button>';
-                    }
-                },
+                //{
+                //    data: null,
+                //    title: "Actions",
+                //    render: function (data, type, row, meta) {
+                //        return '<button class="editBtn">Edit</button>' // +
+                //            //'<button class="deleteBtn">Delete</button>' +
+                //            //'<button class="viewBtn">View</button>';
+                //    }
+                //},
 
                 
-                { data: "title", title: "Course" },
+                {
+                    data: "title",
+                    title: "Course",
+                    render: function (data, type, row, meta) {
+                        return '<input type="text" class="editedTitle" id="editedTitle' + row.id + '" value="' + data + '" data-course-id="' + row.id + '" required>';
+                    }
+                },
                 { data: "id", title: "ID" },
-                { data: "url", title: "Course Link" },
-                { data: "rating", title: "Rating" },
-                { data: "numberOfReviews", title: "Reviews" },
+                {
+                    data: "url",
+                    title: "Course Link",
+                    render: function (data, type, row, meta) {
+                        return '<p><a href="' + udemy + data + '">Link</a></p>'
+                    }
+                },
+                {
+                    data: "rating",
+                    title: "Rating",
+                    render: function (data, type, row, meta) {
+                        return '<p>' + data.toFixed(2) + '</p>'
+                    }
+                },
+                { data: "numberOfReviews", title: "Reviews"},
                 { data: "instructorsId", title: "Instructors Id" },
                 { data: "duration", title: "Duration" },
-                { data :"imageReference", title: "Image Reference"},
+                {
+                    data: "imageReference",
+                    title: "Image Reference",
+                    render: function (data, type, row, meta) {
+                        return '<img src=' + data + '>';
+                    }
+                },
                 { data: "lastUpdate", title: "Last Update" },
 
                 {
                     data: "isActive",
                     title: "Active",
                     render: function (data, type, row, meta) {
-                        return '<input type="checkbox"' + (data ? ' checked="checked"' : '') + ' />';
+                        return '<input type="checkbox" class="isActiveCheckbox" id="isActive' + meta.row + '" data-course-id="' + row.id + '"' + (data ? ' checked="checked"' : '') + ' />';
                     }
                 }
             ],
@@ -86,7 +112,7 @@ $('document').ready(function () {
         });
     }
 
-    //function when i clicked delete button Delete the course from the display and from the dtatabase
+    //function when i clicked delete button Delete the course from the display and from the database
     $('#coursesDataTable').on('click', '.deleteBtn', function () {
         var table = $('#coursesDataTable').DataTable();
         var data = table.row($(this).parents('tr')).data();
@@ -110,13 +136,21 @@ $('document').ready(function () {
         alert("Unable to delete.");
     }
 
-    $('#showDataTable').on('click', function(){
+    $('#showDataTable').on('click', function () {
+        $('#showDataTable').hide();
+        $('#hideDataTable').show();
         $('#dataTableForm').show();
+    });
+
+    $('#hideDataTable').on('click', function () {
+        $('#showDataTable').show();
+        $('#hideDataTable').hide();
+        $('#dataTableForm').hide();
     });
 
     $('#buttonUpload').on('click', function () {
         var data = new FormData();
-        var files = $("#files").get(0).files;
+        var files = $("#imageFile").get(0).files;
 
         // Add the uploaded file to the form data collection  
         if (files.length > 0) {
@@ -127,7 +161,6 @@ $('document').ready(function () {
 
         api = "https://localhost:7283/api/Courses/uploadFiles";
         
-
         // Ajax upload  
         $.ajax({
             type: "POST",
@@ -135,33 +168,59 @@ $('document').ready(function () {
             contentType: false,
             processData: false,
             data: data,
-            success: showImages,
+            success: imageSent,
             error: error
         });
 
         return false;
     });
-    //checking
-    
 
-    function showImages(data) {
+    function imageSent(data) {
         console.log(data);
-        var imageFolder = "https://localhost:7283/Images/";
-        var imgStr = "";
-
-        if (Array.isArray(data)) {
-            for (var i = 0; i < data.length; i++) {
-                src = imageFolder + data[i];
-                imgStr += `<img src='${src}'/>`;
-            }
-        } else { // just in case you have an api returning a single string
-            src = imageFolder + data;
-            imgStr = `<img src='${src}'/>`;
-        }
-
-        document.getElementById("ph").innerHTML = imgStr;
     }
+    
+    $('#dataTableForm').on('change', '.editedTitle', function () {
+        var input = $(this);
+        var newValue = input.val();
+        var courseId = input.data('course-id'); // Get the course ID from the data attribute
 
+        console.log(newValue);
+        console.log(courseId);
+
+        // AJAX PUT call for title change
+        $.ajax({
+            url: `${apiBaseUrl}/ChangeCourseTitle/${courseId}/${newValue}`, // Replace with your actual API endpoint
+            type: 'PUT',
+            contentType: 'application/json',
+            data: null,
+            success: function (response) {
+                console.log('Title updated successfully', response);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error updating title', error);
+            }
+        });
+    });
+
+    $('#dataTableForm').on('change', '.isActiveCheckbox', function () {
+        var checkbox = $(this);
+        var isActive = checkbox.is(':checked');
+        var courseId = checkbox.data('course-id'); // Get the course ID from the data attribute
+
+        // AJAX PUT call for isActive change
+        $.ajax({
+            url: statusChangeUrl + courseId, // Replace with your actual API endpoint
+            type: 'PUT',
+            contentType: 'application/json',
+            data: null,
+            success: function (response) {
+                console.log('isActive status updated successfully', response);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error updating isActive status', error);
+            }
+        });
+    });
 });
 
 
@@ -184,7 +243,8 @@ var selectedCourse = {};
 $("#courseNamesList").on('input', function () {
     const courseTitle = $(this).val(); // Get the selected value from the dropdown
     // clear the display area on change
-    displayCourses.empty();
+    //displayCourses.empty();
+    $('#displayCourses').children().slice(0, -1).remove();
     const editForm = $('<form id="editForm"></form>');
     displayCourses.append(editForm);
 
@@ -211,6 +271,7 @@ $("#courseNamesList").on('input', function () {
         editForm.append('<input type="text" id="selectedUrl" required><br>');
         editForm.append('<label for="Image link">Image link: </label>');
         editForm.append('<input type="text" id="selectedImageUrl"><br>');
+
         editForm.append('<button type="submit" id="selectedSubmission">Submit changes</button>');
         displayCourses.append(editForm);
 
@@ -262,7 +323,7 @@ $("#courseNamesList").on('input', function () {
 });
 
 function updateCourseData() {
-    removeAllOptionsFromDataList(); // trying
+    removeAllOptionsFromDataList();
     coursesFromServer.length = 0;
     ajaxCall('GET', apiBaseUrl, true, getUpdatedCoursesSCBF, getUpdatedCoursesECBF);
 }

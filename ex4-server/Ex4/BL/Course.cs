@@ -186,6 +186,13 @@ namespace WebApplication1.BL
             return Convert.ToBoolean(result);
         }
 
+        public bool changeCourseTitle(int id, string title)
+        {
+            DBservices db = new DBservices();
+            int result = db.changeCourseTitle(id, title);
+            return Convert.ToBoolean(result);
+        }
+
         public static List<Object> GetTopFiveCourses()
         {
             DBservices db = new DBservices();
